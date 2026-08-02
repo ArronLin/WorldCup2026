@@ -1,0 +1,242 @@
+{
+  "estadio_azteca": {
+    "name": {
+      "en": "Estadio Azteca",
+      "zh": "阿兹特克体育场"
+    },
+    "city": {
+      "en": "Mexico City",
+      "zh": "墨西哥城"
+    },
+    "country": {
+      "en": "Mexico",
+      "zh": "墨西哥"
+    },
+    "capacity": 80824
+  },
+  "bmo_field": {
+    "name": {
+      "en": "BMO Field",
+      "zh": "BMO球场"
+    },
+    "city": {
+      "en": "Toronto",
+      "zh": "多伦多"
+    },
+    "country": {
+      "en": "Canada",
+      "zh": "加拿大"
+    },
+    "capacity": 45500
+  },
+  "sofi_stadium": {
+    "name": {
+      "en": "SoFi Stadium",
+      "zh": "SoFi体育场"
+    },
+    "city": {
+      "en": "Inglewood",
+      "zh": "英格尔伍德"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 70492
+  },
+  "metlife_stadium": {
+    "name": {
+      "en": "MetLife Stadium",
+      "zh": "大都会人寿体育场"
+    },
+    "city": {
+      "en": "East Rutherford",
+      "zh": "东拉瑟福德"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 80663
+  },
+  "att_stadium": {
+    "name": {
+      "en": "AT&T Stadium",
+      "zh": "AT&T体育场"
+    },
+    "city": {
+      "en": "Arlington",
+      "zh": "阿灵顿"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 70649
+  },
+  "mercedes_benz_stadium": {
+    "name": {
+      "en": "Mercedes-Benz Stadium",
+      "zh": "梅赛德斯奔驰体育场"
+    },
+    "city": {
+      "en": "Atlanta",
+      "zh": "亚特兰大"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 71000
+  },
+  "gillette_stadium": {
+    "name": {
+      "en": "Gillette Stadium",
+      "zh": "吉列体育场"
+    },
+    "city": {
+      "en": "Foxborough",
+      "zh": "福克斯堡"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 65000
+  },
+  "lumen_field": {
+    "name": {
+      "en": "Lumen Field",
+      "zh": "流明球场"
+    },
+    "city": {
+      "en": "Seattle",
+      "zh": "西雅图"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 69000
+  },
+  "lincoln_financial_field": {
+    "name": {
+      "en": "Lincoln Financial Field",
+      "zh": "林肯金融球场"
+    },
+    "city": {
+      "en": "Philadelphia",
+      "zh": "费城"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 67500
+  },
+  "levis_stadium": {
+    "name": {
+      "en": "Levi's Stadium",
+      "zh": "李维斯体育场"
+    },
+    "city": {
+      "en": "Santa Clara",
+      "zh": "圣克拉拉"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 67500
+  },
+  "hard_rock_stadium": {
+    "name": {
+      "en": "Hard Rock Stadium",
+      "zh": "硬石体育场"
+    },
+    "city": {
+      "en": "Miami Gardens",
+      "zh": "迈阿密花园"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 65000
+  },
+  "arrowhead_stadium": {
+    "name": {
+      "en": "Arrowhead Stadium",
+      "zh": "箭头体育场"
+    },
+    "city": {
+      "en": "Kansas City",
+      "zh": "堪萨斯城"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 76000
+  },
+  "nrg_stadium": {
+    "name": {
+      "en": "NRG Stadium",
+      "zh": "NRG体育场"
+    },
+    "city": {
+      "en": "Houston",
+      "zh": "休斯顿"
+    },
+    "country": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "capacity": 72000
+  },
+  "estadio_akron": {
+    "name": {
+      "en": "Estadio Akron",
+      "zh": "阿克伦体育场"
+    },
+    "city": {
+      "en": "Guadalajara",
+      "zh": "瓜达拉哈拉"
+    },
+    "country": {
+      "en": "Mexico",
+      "zh": "墨西哥"
+    },
+    "capacity": 48000
+  },
+  "estadio_bbva": {
+    "name": {
+      "en": "Estadio BBVA",
+      "zh": "BBVA体育场"
+    },
+    "city": {
+      "en": "Monterrey",
+      "zh": "蒙特雷"
+    },
+    "country": {
+      "en": "Mexico",
+      "zh": "墨西哥"
+    },
+    "capacity": 53500
+  },
+  "bc_place": {
+    "name": {
+      "en": "BC Place",
+      "zh": "BC广场体育馆"
+    },
+    "city": {
+      "en": "Vancouver",
+      "zh": "温哥华"
+    },
+    "country": {
+      "en": "Canada",
+      "zh": "加拿大"
+    },
+    "capacity": 54500
+  }
+}

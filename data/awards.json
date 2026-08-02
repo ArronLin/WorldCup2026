@@ -1,0 +1,239 @@
+{
+  "champion": {
+    "code": "ESP",
+    "name": {
+      "en": "Spain",
+      "zh": "西班牙"
+    },
+    "title": {
+      "en": "2nd title",
+      "zh": "第二次夺冠"
+    }
+  },
+  "runner_up": {
+    "code": "ARG",
+    "name": {
+      "en": "Argentina",
+      "zh": "阿根廷"
+    }
+  },
+  "third_place": {
+    "code": "ENG",
+    "name": {
+      "en": "England",
+      "zh": "英格兰"
+    }
+  },
+  "fourth_place": {
+    "code": "FRA",
+    "name": {
+      "en": "France",
+      "zh": "法国"
+    }
+  },
+  "golden_ball": {
+    "player": "Rodri",
+    "playerZh": "罗德里",
+    "team": "ESP",
+    "teamName": {
+      "en": "Spain",
+      "zh": "西班牙"
+    },
+    "award": {
+      "en": "Best Player",
+      "zh": "最佳球员"
+    }
+  },
+  "golden_boot": {
+    "player": "Kylian Mbappé",
+    "playerZh": "姆巴佩",
+    "team": "FRA",
+    "teamName": {
+      "en": "France",
+      "zh": "法国"
+    },
+    "goals": 10,
+    "award": {
+      "en": "Top Scorer",
+      "zh": "最佳射手"
+    }
+  },
+  "golden_glove": {
+    "player": "Unai Simón",
+    "playerZh": "乌奈·西蒙",
+    "team": "ESP",
+    "teamName": {
+      "en": "Spain",
+      "zh": "西班牙"
+    },
+    "award": {
+      "en": "Best Goalkeeper",
+      "zh": "最佳门将"
+    }
+  },
+  "young_player": {
+    "player": "Pau Cubarsí",
+    "playerZh": "库巴西",
+    "team": "ESP",
+    "teamName": {
+      "en": "Spain",
+      "zh": "西班牙"
+    },
+    "award": {
+      "en": "Best Young Player",
+      "zh": "最佳年轻球员"
+    }
+  },
+  "fair_play": {
+    "code": "NED",
+    "name": {
+      "en": "Netherlands",
+      "zh": "荷兰"
+    },
+    "award": {
+      "en": "Fair Play Award",
+      "zh": "公平竞赛奖"
+    }
+  },
+  "top_scorers": [
+    {
+      "player": "Kylian Mbappé",
+      "playerZh": "姆巴佩",
+      "team": "FRA",
+      "goals": 10,
+      "penalties": 1
+    },
+    {
+      "player": "Lionel Messi",
+      "playerZh": "梅西",
+      "team": "ARG",
+      "goals": 8,
+      "penalties": 0
+    },
+    {
+      "player": "Jude Bellingham",
+      "playerZh": "贝林厄姆",
+      "team": "ENG",
+      "goals": 7,
+      "penalties": 0
+    },
+    {
+      "player": "Erling Haaland",
+      "playerZh": "哈兰德",
+      "team": "NOR",
+      "goals": 7,
+      "penalties": 0
+    },
+    {
+      "player": "Ousmane Dembélé",
+      "playerZh": "登贝莱",
+      "team": "FRA",
+      "goals": 6,
+      "penalties": 0
+    },
+    {
+      "player": "Harry Kane",
+      "playerZh": "凯恩",
+      "team": "ENG",
+      "goals": 6,
+      "penalties": 2
+    },
+    {
+      "player": "Mikel Oyarzabal",
+      "playerZh": "奥亚萨瓦尔",
+      "team": "ESP",
+      "goals": 5,
+      "penalties": 1
+    },
+    {
+      "player": "Ismaïla Sarr",
+      "playerZh": "伊斯梅拉·萨尔",
+      "team": "SEN",
+      "goals": 4,
+      "penalties": 0
+    },
+    {
+      "player": "Quiñones",
+      "playerZh": "基尼奥内斯",
+      "team": "MEX",
+      "goals": 4,
+      "penalties": 0
+    },
+    {
+      "player": "Vinícius Jr.",
+      "playerZh": "维尼修斯",
+      "team": "BRA",
+      "goals": 4,
+      "penalties": 0
+    }
+  ],
+  "top_assists": [
+    {
+      "player": "Michael Olise",
+      "playerZh": "奥利塞",
+      "team": "FRA",
+      "assists": 7
+    },
+    {
+      "player": "Brahim Díaz",
+      "playerZh": "迪亚斯",
+      "team": "MAR",
+      "assists": 4
+    },
+    {
+      "player": "Bruno Guimarães",
+      "playerZh": "吉马良斯",
+      "team": "BRA",
+      "assists": 4
+    },
+    {
+      "player": "Martin Ødegaard",
+      "playerZh": "厄德高",
+      "team": "NOR",
+      "assists": 4
+    },
+    {
+      "player": "Kylian Mbappé",
+      "playerZh": "姆巴佩",
+      "team": "FRA",
+      "assists": 4
+    },
+    {
+      "player": "Lionel Messi",
+      "playerZh": "梅西",
+      "team": "ARG",
+      "assists": 4
+    },
+    {
+      "player": "Alvarado",
+      "playerZh": "阿尔瓦拉多",
+      "team": "MEX",
+      "assists": 3
+    },
+    {
+      "player": "Florian Wirtz",
+      "playerZh": "维尔茨",
+      "team": "GER",
+      "assists": 3
+    },
+    {
+      "player": "Alexander Isak",
+      "playerZh": "伊萨克",
+      "team": "SWE",
+      "assists": 3
+    },
+    {
+      "player": "Bukayo Saka",
+      "playerZh": "萨卡",
+      "team": "ENG",
+      "assists": 3
+    }
+  ],
+  "tournament_stats": {
+    "matchesPlayed": 104,
+    "goalsScored": 308,
+    "goalsPerMatch": 2.96,
+    "attendance": 6665825,
+    "avgAttendance": 65351
+  }
+}
