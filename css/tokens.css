@@ -1,0 +1,111 @@
+/* ===== Design Tokens ===== */
+
+/* Dark theme (default) */
+:root,
+[data-theme="dark"] {
+  --bg-base:       #0A0E1A;
+  --bg-surface:    #111827;
+  --bg-elevated:   #1E293B;
+  --bg-hover:      #334155;
+  --bg-glass:      rgba(17, 24, 39, 0.65);
+  --glass-border:  rgba(255, 255, 255, 0.08);
+
+  --text-primary:    #F8FAFC;
+  --text-secondary:  #94A3B8;
+  --text-muted:      #64748B;
+
+  --border:        rgba(148, 163, 184, 0.12);
+  --border-strong: rgba(148, 163, 184, 0.24);
+
+  --shadow:    0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.35);
+
+  --ambient-opacity: 0.15;
+  --grid-opacity: 0.03;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg-base:       #F0F4F8;
+  --bg-surface:    #FFFFFF;
+  --bg-elevated:   #EDF2F7;
+  --bg-hover:      #E2E8F0;
+  --bg-glass:      rgba(255, 255, 255, 0.72);
+  --glass-border:  rgba(0, 0, 0, 0.08);
+
+  --text-primary:    #0F172A;
+  --text-secondary:  #475569;
+  --text-muted:      #94A3B8;
+
+  --border:        rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
+
+  --shadow:    0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.06);
+
+  --ambient-opacity: 0.06;
+  --grid-opacity: 0.015;
+}
+
+/* Shared tokens (both themes) */
+:root {
+
+  /* Accent — vibrant multi-color system inspired by 2026 WC branding */
+  --accent:        #00D9A3;  /* Electric teal — primary brand color */
+  --accent-2:      #0EA5E9;  /* Sky blue — secondary */
+  --accent-3:      #7C3AED;  /* Royal purple — tertiary */
+  --accent-glow:   rgba(0, 217, 163, 0.35);
+  --accent-gradient: linear-gradient(135deg, #00D9A3, #0EA5E9);
+  --accent-gradient-2: linear-gradient(135deg, #7C3AED, #0EA5E9);
+  --accent-gradient-3: linear-gradient(135deg, #F59E0B, #EF4444);
+
+  /* Semantic */
+  --win:    #00D9A3;
+  --draw:   #F59E0B;
+  --loss:   #EF4444;
+  --gold:   #F59E0B;
+  --silver: #CBD5E1;
+  --bronze: #D97706;
+
+  /* Cards */
+  --card-yellow: #FACC15;
+  --card-red:    #EF4444;
+
+  /* Radius */
+  --radius:    14px;
+  --radius-sm: 8px;
+  --radius-lg: 20px;
+
+  --glow:      0 0 0 1px var(--accent-glow), 0 0 24px var(--accent-glow);
+  --gold-glow: 0 0 0 1px rgba(245, 158, 11, 0.4), 0 0 30px rgba(245, 158, 11, 0.25);
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+  --font-display: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+
+  /* Layout */
+  --max-width: 1280px;
+  --topbar-height: 64px;
+
+  /* Transitions */
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Glass effect */
+  --glass-blur: 20px;
+
+  /* Glow presets */
+  --glow-accent-sm: 0 0 20px rgba(0, 217, 163, 0.15);
+  --glow-accent-md: 0 0 30px rgba(0, 217, 163, 0.2);
+  --glow-gold-sm: 0 0 20px rgba(245, 158, 11, 0.15);
+}

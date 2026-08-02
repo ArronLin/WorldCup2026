@@ -1,0 +1,962 @@
+{
+  "MEX": {
+    "code": "MEX",
+    "name": {
+      "en": "Mexico",
+      "zh": "墨西哥"
+    },
+    "group": "A",
+    "confederation": "CONCACAF",
+    "ranking": 14,
+    "stats": {
+      "played": 3,
+      "won": 3,
+      "drawn": 0,
+      "lost": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 0,
+      "goalDifference": 6,
+      "points": 9
+    }
+  },
+  "RSA": {
+    "code": "RSA",
+    "name": {
+      "en": "South Africa",
+      "zh": "南非"
+    },
+    "group": "A",
+    "confederation": "CAF",
+    "ranking": 60,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 3,
+      "goalDifference": -1,
+      "points": 4
+    }
+  },
+  "KOR": {
+    "code": "KOR",
+    "name": {
+      "en": "South Korea",
+      "zh": "韩国"
+    },
+    "group": "A",
+    "confederation": "AFC",
+    "ranking": 25,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "goalsFor": 2,
+      "goalsAgainst": 3,
+      "goalDifference": -1,
+      "points": 3
+    }
+  },
+  "CZE": {
+    "code": "CZE",
+    "name": {
+      "en": "Czech Republic",
+      "zh": "捷克"
+    },
+    "group": "A",
+    "confederation": "UEFA",
+    "ranking": 40,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 1,
+      "lost": 2,
+      "goalsFor": 2,
+      "goalsAgainst": 6,
+      "goalDifference": -4,
+      "points": 1
+    }
+  },
+  "CAN": {
+    "code": "CAN",
+    "name": {
+      "en": "Canada",
+      "zh": "加拿大"
+    },
+    "group": "B",
+    "confederation": "CONCACAF",
+    "ranking": 30,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 8,
+      "goalsAgainst": 3,
+      "goalDifference": 5,
+      "points": 4
+    }
+  },
+  "BIH": {
+    "code": "BIH",
+    "name": {
+      "en": "Bosnia and Herzegovina",
+      "zh": "波黑"
+    },
+    "group": "B",
+    "confederation": "UEFA",
+    "ranking": 64,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 6,
+      "goalDifference": -1,
+      "points": 4
+    }
+  },
+  "QAT": {
+    "code": "QAT",
+    "name": {
+      "en": "Qatar",
+      "zh": "卡塔尔"
+    },
+    "group": "B",
+    "confederation": "AFC",
+    "ranking": 56,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 1,
+      "lost": 2,
+      "goalsFor": 2,
+      "goalsAgainst": 10,
+      "goalDifference": -8,
+      "points": 1
+    }
+  },
+  "SUI": {
+    "code": "SUI",
+    "name": {
+      "en": "Switzerland",
+      "zh": "瑞士"
+    },
+    "group": "B",
+    "confederation": "UEFA",
+    "ranking": 19,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 7,
+      "goalsAgainst": 3,
+      "goalDifference": 4,
+      "points": 7
+    }
+  },
+  "BRA": {
+    "code": "BRA",
+    "name": {
+      "en": "Brazil",
+      "zh": "巴西"
+    },
+    "group": "C",
+    "confederation": "CONMEBOL",
+    "ranking": 6,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 7,
+      "goalsAgainst": 1,
+      "goalDifference": 6,
+      "points": 7
+    }
+  },
+  "MAR": {
+    "code": "MAR",
+    "name": {
+      "en": "Morocco",
+      "zh": "摩洛哥"
+    },
+    "group": "C",
+    "confederation": "CAF",
+    "ranking": 7,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 3,
+      "goalDifference": 3,
+      "points": 7
+    }
+  },
+  "HAI": {
+    "code": "HAI",
+    "name": {
+      "en": "Haiti",
+      "zh": "海地"
+    },
+    "group": "C",
+    "confederation": "CONCACAF",
+    "ranking": 83,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 2,
+      "goalsAgainst": 8,
+      "goalDifference": -6,
+      "points": 0
+    }
+  },
+  "SCO": {
+    "code": "SCO",
+    "name": {
+      "en": "Scotland",
+      "zh": "苏格兰"
+    },
+    "group": "C",
+    "confederation": "UEFA",
+    "ranking": 42,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "goalsFor": 1,
+      "goalsAgainst": 4,
+      "goalDifference": -3,
+      "points": 3
+    }
+  },
+  "USA": {
+    "code": "USA",
+    "name": {
+      "en": "United States",
+      "zh": "美国"
+    },
+    "group": "D",
+    "confederation": "CONCACAF",
+    "ranking": 17,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 8,
+      "goalsAgainst": 4,
+      "goalDifference": 4,
+      "points": 6
+    }
+  },
+  "PAR": {
+    "code": "PAR",
+    "name": {
+      "en": "Paraguay",
+      "zh": "巴拉圭"
+    },
+    "group": "D",
+    "confederation": "CONMEBOL",
+    "ranking": 41,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 4,
+      "goalDifference": -2,
+      "points": 4
+    }
+  },
+  "AUS": {
+    "code": "AUS",
+    "name": {
+      "en": "Australia",
+      "zh": "澳大利亚"
+    },
+    "group": "D",
+    "confederation": "AFC",
+    "ranking": 27,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 2,
+      "goalDifference": 0,
+      "points": 4
+    }
+  },
+  "TUR": {
+    "code": "TUR",
+    "name": {
+      "en": "Turkey",
+      "zh": "土耳其"
+    },
+    "group": "D",
+    "confederation": "UEFA",
+    "ranking": 22,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "goalsFor": 3,
+      "goalsAgainst": 5,
+      "goalDifference": -2,
+      "points": 3
+    }
+  },
+  "GER": {
+    "code": "GER",
+    "name": {
+      "en": "Germany",
+      "zh": "德国"
+    },
+    "group": "E",
+    "confederation": "UEFA",
+    "ranking": 10,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 10,
+      "goalsAgainst": 4,
+      "goalDifference": 6,
+      "points": 6
+    }
+  },
+  "CIV": {
+    "code": "CIV",
+    "name": {
+      "en": "Ivory Coast",
+      "zh": "科特迪瓦"
+    },
+    "group": "E",
+    "confederation": "CAF",
+    "ranking": 33,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 4,
+      "goalsAgainst": 2,
+      "goalDifference": 2,
+      "points": 6
+    }
+  },
+  "ECU": {
+    "code": "ECU",
+    "name": {
+      "en": "Ecuador",
+      "zh": "厄瓜多尔"
+    },
+    "group": "E",
+    "confederation": "CONMEBOL",
+    "ranking": 23,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 2,
+      "goalDifference": 0,
+      "points": 4
+    }
+  },
+  "CUW": {
+    "code": "CUW",
+    "name": {
+      "en": "Curaçao",
+      "zh": "库拉索"
+    },
+    "group": "E",
+    "confederation": "CONCACAF",
+    "ranking": 82,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 1,
+      "lost": 2,
+      "goalsFor": 1,
+      "goalsAgainst": 9,
+      "goalDifference": -8,
+      "points": 1
+    }
+  },
+  "NED": {
+    "code": "NED",
+    "name": {
+      "en": "Netherlands",
+      "zh": "荷兰"
+    },
+    "group": "F",
+    "confederation": "UEFA",
+    "ranking": 8,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 10,
+      "goalsAgainst": 4,
+      "goalDifference": 6,
+      "points": 7
+    }
+  },
+  "JPN": {
+    "code": "JPN",
+    "name": {
+      "en": "Japan",
+      "zh": "日本"
+    },
+    "group": "F",
+    "confederation": "AFC",
+    "ranking": 18,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 2,
+      "lost": 0,
+      "goalsFor": 7,
+      "goalsAgainst": 3,
+      "goalDifference": 4,
+      "points": 5
+    }
+  },
+  "SWE": {
+    "code": "SWE",
+    "name": {
+      "en": "Sweden",
+      "zh": "瑞典"
+    },
+    "group": "F",
+    "confederation": "UEFA",
+    "ranking": 38,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 7,
+      "goalsAgainst": 7,
+      "goalDifference": 0,
+      "points": 4
+    }
+  },
+  "TUN": {
+    "code": "TUN",
+    "name": {
+      "en": "Tunisia",
+      "zh": "突尼斯"
+    },
+    "group": "F",
+    "confederation": "CAF",
+    "ranking": 45,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 2,
+      "goalsAgainst": 12,
+      "goalDifference": -10,
+      "points": 0
+    }
+  },
+  "BEL": {
+    "code": "BEL",
+    "name": {
+      "en": "Belgium",
+      "zh": "比利时"
+    },
+    "group": "G",
+    "confederation": "UEFA",
+    "ranking": 9,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 2,
+      "lost": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 2,
+      "goalDifference": 4,
+      "points": 5
+    }
+  },
+  "EGY": {
+    "code": "EGY",
+    "name": {
+      "en": "Egypt",
+      "zh": "埃及"
+    },
+    "group": "G",
+    "confederation": "CAF",
+    "ranking": 29,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 2,
+      "lost": 0,
+      "goalsFor": 5,
+      "goalsAgainst": 3,
+      "goalDifference": 2,
+      "points": 5
+    }
+  },
+  "IRN": {
+    "code": "IRN",
+    "name": {
+      "en": "Iran",
+      "zh": "伊朗"
+    },
+    "group": "G",
+    "confederation": "AFC",
+    "ranking": 20,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 3,
+      "lost": 0,
+      "goalsFor": 3,
+      "goalsAgainst": 3,
+      "goalDifference": 0,
+      "points": 3
+    }
+  },
+  "NZL": {
+    "code": "NZL",
+    "name": {
+      "en": "New Zealand",
+      "zh": "新西兰"
+    },
+    "group": "G",
+    "confederation": "OFC",
+    "ranking": 85,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 1,
+      "lost": 2,
+      "goalsFor": 4,
+      "goalsAgainst": 10,
+      "goalDifference": -6,
+      "points": 1
+    }
+  },
+  "ESP": {
+    "code": "ESP",
+    "name": {
+      "en": "Spain",
+      "zh": "西班牙"
+    },
+    "group": "H",
+    "confederation": "UEFA",
+    "ranking": 2,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 5,
+      "goalsAgainst": 0,
+      "goalDifference": 5,
+      "points": 7
+    }
+  },
+  "CPV": {
+    "code": "CPV",
+    "name": {
+      "en": "Cape Verde",
+      "zh": "佛得角"
+    },
+    "group": "H",
+    "confederation": "CAF",
+    "ranking": 67,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 3,
+      "lost": 0,
+      "goalsFor": 2,
+      "goalsAgainst": 2,
+      "goalDifference": 0,
+      "points": 3
+    }
+  },
+  "KSA": {
+    "code": "KSA",
+    "name": {
+      "en": "Saudi Arabia",
+      "zh": "沙特阿拉伯"
+    },
+    "group": "H",
+    "confederation": "AFC",
+    "ranking": 61,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 2,
+      "lost": 1,
+      "goalsFor": 1,
+      "goalsAgainst": 5,
+      "goalDifference": -4,
+      "points": 2
+    }
+  },
+  "URU": {
+    "code": "URU",
+    "name": {
+      "en": "Uruguay",
+      "zh": "乌拉圭"
+    },
+    "group": "H",
+    "confederation": "CONMEBOL",
+    "ranking": 16,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 2,
+      "lost": 1,
+      "goalsFor": 3,
+      "goalsAgainst": 4,
+      "goalDifference": -1,
+      "points": 2
+    }
+  },
+  "FRA": {
+    "code": "FRA",
+    "name": {
+      "en": "France",
+      "zh": "法国"
+    },
+    "group": "I",
+    "confederation": "UEFA",
+    "ranking": 3,
+    "stats": {
+      "played": 3,
+      "won": 3,
+      "drawn": 0,
+      "lost": 0,
+      "goalsFor": 10,
+      "goalsAgainst": 2,
+      "goalDifference": 8,
+      "points": 9
+    }
+  },
+  "SEN": {
+    "code": "SEN",
+    "name": {
+      "en": "Senegal",
+      "zh": "塞内加尔"
+    },
+    "group": "I",
+    "confederation": "CAF",
+    "ranking": 15,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "goalsFor": 8,
+      "goalsAgainst": 6,
+      "goalDifference": 2,
+      "points": 3
+    }
+  },
+  "IRQ": {
+    "code": "IRQ",
+    "name": {
+      "en": "Iraq",
+      "zh": "伊拉克"
+    },
+    "group": "I",
+    "confederation": "AFC",
+    "ranking": 57,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 1,
+      "goalsAgainst": 12,
+      "goalDifference": -11,
+      "points": 0
+    }
+  },
+  "NOR": {
+    "code": "NOR",
+    "name": {
+      "en": "Norway",
+      "zh": "挪威"
+    },
+    "group": "I",
+    "confederation": "UEFA",
+    "ranking": 31,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 8,
+      "goalsAgainst": 7,
+      "goalDifference": 1,
+      "points": 6
+    }
+  },
+  "ARG": {
+    "code": "ARG",
+    "name": {
+      "en": "Argentina",
+      "zh": "阿根廷"
+    },
+    "group": "J",
+    "confederation": "CONMEBOL",
+    "ranking": 1,
+    "stats": {
+      "played": 3,
+      "won": 3,
+      "drawn": 0,
+      "lost": 0,
+      "goalsFor": 8,
+      "goalsAgainst": 1,
+      "goalDifference": 7,
+      "points": 9
+    }
+  },
+  "ALG": {
+    "code": "ALG",
+    "name": {
+      "en": "Algeria",
+      "zh": "阿尔及利亚"
+    },
+    "group": "J",
+    "confederation": "CAF",
+    "ranking": 28,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 7,
+      "goalDifference": -2,
+      "points": 4
+    }
+  },
+  "AUT": {
+    "code": "AUT",
+    "name": {
+      "en": "Austria",
+      "zh": "奥地利"
+    },
+    "group": "J",
+    "confederation": "UEFA",
+    "ranking": 24,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 6,
+      "goalsAgainst": 6,
+      "goalDifference": 0,
+      "points": 4
+    }
+  },
+  "JOR": {
+    "code": "JOR",
+    "name": {
+      "en": "Jordan",
+      "zh": "约旦"
+    },
+    "group": "J",
+    "confederation": "AFC",
+    "ranking": 63,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 3,
+      "goalsAgainst": 8,
+      "goalDifference": -5,
+      "points": 0
+    }
+  },
+  "POR": {
+    "code": "POR",
+    "name": {
+      "en": "Portugal",
+      "zh": "葡萄牙"
+    },
+    "group": "K",
+    "confederation": "UEFA",
+    "ranking": 5,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 2,
+      "lost": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 1,
+      "goalDifference": 5,
+      "points": 5
+    }
+  },
+  "COD": {
+    "code": "COD",
+    "name": {
+      "en": "DR Congo",
+      "zh": "刚果(金)"
+    },
+    "group": "K",
+    "confederation": "CAF",
+    "ranking": 46,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 4,
+      "goalsAgainst": 3,
+      "goalDifference": 1,
+      "points": 4
+    }
+  },
+  "UZB": {
+    "code": "UZB",
+    "name": {
+      "en": "Uzbekistan",
+      "zh": "乌兹别克斯坦"
+    },
+    "group": "K",
+    "confederation": "AFC",
+    "ranking": 50,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 2,
+      "goalsAgainst": 11,
+      "goalDifference": -9,
+      "points": 0
+    }
+  },
+  "COL": {
+    "code": "COL",
+    "name": {
+      "en": "Colombia",
+      "zh": "哥伦比亚"
+    },
+    "group": "K",
+    "confederation": "CONMEBOL",
+    "ranking": 13,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 4,
+      "goalsAgainst": 1,
+      "goalDifference": 3,
+      "points": 7
+    }
+  },
+  "ENG": {
+    "code": "ENG",
+    "name": {
+      "en": "England",
+      "zh": "英格兰"
+    },
+    "group": "L",
+    "confederation": "UEFA",
+    "ranking": 4,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 2,
+      "goalDifference": 4,
+      "points": 7
+    }
+  },
+  "CRO": {
+    "code": "CRO",
+    "name": {
+      "en": "Croatia",
+      "zh": "克罗地亚"
+    },
+    "group": "L",
+    "confederation": "UEFA",
+    "ranking": 11,
+    "stats": {
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 5,
+      "goalDifference": 0,
+      "points": 6
+    }
+  },
+  "GHA": {
+    "code": "GHA",
+    "name": {
+      "en": "Ghana",
+      "zh": "加纳"
+    },
+    "group": "L",
+    "confederation": "CAF",
+    "ranking": 73,
+    "stats": {
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 2,
+      "goalDifference": 0,
+      "points": 4
+    }
+  },
+  "PAN": {
+    "code": "PAN",
+    "name": {
+      "en": "Panama",
+      "zh": "巴拿马"
+    },
+    "group": "L",
+    "confederation": "CONCACAF",
+    "ranking": 34,
+    "stats": {
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 0,
+      "goalsAgainst": 4,
+      "goalDifference": -4,
+      "points": 0
+    }
+  }
+}
