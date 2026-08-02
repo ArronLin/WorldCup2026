@@ -1,0 +1,850 @@
+/* ===== Components ===== */
+
+/* --- Flag --- */
+.flag {
+  display: inline-block;
+  width: 32px;
+  height: 22px;
+  border-radius: 3px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.12);
+  object-fit: cover;
+  vertical-align: middle;
+}
+img.flag { display: inline-block; }
+.flag-sm { width: 24px; height: 16px; }
+.flag-lg { width: 48px; height: 32px; }
+.flag-fallback { display: none; }
+
+/* --- Team Badge --- */
+.team-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.team-code {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+.team-name { font-size: 0.9rem; color: var(--text-secondary); }
+
+/* --- Stage Badge --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.badge-stage { background: rgba(0,217,163,0.1); color: var(--accent); border: 1px solid rgba(0,217,163,0.2); }
+.badge-aet { background: rgba(251,191,36,0.12); color: var(--gold); border: 1px solid rgba(251,191,36,0.25); }
+.badge-pen { background: rgba(239,68,68,0.12); color: var(--card-red); border: 1px solid rgba(239,68,68,0.25); }
+.badge-live { background: rgba(34,197,94,0.12); color: var(--win); border: 1px solid rgba(34,197,94,0.25); }
+.badge-scheduled { background: var(--bg-elevated); color: var(--text-muted); border: 1px solid var(--border); }
+
+/* --- Match Card --- */
+.match-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  cursor: pointer;
+  transition: all var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+}
+.match-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.match-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(0, 217, 163, 0.06), transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+.match-card:hover {
+  border-color: rgba(0, 217, 163, 0.3);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow), var(--glow-accent-sm);
+}
+.match-card:hover::before { opacity: 1; }
+.match-card:hover::after { opacity: 1; }
+
+.match-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+.match-card-date { font-size: 0.75rem; color: var(--text-muted); }
+.match-card-stage { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+.match-card-body {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-md);
+}
+.match-team {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.match-team.home { justify-content: flex-end; text-align: right; }
+.match-team.away { justify-content: flex-start; }
+.match-team-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.match-team-code { font-weight: 800; font-size: 1rem; letter-spacing: 0.03em; }
+
+.match-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.match-score .vs { font-size: 0.85rem; font-weight: 400; color: var(--text-muted); }
+.match-score .sep { color: var(--text-muted); font-weight: 400; }
+
+.match-card-footer {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.match-card-footer .venue { display: flex; align-items: center; gap: 4px; }
+
+/* --- Standings Table --- */
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.standings-table thead th {
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--accent);
+  position: sticky;
+  top: 0;
+  background: var(--bg-elevated);
+  z-index: 1;
+}
+.standings-table thead th:first-child { text-align: left; }
+.standings-table tbody td {
+  padding: 10px 8px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+}
+.standings-table tbody td:first-child { text-align: left; }
+.standings-table tbody tr { transition: background var(--transition); }
+.standings-table tbody tr:hover { background: var(--bg-hover); }
+.standings-table .team-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.standings-table .pts { font-weight: 800; color: var(--accent); }
+.standings-table .qual-line { border-left: 3px solid var(--win); }
+.standings-table .qual-line-third { border-left: 3px solid var(--bronze); }
+.standings-table .elim-line { border-left: 3px solid transparent; }
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* --- Bracket --- */
+
+/* CSS vars for connector lines (theme-adaptive) */
+:root {
+  --bracket-line: rgba(0, 217, 163, 0.35);
+  --bracket-line-hover: rgba(0, 217, 163, 0.7);
+  --bracket-line-champ: rgba(245, 158, 11, 0.55);
+  --bracket-line-champ-hover: rgba(245, 158, 11, 0.85);
+}
+[data-theme="light"] {
+  --bracket-line: rgba(0, 150, 110, 0.3);
+  --bracket-line-hover: rgba(0, 150, 110, 0.6);
+  --bracket-line-champ: rgba(217, 119, 6, 0.5);
+  --bracket-line-champ-hover: rgba(217, 119, 6, 0.75);
+}
+
+/* Scroll container */
+.bracket-scroll {
+  overflow-x: auto;
+  padding: var(--space-lg) 0 var(--space-md);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Main flex layout — one column per round, no gap (connectors fill the space) */
+.bracket {
+  display: flex;
+  min-width: max-content;
+  align-items: stretch;
+}
+
+/* Each round column */
+.bracket-round {
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  position: relative;
+}
+
+/* Round title — distinct gradient per round */
+.bracket-round-title {
+  text-align: center;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  margin: 0 30px var(--space-sm);
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
+}
+.bracket-round[data-round="r32"] .bracket-round-title {
+  background: linear-gradient(135deg, #00D9A3, #059669);
+}
+.bracket-round[data-round="r16"] .bracket-round-title {
+  background: linear-gradient(135deg, #0EA5E9, #2563EB);
+}
+.bracket-round[data-round="qf"] .bracket-round-title {
+  background: linear-gradient(135deg, #7C3AED, #6D28D9);
+}
+.bracket-round[data-round="sf"] .bracket-round-title {
+  background: linear-gradient(135deg, #EC4899, #7C3AED);
+}
+.bracket-round[data-round="final"] .bracket-round-title {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+}
+
+/* Matches container — flex column, takes remaining height after title */
+.bracket-matches {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each slot — equal flex space, match card centered vertically */
+.bracket-slot {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 2px 36px;
+  min-height: 0;
+}
+
+/* ── Right-side connectors (for all rounds except the last) ── */
+
+/* Horizontal line: from match card right edge toward next round */
+.bracket-round:not([data-last="true"]) .bracket-slot::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 36px;
+  height: 2px;
+  background: var(--bracket-line);
+  transform: translateY(-50%);
+  transition: background var(--transition);
+  z-index: 0;
+}
+
+/* Vertical line for top slot — goes downward from center to slot bottom */
+.bracket-round:not([data-last="true"]) .bracket-slot.slot-top::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  bottom: 0;
+  width: 2px;
+  background: var(--bracket-line);
+  transition: background var(--transition);
+  z-index: 0;
+}
+
+/* Vertical line for bottom slot — goes upward from center to slot top */
+.bracket-round:not([data-last="true"]) .bracket-slot.slot-bottom::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 50%;
+  width: 2px;
+  background: var(--bracket-line);
+  transition: background var(--transition);
+  z-index: 0;
+}
+
+/* ── Left-side connector (for all rounds except the first) ── */
+/* Horizontal line from previous round's connector to the match card */
+.bracket-round:not([data-first="true"]) .bracket-match::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 50%;
+  width: 36px;
+  height: 2px;
+  background: var(--bracket-line);
+  transform: translateY(-50%);
+  transition: background var(--transition);
+  z-index: 0;
+}
+
+/* ── Champion path highlighting ── */
+.bracket-slot.champion-path::after,
+.bracket-slot.champion-path::before {
+  background: var(--bracket-line-champ) !important;
+}
+.bracket-match.champion-path::before {
+  background: var(--bracket-line-champ) !important;
+}
+.bracket-slot:has(.champion-path)::after,
+.bracket-slot:has(.champion-path)::before {
+  background: var(--bracket-line-champ);
+}
+
+/* Hover: brighten connectors */
+.bracket-slot:hover::after,
+.bracket-slot:hover::before {
+  background: var(--bracket-line-hover);
+}
+.bracket-match:hover::before {
+  background: var(--bracket-line-hover);
+}
+
+/* ── Match card ── */
+.bracket-match {
+  position: relative;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--transition);
+  width: 100%;
+  overflow: visible;
+  box-shadow: var(--shadow-sm);
+  z-index: 1;
+}
+.bracket-match:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow), 0 0 0 1px var(--accent-glow);
+  transform: translateY(-1px);
+}
+.bracket-match:hover .bracket-team.won {
+  background: rgba(0, 217, 163, 0.14);
+}
+
+/* Champion path match card — subtle gold left border */
+.bracket-match.champion-path {
+  border-left: 3px solid rgba(245, 158, 11, 0.5);
+}
+
+/* Team rows */
+.bracket-team {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  transition: background var(--transition);
+  border-left: 3px solid transparent;
+}
+.bracket-team:first-child {
+  border-bottom: 1px solid var(--border);
+}
+.bracket-team .team-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.bracket-team .bracket-team-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+.bracket-team .score {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.92rem;
+  min-width: 18px;
+  text-align: right;
+}
+
+/* Winner — highlight */
+.bracket-team.won {
+  color: var(--text-primary);
+  font-weight: 700;
+  background: rgba(0, 217, 163, 0.08);
+  border-left-color: var(--win);
+}
+.bracket-team.won .score {
+  color: var(--win);
+}
+.bracket-team.won .bracket-team-name {
+  font-weight: 700;
+}
+
+/* Loser — muted */
+.bracket-team.lost {
+  color: var(--text-muted);
+  opacity: 0.65;
+}
+.bracket-team.lost .bracket-team-name {
+  text-decoration: line-through;
+  text-decoration-color: var(--text-muted);
+  text-decoration-thickness: 1px;
+}
+.bracket-team.lost .score {
+  color: var(--text-muted);
+}
+
+/* Penalty shootout info in bracket */
+.bracket-pen-info {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  padding: 3px 0;
+  border-top: 1px solid var(--border);
+  background: rgba(251, 191, 36, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.bracket-pen-info .pen-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  opacity: 0.7;
+}
+.bracket-pen-info .pen-val {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* Champion card — gold glow */
+.bracket-match.winner-glow {
+  border-color: rgba(245, 158, 11, 0.55);
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.5), 0 0 30px rgba(245, 158, 11, 0.25);
+  animation: championPulse 2.5s ease-in-out infinite;
+}
+@keyframes championPulse {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.5), 0 0 30px rgba(245, 158, 11, 0.25); }
+  50% { box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.7), 0 0 45px rgba(245, 158, 11, 0.4); }
+}
+.bracket-match.winner-glow:hover {
+  border-color: rgba(245, 158, 11, 0.7);
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.6), 0 0 45px rgba(245, 158, 11, 0.35);
+}
+.bracket-champion {
+  text-align: center;
+  padding: 12px;
+  margin-top: 8px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(245, 158, 11, 0.05));
+  border: 2px solid rgba(245, 158, 11, 0.5);
+  border-radius: var(--radius);
+  box-shadow: inset 0 0 20px rgba(245, 158, 11, 0.08);
+}
+.bracket-champion .trophy {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+.bracket-champion .champ-team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.bracket-champion .champ-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--gold);
+}
+.bracket-champion .champ-label {
+  font-size: 0.68rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+/* Third-place section */
+/* Third-place match within the final column */
+.third-place-slot {
+  margin-bottom: var(--space-lg);
+}
+.third-place-slot .bracket-match {
+  border-color: rgba(217, 119, 6, 0.3);
+}
+.third-place-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #D97706;
+  text-align: center;
+  padding: 3px 8px;
+  margin-bottom: 4px;
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(217, 119, 6, 0.05));
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+}
+
+/* Bracket scrollbar styling */
+.bracket-scroll::-webkit-scrollbar { height: 8px; }
+.bracket-scroll::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+  border-radius: 4px;
+}
+.bracket-scroll::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+.bracket-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* --- Match Detail --- */
+.match-detail-hero {
+  text-align: center;
+  padding: var(--space-xl) var(--space-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  margin-bottom: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+.match-detail-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: 50%;
+  transform: translateX(-50%);
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+.match-detail-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  opacity: 0.5;
+}
+.match-detail-stage { margin-bottom: var(--space-md); }
+.match-detail-teams {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-md);
+}
+.match-detail-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.match-detail-team .team-code { font-size: 1.2rem; }
+.match-detail-team .team-full { font-size: 0.85rem; color: var(--text-secondary); }
+.match-detail-score {
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+.match-detail-score .sep { color: var(--text-muted); font-weight: 300; }
+.match-detail-meta {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: var(--space-md);
+}
+.match-detail-meta span { display: flex; align-items: center; gap: 4px; }
+
+/* --- Timeline --- */
+.timeline {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+.timeline-event {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+  border-radius: var(--radius-sm);
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+}
+.timeline-event:hover { background: rgba(0, 217, 163, 0.03); }
+.timeline-event:last-child { border-bottom: none; }
+.timeline-minute {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  min-width: 48px;
+  font-size: 0.85rem;
+}
+.timeline-icon {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.timeline-icon.goal { color: var(--accent); }
+.timeline-icon.yellow-card { color: var(--card-yellow); }
+.timeline-icon.red-card { color: var(--card-red); }
+.timeline-desc { font-size: 0.88rem; flex: 1; }
+.timeline-desc .player { font-weight: 600; }
+.timeline-desc .team-tag { font-size: 0.75rem; color: var(--text-muted); margin-left: 6px; }
+.timeline-side { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; }
+
+/* --- Award Card --- */
+.award-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  transition: all var(--transition-bounce);
+}
+.award-card:hover {
+  border-color: rgba(0,217,163,0.2);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow), var(--glow-accent-sm);
+}
+.award-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+}
+.award-icon.gold { background: rgba(251,191,36,0.12); color: var(--gold); }
+.award-icon.silver { background: rgba(203,213,225,0.1); color: var(--silver); }
+.award-icon.bronze { background: rgba(217,119,6,0.12); color: var(--bronze); }
+.award-info .award-title { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.award-info .award-name { font-size: 1.1rem; font-weight: 700; }
+.award-info .award-team { font-size: 0.82rem; color: var(--text-secondary); }
+
+/* --- Filter Tabs --- */
+.filter-tabs {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+.filter-tab {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.filter-tab:hover { color: var(--text-primary); border-color: var(--border-strong); background: var(--bg-hover); }
+.filter-tab.active {
+  color: var(--bg-base);
+  background: var(--accent-gradient);
+  border-color: transparent;
+  font-weight: 600;
+  box-shadow: var(--glow-accent-sm);
+}
+
+/* --- Grid Layouts --- */
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-md);
+}
+.group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-lg);
+}
+.award-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+/* --- Back button --- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+  transition: color var(--transition);
+}
+.back-link:hover { color: var(--accent); }
+
+/* --- Loading --- */
+.loading {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--text-muted);
+}
+.loading-spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto var(--space-md);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- Stat card --- */
+.stat-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  text-align: center;
+  transition: all var(--transition);
+}
+.stat-card:hover { transform: translateY(-2px); box-shadow: var(--glow-accent-sm); }
+.stat-value { font-size: 1.8rem; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+.stat-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* --- Champion banner --- */
+.champion-banner {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  background: linear-gradient(135deg, rgba(251,191,36,0.08), rgba(251,191,36,0.02));
+  border: 1px solid rgba(251,191,36,0.2);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+.champion-banner::before {
+  content: '';
+  position: absolute;
+  top: -30%; left: 50%;
+  transform: translateX(-50%);
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(251,191,36,0.15), transparent 70%);
+  pointer-events: none;
+}
+.champion-trophy { font-size: 3.5rem; margin-bottom: var(--space-md); position: relative; }
+.champion-title { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; position: relative; }
+.champion-name { font-size: 2.5rem; font-weight: 900; color: var(--gold); margin: var(--space-sm) 0; position: relative; }
+.champion-subtitle { font-size: 1rem; color: var(--gold); font-weight: 600; position: relative; opacity: 0.85; }
+.champion-runnerup { font-size: 0.95rem; color: var(--text-secondary); position: relative; margin-top: var(--space-xs); display: flex; align-items: center; justify-content: center; gap: 6px; }
+
+/* Penalty shootout score below regular score in match cards */
+.match-pen-score {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  line-height: 1.2;
+  flex-basis: 100%;
+  width: 100%;
+}
+.match-pen-score .pen-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  opacity: 0.7;
+}
+.match-pen-score .pen-val {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .match-grid { grid-template-columns: 1fr; }
+  .group-grid { grid-template-columns: 1fr; }
+  .award-grid { grid-template-columns: 1fr; }
+  .match-detail-teams { gap: var(--space-md); flex-direction: column; }
+  .match-detail-score { font-size: 2.5rem; }
+  .bracket { padding-bottom: var(--space-md); }
+}

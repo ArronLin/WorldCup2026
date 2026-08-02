@@ -1,0 +1,6635 @@
+[
+  {
+    "id": 1,
+    "stage": "group",
+    "date": "2026-06-11",
+    "time": "1:00 p.m. UTC−6",
+    "home": {
+      "code": "MEX",
+      "name": "Mexico",
+      "nameZh": "墨西哥"
+    },
+    "away": {
+      "code": "RSA",
+      "name": "South Africa",
+      "nameZh": "南非"
+    },
+    "score": "2–0",
+    "homeScore": 2,
+    "awayScore": 0,
+    "stadium": "Estadio Azteca, Mexico City",
+    "attendance": "80,824",
+    "referee": "Wilton Sampaio (Brazil)",
+    "goals": [
+      {
+        "player": "Quiñones",
+        "minute": "9",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MEX"
+      },
+      {
+        "player": "Jiménez",
+        "minute": "67",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MEX"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Teboho Mokoena",
+        "minute": "17",
+        "type": "yellow",
+        "team": "RSA"
+      },
+      {
+        "player": "Brian Gutiérrez",
+        "minute": "23",
+        "type": "yellow",
+        "team": "MEX"
+      },
+      {
+        "player": "Sphephelo Sithole",
+        "minute": "49",
+        "type": "red",
+        "team": "RSA"
+      },
+      {
+        "player": "Nkosinathi Sibisi",
+        "minute": "74",
+        "type": "yellow",
+        "team": "RSA"
+      },
+      {
+        "player": "Themba Zwane",
+        "minute": "84",
+        "type": "red",
+        "team": "RSA"
+      },
+      {
+        "player": "César Montes",
+        "minute": "90+2",
+        "type": "red",
+        "team": "MEX"
+      }
+    ],
+    "group": "A"
+  },
+  {
+    "id": 2,
+    "stage": "group",
+    "date": "2026-06-11",
+    "time": "8:00 p.m. UTC−6",
+    "home": {
+      "code": "KOR",
+      "name": "South Korea",
+      "nameZh": "韩国"
+    },
+    "away": {
+      "code": "CZE",
+      "name": "Czech Republic",
+      "nameZh": "捷克"
+    },
+    "score": "2–1",
+    "homeScore": 2,
+    "awayScore": 1,
+    "stadium": "Estadio Akron, Zapopan",
+    "attendance": "44,985",
+    "referee": "Amin Omar (Egypt)",
+    "goals": [
+      {
+        "player": "Hwang In-beom",
+        "minute": "67",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "KOR"
+      },
+      {
+        "player": "Oh Hyeon-gyu",
+        "minute": "80",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "KOR"
+      },
+      {
+        "player": "Krejčí",
+        "minute": "59",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CZE"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Lee Gi-hyuk",
+        "minute": "90+6",
+        "type": "yellow",
+        "team": "KOR"
+      }
+    ],
+    "group": "A"
+  },
+  {
+    "id": 3,
+    "stage": "group",
+    "date": "2026-06-18",
+    "time": "12:00 p.m. UTC−4",
+    "home": {
+      "code": "CZE",
+      "name": "Czech Republic",
+      "nameZh": "捷克"
+    },
+    "away": {
+      "code": "RSA",
+      "name": "South Africa",
+      "nameZh": "南非"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "Mercedes-Benz Stadium, Atlanta",
+    "attendance": "67,442",
+    "referee": "Tori Penso (United States)",
+    "goals": [
+      {
+        "player": "Sadílek",
+        "minute": "6",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CZE"
+      },
+      {
+        "player": "Mokoena",
+        "minute": "83",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "RSA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Teboho Mokoena",
+        "minute": "33",
+        "type": "yellow",
+        "team": "RSA"
+      },
+      {
+        "player": "Thalente Mbatha",
+        "minute": "40",
+        "type": "yellow",
+        "team": "RSA"
+      }
+    ],
+    "group": "A"
+  },
+  {
+    "id": 4,
+    "stage": "group",
+    "date": "2026-06-18",
+    "time": "7:00 p.m. UTC−6",
+    "home": {
+      "code": "MEX",
+      "name": "Mexico",
+      "nameZh": "墨西哥"
+    },
+    "away": {
+      "code": "KOR",
+      "name": "South Korea",
+      "nameZh": "韩国"
+    },
+    "score": "1–0",
+    "homeScore": 1,
+    "awayScore": 0,
+    "stadium": "Estadio Akron, Zapopan",
+    "attendance": "45,522",
+    "referee": "Gustavo Tejera (Uruguay)",
+    "goals": [
+      {
+        "player": "Romo",
+        "minute": "50",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MEX"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Paik Seung-ho",
+        "minute": "58",
+        "type": "yellow",
+        "team": "KOR"
+      },
+      {
+        "player": "Lee Kang-in",
+        "minute": "4",
+        "type": "yellow",
+        "team": "KOR"
+      }
+    ],
+    "group": "A"
+  },
+  {
+    "id": 5,
+    "stage": "group",
+    "date": "2026-06-24",
+    "time": "7:00 p.m. UTC−6",
+    "home": {
+      "code": "CZE",
+      "name": "Czech Republic",
+      "nameZh": "捷克"
+    },
+    "away": {
+      "code": "MEX",
+      "name": "Mexico",
+      "nameZh": "墨西哥"
+    },
+    "score": "0–3",
+    "homeScore": 0,
+    "awayScore": 3,
+    "stadium": "Estadio Azteca, Mexico City",
+    "attendance": "80,824",
+    "referee": "Yael Falcón (Argentina)",
+    "goals": [
+      {
+        "player": "M. Chávez",
+        "minute": "55",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MEX"
+      },
+      {
+        "player": "Quiñones",
+        "minute": "61",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MEX"
+      },
+      {
+        "player": "Fidalgo",
+        "minute": "90+4",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MEX"
+      }
+    ],
+    "cards": [],
+    "group": "A"
+  },
+  {
+    "id": 6,
+    "stage": "group",
+    "date": "2026-06-24",
+    "time": "7:00 p.m. UTC−6",
+    "home": {
+      "code": "RSA",
+      "name": "South Africa",
+      "nameZh": "南非"
+    },
+    "away": {
+      "code": "KOR",
+      "name": "South Korea",
+      "nameZh": "韩国"
+    },
+    "score": "1–0",
+    "homeScore": 1,
+    "awayScore": 0,
+    "stadium": "Estadio BBVA, Guadalupe",
+    "attendance": "51,243",
+    "referee": "Facundo Tello (Argentina)",
+    "goals": [
+      {
+        "player": "Maseko",
+        "minute": "63",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "RSA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Aubrey Modiba",
+        "minute": "72",
+        "type": "yellow",
+        "team": "RSA"
+      },
+      {
+        "player": "Cho Gue-sung",
+        "minute": "78",
+        "type": "yellow",
+        "team": "KOR"
+      }
+    ],
+    "group": "A"
+  },
+  {
+    "id": 7,
+    "stage": "group",
+    "date": "2026-06-12",
+    "time": "3:00 p.m. UTC−4",
+    "home": {
+      "code": "CAN",
+      "name": "Canada",
+      "nameZh": "加拿大"
+    },
+    "away": {
+      "code": "BIH",
+      "name": "Bosnia and Herzegovina",
+      "nameZh": "波黑"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "BMO Field, Toronto",
+    "attendance": "43,002",
+    "referee": "Facundo Tello (Argentina)",
+    "goals": [
+      {
+        "player": "Larin",
+        "minute": "78",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CAN"
+      },
+      {
+        "player": "Lukić",
+        "minute": "21",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BIH"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Alistair Johnston",
+        "minute": "11",
+        "type": "yellow",
+        "team": "CAN"
+      },
+      {
+        "player": "Luc de Fougerolles",
+        "minute": "53",
+        "type": "yellow",
+        "team": "CAN"
+      },
+      {
+        "player": "Nikola Katić",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "BIH"
+      },
+      {
+        "player": "Ermedin Demirović",
+        "minute": "44",
+        "type": "yellow",
+        "team": "BIH"
+      },
+      {
+        "player": "Jovo Lukić",
+        "minute": "45+1",
+        "type": "yellow",
+        "team": "BIH"
+      }
+    ],
+    "group": "B"
+  },
+  {
+    "id": 8,
+    "stage": "group",
+    "date": "2026-06-13",
+    "time": "12:00 p.m. UTC−7",
+    "home": {
+      "code": "QAT",
+      "name": "Qatar",
+      "nameZh": "卡塔尔"
+    },
+    "away": {
+      "code": "SUI",
+      "name": "Switzerland",
+      "nameZh": "瑞士"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "Levi's Stadium, Santa Clara",
+    "attendance": "67,966",
+    "referee": "Saíd Martínez (Honduras)",
+    "goals": [
+      {
+        "player": "Muheim",
+        "minute": "90+4",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "QAT"
+      },
+      {
+        "player": "Embolo",
+        "minute": "17",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SUI"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Mahmud Abunada",
+        "minute": "14",
+        "type": "yellow",
+        "team": "QAT"
+      },
+      {
+        "player": "Jassem Gaber",
+        "minute": "23",
+        "type": "yellow",
+        "team": "QAT"
+      },
+      {
+        "player": "Denis Zakaria",
+        "minute": "42",
+        "type": "yellow",
+        "team": "SUI"
+      }
+    ],
+    "group": "B"
+  },
+  {
+    "id": 9,
+    "stage": "group",
+    "date": "2026-06-18",
+    "time": "12:00 p.m. UTC−7",
+    "home": {
+      "code": "SUI",
+      "name": "Switzerland",
+      "nameZh": "瑞士"
+    },
+    "away": {
+      "code": "BIH",
+      "name": "Bosnia and Herzegovina",
+      "nameZh": "波黑"
+    },
+    "score": "4–1",
+    "homeScore": 4,
+    "awayScore": 1,
+    "stadium": "SoFi Stadium, Inglewood",
+    "attendance": "70,026",
+    "referee": "João Pinheiro (Portugal)",
+    "goals": [
+      {
+        "player": "Manzambi",
+        "minute": "74",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SUI"
+      },
+      {
+        "player": "Vargas",
+        "minute": "84",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SUI"
+      },
+      {
+        "player": "Manzambi",
+        "minute": "90",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SUI"
+      },
+      {
+        "player": "Mahmić",
+        "minute": "90+3",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BIH"
+      },
+      {
+        "player": "Xhaka",
+        "minute": "90+7",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "SUI"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Nico Elvedi",
+        "minute": "65",
+        "type": "yellow",
+        "team": "SUI"
+      },
+      {
+        "player": "Amar Dedić",
+        "minute": "59",
+        "type": "yellow",
+        "team": "BIH"
+      },
+      {
+        "player": "Tarik Muharemović",
+        "minute": "80",
+        "type": "red",
+        "team": "BIH"
+      }
+    ],
+    "group": "B"
+  },
+  {
+    "id": 10,
+    "stage": "group",
+    "date": "2026-06-18",
+    "time": "3:00 p.m. UTC−7",
+    "home": {
+      "code": "CAN",
+      "name": "Canada",
+      "nameZh": "加拿大"
+    },
+    "away": {
+      "code": "QAT",
+      "name": "Qatar",
+      "nameZh": "卡塔尔"
+    },
+    "score": "6–0",
+    "homeScore": 6,
+    "awayScore": 0,
+    "stadium": "BC Place, Vancouver",
+    "attendance": "52,497",
+    "referee": "Cristián Garay (Chile)",
+    "goals": [
+      {
+        "player": "Larin",
+        "minute": "16",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CAN"
+      },
+      {
+        "player": "J. David",
+        "minute": "29",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CAN"
+      },
+      {
+        "player": "J. David",
+        "minute": "45+3",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CAN"
+      },
+      {
+        "player": "Saliba",
+        "minute": "64",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CAN"
+      },
+      {
+        "player": "Manai",
+        "minute": "75",
+        "isPenalty": false,
+        "isOwnGoal": true,
+        "team": "QAT"
+      },
+      {
+        "player": "J. David",
+        "minute": "90+2",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CAN"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Derek Cornelius",
+        "minute": "9",
+        "type": "yellow",
+        "team": "CAN"
+      },
+      {
+        "player": "Homam Ahmed",
+        "minute": "33",
+        "type": "red",
+        "team": "QAT"
+      },
+      {
+        "player": "Assim Madibo",
+        "minute": "51",
+        "type": "red",
+        "team": "QAT"
+      },
+      {
+        "player": "Ahmed Fathy",
+        "minute": "62",
+        "type": "yellow",
+        "team": "QAT"
+      }
+    ],
+    "group": "B"
+  },
+  {
+    "id": 11,
+    "stage": "group",
+    "date": "2026-06-24",
+    "time": "12:00 p.m. UTC−7",
+    "home": {
+      "code": "SUI",
+      "name": "Switzerland",
+      "nameZh": "瑞士"
+    },
+    "away": {
+      "code": "CAN",
+      "name": "Canada",
+      "nameZh": "加拿大"
+    },
+    "score": "2–1",
+    "homeScore": 2,
+    "awayScore": 1,
+    "stadium": "BC Place, Vancouver",
+    "attendance": "52,497",
+    "referee": "Ramon Abatti (Brazil)",
+    "goals": [
+      {
+        "player": "Vargas",
+        "minute": "46",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SUI"
+      },
+      {
+        "player": "Manzambi",
+        "minute": "57",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SUI"
+      },
+      {
+        "player": "P. David",
+        "minute": "76",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CAN"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Cyle Larin",
+        "minute": "32",
+        "type": "yellow",
+        "team": "CAN"
+      },
+      {
+        "player": "Liam Millar",
+        "minute": "87",
+        "type": "yellow",
+        "team": "CAN"
+      }
+    ],
+    "group": "B"
+  },
+  {
+    "id": 12,
+    "stage": "group",
+    "date": "2026-06-24",
+    "time": "12:00 p.m. UTC−7",
+    "home": {
+      "code": "BIH",
+      "name": "Bosnia and Herzegovina",
+      "nameZh": "波黑"
+    },
+    "away": {
+      "code": "QAT",
+      "name": "Qatar",
+      "nameZh": "卡塔尔"
+    },
+    "score": "3–1",
+    "homeScore": 3,
+    "awayScore": 1,
+    "stadium": "Lumen Field, Seattle",
+    "attendance": "66,925",
+    "referee": "Jesús Valenzuela (Venezuela)",
+    "goals": [
+      {
+        "player": "Alajbegović",
+        "minute": "29",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BIH"
+      },
+      {
+        "player": "Abunada",
+        "minute": "34",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BIH"
+      },
+      {
+        "player": "Mahmić",
+        "minute": "80",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BIH"
+      },
+      {
+        "player": "Al-Haydos",
+        "minute": "42",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "QAT"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Ermin Mahmić",
+        "minute": "82",
+        "type": "yellow",
+        "team": "BIH"
+      },
+      {
+        "player": "Ahmed Fathy",
+        "minute": "78",
+        "type": "yellow",
+        "team": "QAT"
+      }
+    ],
+    "group": "B"
+  },
+  {
+    "id": 13,
+    "stage": "group",
+    "date": "2026-06-13",
+    "time": "6:00 p.m. UTC−4",
+    "home": {
+      "code": "BRA",
+      "name": "Brazil",
+      "nameZh": "巴西"
+    },
+    "away": {
+      "code": "MAR",
+      "name": "Morocco",
+      "nameZh": "摩洛哥"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "MetLife Stadium, East Rutherford",
+    "attendance": "80,663",
+    "referee": "Slavko Vinčić (Slovenia)",
+    "goals": [
+      {
+        "player": "Vinícius",
+        "minute": "32",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BRA"
+      },
+      {
+        "player": "Saibari",
+        "minute": "21",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MAR"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Roger Ibañez",
+        "minute": "43",
+        "type": "yellow",
+        "team": "BRA"
+      },
+      {
+        "player": "Casemiro",
+        "minute": "37",
+        "type": "yellow",
+        "team": "BRA"
+      }
+    ],
+    "group": "C"
+  },
+  {
+    "id": 14,
+    "stage": "group",
+    "date": "2026-06-13",
+    "time": "9:00 p.m. UTC−4",
+    "home": {
+      "code": "HAI",
+      "name": "Haiti",
+      "nameZh": "海地"
+    },
+    "away": {
+      "code": "SCO",
+      "name": "Scotland",
+      "nameZh": "苏格兰"
+    },
+    "score": "0–1",
+    "homeScore": 0,
+    "awayScore": 1,
+    "stadium": "Gillette Stadium, Foxborough",
+    "attendance": "64,146",
+    "referee": "Mustapha Ghorbal (Algeria)",
+    "goals": [
+      {
+        "player": "McGinn",
+        "minute": "28",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SCO"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Jean-Ricner Bellegarde",
+        "minute": "39",
+        "type": "yellow",
+        "team": "HAI"
+      },
+      {
+        "player": "Aaron Hickey",
+        "minute": "46",
+        "type": "yellow",
+        "team": "SCO"
+      },
+      {
+        "player": "Kenny McLean",
+        "minute": "90+5",
+        "type": "yellow",
+        "team": "SCO"
+      },
+      {
+        "player": "Findlay Curtis",
+        "minute": "90+1",
+        "type": "yellow",
+        "team": "SCO"
+      }
+    ],
+    "group": "C"
+  },
+  {
+    "id": 15,
+    "stage": "group",
+    "date": "2026-06-19",
+    "time": "6:00 p.m. UTC−4",
+    "home": {
+      "code": "SCO",
+      "name": "Scotland",
+      "nameZh": "苏格兰"
+    },
+    "away": {
+      "code": "MAR",
+      "name": "Morocco",
+      "nameZh": "摩洛哥"
+    },
+    "score": "0–1",
+    "homeScore": 0,
+    "awayScore": 1,
+    "stadium": "Gillette Stadium, Foxborough",
+    "attendance": "64,146",
+    "referee": "Ilgiz Tantashev (Uzbekistan)",
+    "goals": [
+      {
+        "player": "Saibari",
+        "minute": "2",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MAR"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Issa Diop",
+        "minute": "23",
+        "type": "yellow",
+        "team": "MAR"
+      }
+    ],
+    "group": "C"
+  },
+  {
+    "id": 16,
+    "stage": "group",
+    "date": "2026-06-19",
+    "time": "8:30 p.m. UTC−4",
+    "home": {
+      "code": "BRA",
+      "name": "Brazil",
+      "nameZh": "巴西"
+    },
+    "away": {
+      "code": "HAI",
+      "name": "Haiti",
+      "nameZh": "海地"
+    },
+    "score": "3–0",
+    "homeScore": 3,
+    "awayScore": 0,
+    "stadium": "Lincoln Financial Field, Philadelphia",
+    "attendance": "68,324",
+    "referee": "Alejandro Hernández Hernández (Spain)",
+    "goals": [
+      {
+        "player": "Cunha",
+        "minute": "23",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BRA"
+      },
+      {
+        "player": "Cunha",
+        "minute": "36",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BRA"
+      },
+      {
+        "player": "Vinícius",
+        "minute": "45+3",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BRA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Douglas Santos",
+        "minute": "65",
+        "type": "yellow",
+        "team": "BRA"
+      },
+      {
+        "player": "Carlens Arcus",
+        "minute": "4",
+        "type": "yellow",
+        "team": "HAI"
+      },
+      {
+        "player": "Danley Jean Jacques",
+        "minute": "72",
+        "type": "yellow",
+        "team": "HAI"
+      },
+      {
+        "player": "Frantzdy Pierrot",
+        "minute": "45+4",
+        "type": "yellow",
+        "team": "HAI"
+      }
+    ],
+    "group": "C"
+  },
+  {
+    "id": 17,
+    "stage": "group",
+    "date": "2026-06-24",
+    "time": "6:00 p.m. UTC−4",
+    "home": {
+      "code": "SCO",
+      "name": "Scotland",
+      "nameZh": "苏格兰"
+    },
+    "away": {
+      "code": "BRA",
+      "name": "Brazil",
+      "nameZh": "巴西"
+    },
+    "score": "0–3",
+    "homeScore": 0,
+    "awayScore": 3,
+    "stadium": "Hard Rock Stadium, Miami Gardens",
+    "attendance": "64,478",
+    "referee": "César Arturo Ramos (Mexico)",
+    "goals": [
+      {
+        "player": "Vinícius",
+        "minute": "7",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BRA"
+      },
+      {
+        "player": "Vinícius",
+        "minute": "45+3",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BRA"
+      },
+      {
+        "player": "Cunha",
+        "minute": "60",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BRA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Ryan Christie",
+        "minute": "89",
+        "type": "yellow",
+        "team": "SCO"
+      },
+      {
+        "player": "Danilo Luiz",
+        "minute": "62",
+        "type": "yellow",
+        "team": "BRA"
+      },
+      {
+        "player": "Fabinho",
+        "minute": "82",
+        "type": "yellow",
+        "team": "BRA"
+      }
+    ],
+    "group": "C"
+  },
+  {
+    "id": 18,
+    "stage": "group",
+    "date": "2026-06-24",
+    "time": "6:00 p.m. UTC−4",
+    "home": {
+      "code": "MAR",
+      "name": "Morocco",
+      "nameZh": "摩洛哥"
+    },
+    "away": {
+      "code": "HAI",
+      "name": "Haiti",
+      "nameZh": "海地"
+    },
+    "score": "4–2",
+    "homeScore": 4,
+    "awayScore": 2,
+    "stadium": "Mercedes-Benz Stadium, Atlanta",
+    "attendance": "68,239",
+    "referee": "Danny Makkelie (Netherlands)",
+    "goals": [
+      {
+        "player": "Hakimi",
+        "minute": "39",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MAR"
+      },
+      {
+        "player": "Saibari",
+        "minute": "45+1",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MAR"
+      },
+      {
+        "player": "Rahimi",
+        "minute": "78",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MAR"
+      },
+      {
+        "player": "Yassine",
+        "minute": "89",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MAR"
+      },
+      {
+        "player": "Bounou",
+        "minute": "10",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "HAI"
+      },
+      {
+        "player": "Isidor",
+        "minute": "43",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "HAI"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Josué Casimir",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "HAI"
+      },
+      {
+        "player": "Duckens Nazon",
+        "minute": "80",
+        "type": "yellow",
+        "team": "HAI"
+      }
+    ],
+    "group": "C"
+  },
+  {
+    "id": 19,
+    "stage": "group",
+    "date": "2026-06-12",
+    "time": "6:00 p.m. UTC−7",
+    "home": {
+      "code": "USA",
+      "name": "United States",
+      "nameZh": "美国"
+    },
+    "away": {
+      "code": "PAR",
+      "name": "Paraguay",
+      "nameZh": "巴拉圭"
+    },
+    "score": "4–1",
+    "homeScore": 4,
+    "awayScore": 1,
+    "stadium": "SoFi Stadium, Inglewood",
+    "attendance": "70,492",
+    "referee": "Danny Makkelie (Netherlands)",
+    "goals": [
+      {
+        "player": "Bobadilla",
+        "minute": "7",
+        "isPenalty": false,
+        "isOwnGoal": true,
+        "team": "PAR"
+      },
+      {
+        "player": "Balogun",
+        "minute": "31",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "USA"
+      },
+      {
+        "player": "Balogun",
+        "minute": "45+5",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "USA"
+      },
+      {
+        "player": "Maurício",
+        "minute": "73",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "PAR"
+      },
+      {
+        "player": "Reyna",
+        "minute": "90+8",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "USA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Tyler Adams",
+        "minute": "59",
+        "type": "yellow",
+        "team": "USA"
+      },
+      {
+        "player": "Juan José Cáceres",
+        "minute": "9",
+        "type": "yellow",
+        "team": "PAR"
+      },
+      {
+        "player": "Júnior Alonso",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "PAR"
+      },
+      {
+        "player": "Diego Gómez",
+        "minute": "79",
+        "type": "yellow",
+        "team": "PAR"
+      },
+      {
+        "player": "Miguel Almirón",
+        "minute": "53",
+        "type": "yellow",
+        "team": "PAR"
+      },
+      {
+        "player": "Álex Arce",
+        "minute": "88",
+        "type": "yellow",
+        "team": "PAR"
+      }
+    ],
+    "group": "D"
+  },
+  {
+    "id": 20,
+    "stage": "group",
+    "date": "2026-06-13",
+    "time": "9:00 p.m. UTC−7",
+    "home": {
+      "code": "AUS",
+      "name": "Australia",
+      "nameZh": "澳大利亚"
+    },
+    "away": {
+      "code": "TUR",
+      "name": "Turkey",
+      "nameZh": "土耳其"
+    },
+    "score": "2–0",
+    "homeScore": 2,
+    "awayScore": 0,
+    "stadium": "BC Place, Vancouver",
+    "attendance": "52,497",
+    "referee": "Jesús Valenzuela (Venezuela)",
+    "goals": [
+      {
+        "player": "Irankunda",
+        "minute": "27",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "AUS"
+      },
+      {
+        "player": "Metcalfe",
+        "minute": "75",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "AUS"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Yunus Akgün",
+        "minute": "86",
+        "type": "yellow",
+        "team": "TUR"
+      }
+    ],
+    "group": "D"
+  },
+  {
+    "id": 21,
+    "stage": "group",
+    "date": "2026-06-19",
+    "time": "12:00 p.m. UTC−7",
+    "home": {
+      "code": "USA",
+      "name": "United States",
+      "nameZh": "美国"
+    },
+    "away": {
+      "code": "AUS",
+      "name": "Australia",
+      "nameZh": "澳大利亚"
+    },
+    "score": "2–0",
+    "homeScore": 2,
+    "awayScore": 0,
+    "stadium": "Lumen Field, Seattle",
+    "attendance": "66,925",
+    "referee": "Felix Zwayer (Germany)",
+    "goals": [
+      {
+        "player": "Burgess",
+        "minute": "11",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "USA"
+      },
+      {
+        "player": "Freeman",
+        "minute": "43",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "USA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Chris Richards",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "USA"
+      },
+      {
+        "player": "Antonee Robinson",
+        "minute": "56",
+        "type": "yellow",
+        "team": "USA"
+      },
+      {
+        "player": "Folarin Balogun",
+        "minute": "89",
+        "type": "yellow",
+        "team": "USA"
+      },
+      {
+        "player": "Alessandro Circati",
+        "minute": "32",
+        "type": "yellow",
+        "team": "AUS"
+      },
+      {
+        "player": "Jacob Italiano",
+        "minute": "89",
+        "type": "yellow",
+        "team": "AUS"
+      },
+      {
+        "player": "Jordan Bos",
+        "minute": "16",
+        "type": "yellow",
+        "team": "AUS"
+      }
+    ],
+    "group": "D"
+  },
+  {
+    "id": 22,
+    "stage": "group",
+    "date": "2026-06-19",
+    "time": "8:00 p.m. UTC−7",
+    "home": {
+      "code": "TUR",
+      "name": "Turkey",
+      "nameZh": "土耳其"
+    },
+    "away": {
+      "code": "PAR",
+      "name": "Paraguay",
+      "nameZh": "巴拉圭"
+    },
+    "score": "0–1",
+    "homeScore": 0,
+    "awayScore": 1,
+    "stadium": "Levi's Stadium, Santa Clara",
+    "attendance": "68,827",
+    "referee": "Iván Barton (El Salvador)",
+    "goals": [
+      {
+        "player": "Galarza",
+        "minute": "2",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "PAR"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Eren Elmalı",
+        "minute": "71",
+        "type": "yellow",
+        "team": "TUR"
+      },
+      {
+        "player": "Vincenzo Montella",
+        "minute": "63",
+        "type": "yellow",
+        "team": "TUR"
+      },
+      {
+        "player": "Miguel Almirón",
+        "minute": "45+3",
+        "type": "red",
+        "team": "PAR"
+      },
+      {
+        "player": "Matías Galarza",
+        "minute": "4",
+        "type": "yellow",
+        "team": "PAR"
+      },
+      {
+        "player": "Carlos González",
+        "minute": "37",
+        "type": "yellow",
+        "team": "PAR"
+      }
+    ],
+    "group": "D"
+  },
+  {
+    "id": 23,
+    "stage": "group",
+    "date": "2026-06-25",
+    "time": "7:00 p.m. UTC−7",
+    "home": {
+      "code": "TUR",
+      "name": "Turkey",
+      "nameZh": "土耳其"
+    },
+    "away": {
+      "code": "USA",
+      "name": "United States",
+      "nameZh": "美国"
+    },
+    "score": "3–2",
+    "homeScore": 3,
+    "awayScore": 2,
+    "stadium": "SoFi Stadium, Inglewood",
+    "attendance": "70,492",
+    "referee": "Mustapha Ghorbal (Algeria)",
+    "goals": [
+      {
+        "player": "Güler",
+        "minute": "10",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "TUR"
+      },
+      {
+        "player": "Yılmaz",
+        "minute": "31",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "TUR"
+      },
+      {
+        "player": "Ayhan",
+        "minute": "90+8",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "TUR"
+      },
+      {
+        "player": "Trusty",
+        "minute": "3",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "USA"
+      },
+      {
+        "player": "Berhalter",
+        "minute": "49",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "USA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Sebastian Berhalter",
+        "minute": "19",
+        "type": "yellow",
+        "team": "USA"
+      }
+    ],
+    "group": "D"
+  },
+  {
+    "id": 24,
+    "stage": "group",
+    "date": "2026-06-25",
+    "time": "7:00 p.m. UTC−7",
+    "home": {
+      "code": "PAR",
+      "name": "Paraguay",
+      "nameZh": "巴拉圭"
+    },
+    "away": {
+      "code": "AUS",
+      "name": "Australia",
+      "nameZh": "澳大利亚"
+    },
+    "score": "0–0",
+    "homeScore": 0,
+    "awayScore": 0,
+    "stadium": "Levi's Stadium, Santa Clara",
+    "attendance": "68,827",
+    "referee": "Clément Turpin (France)",
+    "goals": [],
+    "cards": [
+      {
+        "player": "Diego Gómez",
+        "minute": "77",
+        "type": "yellow",
+        "team": "PAR"
+      },
+      {
+        "player": "Jackson Irvine",
+        "minute": "46",
+        "type": "yellow",
+        "team": "AUS"
+      }
+    ],
+    "group": "D"
+  },
+  {
+    "id": 25,
+    "stage": "group",
+    "date": "2026-06-14",
+    "time": "12:00 p.m. UTC−5",
+    "home": {
+      "code": "GER",
+      "name": "Germany",
+      "nameZh": "德国"
+    },
+    "away": {
+      "code": "CUW",
+      "name": "Curaçao",
+      "nameZh": "库拉索"
+    },
+    "score": "7–1",
+    "homeScore": 7,
+    "awayScore": 1,
+    "stadium": "NRG Stadium, Houston",
+    "attendance": "68,021",
+    "referee": "Jalal Jayed (Morocco)",
+    "goals": [
+      {
+        "player": "Nmecha",
+        "minute": "6",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GER"
+      },
+      {
+        "player": "Comenencia",
+        "minute": "21",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CUW"
+      },
+      {
+        "player": "Schlotterbeck",
+        "minute": "38",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GER"
+      },
+      {
+        "player": "Musiala",
+        "minute": "47",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GER"
+      },
+      {
+        "player": "Havertz",
+        "minute": "45+5",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "GER"
+      },
+      {
+        "player": "Brown",
+        "minute": "68",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GER"
+      },
+      {
+        "player": "Undav",
+        "minute": "78",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GER"
+      },
+      {
+        "player": "Havertz",
+        "minute": "88",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GER"
+      }
+    ],
+    "cards": [],
+    "group": "E"
+  },
+  {
+    "id": 26,
+    "stage": "group",
+    "date": "2026-06-14",
+    "time": "7:00 p.m. UTC−4",
+    "home": {
+      "code": "CIV",
+      "name": "Ivory Coast",
+      "nameZh": "科特迪瓦"
+    },
+    "away": {
+      "code": "ECU",
+      "name": "Ecuador",
+      "nameZh": "厄瓜多尔"
+    },
+    "score": "1–0",
+    "homeScore": 1,
+    "awayScore": 0,
+    "stadium": "Lincoln Financial Field, Philadelphia",
+    "attendance": "68,274",
+    "referee": "François Letexier (France)}}",
+    "goals": [
+      {
+        "player": "Diallo",
+        "minute": "90",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CIV"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Guéla Doué",
+        "minute": "40",
+        "type": "yellow",
+        "team": "CIV"
+      },
+      {
+        "player": "Seko Fofana",
+        "minute": "28",
+        "type": "yellow",
+        "team": "CIV"
+      },
+      {
+        "player": "Jackson Porozo",
+        "minute": "73",
+        "type": "yellow",
+        "team": "ECU"
+      }
+    ],
+    "group": "E"
+  },
+  {
+    "id": 27,
+    "stage": "group",
+    "date": "2026-06-20",
+    "time": "4:00 p.m. UTC−4",
+    "home": {
+      "code": "GER",
+      "name": "Germany",
+      "nameZh": "德国"
+    },
+    "away": {
+      "code": "CIV",
+      "name": "Ivory Coast",
+      "nameZh": "科特迪瓦"
+    },
+    "score": "2–1",
+    "homeScore": 2,
+    "awayScore": 1,
+    "stadium": "BMO Field, Toronto",
+    "attendance": "43,036",
+    "referee": "Juan Gabriel Benítez (Paraguay)",
+    "goals": [
+      {
+        "player": "Kessié",
+        "minute": "30",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CIV"
+      },
+      {
+        "player": "Undav",
+        "minute": "68",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GER"
+      },
+      {
+        "player": "Undav",
+        "minute": "90+4",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GER"
+      }
+    ],
+    "cards": [],
+    "group": "E"
+  },
+  {
+    "id": 28,
+    "stage": "group",
+    "date": "2026-06-20",
+    "time": "7:00 p.m. UTC−5",
+    "home": {
+      "code": "ECU",
+      "name": "Ecuador",
+      "nameZh": "厄瓜多尔"
+    },
+    "away": {
+      "code": "CUW",
+      "name": "Curaçao",
+      "nameZh": "库拉索"
+    },
+    "score": "0–0",
+    "homeScore": 0,
+    "awayScore": 0,
+    "stadium": "Arrowhead Stadium, Kansas City",
+    "attendance": "68,598",
+    "referee": "Ma Ning (China)",
+    "goals": [],
+    "cards": [
+      {
+        "player": "Jordy Alcívar",
+        "minute": "38",
+        "type": "yellow",
+        "team": "ECU"
+      },
+      {
+        "player": "Juriën Gaari",
+        "minute": "75",
+        "type": "yellow",
+        "team": "CUW"
+      },
+      {
+        "player": "Livano Comenencia",
+        "minute": "56",
+        "type": "yellow",
+        "team": "CUW"
+      },
+      {
+        "player": "Juninho Bacuna",
+        "minute": "53",
+        "type": "yellow",
+        "team": "CUW"
+      },
+      {
+        "player": "Gervane Kastaneer",
+        "minute": "90+1",
+        "type": "yellow",
+        "team": "CUW"
+      }
+    ],
+    "group": "E"
+  },
+  {
+    "id": 29,
+    "stage": "group",
+    "date": "2026-06-25",
+    "time": "4:00 p.m. UTC−4",
+    "home": {
+      "code": "CUW",
+      "name": "Curaçao",
+      "nameZh": "库拉索"
+    },
+    "away": {
+      "code": "CIV",
+      "name": "Ivory Coast",
+      "nameZh": "科特迪瓦"
+    },
+    "score": "0–2",
+    "homeScore": 0,
+    "awayScore": 2,
+    "stadium": "Lincoln Financial Field, Philadelphia",
+    "attendance": "68,324",
+    "referee": "Glenn Nyberg (Sweden)",
+    "goals": [
+      {
+        "player": "Pépé",
+        "minute": "7",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CIV"
+      },
+      {
+        "player": "Pépé",
+        "minute": "64",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CIV"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Juninho Bacuna",
+        "minute": "75",
+        "type": "yellow",
+        "team": "CUW"
+      },
+      {
+        "player": "Gervane Kastaneer",
+        "minute": "83",
+        "type": "yellow",
+        "team": "CUW"
+      },
+      {
+        "player": "Nicolas Pépé",
+        "minute": "34",
+        "type": "yellow",
+        "team": "CIV"
+      }
+    ],
+    "group": "E"
+  },
+  {
+    "id": 30,
+    "stage": "group",
+    "date": "2026-06-25",
+    "time": "4:00 p.m. UTC−4",
+    "home": {
+      "code": "ECU",
+      "name": "Ecuador",
+      "nameZh": "厄瓜多尔"
+    },
+    "away": {
+      "code": "GER",
+      "name": "Germany",
+      "nameZh": "德国"
+    },
+    "score": "2–1",
+    "homeScore": 2,
+    "awayScore": 1,
+    "stadium": "MetLife Stadium, East Rutherford",
+    "attendance": "80,663",
+    "referee": "Tori Penso (United States)",
+    "goals": [
+      {
+        "player": "Angulo",
+        "minute": "9",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ECU"
+      },
+      {
+        "player": "Plata",
+        "minute": "77",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ECU"
+      },
+      {
+        "player": "Sané",
+        "minute": "2",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GER"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Alan Franco",
+        "minute": "50",
+        "type": "yellow",
+        "team": "ECU"
+      },
+      {
+        "player": "Piero Hincapié",
+        "minute": "43",
+        "type": "yellow",
+        "team": "ECU"
+      },
+      {
+        "player": "Gonzalo Plata",
+        "minute": "89",
+        "type": "yellow",
+        "team": "ECU"
+      },
+      {
+        "player": "Aleksandar Pavlović",
+        "minute": "44",
+        "type": "yellow",
+        "team": "GER"
+      }
+    ],
+    "group": "E"
+  },
+  {
+    "id": 31,
+    "stage": "group",
+    "date": "2026-06-14",
+    "time": "3:00 p.m. UTC−5",
+    "home": {
+      "code": "NED",
+      "name": "Netherlands",
+      "nameZh": "荷兰"
+    },
+    "away": {
+      "code": "JPN",
+      "name": "Japan",
+      "nameZh": "日本"
+    },
+    "score": "2–2",
+    "homeScore": 2,
+    "awayScore": 2,
+    "stadium": "AT&T Stadium, Arlington",
+    "attendance": "69,285",
+    "referee": "Ismail Elfath (United States)",
+    "goals": [
+      {
+        "player": "Van Dijk",
+        "minute": "51",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      },
+      {
+        "player": "Summerville",
+        "minute": "64",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      },
+      {
+        "player": "Nakamura",
+        "minute": "57",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JPN"
+      },
+      {
+        "player": "Kamada",
+        "minute": "88",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JPN"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Micky van de Ven",
+        "minute": "90+1",
+        "type": "yellow",
+        "team": "NED"
+      },
+      {
+        "player": "Crysencio Summerville",
+        "minute": "61",
+        "type": "yellow",
+        "team": "NED"
+      },
+      {
+        "player": "Memphis Depay",
+        "minute": "83",
+        "type": "yellow",
+        "team": "NED"
+      }
+    ],
+    "group": "F"
+  },
+  {
+    "id": 32,
+    "stage": "group",
+    "date": "2026-06-14",
+    "time": "8:00 p.m. UTC−6",
+    "home": {
+      "code": "SWE",
+      "name": "Sweden",
+      "nameZh": "瑞典"
+    },
+    "away": {
+      "code": "TUN",
+      "name": "Tunisia",
+      "nameZh": "突尼斯"
+    },
+    "score": "5–1",
+    "homeScore": 5,
+    "awayScore": 1,
+    "stadium": "Estadio BBVA, Guadalupe",
+    "attendance": "50,987",
+    "referee": "Yael Falcón (Argentina)",
+    "goals": [
+      {
+        "player": "Ayari",
+        "minute": "7",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SWE"
+      },
+      {
+        "player": "Isak",
+        "minute": "30",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SWE"
+      },
+      {
+        "player": "Rekik",
+        "minute": "43",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "TUN"
+      },
+      {
+        "player": "Gyökeres",
+        "minute": "59",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SWE"
+      },
+      {
+        "player": "Svanberg",
+        "minute": "84",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SWE"
+      },
+      {
+        "player": "Ayari",
+        "minute": "90+6",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SWE"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Rani Khedira",
+        "minute": "54",
+        "type": "yellow",
+        "team": "SWE"
+      }
+    ],
+    "group": "F"
+  },
+  {
+    "id": 33,
+    "stage": "group",
+    "date": "2026-06-20",
+    "time": "12:00 p.m. UTC−5",
+    "home": {
+      "code": "NED",
+      "name": "Netherlands",
+      "nameZh": "荷兰"
+    },
+    "away": {
+      "code": "SWE",
+      "name": "Sweden",
+      "nameZh": "瑞典"
+    },
+    "score": "5–1",
+    "homeScore": 5,
+    "awayScore": 1,
+    "stadium": "NRG Stadium, Houston",
+    "attendance": "68,777",
+    "referee": "Michael Oliver (England)",
+    "goals": [
+      {
+        "player": "Brobbey",
+        "minute": "5",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      },
+      {
+        "player": "Brobbey",
+        "minute": "17",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      },
+      {
+        "player": "Gakpo",
+        "minute": "47",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      },
+      {
+        "player": "Gakpo",
+        "minute": "54",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      },
+      {
+        "player": "Elanga",
+        "minute": "59",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SWE"
+      },
+      {
+        "player": "Summerville",
+        "minute": "89",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Yasin Ayari",
+        "minute": "75",
+        "type": "yellow",
+        "team": "SWE"
+      },
+      {
+        "player": "Gabriel Gudmundsson",
+        "minute": "53",
+        "type": "yellow",
+        "team": "SWE"
+      },
+      {
+        "player": "Lucas Bergvall",
+        "minute": "80",
+        "type": "yellow",
+        "team": "SWE"
+      }
+    ],
+    "group": "F"
+  },
+  {
+    "id": 34,
+    "stage": "group",
+    "date": "2026-06-20",
+    "time": "10:00 p.m. UTC−6",
+    "home": {
+      "code": "TUN",
+      "name": "Tunisia",
+      "nameZh": "突尼斯"
+    },
+    "away": {
+      "code": "JPN",
+      "name": "Japan",
+      "nameZh": "日本"
+    },
+    "score": "0–4",
+    "homeScore": 0,
+    "awayScore": 4,
+    "stadium": "Estadio BBVA, Guadalupe",
+    "attendance": "51,243",
+    "referee": "István Kovács (Romania)",
+    "goals": [
+      {
+        "player": "Kamada",
+        "minute": "4",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JPN"
+      },
+      {
+        "player": "Ueda",
+        "minute": "31",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JPN"
+      },
+      {
+        "player": "J. Itō",
+        "minute": "69",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JPN"
+      },
+      {
+        "player": "Ueda",
+        "minute": "83",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JPN"
+      }
+    ],
+    "cards": [],
+    "group": "F"
+  },
+  {
+    "id": 35,
+    "stage": "group",
+    "date": "2026-06-25",
+    "time": "6:00 p.m. UTC−5",
+    "home": {
+      "code": "JPN",
+      "name": "Japan",
+      "nameZh": "日本"
+    },
+    "away": {
+      "code": "SWE",
+      "name": "Sweden",
+      "nameZh": "瑞典"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "AT&T Stadium, Arlington",
+    "attendance": "70,137",
+    "referee": "Iván Barton (El Salvador)",
+    "goals": [
+      {
+        "player": "Maeda",
+        "minute": "56",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JPN"
+      },
+      {
+        "player": "Elanga",
+        "minute": "62",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SWE"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Shōgo Taniguchi",
+        "minute": "77",
+        "type": "yellow",
+        "team": "JPN"
+      },
+      {
+        "player": "Isak Hien",
+        "minute": "32",
+        "type": "yellow",
+        "team": "SWE"
+      },
+      {
+        "player": "Viktor Gyökeres",
+        "minute": "84",
+        "type": "yellow",
+        "team": "SWE"
+      }
+    ],
+    "group": "F"
+  },
+  {
+    "id": 36,
+    "stage": "group",
+    "date": "2026-06-25",
+    "time": "6:00 p.m. UTC−5",
+    "home": {
+      "code": "TUN",
+      "name": "Tunisia",
+      "nameZh": "突尼斯"
+    },
+    "away": {
+      "code": "NED",
+      "name": "Netherlands",
+      "nameZh": "荷兰"
+    },
+    "score": "1–3",
+    "homeScore": 1,
+    "awayScore": 3,
+    "stadium": "Arrowhead Stadium, Kansas City",
+    "attendance": "68,391",
+    "referee": "Katia Itzel García (Mexico)",
+    "goals": [
+      {
+        "player": "Mastouri",
+        "minute": "54",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "TUN"
+      },
+      {
+        "player": "Skhiri",
+        "minute": "3",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      },
+      {
+        "player": "Brobbey",
+        "minute": "7",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      },
+      {
+        "player": "Van Hecke",
+        "minute": "62",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      }
+    ],
+    "cards": [],
+    "group": "F"
+  },
+  {
+    "id": 37,
+    "stage": "group",
+    "date": "2026-06-15",
+    "time": "12:00 p.m. UTC−7",
+    "home": {
+      "code": "BEL",
+      "name": "Belgium",
+      "nameZh": "比利时"
+    },
+    "away": {
+      "code": "EGY",
+      "name": "Egypt",
+      "nameZh": "埃及"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "Lumen Field, Seattle",
+    "attendance": "66,775",
+    "referee": "Ramon Abatti (Brazil)",
+    "goals": [
+      {
+        "player": "Hany",
+        "minute": "66",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      },
+      {
+        "player": "Ashour",
+        "minute": "19",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "EGY"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Timothy Castagne",
+        "minute": "14",
+        "type": "yellow",
+        "team": "BEL"
+      },
+      {
+        "player": "Maxim De Cuyper",
+        "minute": "75",
+        "type": "yellow",
+        "team": "BEL"
+      },
+      {
+        "player": "Ahmed Fatouh",
+        "minute": "34",
+        "type": "yellow",
+        "team": "EGY"
+      },
+      {
+        "player": "Marwan Attia",
+        "minute": "13",
+        "type": "yellow",
+        "team": "EGY"
+      }
+    ],
+    "group": "G"
+  },
+  {
+    "id": 38,
+    "stage": "group",
+    "date": "2026-06-15",
+    "time": "6:00 p.m. UTC−7",
+    "home": {
+      "code": "IRN",
+      "name": "Iran",
+      "nameZh": "伊朗"
+    },
+    "away": {
+      "code": "NZL",
+      "name": "New Zealand",
+      "nameZh": "新西兰"
+    },
+    "score": "2–2",
+    "homeScore": 2,
+    "awayScore": 2,
+    "stadium": "SoFi Stadium, Inglewood",
+    "attendance": "70,108",
+    "referee": "César Arturo Ramos (Mexico)",
+    "goals": [
+      {
+        "player": "Just",
+        "minute": "7",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NZL"
+      },
+      {
+        "player": "Rezaeian",
+        "minute": "32",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "IRN"
+      },
+      {
+        "player": "Just",
+        "minute": "54",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NZL"
+      },
+      {
+        "player": "Mohebi",
+        "minute": "64",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "IRN"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Ehsan Hajsafi",
+        "minute": "89",
+        "type": "yellow",
+        "team": "IRN"
+      }
+    ],
+    "group": "G"
+  },
+  {
+    "id": 39,
+    "stage": "group",
+    "date": "2026-06-21",
+    "time": "12:00 p.m. UTC−7",
+    "home": {
+      "code": "BEL",
+      "name": "Belgium",
+      "nameZh": "比利时"
+    },
+    "away": {
+      "code": "IRN",
+      "name": "Iran",
+      "nameZh": "伊朗"
+    },
+    "score": "0–0",
+    "homeScore": 0,
+    "awayScore": 0,
+    "stadium": "SoFi Stadium, Inglewood",
+    "attendance": "70,317",
+    "referee": "Darío Herrera (Argentina)",
+    "goals": [],
+    "cards": [
+      {
+        "player": "Romelu Lukaku",
+        "minute": "3",
+        "type": "yellow",
+        "team": "BEL"
+      },
+      {
+        "player": "Saeid Ezatolahi",
+        "minute": "33",
+        "type": "yellow",
+        "team": "IRN"
+      }
+    ],
+    "group": "G"
+  },
+  {
+    "id": 40,
+    "stage": "group",
+    "date": "2026-06-21",
+    "time": "6:00 p.m. UTC−7",
+    "home": {
+      "code": "NZL",
+      "name": "New Zealand",
+      "nameZh": "新西兰"
+    },
+    "away": {
+      "code": "EGY",
+      "name": "Egypt",
+      "nameZh": "埃及"
+    },
+    "score": "1–3",
+    "homeScore": 1,
+    "awayScore": 3,
+    "stadium": "BC Place, Vancouver",
+    "attendance": "52,497",
+    "referee": "Omar Al Ali (United Arab Emirates)",
+    "goals": [
+      {
+        "player": "Surman",
+        "minute": "15",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NZL"
+      },
+      {
+        "player": "Ziko",
+        "minute": "58",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "EGY"
+      },
+      {
+        "player": "Salah",
+        "minute": "67",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "EGY"
+      },
+      {
+        "player": "Trézéguet",
+        "minute": "82",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "EGY"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Sarpreet Singh",
+        "minute": "20",
+        "type": "yellow",
+        "team": "NZL"
+      },
+      {
+        "player": "Callum McCowatt",
+        "minute": "34",
+        "type": "yellow",
+        "team": "NZL"
+      },
+      {
+        "player": "Mohanad Lasheen",
+        "minute": "17",
+        "type": "yellow",
+        "team": "EGY"
+      }
+    ],
+    "group": "G"
+  },
+  {
+    "id": 41,
+    "stage": "group",
+    "date": "2026-06-26",
+    "time": "8:00 p.m. UTC−7",
+    "home": {
+      "code": "EGY",
+      "name": "Egypt",
+      "nameZh": "埃及"
+    },
+    "away": {
+      "code": "IRN",
+      "name": "Iran",
+      "nameZh": "伊朗"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "Lumen Field, Seattle",
+    "attendance": "66,925",
+    "referee": "Szymon Marciniak (Poland)",
+    "goals": [
+      {
+        "player": "Saber",
+        "minute": "5",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "EGY"
+      },
+      {
+        "player": "Rezaeian",
+        "minute": "14",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "IRN"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Mahmoud Saber",
+        "minute": "19",
+        "type": "yellow",
+        "team": "EGY"
+      },
+      {
+        "player": "Mohanad Lasheen",
+        "minute": "90+2",
+        "type": "yellow",
+        "team": "EGY"
+      },
+      {
+        "player": "Yasser Ibrahim",
+        "minute": "41",
+        "type": "yellow",
+        "team": "EGY"
+      },
+      {
+        "player": "Hossein Kanaanizadegan",
+        "minute": "19",
+        "type": "yellow",
+        "team": "IRN"
+      },
+      {
+        "player": "Shojae Khalilzadeh",
+        "minute": "90+4",
+        "type": "yellow",
+        "team": "IRN"
+      },
+      {
+        "player": "Ali Nemati",
+        "minute": "43",
+        "type": "yellow",
+        "team": "IRN"
+      },
+      {
+        "player": "Saeid Ezatolahi",
+        "minute": "79",
+        "type": "yellow",
+        "team": "IRN"
+      }
+    ],
+    "group": "G"
+  },
+  {
+    "id": 42,
+    "stage": "group",
+    "date": "2026-06-26",
+    "time": "8:00 p.m. UTC−7",
+    "home": {
+      "code": "NZL",
+      "name": "New Zealand",
+      "nameZh": "新西兰"
+    },
+    "away": {
+      "code": "BEL",
+      "name": "Belgium",
+      "nameZh": "比利时"
+    },
+    "score": "1–5",
+    "homeScore": 1,
+    "awayScore": 5,
+    "stadium": "BC Place, Vancouver",
+    "attendance": "52,497",
+    "referee": "Adham Makhadmeh (Jordan)",
+    "goals": [
+      {
+        "player": "Trossard",
+        "minute": "28",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      },
+      {
+        "player": "Trossard",
+        "minute": "50",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      },
+      {
+        "player": "De Bruyne",
+        "minute": "66",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      },
+      {
+        "player": "Just",
+        "minute": "84",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NZL"
+      },
+      {
+        "player": "Lukaku",
+        "minute": "86",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      },
+      {
+        "player": "Saelemaekers",
+        "minute": "90+4",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Marko Stamenić",
+        "minute": "46",
+        "type": "yellow",
+        "team": "NZL"
+      },
+      {
+        "player": "Elijah Just",
+        "minute": "56",
+        "type": "yellow",
+        "team": "NZL"
+      }
+    ],
+    "group": "G"
+  },
+  {
+    "id": 43,
+    "stage": "group",
+    "date": "2026-06-15",
+    "time": "12:00 p.m. UTC−4",
+    "home": {
+      "code": "ESP",
+      "name": "Spain",
+      "nameZh": "西班牙"
+    },
+    "away": {
+      "code": "CPV",
+      "name": "Cape Verde",
+      "nameZh": "佛得角"
+    },
+    "score": "0–0",
+    "homeScore": 0,
+    "awayScore": 0,
+    "stadium": "Mercedes-Benz Stadium, Atlanta",
+    "attendance": "67,640",
+    "referee": "Adham Makhadmeh (Jordan)",
+    "goals": [],
+    "cards": [
+      {
+        "player": "Pedri",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "ESP"
+      },
+      {
+        "player": "Sidny Lopes Cabral",
+        "minute": "16",
+        "type": "yellow",
+        "team": "CPV"
+      }
+    ],
+    "group": "H"
+  },
+  {
+    "id": 44,
+    "stage": "group",
+    "date": "2026-06-15",
+    "time": "6:00 p.m. UTC−4",
+    "home": {
+      "code": "KSA",
+      "name": "Saudi Arabia",
+      "nameZh": "沙特阿拉伯"
+    },
+    "away": {
+      "code": "URU",
+      "name": "Uruguay",
+      "nameZh": "乌拉圭"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "Hard Rock Stadium, Miami Gardens",
+    "attendance": "62,764",
+    "referee": "Maurizio Mariani (Italy)",
+    "goals": [
+      {
+        "player": "Al-Amri",
+        "minute": "41",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "KSA"
+      },
+      {
+        "player": "M. Araújo",
+        "minute": "80",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "URU"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Abdulelah Al-Amri",
+        "minute": "44",
+        "type": "yellow",
+        "team": "KSA"
+      }
+    ],
+    "group": "H"
+  },
+  {
+    "id": 45,
+    "stage": "group",
+    "date": "2026-06-21",
+    "time": "12:00 p.m. UTC−4",
+    "home": {
+      "code": "ESP",
+      "name": "Spain",
+      "nameZh": "西班牙"
+    },
+    "away": {
+      "code": "KSA",
+      "name": "Saudi Arabia",
+      "nameZh": "沙特阿拉伯"
+    },
+    "score": "4–0",
+    "homeScore": 4,
+    "awayScore": 0,
+    "stadium": "Mercedes-Benz Stadium, Atlanta",
+    "attendance": "68,239",
+    "referee": "Raphael Claus (Brazil)",
+    "goals": [
+      {
+        "player": "Yamal",
+        "minute": "10",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      },
+      {
+        "player": "Oyarzabal",
+        "minute": "21",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      },
+      {
+        "player": "Oyarzabal",
+        "minute": "24",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      },
+      {
+        "player": "Al-Tambakti",
+        "minute": "49",
+        "isPenalty": false,
+        "isOwnGoal": true,
+        "team": "KSA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Mohamed Kanno",
+        "minute": "60",
+        "type": "yellow",
+        "team": "KSA"
+      }
+    ],
+    "group": "H"
+  },
+  {
+    "id": 46,
+    "stage": "group",
+    "date": "2026-06-21",
+    "time": "6:00 p.m. UTC−4",
+    "home": {
+      "code": "URU",
+      "name": "Uruguay",
+      "nameZh": "乌拉圭"
+    },
+    "away": {
+      "code": "CPV",
+      "name": "Cape Verde",
+      "nameZh": "佛得角"
+    },
+    "score": "2–2",
+    "homeScore": 2,
+    "awayScore": 2,
+    "stadium": "Hard Rock Stadium, Miami Gardens",
+    "attendance": "64,003",
+    "referee": "Espen Eskås (Norway)",
+    "goals": [
+      {
+        "player": "M. Araújo",
+        "minute": "44",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "URU"
+      },
+      {
+        "player": "Canobbio",
+        "minute": "45+6",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "URU"
+      },
+      {
+        "player": "K. Pina",
+        "minute": "21",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CPV"
+      },
+      {
+        "player": "Varela",
+        "minute": "61",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CPV"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Mathías Olivera",
+        "minute": "58",
+        "type": "yellow",
+        "team": "URU"
+      },
+      {
+        "player": "Rodrigo Bentancur",
+        "minute": "20",
+        "type": "yellow",
+        "team": "URU"
+      },
+      {
+        "player": "Diney",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "CPV"
+      },
+      {
+        "player": "Sidny Lopes Cabral",
+        "minute": "5",
+        "type": "yellow",
+        "team": "CPV"
+      }
+    ],
+    "group": "H"
+  },
+  {
+    "id": 47,
+    "stage": "group",
+    "date": "2026-06-26",
+    "time": "7:00 p.m. UTC−5",
+    "home": {
+      "code": "CPV",
+      "name": "Cape Verde",
+      "nameZh": "佛得角"
+    },
+    "away": {
+      "code": "KSA",
+      "name": "Saudi Arabia",
+      "nameZh": "沙特阿拉伯"
+    },
+    "score": "0–0",
+    "homeScore": 0,
+    "awayScore": 0,
+    "stadium": "NRG Stadium, Houston",
+    "attendance": "68,278",
+    "referee": "François Letexier (France)",
+    "goals": [],
+    "cards": [
+      {
+        "player": "Wagner Pina",
+        "minute": "8",
+        "type": "yellow",
+        "team": "CPV"
+      },
+      {
+        "player": "Saud Abdulhamid",
+        "minute": "4",
+        "type": "yellow",
+        "team": "KSA"
+      },
+      {
+        "player": "Nasser Al-Dawsari",
+        "minute": "67",
+        "type": "yellow",
+        "team": "KSA"
+      },
+      {
+        "player": "Firas Al-Buraikan",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "KSA"
+      }
+    ],
+    "group": "H"
+  },
+  {
+    "id": 48,
+    "stage": "group",
+    "date": "2026-06-26",
+    "time": "6:00 p.m. UTC−6",
+    "home": {
+      "code": "URU",
+      "name": "Uruguay",
+      "nameZh": "乌拉圭"
+    },
+    "away": {
+      "code": "ESP",
+      "name": "Spain",
+      "nameZh": "西班牙"
+    },
+    "score": "0–1",
+    "homeScore": 0,
+    "awayScore": 1,
+    "stadium": "Estadio Akron, Zapopan",
+    "attendance": "45,065",
+    "referee": "Ismail Elfath (United States)",
+    "goals": [
+      {
+        "player": "Baena",
+        "minute": "42",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Guillermo Varela",
+        "minute": "58",
+        "type": "yellow",
+        "team": "URU"
+      },
+      {
+        "player": "Juan Manuel Sanabria",
+        "minute": "54",
+        "type": "yellow",
+        "team": "URU"
+      },
+      {
+        "player": "Nicolás de la Cruz",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "URU"
+      },
+      {
+        "player": "Álex Baena",
+        "minute": "46",
+        "type": "yellow",
+        "team": "ESP"
+      }
+    ],
+    "group": "H"
+  },
+  {
+    "id": 49,
+    "stage": "group",
+    "date": "2026-06-16",
+    "time": "3:00 p.m. UTC−4",
+    "home": {
+      "code": "FRA",
+      "name": "France",
+      "nameZh": "法国"
+    },
+    "away": {
+      "code": "SEN",
+      "name": "Senegal",
+      "nameZh": "塞内加尔"
+    },
+    "score": "3–1",
+    "homeScore": 3,
+    "awayScore": 1,
+    "stadium": "MetLife Stadium, East Rutherford",
+    "attendance": "80,545",
+    "referee": "Alireza Faghani (Australia)",
+    "goals": [
+      {
+        "player": "Mbappé",
+        "minute": "66",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Barcola",
+        "minute": "82",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Mbaye",
+        "minute": "90+5",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SEN"
+      },
+      {
+        "player": "Mbappé",
+        "minute": "90+6",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      }
+    ],
+    "cards": [],
+    "group": "I"
+  },
+  {
+    "id": 50,
+    "stage": "group",
+    "date": "2026-06-16",
+    "time": "6:00 p.m. UTC−4",
+    "home": {
+      "code": "IRQ",
+      "name": "Iraq",
+      "nameZh": "伊拉克"
+    },
+    "away": {
+      "code": "NOR",
+      "name": "Norway",
+      "nameZh": "挪威"
+    },
+    "score": "1–4",
+    "homeScore": 1,
+    "awayScore": 4,
+    "stadium": "Gillette Stadium, Foxborough",
+    "attendance": "63,106",
+    "referee": "Pierre Atcho (Gabon)",
+    "goals": [
+      {
+        "player": "Haaland",
+        "minute": "29",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "Hussein",
+        "minute": "39",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "IRQ"
+      },
+      {
+        "player": "Haaland",
+        "minute": "43",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "Østigård",
+        "minute": "76",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "Hussein",
+        "minute": "90+6",
+        "isPenalty": false,
+        "isOwnGoal": true,
+        "team": "IRQ"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Zaid Tahseen",
+        "minute": "86",
+        "type": "yellow",
+        "team": "IRQ"
+      }
+    ],
+    "group": "I"
+  },
+  {
+    "id": 51,
+    "stage": "group",
+    "date": "2026-06-22",
+    "time": "5:00 p.m. UTC−4",
+    "home": {
+      "code": "FRA",
+      "name": "France",
+      "nameZh": "法国"
+    },
+    "away": {
+      "code": "IRQ",
+      "name": "Iraq",
+      "nameZh": "伊拉克"
+    },
+    "score": "3–0",
+    "homeScore": 3,
+    "awayScore": 0,
+    "stadium": "Lincoln Financial Field, Philadelphia",
+    "attendance": "68,324",
+    "referee": "Drew Fischer (Canada)",
+    "goals": [
+      {
+        "player": "Mbappé",
+        "minute": "14",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Mbappé",
+        "minute": "54",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Dembélé",
+        "minute": "66",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Amir Al-Ammari",
+        "minute": "6",
+        "type": "yellow",
+        "team": "IRQ"
+      }
+    ],
+    "group": "I"
+  },
+  {
+    "id": 52,
+    "stage": "group",
+    "date": "2026-06-22",
+    "time": "8:00 p.m. UTC−4",
+    "home": {
+      "code": "NOR",
+      "name": "Norway",
+      "nameZh": "挪威"
+    },
+    "away": {
+      "code": "SEN",
+      "name": "Senegal",
+      "nameZh": "塞内加尔"
+    },
+    "score": "3–2",
+    "homeScore": 3,
+    "awayScore": 2,
+    "stadium": "MetLife Stadium, East Rutherford",
+    "attendance": "80,663",
+    "referee": "Wilton Sampaio (Brazil)",
+    "goals": [
+      {
+        "player": "Pedersen",
+        "minute": "43",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "Haaland",
+        "minute": "48",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "I. Sarr",
+        "minute": "53",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SEN"
+      },
+      {
+        "player": "Haaland",
+        "minute": "58",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "I. Sarr",
+        "minute": "90+3",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SEN"
+      }
+    ],
+    "cards": [],
+    "group": "I"
+  },
+  {
+    "id": 53,
+    "stage": "group",
+    "date": "2026-06-26",
+    "time": "3:00 p.m. UTC−4",
+    "home": {
+      "code": "NOR",
+      "name": "Norway",
+      "nameZh": "挪威"
+    },
+    "away": {
+      "code": "FRA",
+      "name": "France",
+      "nameZh": "法国"
+    },
+    "score": "1–4",
+    "homeScore": 1,
+    "awayScore": 4,
+    "stadium": "Gillette Stadium, Foxborough",
+    "attendance": "64,146",
+    "referee": "Michael Oliver (England)",
+    "goals": [
+      {
+        "player": "Dembélé",
+        "minute": "7",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Dembélé",
+        "minute": "20",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Aasgaard",
+        "minute": "21",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "Dembélé",
+        "minute": "32",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Doué",
+        "minute": "90+4",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Aurélien Tchouaméni",
+        "minute": "74",
+        "type": "yellow",
+        "team": "FRA"
+      }
+    ],
+    "group": "I"
+  },
+  {
+    "id": 54,
+    "stage": "group",
+    "date": "2026-06-26",
+    "time": "3:00 p.m. UTC−4",
+    "home": {
+      "code": "SEN",
+      "name": "Senegal",
+      "nameZh": "塞内加尔"
+    },
+    "away": {
+      "code": "IRQ",
+      "name": "Iraq",
+      "nameZh": "伊拉克"
+    },
+    "score": "5–0",
+    "homeScore": 5,
+    "awayScore": 0,
+    "stadium": "BMO Field, Toronto",
+    "attendance": "43,036",
+    "referee": "Anthony Taylor (England)",
+    "goals": [
+      {
+        "player": "Diarra",
+        "minute": "4",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SEN"
+      },
+      {
+        "player": "I. Sarr",
+        "minute": "56",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SEN"
+      },
+      {
+        "player": "P. Gueye",
+        "minute": "59",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SEN"
+      },
+      {
+        "player": "P. Gueye",
+        "minute": "71",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SEN"
+      },
+      {
+        "player": "I. Ndiaye",
+        "minute": "82",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SEN"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Abdoulaye Seck",
+        "minute": "18",
+        "type": "yellow",
+        "team": "SEN"
+      },
+      {
+        "player": "Pape Gueye",
+        "minute": "81",
+        "type": "yellow",
+        "team": "SEN"
+      },
+      {
+        "player": "Merchas Doski",
+        "minute": "90",
+        "type": "yellow",
+        "team": "IRQ"
+      },
+      {
+        "player": "Amir Al-Ammari",
+        "minute": "75",
+        "type": "yellow",
+        "team": "IRQ"
+      }
+    ],
+    "group": "I"
+  },
+  {
+    "id": 55,
+    "stage": "group",
+    "date": "2026-06-16",
+    "time": "8:00 p.m. UTC−5",
+    "home": {
+      "code": "ARG",
+      "name": "Argentina",
+      "nameZh": "阿根廷"
+    },
+    "away": {
+      "code": "ALG",
+      "name": "Algeria",
+      "nameZh": "阿尔及利亚"
+    },
+    "score": "3–0",
+    "homeScore": 3,
+    "awayScore": 0,
+    "stadium": "Arrowhead Stadium, Kansas City",
+    "attendance": "69,045",
+    "referee": "Szymon Marciniak (Poland)",
+    "goals": [
+      {
+        "player": "Messi",
+        "minute": "17",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "Messi",
+        "minute": "60",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "Messi",
+        "minute": "76",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      }
+    ],
+    "cards": [],
+    "group": "J"
+  },
+  {
+    "id": 56,
+    "stage": "group",
+    "date": "2026-06-16",
+    "time": "9:00 p.m. UTC−7",
+    "home": {
+      "code": "AUT",
+      "name": "Austria",
+      "nameZh": "奥地利"
+    },
+    "away": {
+      "code": "JOR",
+      "name": "Jordan",
+      "nameZh": "约旦"
+    },
+    "score": "3–1",
+    "homeScore": 3,
+    "awayScore": 1,
+    "stadium": "Levi's Stadium, Santa Clara",
+    "attendance": "68,527",
+    "referee": "Dahane Beida (Mauritania)",
+    "goals": [
+      {
+        "player": "Schmid",
+        "minute": "20",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "AUT"
+      },
+      {
+        "player": "Olwan",
+        "minute": "50",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JOR"
+      },
+      {
+        "player": "Al-Arab",
+        "minute": "76",
+        "isPenalty": false,
+        "isOwnGoal": true,
+        "team": "JOR"
+      },
+      {
+        "player": "Arnautović",
+        "minute": "90+12",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "AUT"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Marcel Sabitzer",
+        "minute": "77",
+        "type": "yellow",
+        "team": "AUT"
+      }
+    ],
+    "group": "J"
+  },
+  {
+    "id": 57,
+    "stage": "group",
+    "date": "2026-06-22",
+    "time": "12:00 p.m. UTC−5",
+    "home": {
+      "code": "ARG",
+      "name": "Argentina",
+      "nameZh": "阿根廷"
+    },
+    "away": {
+      "code": "AUT",
+      "name": "Austria",
+      "nameZh": "奥地利"
+    },
+    "score": "2–0",
+    "homeScore": 2,
+    "awayScore": 0,
+    "stadium": "AT&T Stadium, Arlington",
+    "attendance": "70,649",
+    "referee": "Amin Omar (Egypt)",
+    "goals": [
+      {
+        "player": "Messi",
+        "minute": "38",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "Messi",
+        "minute": "90+5",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Facundo Medina",
+        "minute": "76",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Leandro Paredes",
+        "minute": "90+2",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Stefan Posch",
+        "minute": "41",
+        "type": "yellow",
+        "team": "AUT"
+      },
+      {
+        "player": "Konrad Laimer",
+        "minute": "76",
+        "type": "yellow",
+        "team": "AUT"
+      }
+    ],
+    "group": "J"
+  },
+  {
+    "id": 58,
+    "stage": "group",
+    "date": "2026-06-22",
+    "time": "8:00 p.m. UTC−7",
+    "home": {
+      "code": "JOR",
+      "name": "Jordan",
+      "nameZh": "约旦"
+    },
+    "away": {
+      "code": "ALG",
+      "name": "Algeria",
+      "nameZh": "阿尔及利亚"
+    },
+    "score": "1–2",
+    "homeScore": 1,
+    "awayScore": 2,
+    "stadium": "Levi's Stadium, Santa Clara",
+    "attendance": "68,371",
+    "referee": "Slavko Vinčić (Slovenia)",
+    "goals": [
+      {
+        "player": "Al-Rashdan",
+        "minute": "36",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JOR"
+      },
+      {
+        "player": "Benbouali",
+        "minute": "69",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ALG"
+      },
+      {
+        "player": "Gouiri",
+        "minute": "82",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ALG"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Husam Abu Dahab",
+        "minute": "64",
+        "type": "yellow",
+        "team": "JOR"
+      },
+      {
+        "player": "Ramiz Zerrouki",
+        "minute": "44",
+        "type": "yellow",
+        "team": "ALG"
+      }
+    ],
+    "group": "J"
+  },
+  {
+    "id": 59,
+    "stage": "group",
+    "date": "2026-06-27",
+    "time": "9:00 p.m. UTC−5",
+    "home": {
+      "code": "ALG",
+      "name": "Algeria",
+      "nameZh": "阿尔及利亚"
+    },
+    "away": {
+      "code": "AUT",
+      "name": "Austria",
+      "nameZh": "奥地利"
+    },
+    "score": "3–3",
+    "homeScore": 3,
+    "awayScore": 3,
+    "stadium": "Arrowhead Stadium, Kansas City",
+    "attendance": "69,045",
+    "referee": "Ilgiz Tantashev (Uzbekistan)",
+    "goals": [
+      {
+        "player": "Arnautović",
+        "minute": "28",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "AUT"
+      },
+      {
+        "player": "Belghali",
+        "minute": "45",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ALG"
+      },
+      {
+        "player": "Sabitzer",
+        "minute": "55",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "AUT"
+      },
+      {
+        "player": "Mahrez",
+        "minute": "60",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ALG"
+      },
+      {
+        "player": "Mahrez",
+        "minute": "90+3",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ALG"
+      },
+      {
+        "player": "Kalajdžić",
+        "minute": "90+6",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "AUT"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Marko Arnautović",
+        "minute": "11",
+        "type": "yellow",
+        "team": "AUT"
+      }
+    ],
+    "group": "J"
+  },
+  {
+    "id": 60,
+    "stage": "group",
+    "date": "2026-06-27",
+    "time": "9:00 p.m. UTC−5",
+    "home": {
+      "code": "JOR",
+      "name": "Jordan",
+      "nameZh": "约旦"
+    },
+    "away": {
+      "code": "ARG",
+      "name": "Argentina",
+      "nameZh": "阿根廷"
+    },
+    "score": "1–3",
+    "homeScore": 1,
+    "awayScore": 3,
+    "stadium": "AT&T Stadium, Arlington",
+    "attendance": "70,649",
+    "referee": "István Kovács (Romania)",
+    "goals": [
+      {
+        "player": "Al-Taamari",
+        "minute": "55",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JOR"
+      },
+      {
+        "player": "Lo Celso",
+        "minute": "19",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "La. Martínez",
+        "minute": "31",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "Messi",
+        "minute": "80",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Yazan Al-Arab",
+        "minute": "64",
+        "type": "yellow",
+        "team": "JOR"
+      },
+      {
+        "player": "Mohannad Abu Taha",
+        "minute": "17",
+        "type": "yellow",
+        "team": "JOR"
+      },
+      {
+        "player": "Mohammad Abu Zrayq",
+        "minute": "90+4",
+        "type": "yellow",
+        "team": "JOR"
+      }
+    ],
+    "group": "J"
+  },
+  {
+    "id": 61,
+    "stage": "group",
+    "date": "2026-06-17",
+    "time": "12:00 p.m. UTC−5",
+    "home": {
+      "code": "POR",
+      "name": "Portugal",
+      "nameZh": "葡萄牙"
+    },
+    "away": {
+      "code": "COD",
+      "name": "DR Congo",
+      "nameZh": "刚果(金)"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "NRG Stadium, Houston",
+    "attendance": "68,777",
+    "referee": "Abdulrahman Al-Jassim (Qatar)",
+    "goals": [
+      {
+        "player": "J. Neves",
+        "minute": "6",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "POR"
+      },
+      {
+        "player": "Wissa",
+        "minute": "45+5",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "COD"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Tomás Araújo",
+        "minute": "90+2",
+        "type": "yellow",
+        "team": "POR"
+      },
+      {
+        "player": "Bernardo Silva",
+        "minute": "13",
+        "type": "yellow",
+        "team": "POR"
+      },
+      {
+        "player": "Nélson Semedo",
+        "minute": "88",
+        "type": "yellow",
+        "team": "POR"
+      }
+    ],
+    "group": "K"
+  },
+  {
+    "id": 62,
+    "stage": "group",
+    "date": "2026-06-17",
+    "time": "8:00 p.m. UTC−6",
+    "home": {
+      "code": "UZB",
+      "name": "Uzbekistan",
+      "nameZh": "乌兹别克斯坦"
+    },
+    "away": {
+      "code": "COL",
+      "name": "Colombia",
+      "nameZh": "哥伦比亚"
+    },
+    "score": "1–3",
+    "homeScore": 1,
+    "awayScore": 3,
+    "stadium": "Estadio Azteca, Mexico City",
+    "attendance": "80,824",
+    "referee": "Anthony Taylor (England)",
+    "goals": [
+      {
+        "player": "Muñoz",
+        "minute": "40",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "COL"
+      },
+      {
+        "player": "Fayzullaev",
+        "minute": "60",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "UZB"
+      },
+      {
+        "player": "Díaz",
+        "minute": "65",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "COL"
+      },
+      {
+        "player": "Campaz",
+        "minute": "90+9",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "COL"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Abdukodir Khusanov",
+        "minute": "34",
+        "type": "yellow",
+        "team": "UZB"
+      },
+      {
+        "player": "Johan Mojica",
+        "minute": "7",
+        "type": "yellow",
+        "team": "COL"
+      }
+    ],
+    "group": "K"
+  },
+  {
+    "id": 63,
+    "stage": "group",
+    "date": "2026-06-23",
+    "time": "12:00 p.m. UTC−5",
+    "home": {
+      "code": "POR",
+      "name": "Portugal",
+      "nameZh": "葡萄牙"
+    },
+    "away": {
+      "code": "UZB",
+      "name": "Uzbekistan",
+      "nameZh": "乌兹别克斯坦"
+    },
+    "score": "5–0",
+    "homeScore": 5,
+    "awayScore": 0,
+    "stadium": "NRG Stadium, Houston",
+    "attendance": "68,777",
+    "referee": "Jalal Jayed (Morocco)",
+    "goals": [
+      {
+        "player": "Ronaldo",
+        "minute": "6",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "POR"
+      },
+      {
+        "player": "Mendes",
+        "minute": "17",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "POR"
+      },
+      {
+        "player": "Ronaldo",
+        "minute": "39",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "POR"
+      },
+      {
+        "player": "Nematov",
+        "minute": "60",
+        "isPenalty": false,
+        "isOwnGoal": true,
+        "team": "UZB"
+      },
+      {
+        "player": "Leão",
+        "minute": "87",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "POR"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Renato Veiga",
+        "minute": "68",
+        "type": "yellow",
+        "team": "POR"
+      },
+      {
+        "player": "Odiljon Hamrobekov",
+        "minute": "14",
+        "type": "yellow",
+        "team": "UZB"
+      }
+    ],
+    "group": "K"
+  },
+  {
+    "id": 64,
+    "stage": "group",
+    "date": "2026-06-23",
+    "time": "8:00 p.m. UTC−6",
+    "home": {
+      "code": "COL",
+      "name": "Colombia",
+      "nameZh": "哥伦比亚"
+    },
+    "away": {
+      "code": "COD",
+      "name": "DR Congo",
+      "nameZh": "刚果(金)"
+    },
+    "score": "1–0",
+    "homeScore": 1,
+    "awayScore": 0,
+    "stadium": "Estadio Akron, Zapopan",
+    "attendance": "45,358",
+    "referee": "Maurizio Mariani (Italy)",
+    "goals": [
+      {
+        "player": "Muñoz",
+        "minute": "76",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "COL"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Jhon Lucumí",
+        "minute": "56",
+        "type": "yellow",
+        "team": "COL"
+      },
+      {
+        "player": "Jefferson Lerma",
+        "minute": "90+4",
+        "type": "yellow",
+        "team": "COL"
+      },
+      {
+        "player": "Charles Pickel",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "COD"
+      }
+    ],
+    "group": "K"
+  },
+  {
+    "id": 65,
+    "stage": "group",
+    "date": "2026-06-27",
+    "time": "7:30 p.m. UTC−4",
+    "home": {
+      "code": "COL",
+      "name": "Colombia",
+      "nameZh": "哥伦比亚"
+    },
+    "away": {
+      "code": "POR",
+      "name": "Portugal",
+      "nameZh": "葡萄牙"
+    },
+    "score": "0–0",
+    "homeScore": 0,
+    "awayScore": 0,
+    "stadium": "Hard Rock Stadium, Miami Gardens",
+    "attendance": "64,478",
+    "referee": "Alireza Faghani (Australia)",
+    "goals": [],
+    "cards": [
+      {
+        "player": "Gustavo Puerta",
+        "minute": "86",
+        "type": "yellow",
+        "team": "COL"
+      }
+    ],
+    "group": "K"
+  },
+  {
+    "id": 66,
+    "stage": "group",
+    "date": "2026-06-27",
+    "time": "7:30 p.m. UTC−4",
+    "home": {
+      "code": "COD",
+      "name": "DR Congo",
+      "nameZh": "刚果(金)"
+    },
+    "away": {
+      "code": "UZB",
+      "name": "Uzbekistan",
+      "nameZh": "乌兹别克斯坦"
+    },
+    "score": "3–1",
+    "homeScore": 3,
+    "awayScore": 1,
+    "stadium": "Mercedes-Benz Stadium, Atlanta",
+    "attendance": "68,239",
+    "referee": "Felix Zwayer (Germany)",
+    "goals": [
+      {
+        "player": "Shomurodov",
+        "minute": "10",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "UZB"
+      },
+      {
+        "player": "Wissa",
+        "minute": "68",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "COD"
+      },
+      {
+        "player": "Mayele",
+        "minute": "78",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "COD"
+      },
+      {
+        "player": "Wissa",
+        "minute": "90+1",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "COD"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Samuel Moutoussamy",
+        "minute": "62",
+        "type": "yellow",
+        "team": "COD"
+      },
+      {
+        "player": "Noah Sadiki",
+        "minute": "21",
+        "type": "yellow",
+        "team": "COD"
+      },
+      {
+        "player": "Nathanaël Mbuku",
+        "minute": "45+4",
+        "type": "yellow",
+        "team": "COD"
+      },
+      {
+        "player": "Abdukodir Khusanov",
+        "minute": "43",
+        "type": "yellow",
+        "team": "UZB"
+      },
+      {
+        "player": "Sherzod Nasrullaev",
+        "minute": "47",
+        "type": "yellow",
+        "team": "UZB"
+      }
+    ],
+    "group": "K"
+  },
+  {
+    "id": 67,
+    "stage": "group",
+    "date": "2026-06-17",
+    "time": "3:00 p.m. UTC−5",
+    "home": {
+      "code": "ENG",
+      "name": "England",
+      "nameZh": "英格兰"
+    },
+    "away": {
+      "code": "CRO",
+      "name": "Croatia",
+      "nameZh": "克罗地亚"
+    },
+    "score": "4–2",
+    "homeScore": 4,
+    "awayScore": 2,
+    "stadium": "AT&T Stadium, Arlington",
+    "attendance": "70,389",
+    "referee": "Clément Turpin (France)",
+    "goals": [
+      {
+        "player": "Kane",
+        "minute": "12",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Baturina",
+        "minute": "36",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CRO"
+      },
+      {
+        "player": "Kane",
+        "minute": "42",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Bellingham",
+        "minute": "47",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Musa",
+        "minute": "45+5",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CRO"
+      },
+      {
+        "player": "Rashford",
+        "minute": "85",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      }
+    ],
+    "cards": [],
+    "group": "L"
+  },
+  {
+    "id": 68,
+    "stage": "group",
+    "date": "2026-06-17",
+    "time": "7:00 p.m. UTC−4",
+    "home": {
+      "code": "GHA",
+      "name": "Ghana",
+      "nameZh": "加纳"
+    },
+    "away": {
+      "code": "PAN",
+      "name": "Panama",
+      "nameZh": "巴拿马"
+    },
+    "score": "1–0",
+    "homeScore": 1,
+    "awayScore": 0,
+    "stadium": "BMO Field, Toronto",
+    "attendance": "42,942",
+    "referee": "Glenn Nyberg (Sweden)",
+    "goals": [
+      {
+        "player": "Yirenkyi",
+        "minute": "90+5",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GHA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Caleb Yirenkyi",
+        "minute": "16",
+        "type": "yellow",
+        "team": "GHA"
+      },
+      {
+        "player": "Carlos Harvey",
+        "minute": "90+9",
+        "type": "yellow",
+        "team": "PAN"
+      },
+      {
+        "player": "César Blackman",
+        "minute": "72",
+        "type": "yellow",
+        "team": "PAN"
+      }
+    ],
+    "group": "L"
+  },
+  {
+    "id": 69,
+    "stage": "group",
+    "date": "2026-06-23",
+    "time": "4:00 p.m. UTC−4",
+    "home": {
+      "code": "ENG",
+      "name": "England",
+      "nameZh": "英格兰"
+    },
+    "away": {
+      "code": "GHA",
+      "name": "Ghana",
+      "nameZh": "加纳"
+    },
+    "score": "0–0",
+    "homeScore": 0,
+    "awayScore": 0,
+    "stadium": "Gillette Stadium, Foxborough",
+    "attendance": "63,983",
+    "referee": "Saíd Martínez (Honduras)",
+    "goals": [],
+    "cards": [
+      {
+        "player": "Declan Rice",
+        "minute": "41",
+        "type": "yellow",
+        "team": "ENG"
+      },
+      {
+        "player": "Iñaki Williams",
+        "minute": "60",
+        "type": "yellow",
+        "team": "GHA"
+      }
+    ],
+    "group": "L"
+  },
+  {
+    "id": 70,
+    "stage": "group",
+    "date": "2026-06-23",
+    "time": "7:00 p.m. UTC−4",
+    "home": {
+      "code": "PAN",
+      "name": "Panama",
+      "nameZh": "巴拿马"
+    },
+    "away": {
+      "code": "CRO",
+      "name": "Croatia",
+      "nameZh": "克罗地亚"
+    },
+    "score": "0–1",
+    "homeScore": 0,
+    "awayScore": 1,
+    "stadium": "BMO Field, Toronto",
+    "attendance": "43,036",
+    "referee": "Pierre Atcho (Gabon)",
+    "goals": [
+      {
+        "player": "Budimir",
+        "minute": "54",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CRO"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Petar Sučić",
+        "minute": "90+2",
+        "type": "yellow",
+        "team": "CRO"
+      }
+    ],
+    "group": "L"
+  },
+  {
+    "id": 71,
+    "stage": "group",
+    "date": "2026-06-27",
+    "time": "5:00 p.m. UTC−4",
+    "home": {
+      "code": "PAN",
+      "name": "Panama",
+      "nameZh": "巴拿马"
+    },
+    "away": {
+      "code": "ENG",
+      "name": "England",
+      "nameZh": "英格兰"
+    },
+    "score": "0–2",
+    "homeScore": 0,
+    "awayScore": 2,
+    "stadium": "MetLife Stadium, East Rutherford",
+    "attendance": "80,663",
+    "referee": "Abdulrahman Al-Jassim (Qatar)",
+    "goals": [
+      {
+        "player": "Bellingham",
+        "minute": "62",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Kane",
+        "minute": "67",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Andrés Andrade",
+        "minute": "83",
+        "type": "yellow",
+        "team": "PAN"
+      },
+      {
+        "player": "José Fajardo",
+        "minute": "53",
+        "type": "yellow",
+        "team": "PAN"
+      },
+      {
+        "player": "Jarell Quansah",
+        "minute": "60",
+        "type": "yellow",
+        "team": "ENG"
+      }
+    ],
+    "group": "L"
+  },
+  {
+    "id": 72,
+    "stage": "group",
+    "date": "2026-06-27",
+    "time": "5:00 p.m. UTC−4",
+    "home": {
+      "code": "CRO",
+      "name": "Croatia",
+      "nameZh": "克罗地亚"
+    },
+    "away": {
+      "code": "GHA",
+      "name": "Ghana",
+      "nameZh": "加纳"
+    },
+    "score": "2–1",
+    "homeScore": 2,
+    "awayScore": 1,
+    "stadium": "Lincoln Financial Field, Philadelphia",
+    "attendance": "68,324",
+    "referee": "Drew Fischer (Canada)",
+    "goals": [
+      {
+        "player": "P. Sučić",
+        "minute": "31",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CRO"
+      },
+      {
+        "player": "Vlašić",
+        "minute": "83",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CRO"
+      },
+      {
+        "player": "Luckassen",
+        "minute": "73",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GHA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Ivan Perišić",
+        "minute": "68",
+        "type": "yellow",
+        "team": "CRO"
+      },
+      {
+        "player": "Kojo Peprah Oppong",
+        "minute": "90+4",
+        "type": "yellow",
+        "team": "GHA"
+      }
+    ],
+    "group": "L"
+  },
+  {
+    "id": 73,
+    "stage": "knockout",
+    "date": "2026-06-28",
+    "time": "12:00 p.m. UTC−7",
+    "home": {
+      "code": "RSA",
+      "name": "South Africa",
+      "nameZh": "南非"
+    },
+    "away": {
+      "code": "CAN",
+      "name": "Canada",
+      "nameZh": "加拿大"
+    },
+    "score": "0–1",
+    "homeScore": 0,
+    "awayScore": 1,
+    "stadium": "SoFi Stadium, Inglewood",
+    "attendance": "69,237",
+    "referee": "João Pinheiro (Portugal)",
+    "goals": [
+      {
+        "player": "Eustáquio",
+        "minute": "90+2",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CAN"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Nathan Saliba",
+        "minute": "54",
+        "type": "yellow",
+        "team": "CAN"
+      },
+      {
+        "player": "Niko Sigur",
+        "minute": "67",
+        "type": "yellow",
+        "team": "CAN"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 74,
+    "stage": "knockout",
+    "date": "2026-06-29",
+    "time": "12:00 p.m. UTC−5",
+    "home": {
+      "code": "BRA",
+      "name": "Brazil",
+      "nameZh": "巴西"
+    },
+    "away": {
+      "code": "JPN",
+      "name": "Japan",
+      "nameZh": "日本"
+    },
+    "score": "2–1",
+    "homeScore": 2,
+    "awayScore": 1,
+    "stadium": "NRG Stadium, Houston",
+    "attendance": "68,777",
+    "referee": "Maurizio Mariani (Italy)",
+    "goals": [
+      {
+        "player": "Casemiro",
+        "minute": "56",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BRA"
+      },
+      {
+        "player": "Martinelli",
+        "minute": "90+5",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BRA"
+      },
+      {
+        "player": "Sano",
+        "minute": "29",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "JPN"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Danilo Luiz",
+        "minute": "48",
+        "type": "yellow",
+        "team": "BRA"
+      },
+      {
+        "player": "Casemiro",
+        "minute": "14",
+        "type": "yellow",
+        "team": "BRA"
+      },
+      {
+        "player": "Kaishū Sano",
+        "minute": "12",
+        "type": "yellow",
+        "team": "JPN"
+      },
+      {
+        "player": "Daichi Kamada",
+        "minute": "45",
+        "type": "yellow",
+        "team": "JPN"
+      },
+      {
+        "player": "Junnosuke Suzuki",
+        "minute": "84",
+        "type": "yellow",
+        "team": "JPN"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 75,
+    "stage": "knockout",
+    "date": "2026-06-29",
+    "time": "4:30 p.m. UTC−4",
+    "home": {
+      "code": "GER",
+      "name": "Germany",
+      "nameZh": "德国"
+    },
+    "away": {
+      "code": "PAR",
+      "name": "Paraguay",
+      "nameZh": "巴拉圭"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "Gillette Stadium, Foxborough",
+    "attendance": "63,945",
+    "referee": "Jalal Jayed (Morocco)",
+    "goals": [
+      {
+        "player": "Havertz",
+        "minute": "54",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "GER"
+      },
+      {
+        "player": "Enciso",
+        "minute": "42",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "PAR"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Kai Havertz",
+        "minute": "106",
+        "type": "yellow",
+        "team": "GER"
+      },
+      {
+        "player": "Jamal Musiala",
+        "minute": "115",
+        "type": "yellow",
+        "team": "GER"
+      },
+      {
+        "player": "Julian Nagelsmann",
+        "minute": "105+1",
+        "type": "yellow",
+        "team": "GER"
+      },
+      {
+        "player": "Andrés Cubas",
+        "minute": "65",
+        "type": "yellow",
+        "team": "PAR"
+      },
+      {
+        "player": "Matías Galarza",
+        "minute": "117",
+        "type": "yellow",
+        "team": "PAR"
+      },
+      {
+        "player": "Gustavo Alfaro",
+        "minute": "105",
+        "type": "yellow",
+        "team": "PAR"
+      }
+    ],
+    "round": "round_of_32",
+    "penaltyShootout": {
+      "home": 3,
+      "away": 4
+    },
+    "extraTime": true
+  },
+  {
+    "id": 76,
+    "stage": "knockout",
+    "date": "2026-06-29",
+    "time": "7:00 p.m. UTC−6",
+    "home": {
+      "code": "NED",
+      "name": "Netherlands",
+      "nameZh": "荷兰"
+    },
+    "away": {
+      "code": "MAR",
+      "name": "Morocco",
+      "nameZh": "摩洛哥"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "Estadio BBVA, Guadalupe",
+    "attendance": "51,243",
+    "referee": "Wilton Sampaio (Brazil)",
+    "goals": [
+      {
+        "player": "Gakpo",
+        "minute": "72",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NED"
+      },
+      {
+        "player": "Diop",
+        "minute": "90+1",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MAR"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Issa Diop",
+        "minute": "47",
+        "type": "yellow",
+        "team": "MAR"
+      }
+    ],
+    "round": "round_of_32",
+    "penaltyShootout": {
+      "home": 2,
+      "away": 3
+    },
+    "extraTime": true
+  },
+  {
+    "id": 77,
+    "stage": "knockout",
+    "date": "2026-06-30",
+    "time": "12:00 p.m. UTC−5",
+    "home": {
+      "code": "CIV",
+      "name": "Ivory Coast",
+      "nameZh": "科特迪瓦"
+    },
+    "away": {
+      "code": "NOR",
+      "name": "Norway",
+      "nameZh": "挪威"
+    },
+    "score": "1–2",
+    "homeScore": 1,
+    "awayScore": 2,
+    "stadium": "AT&T Stadium, Arlington",
+    "attendance": "69,665",
+    "referee": "Jesús Valenzuela (Venezuela)",
+    "goals": [
+      {
+        "player": "Diallo",
+        "minute": "74",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CIV"
+      },
+      {
+        "player": "Nusa",
+        "minute": "39",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "Haaland",
+        "minute": "86",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Antonio Nusa",
+        "minute": "45+1",
+        "type": "yellow",
+        "team": "NOR"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 78,
+    "stage": "knockout",
+    "date": "2026-06-30",
+    "time": "5:00 p.m. UTC−4",
+    "home": {
+      "code": "FRA",
+      "name": "France",
+      "nameZh": "法国"
+    },
+    "away": {
+      "code": "SWE",
+      "name": "Sweden",
+      "nameZh": "瑞典"
+    },
+    "score": "3–0",
+    "homeScore": 3,
+    "awayScore": 0,
+    "stadium": "MetLife Stadium, East Rutherford",
+    "attendance": "80,663",
+    "referee": "Danny Makkelie (Netherlands)",
+    "goals": [
+      {
+        "player": "Mbappé",
+        "minute": "45",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Barcola",
+        "minute": "53",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Mbappé",
+        "minute": "74",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      }
+    ],
+    "cards": [],
+    "round": "round_of_32"
+  },
+  {
+    "id": 79,
+    "stage": "knockout",
+    "date": "2026-06-30",
+    "time": "8:00 p.m. UTC−6}}",
+    "home": {
+      "code": "MEX",
+      "name": "Mexico",
+      "nameZh": "墨西哥"
+    },
+    "away": {
+      "code": "ECU",
+      "name": "Ecuador",
+      "nameZh": "厄瓜多尔"
+    },
+    "score": "2–0",
+    "homeScore": 2,
+    "awayScore": 0,
+    "stadium": "Estadio Azteca, Mexico City",
+    "attendance": "80,824",
+    "referee": "Slavko Vinčić (Slovenia)",
+    "goals": [
+      {
+        "player": "Quiñones",
+        "minute": "22",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MEX"
+      },
+      {
+        "player": "Jiménez",
+        "minute": "31",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MEX"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Alan Franco",
+        "minute": "45+1",
+        "type": "yellow",
+        "team": "ECU"
+      },
+      {
+        "player": "Kendry Páez",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "ECU"
+      },
+      {
+        "player": "Piero Hincapié",
+        "minute": "90+5",
+        "type": "red",
+        "team": "ECU"
+      },
+      {
+        "player": "Moisés Caicedo",
+        "minute": "90+9",
+        "type": "yellow",
+        "team": "ECU"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 80,
+    "stage": "knockout",
+    "date": "2026-07-01",
+    "time": "12:00 p.m. UTC−4",
+    "home": {
+      "code": "ENG",
+      "name": "England",
+      "nameZh": "英格兰"
+    },
+    "away": {
+      "code": "COD",
+      "name": "DR Congo",
+      "nameZh": "刚果(金)"
+    },
+    "score": "2–1",
+    "homeScore": 2,
+    "awayScore": 1,
+    "stadium": "Mercedes-Benz Stadium, Atlanta",
+    "attendance": "68,239",
+    "referee": "Adham Makhadmeh (Jordan)",
+    "goals": [
+      {
+        "player": "Cipenga",
+        "minute": "7",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "COD"
+      },
+      {
+        "player": "Kane",
+        "minute": "75",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Kane",
+        "minute": "86",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Jude Bellingham",
+        "minute": "19",
+        "type": "yellow",
+        "team": "ENG"
+      },
+      {
+        "player": "Noah Sadiki",
+        "minute": "27",
+        "type": "yellow",
+        "team": "COD"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 81,
+    "stage": "knockout",
+    "date": "2026-07-01",
+    "time": "1:00 p.m. UTC−7",
+    "home": {
+      "code": "BEL",
+      "name": "Belgium",
+      "nameZh": "比利时"
+    },
+    "away": {
+      "code": "SEN",
+      "name": "Senegal",
+      "nameZh": "塞内加尔"
+    },
+    "score": "3–2",
+    "homeScore": 3,
+    "awayScore": 2,
+    "stadium": "Lumen Field, Seattle",
+    "attendance": "66,925",
+    "referee": "Saíd Martínez (Honduras)",
+    "goals": [
+      {
+        "player": "Diarra",
+        "minute": "25",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SEN"
+      },
+      {
+        "player": "I. Sarr",
+        "minute": "51",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SEN"
+      },
+      {
+        "player": "Lukaku",
+        "minute": "86",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      },
+      {
+        "player": "Tielemans",
+        "minute": "89",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      },
+      {
+        "player": "Tielemans",
+        "minute": "120+5",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "BEL"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Brandon Mechele",
+        "minute": "64",
+        "type": "yellow",
+        "team": "BEL"
+      },
+      {
+        "player": "Rudi Garcia",
+        "minute": "90",
+        "type": "yellow",
+        "team": "BEL"
+      },
+      {
+        "player": "Lamine Camara",
+        "minute": "67",
+        "type": "yellow",
+        "team": "SEN"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 82,
+    "stage": "knockout",
+    "date": "2026-07-01",
+    "time": "5:00 p.m. UTC−7",
+    "home": {
+      "code": "USA",
+      "name": "United States",
+      "nameZh": "美国"
+    },
+    "away": {
+      "code": "BIH",
+      "name": "Bosnia and Herzegovina",
+      "nameZh": "波黑"
+    },
+    "score": "2–0",
+    "homeScore": 2,
+    "awayScore": 0,
+    "stadium": "Levi's Stadium, Santa Clara",
+    "attendance": "68,827",
+    "referee": "Raphael Claus (Brazil)",
+    "goals": [
+      {
+        "player": "Balogun",
+        "minute": "45",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "USA"
+      },
+      {
+        "player": "Tillman",
+        "minute": "82",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "USA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Stjepan Radeljić",
+        "minute": "80",
+        "type": "yellow",
+        "team": "BIH"
+      },
+      {
+        "player": "Sergej Barbarez",
+        "minute": "80",
+        "type": "yellow",
+        "team": "BIH"
+      },
+      {
+        "player": "Folarin Balogun",
+        "minute": "64",
+        "type": "red",
+        "team": "USA"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 83,
+    "stage": "knockout",
+    "date": "2026-07-02",
+    "time": "12:00 p.m. UTC−7",
+    "home": {
+      "code": "ESP",
+      "name": "Spain",
+      "nameZh": "西班牙"
+    },
+    "away": {
+      "code": "AUT",
+      "name": "Austria",
+      "nameZh": "奥地利"
+    },
+    "score": "3–0",
+    "homeScore": 3,
+    "awayScore": 0,
+    "stadium": "SoFi Stadium, Inglewood",
+    "attendance": "70,492",
+    "referee": "Glenn Nyberg (Sweden)",
+    "goals": [
+      {
+        "player": "Oyarzabal",
+        "minute": "36",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      },
+      {
+        "player": "Porro",
+        "minute": "66",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      },
+      {
+        "player": "Oyarzabal",
+        "minute": "89",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Stefan Posch",
+        "minute": "83",
+        "type": "yellow",
+        "team": "AUT"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 84,
+    "stage": "knockout",
+    "date": "2026-07-02",
+    "time": "7:00 p.m. UTC−4",
+    "home": {
+      "code": "POR",
+      "name": "Portugal",
+      "nameZh": "葡萄牙"
+    },
+    "away": {
+      "code": "CRO",
+      "name": "Croatia",
+      "nameZh": "克罗地亚"
+    },
+    "score": "2–1",
+    "homeScore": 2,
+    "awayScore": 1,
+    "stadium": "BMO Field, Toronto",
+    "attendance": "43,036",
+    "referee": "Espen Eskås (Norway)",
+    "goals": [
+      {
+        "player": "Ronaldo",
+        "minute": "68",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "POR"
+      },
+      {
+        "player": "Ramos",
+        "minute": "90+4",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "POR"
+      },
+      {
+        "player": "Perišić",
+        "minute": "53",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CRO"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Rúben Dias",
+        "minute": "17",
+        "type": "yellow",
+        "team": "POR"
+      },
+      {
+        "player": "Ivan Perišić",
+        "minute": "90+8",
+        "type": "yellow",
+        "team": "CRO"
+      },
+      {
+        "player": "Luka Modrić",
+        "minute": "59",
+        "type": "yellow",
+        "team": "CRO"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 85,
+    "stage": "knockout",
+    "date": "2026-07-02",
+    "time": "8:00 p.m. UTC−7",
+    "home": {
+      "code": "SUI",
+      "name": "Switzerland",
+      "nameZh": "瑞士"
+    },
+    "away": {
+      "code": "ALG",
+      "name": "Algeria",
+      "nameZh": "阿尔及利亚"
+    },
+    "score": "2–0",
+    "homeScore": 2,
+    "awayScore": 0,
+    "stadium": "BC Place, Vancouver",
+    "attendance": "52,497",
+    "referee": "Yael Falcón (Argentina)",
+    "goals": [
+      {
+        "player": "Embolo",
+        "minute": "10",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SUI"
+      },
+      {
+        "player": "Ndoye",
+        "minute": "46",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SUI"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Farès Chaïbi",
+        "minute": "36",
+        "type": "yellow",
+        "team": "ALG"
+      },
+      {
+        "player": "Hicham Boudaoui",
+        "minute": "72",
+        "type": "yellow",
+        "team": "ALG"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 86,
+    "stage": "knockout",
+    "date": "2026-07-03",
+    "time": "1:00 p.m. UTC−5",
+    "home": {
+      "code": "AUS",
+      "name": "Australia",
+      "nameZh": "澳大利亚"
+    },
+    "away": {
+      "code": "EGY",
+      "name": "Egypt",
+      "nameZh": "埃及"
+    },
+    "score": "1–1",
+    "homeScore": 1,
+    "awayScore": 1,
+    "stadium": "AT&T Stadium, Arlington",
+    "attendance": "70,244",
+    "referee": "Gustavo Tejera (Uruguay)",
+    "goals": [
+      {
+        "player": "Ashour",
+        "minute": "13",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "EGY"
+      },
+      {
+        "player": "Hany",
+        "minute": "55",
+        "isPenalty": false,
+        "isOwnGoal": true,
+        "team": "EGY"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Yasser Ibrahim",
+        "minute": "120",
+        "type": "yellow",
+        "team": "EGY"
+      },
+      {
+        "player": "Haissem Hassan",
+        "minute": "105",
+        "type": "yellow",
+        "team": "EGY"
+      },
+      {
+        "player": "Saafan El-Sagheer",
+        "minute": "91",
+        "type": "yellow",
+        "team": "EGY"
+      }
+    ],
+    "round": "round_of_32",
+    "penaltyShootout": {
+      "home": 2,
+      "away": 4
+    },
+    "extraTime": true
+  },
+  {
+    "id": 87,
+    "stage": "knockout",
+    "date": "2026-07-03",
+    "time": "6:00 p.m. UTC−4",
+    "home": {
+      "code": "ARG",
+      "name": "Argentina",
+      "nameZh": "阿根廷"
+    },
+    "away": {
+      "code": "CPV",
+      "name": "Cape Verde",
+      "nameZh": "佛得角"
+    },
+    "score": "3–2",
+    "homeScore": 3,
+    "awayScore": 2,
+    "stadium": "Hard Rock Stadium, Miami Gardens",
+    "attendance": "64,478",
+    "referee": "Drew Fischer (Canada)",
+    "goals": [
+      {
+        "player": "Messi",
+        "minute": "29",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "D. Duarte",
+        "minute": "59",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CPV"
+      },
+      {
+        "player": "Li. Martínez",
+        "minute": "92",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "Lopes Cabral",
+        "minute": "103",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "CPV"
+      },
+      {
+        "player": "Diney",
+        "minute": "111",
+        "isPenalty": false,
+        "isOwnGoal": true,
+        "team": "CPV"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Gonzalo Montiel",
+        "minute": "115",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Kevin Pina",
+        "minute": "68",
+        "type": "yellow",
+        "team": "CPV"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 88,
+    "stage": "knockout",
+    "date": "2026-07-03",
+    "time": "8:30 p.m. UTC−5",
+    "home": {
+      "code": "COL",
+      "name": "Colombia",
+      "nameZh": "哥伦比亚"
+    },
+    "away": {
+      "code": "GHA",
+      "name": "Ghana",
+      "nameZh": "加纳"
+    },
+    "score": "1–0",
+    "homeScore": 1,
+    "awayScore": 0,
+    "stadium": "Arrowhead Stadium, Kansas City",
+    "attendance": "69,045",
+    "referee": "Clément Turpin (France)",
+    "goals": [
+      {
+        "player": "J. Arias",
+        "minute": "14",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "COL"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Jhon Arias",
+        "minute": "12",
+        "type": "yellow",
+        "team": "COL"
+      },
+      {
+        "player": "Richard Ríos",
+        "minute": "78",
+        "type": "yellow",
+        "team": "COL"
+      },
+      {
+        "player": "Caleb Yirenkyi",
+        "minute": "49",
+        "type": "yellow",
+        "team": "GHA"
+      },
+      {
+        "player": "Alidu Seidu",
+        "minute": "76",
+        "type": "yellow",
+        "team": "GHA"
+      },
+      {
+        "player": "Abdul Fatawu",
+        "minute": "66",
+        "type": "yellow",
+        "team": "GHA"
+      }
+    ],
+    "round": "round_of_32"
+  },
+  {
+    "id": 89,
+    "stage": "knockout",
+    "date": "2026-07-04",
+    "time": "12:00 p.m. UTC−5",
+    "home": {
+      "code": "CAN",
+      "name": "Canada",
+      "nameZh": "加拿大"
+    },
+    "away": {
+      "code": "MAR",
+      "name": "Morocco",
+      "nameZh": "摩洛哥"
+    },
+    "score": "0–3",
+    "homeScore": 0,
+    "awayScore": 3,
+    "stadium": "NRG Stadium, Houston",
+    "attendance": "68,777",
+    "referee": "Michael Oliver (England)",
+    "goals": [
+      {
+        "player": "Ounahi",
+        "minute": "50",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MAR"
+      },
+      {
+        "player": "Ounahi",
+        "minute": "82",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MAR"
+      },
+      {
+        "player": "Rahimi",
+        "minute": "90+8",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MAR"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Luc de Fougerolles",
+        "minute": "49",
+        "type": "yellow",
+        "team": "CAN"
+      },
+      {
+        "player": "Richie Laryea",
+        "minute": "40",
+        "type": "yellow",
+        "team": "CAN"
+      },
+      {
+        "player": "Jonathan David",
+        "minute": "43",
+        "type": "yellow",
+        "team": "CAN"
+      },
+      {
+        "player": "Cyle Larin",
+        "minute": "67",
+        "type": "yellow",
+        "team": "CAN"
+      },
+      {
+        "player": "Redouane Halhal",
+        "minute": "20",
+        "type": "yellow",
+        "team": "MAR"
+      },
+      {
+        "player": "Azzedine Ounahi",
+        "minute": "45",
+        "type": "yellow",
+        "team": "MAR"
+      },
+      {
+        "player": "Bilal El Khannouss",
+        "minute": "45+6",
+        "type": "yellow",
+        "team": "MAR"
+      },
+      {
+        "player": "Achraf Hakimi",
+        "minute": "40",
+        "type": "yellow",
+        "team": "MAR"
+      }
+    ],
+    "round": "round_of_16"
+  },
+  {
+    "id": 90,
+    "stage": "knockout",
+    "date": "2026-07-04",
+    "time": "5:00 p.m. UTC−4",
+    "home": {
+      "code": "PAR",
+      "name": "Paraguay",
+      "nameZh": "巴拉圭"
+    },
+    "away": {
+      "code": "FRA",
+      "name": "France",
+      "nameZh": "法国"
+    },
+    "score": "0–1",
+    "homeScore": 0,
+    "awayScore": 1,
+    "stadium": "Lincoln Financial Field, Philadelphia",
+    "attendance": "68,324",
+    "referee": "Ilgiz Tantashev (Uzbekistan)",
+    "goals": [
+      {
+        "player": "Mbappé",
+        "minute": "70",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "FRA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Manu Koné",
+        "minute": "81",
+        "type": "yellow",
+        "team": "FRA"
+      },
+      {
+        "player": "Michael Olise",
+        "minute": "90+7",
+        "type": "yellow",
+        "team": "FRA"
+      },
+      {
+        "player": "Bradley Barcola",
+        "minute": "19",
+        "type": "yellow",
+        "team": "FRA"
+      }
+    ],
+    "round": "round_of_16"
+  },
+  {
+    "id": 91,
+    "stage": "knockout",
+    "date": "2026-07-05",
+    "time": "4:00 p.m. UTC−4",
+    "home": {
+      "code": "BRA",
+      "name": "Brazil",
+      "nameZh": "巴西"
+    },
+    "away": {
+      "code": "NOR",
+      "name": "Norway",
+      "nameZh": "挪威"
+    },
+    "score": "1–2",
+    "homeScore": 1,
+    "awayScore": 2,
+    "stadium": "MetLife Stadium, East Rutherford",
+    "attendance": "80,663",
+    "referee": "Ismail Elfath (United States)",
+    "goals": [
+      {
+        "player": "Haaland",
+        "minute": "79",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "Haaland",
+        "minute": "90",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "Neymar",
+        "minute": "90+10",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "BRA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Neymar",
+        "minute": "90+6",
+        "type": "yellow",
+        "team": "BRA"
+      }
+    ],
+    "round": "round_of_16"
+  },
+  {
+    "id": 92,
+    "stage": "knockout",
+    "date": "2026-07-05",
+    "time": "7:00 p.m. UTC−6}}",
+    "home": {
+      "code": "MEX",
+      "name": "Mexico",
+      "nameZh": "墨西哥"
+    },
+    "away": {
+      "code": "ENG",
+      "name": "England",
+      "nameZh": "英格兰"
+    },
+    "score": "2–3",
+    "homeScore": 2,
+    "awayScore": 3,
+    "stadium": "Estadio Azteca, Mexico City",
+    "attendance": "80,824",
+    "referee": "Alireza Faghani (Australia)",
+    "goals": [
+      {
+        "player": "Bellingham",
+        "minute": "36",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Bellingham",
+        "minute": "38",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Quiñones",
+        "minute": "42",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "MEX"
+      },
+      {
+        "player": "Kane",
+        "minute": "60",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Jiménez",
+        "minute": "69",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "MEX"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Jorge Sánchez",
+        "minute": "71",
+        "type": "yellow",
+        "team": "MEX"
+      },
+      {
+        "player": "Johan Vásquez",
+        "minute": "90+8",
+        "type": "yellow",
+        "team": "MEX"
+      },
+      {
+        "player": "Marc Guéhi",
+        "minute": "68",
+        "type": "yellow",
+        "team": "ENG"
+      },
+      {
+        "player": "Nico O'Reilly",
+        "minute": "72",
+        "type": "yellow",
+        "team": "ENG"
+      },
+      {
+        "player": "Declan Rice",
+        "minute": "1",
+        "type": "yellow",
+        "team": "ENG"
+      },
+      {
+        "player": "Jordan Henderson",
+        "minute": "90+8",
+        "type": "yellow",
+        "team": "ENG"
+      },
+      {
+        "player": "Jarell Quansah",
+        "minute": "54",
+        "type": "red",
+        "team": "ENG"
+      }
+    ],
+    "round": "round_of_16"
+  },
+  {
+    "id": 93,
+    "stage": "knockout",
+    "date": "2026-07-06",
+    "time": "2:00 p.m. UTC−5",
+    "home": {
+      "code": "POR",
+      "name": "Portugal",
+      "nameZh": "葡萄牙"
+    },
+    "away": {
+      "code": "ESP",
+      "name": "Spain",
+      "nameZh": "西班牙"
+    },
+    "score": "0–1",
+    "homeScore": 0,
+    "awayScore": 1,
+    "stadium": "AT&T Stadium, Arlington",
+    "attendance": "70,649",
+    "referee": "Anthony Taylor (England)",
+    "goals": [
+      {
+        "player": "Merino",
+        "minute": "90+1",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Renato Veiga",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "POR"
+      },
+      {
+        "player": "Bernardo Silva",
+        "minute": "89",
+        "type": "yellow",
+        "team": "POR"
+      },
+      {
+        "player": "Ferran Torres",
+        "minute": "90+8",
+        "type": "yellow",
+        "team": "ESP"
+      }
+    ],
+    "round": "round_of_16"
+  },
+  {
+    "id": 94,
+    "stage": "knockout",
+    "date": "2026-07-06",
+    "time": "5:00 p.m. UTC−7",
+    "home": {
+      "code": "USA",
+      "name": "United States",
+      "nameZh": "美国"
+    },
+    "away": {
+      "code": "BEL",
+      "name": "Belgium",
+      "nameZh": "比利时"
+    },
+    "score": "1–4",
+    "homeScore": 1,
+    "awayScore": 4,
+    "stadium": "Lumen Field, Seattle",
+    "attendance": "66,925",
+    "referee": "Adham Makhadmeh (Jordan)",
+    "goals": [
+      {
+        "player": "De Ketelaere",
+        "minute": "9",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      },
+      {
+        "player": "Tillman",
+        "minute": "31",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "USA"
+      },
+      {
+        "player": "De Ketelaere",
+        "minute": "33",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      },
+      {
+        "player": "Vanaken",
+        "minute": "57",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      },
+      {
+        "player": "Lukaku",
+        "minute": "90+3",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Malik Tillman",
+        "minute": "69",
+        "type": "yellow",
+        "team": "USA"
+      },
+      {
+        "player": "Weston McKennie",
+        "minute": "35",
+        "type": "yellow",
+        "team": "USA"
+      }
+    ],
+    "round": "round_of_16"
+  },
+  {
+    "id": 95,
+    "stage": "knockout",
+    "date": "2026-07-07",
+    "time": "12:00 p.m. UTC−4",
+    "home": {
+      "code": "ARG",
+      "name": "Argentina",
+      "nameZh": "阿根廷"
+    },
+    "away": {
+      "code": "EGY",
+      "name": "Egypt",
+      "nameZh": "埃及"
+    },
+    "score": "3–2",
+    "homeScore": 3,
+    "awayScore": 2,
+    "stadium": "Mercedes-Benz Stadium, Atlanta",
+    "attendance": "68,239",
+    "referee": "François Letexier (France)",
+    "goals": [
+      {
+        "player": "Ibrahim",
+        "minute": "15",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "EGY"
+      },
+      {
+        "player": "Ziko",
+        "minute": "67",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "EGY"
+      },
+      {
+        "player": "Romero",
+        "minute": "79",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "Messi",
+        "minute": "83",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "Fernández",
+        "minute": "90+2",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Saafan El-Sagheer",
+        "minute": "21",
+        "type": "yellow",
+        "team": "EGY"
+      },
+      {
+        "player": "Mostafa Shobeir",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "EGY"
+      },
+      {
+        "player": "Hamdy Fathy",
+        "minute": "90+4",
+        "type": "yellow",
+        "team": "EGY"
+      },
+      {
+        "player": "Saafan El-Sagheer",
+        "minute": "90+4",
+        "type": "red",
+        "team": "EGY"
+      },
+      {
+        "player": "Marwan Attia",
+        "minute": "90+8",
+        "type": "yellow",
+        "team": "EGY"
+      },
+      {
+        "player": "Hossam Hassan",
+        "minute": "90+9",
+        "type": "yellow",
+        "team": "EGY"
+      }
+    ],
+    "round": "round_of_16"
+  },
+  {
+    "id": 96,
+    "stage": "knockout",
+    "date": "2026-07-07",
+    "time": "1:00 p.m. UTC−7",
+    "home": {
+      "code": "SUI",
+      "name": "Switzerland",
+      "nameZh": "瑞士"
+    },
+    "away": {
+      "code": "COL",
+      "name": "Colombia",
+      "nameZh": "哥伦比亚"
+    },
+    "score": "0–0",
+    "homeScore": 0,
+    "awayScore": 0,
+    "stadium": "BC Place, Vancouver",
+    "attendance": "52,497",
+    "referee": "Iván Barton (El Salvador)",
+    "goals": [],
+    "cards": [
+      {
+        "player": "Denis Zakaria",
+        "minute": "59",
+        "type": "yellow",
+        "team": "SUI"
+      },
+      {
+        "player": "Miro Muheim",
+        "minute": "105",
+        "type": "yellow",
+        "team": "SUI"
+      },
+      {
+        "player": "Davinson Sánchez",
+        "minute": "94",
+        "type": "yellow",
+        "team": "COL"
+      },
+      {
+        "player": "Luis Suárez",
+        "minute": "60",
+        "type": "yellow",
+        "team": "COL"
+      },
+      {
+        "player": "Luis Amaranto Perea",
+        "minute": "95",
+        "type": "yellow",
+        "team": "COL"
+      },
+      {
+        "player": "Granit Xhaka",
+        "minute": "51",
+        "type": "yellow",
+        "team": "SUI"
+      }
+    ],
+    "round": "round_of_16",
+    "penaltyShootout": {
+      "home": 4,
+      "away": 3
+    },
+    "extraTime": true
+  },
+  {
+    "id": 97,
+    "stage": "knockout",
+    "date": "2026-07-09",
+    "time": "4:00 p.m. UTC−4",
+    "home": {
+      "code": "FRA",
+      "name": "France",
+      "nameZh": "法国"
+    },
+    "away": {
+      "code": "MAR",
+      "name": "Morocco",
+      "nameZh": "摩洛哥"
+    },
+    "score": "2–0",
+    "homeScore": 2,
+    "awayScore": 0,
+    "stadium": "Gillette Stadium, Foxborough",
+    "attendance": "63,811",
+    "referee": "Facundo Tello (Argentina)",
+    "goals": [
+      {
+        "player": "Mbappé",
+        "minute": "60",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Dembélé",
+        "minute": "66",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Issa Diop",
+        "minute": "63",
+        "type": "yellow",
+        "team": "MAR"
+      }
+    ],
+    "round": "quarterfinal"
+  },
+  {
+    "id": 98,
+    "stage": "knockout",
+    "date": "2026-07-10",
+    "time": "12:00 p.m. UTC−7",
+    "home": {
+      "code": "ESP",
+      "name": "Spain",
+      "nameZh": "西班牙"
+    },
+    "away": {
+      "code": "BEL",
+      "name": "Belgium",
+      "nameZh": "比利时"
+    },
+    "score": "2–1",
+    "homeScore": 2,
+    "awayScore": 1,
+    "stadium": "SoFi Stadium, Inglewood",
+    "attendance": "70,492",
+    "referee": "Michael Oliver (England)",
+    "goals": [
+      {
+        "player": "Fabián",
+        "minute": "30",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      },
+      {
+        "player": "Merino",
+        "minute": "88",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      },
+      {
+        "player": "De Ketelaere",
+        "minute": "41",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "BEL"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Pau Cubarsí",
+        "minute": "43",
+        "type": "yellow",
+        "team": "ESP"
+      },
+      {
+        "player": "Aymeric Laporte",
+        "minute": "90+3",
+        "type": "yellow",
+        "team": "ESP"
+      },
+      {
+        "player": "Axel Witsel",
+        "minute": "90+5",
+        "type": "yellow",
+        "team": "BEL"
+      },
+      {
+        "player": "Kevin De Bruyne",
+        "minute": "85",
+        "type": "yellow",
+        "team": "BEL"
+      }
+    ],
+    "round": "quarterfinal"
+  },
+  {
+    "id": 99,
+    "stage": "knockout",
+    "date": "2026-07-11",
+    "time": "5:00 p.m. UTC−4",
+    "home": {
+      "code": "NOR",
+      "name": "Norway",
+      "nameZh": "挪威"
+    },
+    "away": {
+      "code": "ENG",
+      "name": "England",
+      "nameZh": "英格兰"
+    },
+    "score": "1–2",
+    "homeScore": 1,
+    "awayScore": 2,
+    "stadium": "Hard Rock Stadium, Miami Gardens",
+    "attendance": "64,478",
+    "referee": "Clément Turpin (France)",
+    "goals": [
+      {
+        "player": "Schjelderup",
+        "minute": "36",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "NOR"
+      },
+      {
+        "player": "Bellingham",
+        "minute": "45+2",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Bellingham",
+        "minute": "93",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Kristoffer Ajer",
+        "minute": "117",
+        "type": "yellow",
+        "team": "NOR"
+      }
+    ],
+    "round": "quarterfinal"
+  },
+  {
+    "id": 100,
+    "stage": "knockout",
+    "date": "2026-07-11",
+    "time": "8:00 p.m. UTC−5",
+    "home": {
+      "code": "ARG",
+      "name": "Argentina",
+      "nameZh": "阿根廷"
+    },
+    "away": {
+      "code": "SUI",
+      "name": "Switzerland",
+      "nameZh": "瑞士"
+    },
+    "score": "3–1",
+    "homeScore": 3,
+    "awayScore": 1,
+    "stadium": "Arrowhead Stadium, Kansas City",
+    "attendance": "69,045",
+    "referee": "João Pinheiro (Portugal)",
+    "goals": [
+      {
+        "player": "Mac Allister",
+        "minute": "10",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "Alvarez",
+        "minute": "112",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "La. Martínez",
+        "minute": "120+1",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "Ndoye",
+        "minute": "67",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "SUI"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Breel Embolo",
+        "minute": "44",
+        "type": "yellow",
+        "team": "SUI"
+      },
+      {
+        "player": "Breel Embolo",
+        "minute": "72",
+        "type": "red",
+        "team": "SUI"
+      },
+      {
+        "player": "Thiago Almada",
+        "minute": "97",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Lautaro Martínez",
+        "minute": "98",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "José Manuel López",
+        "minute": "114",
+        "type": "yellow",
+        "team": "ARG"
+      }
+    ],
+    "round": "quarterfinal"
+  },
+  {
+    "id": 101,
+    "stage": "knockout",
+    "date": "2026-07-14",
+    "time": "2:00 p.m. UTC−5",
+    "home": {
+      "code": "FRA",
+      "name": "France",
+      "nameZh": "法国"
+    },
+    "away": {
+      "code": "ESP",
+      "name": "Spain",
+      "nameZh": "西班牙"
+    },
+    "score": "0–2",
+    "homeScore": 0,
+    "awayScore": 2,
+    "stadium": "AT&T Stadium, Arlington",
+    "attendance": "70,176",
+    "referee": "Iván Barton (El Salvador)",
+    "goals": [
+      {
+        "player": "Oyarzabal",
+        "minute": "22",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "ESP"
+      },
+      {
+        "player": "Porro",
+        "minute": "58",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Adrien Rabiot",
+        "minute": "8",
+        "type": "yellow",
+        "team": "FRA"
+      },
+      {
+        "player": "Marc Cucurella",
+        "minute": "31",
+        "type": "yellow",
+        "team": "ESP"
+      },
+      {
+        "player": "Kylian Mbappé",
+        "minute": "86",
+        "type": "yellow",
+        "team": "FRA"
+      }
+    ],
+    "round": "semifinal"
+  },
+  {
+    "id": 102,
+    "stage": "knockout",
+    "date": "2026-07-15",
+    "time": "3:00 p.m. UTC−4",
+    "home": {
+      "code": "ENG",
+      "name": "England",
+      "nameZh": "英格兰"
+    },
+    "away": {
+      "code": "ARG",
+      "name": "Argentina",
+      "nameZh": "阿根廷"
+    },
+    "score": "1–2",
+    "homeScore": 1,
+    "awayScore": 2,
+    "stadium": "Mercedes-Benz Stadium, Atlanta",
+    "attendance": "68,239",
+    "referee": "Ismail Elfath (United States)",
+    "goals": [
+      {
+        "player": "Gordon",
+        "minute": "55",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Fernández",
+        "minute": "85",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      },
+      {
+        "player": "La. Martínez",
+        "minute": "90+2",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ARG"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Elliot Anderson",
+        "minute": "37",
+        "type": "yellow",
+        "team": "ENG"
+      },
+      {
+        "player": "Cristian Romero",
+        "minute": "51",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Lisandro Martínez",
+        "minute": "42",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Rodrigo De Paul",
+        "minute": "90+4",
+        "type": "yellow",
+        "team": "ARG"
+      }
+    ],
+    "round": "semifinal"
+  },
+  {
+    "id": 103,
+    "stage": "knockout",
+    "date": "2026-07-18",
+    "time": "5:00 p.m. UTC−4",
+    "home": {
+      "code": "FRA",
+      "name": "France",
+      "nameZh": "法国"
+    },
+    "away": {
+      "code": "ENG",
+      "name": "England",
+      "nameZh": "英格兰"
+    },
+    "score": "4–6",
+    "homeScore": 4,
+    "awayScore": 6,
+    "stadium": "Hard Rock Stadium, Miami Gardens",
+    "attendance": "64,478",
+    "referee": "Jesús Valenzuela (Venezuela)",
+    "goals": [
+      {
+        "player": "Rice",
+        "minute": "3",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Konsa",
+        "minute": "18",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Saka",
+        "minute": "37",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Saka",
+        "minute": "45+1",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Mbappé",
+        "minute": "48",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Barcola",
+        "minute": "54",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Mbappé",
+        "minute": "66",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Saka",
+        "minute": "87",
+        "isPenalty": true,
+        "isOwnGoal": false,
+        "team": "ENG"
+      },
+      {
+        "player": "Dembélé",
+        "minute": "90+6",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "FRA"
+      },
+      {
+        "player": "Bellingham",
+        "minute": "90+8",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ENG"
+      }
+    ],
+    "cards": [],
+    "round": "third_place"
+  },
+  {
+    "id": 104,
+    "stage": "knockout",
+    "date": "2026-07-19",
+    "time": "3:00 p.m. UTC−4",
+    "home": {
+      "code": "ESP",
+      "name": "Spain",
+      "nameZh": "西班牙"
+    },
+    "away": {
+      "code": "ARG",
+      "name": "Argentina",
+      "nameZh": "阿根廷"
+    },
+    "score": "1–0",
+    "homeScore": 1,
+    "awayScore": 0,
+    "stadium": "MetLife Stadium, East Rutherford",
+    "attendance": "80,663",
+    "referee": "Slavko Vinčić (Slovenia)",
+    "goals": [
+      {
+        "player": "Torres",
+        "minute": "106",
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "team": "ESP"
+      }
+    ],
+    "cards": [
+      {
+        "player": "Lisandro Martínez",
+        "minute": "41",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Leandro Paredes",
+        "minute": "52",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Enzo Fernández",
+        "minute": "82",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Cristian Romero",
+        "minute": "90+2",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Enzo Fernández",
+        "minute": "90+3",
+        "type": "red",
+        "team": "ARG"
+      },
+      {
+        "player": "Lionel Scaloni",
+        "minute": "105",
+        "type": "yellow",
+        "team": "ARG"
+      },
+      {
+        "player": "Alexis Mac Allister",
+        "minute": "111",
+        "type": "yellow",
+        "team": "ARG"
+      }
+    ],
+    "round": "final"
+  }
+]

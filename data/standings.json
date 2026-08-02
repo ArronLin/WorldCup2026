@@ -1,0 +1,794 @@
+{
+  "A": [
+    {
+      "code": "MEX",
+      "name": {
+        "en": "Mexico",
+        "zh": "墨西哥"
+      },
+      "played": 3,
+      "won": 3,
+      "drawn": 0,
+      "lost": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 0,
+      "goalDifference": 6,
+      "points": 9,
+      "position": 1
+    },
+    {
+      "code": "RSA",
+      "name": {
+        "en": "South Africa",
+        "zh": "南非"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 3,
+      "goalDifference": -1,
+      "points": 4,
+      "position": 2
+    },
+    {
+      "code": "KOR",
+      "name": {
+        "en": "South Korea",
+        "zh": "韩国"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "goalsFor": 2,
+      "goalsAgainst": 3,
+      "goalDifference": -1,
+      "points": 3,
+      "position": 3
+    },
+    {
+      "code": "CZE",
+      "name": {
+        "en": "Czech Republic",
+        "zh": "捷克"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 1,
+      "lost": 2,
+      "goalsFor": 2,
+      "goalsAgainst": 6,
+      "goalDifference": -4,
+      "points": 1,
+      "position": 4
+    }
+  ],
+  "B": [
+    {
+      "code": "SUI",
+      "name": {
+        "en": "Switzerland",
+        "zh": "瑞士"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 7,
+      "goalsAgainst": 3,
+      "goalDifference": 4,
+      "points": 7,
+      "position": 1
+    },
+    {
+      "code": "CAN",
+      "name": {
+        "en": "Canada",
+        "zh": "加拿大"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 8,
+      "goalsAgainst": 3,
+      "goalDifference": 5,
+      "points": 4,
+      "position": 2
+    },
+    {
+      "code": "BIH",
+      "name": {
+        "en": "Bosnia and Herzegovina",
+        "zh": "波黑"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 6,
+      "goalDifference": -1,
+      "points": 4,
+      "position": 3
+    },
+    {
+      "code": "QAT",
+      "name": {
+        "en": "Qatar",
+        "zh": "卡塔尔"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 1,
+      "lost": 2,
+      "goalsFor": 2,
+      "goalsAgainst": 10,
+      "goalDifference": -8,
+      "points": 1,
+      "position": 4
+    }
+  ],
+  "C": [
+    {
+      "code": "BRA",
+      "name": {
+        "en": "Brazil",
+        "zh": "巴西"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 7,
+      "goalsAgainst": 1,
+      "goalDifference": 6,
+      "points": 7,
+      "position": 1
+    },
+    {
+      "code": "MAR",
+      "name": {
+        "en": "Morocco",
+        "zh": "摩洛哥"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 3,
+      "goalDifference": 3,
+      "points": 7,
+      "position": 2
+    },
+    {
+      "code": "SCO",
+      "name": {
+        "en": "Scotland",
+        "zh": "苏格兰"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "goalsFor": 1,
+      "goalsAgainst": 4,
+      "goalDifference": -3,
+      "points": 3,
+      "position": 3
+    },
+    {
+      "code": "HAI",
+      "name": {
+        "en": "Haiti",
+        "zh": "海地"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 2,
+      "goalsAgainst": 8,
+      "goalDifference": -6,
+      "points": 0,
+      "position": 4
+    }
+  ],
+  "D": [
+    {
+      "code": "USA",
+      "name": {
+        "en": "United States",
+        "zh": "美国"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 8,
+      "goalsAgainst": 4,
+      "goalDifference": 4,
+      "points": 6,
+      "position": 1
+    },
+    {
+      "code": "AUS",
+      "name": {
+        "en": "Australia",
+        "zh": "澳大利亚"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 2,
+      "goalDifference": 0,
+      "points": 4,
+      "position": 2
+    },
+    {
+      "code": "PAR",
+      "name": {
+        "en": "Paraguay",
+        "zh": "巴拉圭"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 4,
+      "goalDifference": -2,
+      "points": 4,
+      "position": 3
+    },
+    {
+      "code": "TUR",
+      "name": {
+        "en": "Turkey",
+        "zh": "土耳其"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "goalsFor": 3,
+      "goalsAgainst": 5,
+      "goalDifference": -2,
+      "points": 3,
+      "position": 4
+    }
+  ],
+  "E": [
+    {
+      "code": "GER",
+      "name": {
+        "en": "Germany",
+        "zh": "德国"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 10,
+      "goalsAgainst": 4,
+      "goalDifference": 6,
+      "points": 6,
+      "position": 1
+    },
+    {
+      "code": "CIV",
+      "name": {
+        "en": "Ivory Coast",
+        "zh": "科特迪瓦"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 4,
+      "goalsAgainst": 2,
+      "goalDifference": 2,
+      "points": 6,
+      "position": 2
+    },
+    {
+      "code": "ECU",
+      "name": {
+        "en": "Ecuador",
+        "zh": "厄瓜多尔"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 2,
+      "goalDifference": 0,
+      "points": 4,
+      "position": 3
+    },
+    {
+      "code": "CUW",
+      "name": {
+        "en": "Curaçao",
+        "zh": "库拉索"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 1,
+      "lost": 2,
+      "goalsFor": 1,
+      "goalsAgainst": 9,
+      "goalDifference": -8,
+      "points": 1,
+      "position": 4
+    }
+  ],
+  "F": [
+    {
+      "code": "NED",
+      "name": {
+        "en": "Netherlands",
+        "zh": "荷兰"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 10,
+      "goalsAgainst": 4,
+      "goalDifference": 6,
+      "points": 7,
+      "position": 1
+    },
+    {
+      "code": "JPN",
+      "name": {
+        "en": "Japan",
+        "zh": "日本"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 2,
+      "lost": 0,
+      "goalsFor": 7,
+      "goalsAgainst": 3,
+      "goalDifference": 4,
+      "points": 5,
+      "position": 2
+    },
+    {
+      "code": "SWE",
+      "name": {
+        "en": "Sweden",
+        "zh": "瑞典"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 7,
+      "goalsAgainst": 7,
+      "goalDifference": 0,
+      "points": 4,
+      "position": 3
+    },
+    {
+      "code": "TUN",
+      "name": {
+        "en": "Tunisia",
+        "zh": "突尼斯"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 2,
+      "goalsAgainst": 12,
+      "goalDifference": -10,
+      "points": 0,
+      "position": 4
+    }
+  ],
+  "G": [
+    {
+      "code": "BEL",
+      "name": {
+        "en": "Belgium",
+        "zh": "比利时"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 2,
+      "lost": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 2,
+      "goalDifference": 4,
+      "points": 5,
+      "position": 1
+    },
+    {
+      "code": "EGY",
+      "name": {
+        "en": "Egypt",
+        "zh": "埃及"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 2,
+      "lost": 0,
+      "goalsFor": 5,
+      "goalsAgainst": 3,
+      "goalDifference": 2,
+      "points": 5,
+      "position": 2
+    },
+    {
+      "code": "IRN",
+      "name": {
+        "en": "Iran",
+        "zh": "伊朗"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 3,
+      "lost": 0,
+      "goalsFor": 3,
+      "goalsAgainst": 3,
+      "goalDifference": 0,
+      "points": 3,
+      "position": 3
+    },
+    {
+      "code": "NZL",
+      "name": {
+        "en": "New Zealand",
+        "zh": "新西兰"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 1,
+      "lost": 2,
+      "goalsFor": 4,
+      "goalsAgainst": 10,
+      "goalDifference": -6,
+      "points": 1,
+      "position": 4
+    }
+  ],
+  "H": [
+    {
+      "code": "ESP",
+      "name": {
+        "en": "Spain",
+        "zh": "西班牙"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 5,
+      "goalsAgainst": 0,
+      "goalDifference": 5,
+      "points": 7,
+      "position": 1
+    },
+    {
+      "code": "CPV",
+      "name": {
+        "en": "Cape Verde",
+        "zh": "佛得角"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 3,
+      "lost": 0,
+      "goalsFor": 2,
+      "goalsAgainst": 2,
+      "goalDifference": 0,
+      "points": 3,
+      "position": 2
+    },
+    {
+      "code": "URU",
+      "name": {
+        "en": "Uruguay",
+        "zh": "乌拉圭"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 2,
+      "lost": 1,
+      "goalsFor": 3,
+      "goalsAgainst": 4,
+      "goalDifference": -1,
+      "points": 2,
+      "position": 3
+    },
+    {
+      "code": "KSA",
+      "name": {
+        "en": "Saudi Arabia",
+        "zh": "沙特阿拉伯"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 2,
+      "lost": 1,
+      "goalsFor": 1,
+      "goalsAgainst": 5,
+      "goalDifference": -4,
+      "points": 2,
+      "position": 4
+    }
+  ],
+  "I": [
+    {
+      "code": "FRA",
+      "name": {
+        "en": "France",
+        "zh": "法国"
+      },
+      "played": 3,
+      "won": 3,
+      "drawn": 0,
+      "lost": 0,
+      "goalsFor": 10,
+      "goalsAgainst": 2,
+      "goalDifference": 8,
+      "points": 9,
+      "position": 1
+    },
+    {
+      "code": "NOR",
+      "name": {
+        "en": "Norway",
+        "zh": "挪威"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 8,
+      "goalsAgainst": 7,
+      "goalDifference": 1,
+      "points": 6,
+      "position": 2
+    },
+    {
+      "code": "SEN",
+      "name": {
+        "en": "Senegal",
+        "zh": "塞内加尔"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "goalsFor": 8,
+      "goalsAgainst": 6,
+      "goalDifference": 2,
+      "points": 3,
+      "position": 3
+    },
+    {
+      "code": "IRQ",
+      "name": {
+        "en": "Iraq",
+        "zh": "伊拉克"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 1,
+      "goalsAgainst": 12,
+      "goalDifference": -11,
+      "points": 0,
+      "position": 4
+    }
+  ],
+  "J": [
+    {
+      "code": "ARG",
+      "name": {
+        "en": "Argentina",
+        "zh": "阿根廷"
+      },
+      "played": 3,
+      "won": 3,
+      "drawn": 0,
+      "lost": 0,
+      "goalsFor": 8,
+      "goalsAgainst": 1,
+      "goalDifference": 7,
+      "points": 9,
+      "position": 1
+    },
+    {
+      "code": "AUT",
+      "name": {
+        "en": "Austria",
+        "zh": "奥地利"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 6,
+      "goalsAgainst": 6,
+      "goalDifference": 0,
+      "points": 4,
+      "position": 2
+    },
+    {
+      "code": "ALG",
+      "name": {
+        "en": "Algeria",
+        "zh": "阿尔及利亚"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 7,
+      "goalDifference": -2,
+      "points": 4,
+      "position": 3
+    },
+    {
+      "code": "JOR",
+      "name": {
+        "en": "Jordan",
+        "zh": "约旦"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 3,
+      "goalsAgainst": 8,
+      "goalDifference": -5,
+      "points": 0,
+      "position": 4
+    }
+  ],
+  "K": [
+    {
+      "code": "COL",
+      "name": {
+        "en": "Colombia",
+        "zh": "哥伦比亚"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 4,
+      "goalsAgainst": 1,
+      "goalDifference": 3,
+      "points": 7,
+      "position": 1
+    },
+    {
+      "code": "POR",
+      "name": {
+        "en": "Portugal",
+        "zh": "葡萄牙"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 2,
+      "lost": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 1,
+      "goalDifference": 5,
+      "points": 5,
+      "position": 2
+    },
+    {
+      "code": "COD",
+      "name": {
+        "en": "DR Congo",
+        "zh": "刚果(金)"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 4,
+      "goalsAgainst": 3,
+      "goalDifference": 1,
+      "points": 4,
+      "position": 3
+    },
+    {
+      "code": "UZB",
+      "name": {
+        "en": "Uzbekistan",
+        "zh": "乌兹别克斯坦"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 2,
+      "goalsAgainst": 11,
+      "goalDifference": -9,
+      "points": 0,
+      "position": 4
+    }
+  ],
+  "L": [
+    {
+      "code": "ENG",
+      "name": {
+        "en": "England",
+        "zh": "英格兰"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 2,
+      "goalDifference": 4,
+      "points": 7,
+      "position": 1
+    },
+    {
+      "code": "CRO",
+      "name": {
+        "en": "Croatia",
+        "zh": "克罗地亚"
+      },
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 5,
+      "goalDifference": 0,
+      "points": 6,
+      "position": 2
+    },
+    {
+      "code": "GHA",
+      "name": {
+        "en": "Ghana",
+        "zh": "加纳"
+      },
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 2,
+      "goalDifference": 0,
+      "points": 4,
+      "position": 3
+    },
+    {
+      "code": "PAN",
+      "name": {
+        "en": "Panama",
+        "zh": "巴拿马"
+      },
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "goalsFor": 0,
+      "goalsAgainst": 4,
+      "goalDifference": -4,
+      "points": 0,
+      "position": 4
+    }
+  ]
+}
