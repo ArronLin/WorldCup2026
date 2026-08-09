@@ -131,6 +131,7 @@
   "chat.errorRate": "Too many questions. Please wait a moment.",
   "chat.errorNetwork": "Network connection failed.",
   "chat.errorOffline": "The AI service is unavailable.",
+  "chat.errorNoKey": "The AI assistant is not configured on this site yet.",
   "chat.errorOfflineHint": "For local testing open the ?mock mode, or deploy to Netlify with an API key configured.",
   "chat.clear": "Clear chat",
   "chat.settingsTitle": "Model Settings",

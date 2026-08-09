@@ -61,7 +61,7 @@ export function refreshChat() {
   if (els.toggle) { els.toggle.setAttribute('aria-label', t('chat.open')); els.toggle.title = t('chat.open'); }
   if (els.fab) { els.fab.setAttribute('aria-label', t('chat.open')); els.fab.title = t('chat.open'); }
   if (els.clear) els.clear.textContent = t('chat.clear');
-  if (els.settingsBtn) { els.settingsBtn.setAttribute('aria-label', t('chat.settingsTitle')); els.settingsBtn.title = t('chat.settingsTitle'); }
+  if (els.settingsBtn) { els.settingsBtn.setAttribute('aria-label', t('chat.settingsTitle')); els.settingsBtn.title = t('chat.settingsTitle'); els.settingsBtn.style.display = isLocal() ? '' : 'none'; }
   renderChips();
   if (greeted && els.messages) {
     const g = els.messages.querySelector('.chat-greeting');
@@ -484,7 +484,7 @@ function msgForError(e) {
   if (e && e.code === 'offline') {
     return `${t('chat.errorOffline')} ${location.protocol === 'http:' && !MOCK ? t('chat.errorOfflineHint') : ''}`.trim();
   }
-  if (e && e.code === 'no_key') return t('chat.errorOffline');
+  if (e && e.code === 'no_key') return t('chat.errorNoKey');
   if (e && e.code === 'net') return t('chat.errorNetwork');
   return t('chat.error');
 }

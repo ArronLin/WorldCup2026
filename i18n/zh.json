@@ -131,6 +131,7 @@
   "chat.errorRate": "提问太频繁了，休息一下再来。",
   "chat.errorNetwork": "网络连接失败。",
   "chat.errorOffline": "AI 服务未配置或不可用。",
+  "chat.errorNoKey": "本站 AI 助手尚未完成配置。",
   "chat.errorOfflineHint": "本地调试请访问 ?mock 模式，或部署到 Netlify 并配置 API Key。",
   "chat.clear": "清空对话",
   "chat.settingsTitle": "模型设置",
