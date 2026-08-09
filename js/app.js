@@ -2,9 +2,11 @@
 import { initI18n, toggleLang, getLang, t } from './i18n.js';
 import { initRouter, addRoute, navigate, handleRoute } from './router.js';
 import { getPlayerNames } from './store.js';
+import { initSearch, refreshSearch } from './search.js';
+import { initChat, refreshChat } from './chat.js?v=10';
 
 // Cache-busting version for dynamic imports
-const V = '?v=5';
+const V = '?v=8';
 
 // Theme management
 function detectTheme() {
@@ -95,6 +97,8 @@ document.addEventListener('langchange', () => {
   buildNav();
   updateLangToggle();
   updateFooter();
+  refreshSearch();
+  refreshChat();
   // Re-render current view directly
   handleRoute();
 });
@@ -126,6 +130,12 @@ async function init() {
   document.getElementById('themeToggle').addEventListener('click', () => {
     toggleTheme();
   });
+
+  // Global search
+  await initSearch();
+
+  // AI chat assistant
+  await initChat();
 
   // Start router
   initRouter();

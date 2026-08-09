@@ -1,7 +1,7 @@
 // ===== Data Store =====
 
 const cache = {};
-const DATA_VERSION = '6';
+const DATA_VERSION = '8';
 
 async function loadJSON(name) {
   if (cache[name]) return cache[name];
