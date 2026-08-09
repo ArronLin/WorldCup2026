@@ -17,6 +17,16 @@ desktop.ini
 node_modules/
 package-lock.json
 
+# Netlify local state
+.netlify/
+
+# local syntax-check / test copies
+._*.mjs
+
+# env
+.env
+.env.*
+
 # Logs
 *.log
 npm-debug.log*
@@ -24,3 +34,6 @@ npm-debug.log*
 # Temporary files
 *.tmp
 *.bak
+
+# WorkBuddy local workspace data (memory, plans, tasks)
+.workbuddy/
