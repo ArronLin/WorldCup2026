@@ -231,6 +231,29 @@ export default async (req, context) => {
         let answer = "";
         let finalStream = null;
 
+        // ---- 预处理：主动注入「进球/失球最多最少」排行数据 ----
+        // 目的：避免模型偶发忽略工具、凭记忆编造（曾导致本地/公网表现不一致）。
+        // 命中即先调用 team_goal_ranking 并把结果塞进对话，模型首轮即可直接总结。
+        const lastUser = [...messages].reverse().find((m) => m.role === "user");
+        const uText = (lastUser && lastUser.content) || "";
+        const rankingIntent =
+          /(进球|失球|丢球|净胜球)\s*(最多|最少|最高|最低|排行|排名|榜)/.test(uText) ||
+          /(谁|哪[支个队]|哪些队)\s*(进|丢|失)\s*球\s*(最多|最少|最高|最低)/.test(uText) ||
+          /(进|失|丢)\s*球\s*(最多|最少|最高|最低)\s*(的?\s*队|的?\s*球队)/.test(uText);
+        if (rankingIntent) {
+          const scope = /小组赛/.test(uText) ? "group" : /淘汰赛/.test(uText) ? "knockout" : "all";
+          emit({ type: "tool", name: "team_goal_ranking" });
+          const out = runTool("team_goal_ranking", { scope });
+          let rc = JSON.stringify(out);
+          if (rc.length > 6000) rc = rc.slice(0, 6000) + ',"_truncated":true';
+          convo.push({
+            role: "assistant",
+            content: null,
+            tool_calls: [{ id: "pre-rank", type: "function", function: { name: "team_goal_ranking", arguments: JSON.stringify({ scope }) } }],
+          });
+          convo.push({ role: "tool", tool_call_id: "pre-rank", name: "team_goal_ranking", content: rc });
+        }
+
         // ---- 工具循环 ----
         for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
           const res = await callDeepSeek({ messages: convo, stream: false, tool_choice: "auto", signal: controller.signal });
