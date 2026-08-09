@@ -469,6 +469,49 @@ function tCompareGroups(args) {
   return ok({ groups: out });
 }
 
+// 20. team_goal_ranking —— 球队进球/失球榜（全赛事或按阶段）
+function tTeamGoalRanking(args) {
+  const scope = args.scope; // all | group | knockout
+  const pool = scope === "group" ? MATCHES.filter((m) => m.stage === "group")
+            : scope === "knockout" ? MATCHES.filter((m) => m.stage === "knockout")
+            : MATCHES;
+  const gf = new Map(), ga = new Map(), played = new Map(), zh = new Map();
+  for (const m of pool) {
+    const h = m.home.code, a = m.away.code;
+    gf.set(h, (gf.get(h) || 0) + m.homeScore);
+    ga.set(h, (ga.get(h) || 0) + m.awayScore);
+    gf.set(a, (gf.get(a) || 0) + m.awayScore);
+    ga.set(a, (ga.get(a) || 0) + m.homeScore);
+    played.set(h, (played.get(h) || 0) + 1);
+    played.set(a, (played.get(a) || 0) + 1);
+    if (m.home.nameZh) zh.set(h, m.home.nameZh);
+    if (m.away.nameZh) zh.set(a, m.away.nameZh);
+  }
+  const rows = Object.keys(TEAMS).map((code) => {
+    const t = TEAMS[code];
+    const enName = (t.name && t.name.en) ? t.name.en : t.name;
+    const zhName = (t.name && t.name.zh) ? t.name.zh : (zh.get(code) || enName);
+    return {
+      code,
+      name: enName,
+      nameZh: zhName,
+      gf: gf.get(code) || 0,
+      ga: ga.get(code) || 0,
+      played: played.get(code) || 0,
+    };
+  });
+  const limit = Math.min(Number(args.limit || 10), 48);
+  const byFor = rows.slice().sort((x, y) => (y.gf - x.gf) || (x.ga - y.ga) || x.code.localeCompare(y.code));
+  const byAgainst = rows.slice().sort((x, y) => (y.ga - x.ga) || (x.gf - y.gf) || x.code.localeCompare(y.code));
+  return ok({
+    scope: scope || "all",
+    topFor: byFor.slice(0, limit),
+    topAgainst: byAgainst.slice(0, limit),
+    mostFor: byFor[0] ? { code: byFor[0].code, name: byFor[0].name, nameZh: byFor[0].nameZh, gf: byFor[0].gf } : null,
+    mostAgainst: byAgainst[0] ? { code: byAgainst[0].code, name: byAgainst[0].name, nameZh: byAgainst[0].nameZh, ga: byAgainst[0].ga } : null,
+  });
+}
+
 // ============ 注册表 ============
 const TOOLS = {
   get_match: tGetMatch,
@@ -490,6 +533,7 @@ const TOOLS = {
   head_to_head: tHeadToHead,
   team_knockout_record: tTeamKnockoutRecord,
   compare_groups: tCompareGroups,
+  team_goal_ranking: tTeamGoalRanking,
 };
 
 // 统一入口：永不抛异常
@@ -642,5 +686,12 @@ export const TOOL_SCHEMAS = [
     name: "compare_groups", description: "Compare group-stage groups on goals, goals per match, draws, cards and the strongest team. Omit groups to compare all 12.",
     parameters: { type: "object", properties: {
       groups: { type: "array", items: { type: "string", enum: ["A","B","C","D","E","F","G","H","I","J","K","L"] }, description: "Optional list of groups" },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "team_goal_ranking", description: "Ranking of all 48 teams by total goals SCORED (for) or CONCEDED (against) across the WHOLE tournament (group stage + knockout). Use this for 'which team scored the most / fewest goals' or 'which team conceded the most / fewest goals' questions. Returns the top N by goals-for and by goals-against, plus the single leading team for each. Scope can be the whole tournament, group stage only, or knockout only.",
+    parameters: { type: "object", properties: {
+      limit: { type: "integer", default: 10, maximum: 48, description: "How many teams to return in each ranking" },
+      scope: { type: "string", enum: ["all","group","knockout"], default: "all", description: "all = whole tournament, group = group stage only, knockout = knockout stage only" },
     }, required: [] } } },
 ];

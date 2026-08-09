@@ -134,6 +134,49 @@ function parseSSEChunk(buf) {
   return { frames, rest: buf.slice(start) };
 }
 
+// ============ DeepSeek 内联工具调用兜底解析 ============
+// 部分模型/变体会把工具调用写成内联文本（<｜DSML｜｜tool_calls> ... <｜DSML｜｜invoke name="fn"> ...），
+// 而非 OpenAI 结构化 tool_calls。下面负责把它解析回 {name, args}，避免把原始标记当答案泄漏给用户。
+function parseLegacyToolCalls(content) {
+  const calls = [];
+  if (!content || !/invoke\s+name=/.test(content)) return calls;
+  const invokeRe = /invoke\s+name="([^"]+)"\s*>([\s\S]*?)(?=<invoke\s+name=|<[^>]*invoke>|$)/g;
+  let m;
+  while ((m = invokeRe.exec(content)) !== null) {
+    const name = m[1];
+    const body = m[2];
+    const args = {};
+    const paramRe = /<[^>]*parameter\s+name="([^"]+)"[^>]*>([\s\S]*?)<\/[^>]*parameter\s*>/g;
+    let p;
+    while ((p = paramRe.exec(body)) !== null) {
+      const key = p[1];
+      let val = p[2].trim();
+      if (/^-?\d+(\.\d+)?$/.test(val)) val = Number(val);
+      args[key] = val;
+    }
+    calls.push({ name, args });
+  }
+  return calls;
+}
+
+// 把可能混入答案正文的内联工具标记整体剔除（仅在兜底直答时使用）
+function sanitizeLegacy(content) {
+  if (!content) return content;
+  const idx = content.search(/<\s*[｜DSML]*\s*tool_calls/);
+  return (idx === -1 ? content : content.slice(0, idx)).trim();
+}
+
+// 流式收口轮的安全网：剔除任何残留的 <｜DSML｜｜...> 类标记（含其参数值）
+function stripMarkers(s) {
+  if (!s) return s;
+  return s
+    .replace(/<[^>]*parameter[^>]*>[\s\S]*?<\/[^>]*parameter[^>]*>/g, "")
+    .replace(/<\/?\s*[｜DSML]*\s*(invoke|tool_calls)[^>]*>/g, "")
+    .replace(/\btool_calls\b/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 // ============ 主处理 ============
 export default async (req, context) => {
   if (req.method === "OPTIONS") {
@@ -188,6 +231,29 @@ export default async (req, context) => {
         let answer = "";
         let finalStream = null;
 
+        // ---- 预处理：主动注入「进球/失球最多最少」排行数据 ----
+        // 目的：避免模型偶发忽略工具、凭记忆编造（曾导致本地/公网表现不一致）。
+        // 命中即先调用 team_goal_ranking 并把结果塞进对话，模型首轮即可直接总结。
+        const lastUser = [...messages].reverse().find((m) => m.role === "user");
+        const uText = (lastUser && lastUser.content) || "";
+        const rankingIntent =
+          /(进球|失球|丢球|净胜球)\s*(最多|最少|最高|最低|排行|排名|榜)/.test(uText) ||
+          /(谁|哪[支个队]|哪些队)\s*(进|丢|失)\s*球\s*(最多|最少|最高|最低)/.test(uText) ||
+          /(进|失|丢)\s*球\s*(最多|最少|最高|最低)\s*(的?\s*队|的?\s*球队)/.test(uText);
+        if (rankingIntent) {
+          const scope = /小组赛/.test(uText) ? "group" : /淘汰赛/.test(uText) ? "knockout" : "all";
+          emit({ type: "tool", name: "team_goal_ranking" });
+          const out = runTool("team_goal_ranking", { scope });
+          let rc = JSON.stringify(out);
+          if (rc.length > 6000) rc = rc.slice(0, 6000) + ',"_truncated":true';
+          convo.push({
+            role: "assistant",
+            content: null,
+            tool_calls: [{ id: "pre-rank", type: "function", function: { name: "team_goal_ranking", arguments: JSON.stringify({ scope }) } }],
+          });
+          convo.push({ role: "tool", tool_call_id: "pre-rank", name: "team_goal_ranking", content: rc });
+        }
+
         // ---- 工具循环 ----
         for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
           const res = await callDeepSeek({ messages: convo, stream: false, tool_choice: "auto", signal: controller.signal });
@@ -201,17 +267,36 @@ export default async (req, context) => {
           }
           const data = await res.json();
           const msg = data.choices && data.choices[0] && data.choices[0].message;
-          if (!msg || !msg.tool_calls || msg.tool_calls.length === 0) {
-            // 零工具直答：短路
-            answer = msg && msg.content ? msg.content : "";
+          if (!msg) {
+            emit({ type: "error", code: "upstream" });
+            emit({ type: "done" });
+            return;
+          }
+
+          // 提取工具调用：优先 OpenAI 结构化，其次 DeepSeek 内联 <｜DSML｜｜> 格式
+          let calls = Array.isArray(msg.tool_calls) ? msg.tool_calls : [];
+          if (calls.length === 0 && /invoke\s+name=/.test(msg.content || "")) {
+            calls = parseLegacyToolCalls(msg.content).map((c, i) => ({
+              id: "legacy-" + i,
+              function: { name: c.name, arguments: JSON.stringify(c.args) },
+            }));
+          }
+
+          if (calls.length === 0) {
+            // 零工具直答：短路（先剥离可能残留的内联工具标记，避免泄漏）
+            answer = sanitizeLegacy(msg.content || "");
             emit({ type: "delta", text: answer });
             emit({ type: "done" });
             return;
           }
 
           // 有工具调用：执行并回填
-          convo.push(msg);
-          for (const call of msg.tool_calls) {
+          convo.push({
+            role: "assistant",
+            content: msg.content || null,
+            tool_calls: calls.map((c) => ({ id: c.id, type: "function", function: { name: c.function.name, arguments: c.function.arguments } })),
+          });
+          for (const call of calls) {
             let args = {};
             try { args = JSON.parse(call.function.arguments || "{}"); } catch {}
             emit({ type: "tool", name: call.function.name });
@@ -243,7 +328,7 @@ export default async (req, context) => {
           for (const f of frames) {
             if (f.done) continue;
             const delta = f.choices && f.choices[0] && f.choices[0].delta && (f.choices[0].delta.content || "");
-            if (delta) { acc += delta; emit({ type: "delta", text: delta }); }
+            if (delta) { const clean = stripMarkers(delta); if (clean) { acc += clean; emit({ type: "delta", text: clean }); } }
           }
         }
         emit({ type: "done" });
