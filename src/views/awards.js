@@ -31,7 +31,7 @@ export default async function awardsView() {
   if (podium.length) {
     html += `<div class="award-grid" style="margin-bottom:1.5rem">`;
     for (const p of podium) {
-      html += `<div class="award-card" onclick="location.hash='#/team/${p.data.code}'" style="cursor:pointer">
+      html += `<div class="award-card" data-route="/team/${p.data.code}" role="link" tabindex="0" style="cursor:pointer">
         <div class="award-icon ${p.medal}">${p.emoji}</div>
         <div class="award-info">
           <div class="award-title">${p.label}</div>
@@ -65,7 +65,7 @@ export default async function awardsView() {
       const name = isFairPlay ? L(teamName) : (lang === 'zh' ? (data.playerZh || data.player) : data.player);
       const extra = data.goals != null ? ` · ${data.goals} ${t('common.goals')}` : '';
 
-      html += `<div class="award-card" ${teamCode ? `onclick="location.hash='#/team/${teamCode}'" style="cursor:pointer"` : ''}>
+      html += `<div class="award-card" ${teamCode ? `data-route="/team/${teamCode}" role="link" tabindex="0" style="cursor:pointer"` : ''}>
         <div class="award-icon ${a.medal}">${a.emoji}</div>
         <div class="award-info">
           <div class="award-title">${a.label}</div>
@@ -104,7 +104,7 @@ export default async function awardsView() {
     topScorers.forEach((s, i) => {
       const team = teams[s.team];
       const teamLabel = team ? L(team.name) : s.team;
-      html += `<tr onclick="location.hash='#/team/${s.team}'" style="cursor:pointer">
+      html += `<tr data-route="/team/${s.team}" style="cursor:pointer">
         <td>${i + 1}</td>
         <td><div class="team-cell">${lang === 'zh' ? (s.playerZh || s.player) : s.player}</div></td>
         <td><div class="team-cell">${flagSVG(s.team, 'sm')} ${teamLabel}</div></td>
@@ -128,7 +128,7 @@ export default async function awardsView() {
     topAssists.forEach((s, i) => {
       const team = teams[s.team];
       const teamLabel = team ? L(team.name) : s.team;
-      html += `<tr onclick="location.hash='#/team/${s.team}'" style="cursor:pointer">
+      html += `<tr data-route="/team/${s.team}" style="cursor:pointer">
         <td>${i + 1}</td>
         <td><div class="team-cell">${lang === 'zh' ? (s.playerZh || s.player) : s.player}</div></td>
         <td><div class="team-cell">${flagSVG(s.team, 'sm')} ${teamLabel}</div></td>

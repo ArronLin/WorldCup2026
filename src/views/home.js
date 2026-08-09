@@ -133,7 +133,7 @@ function renderMatchCard(m, teams) {
   if (m.penaltyShootout) badges.push(`<span class="badge badge-pen">${t('match.penalties')}</span>`);
 
   return `
-    <div class="match-card" onclick="location.hash='#/match/${m.id}'">
+    <div class="match-card" data-route="/match/${m.id}" role="link" tabindex="0">
       <div class="match-card-header">
         <span class="match-card-date">${formatDate(m.date)}</span>
         <span class="match-card-stage">${stageLabel(m)}</span>

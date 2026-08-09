@@ -5,6 +5,7 @@
 //           CHAT_IP_DAILY_CAP(默认60), CHAT_MAX_TOKENS(默认800), CHAT_GLOBAL_DAILY_CAP(默认800)
 import { TOOL_SCHEMAS, runTool } from "./_tools.mjs";
 import { buildSystemPrompt } from "./_prompt.mjs";
+import { checkRateLimit } from "./rate-limit.mjs";
 
 const API = "https://api.deepseek.com/chat/completions";
 const MODEL = process.env.DEEPSEEK_MODEL || "deepseek-v4-flash";
@@ -13,56 +14,6 @@ const IP_DAILY_CAP = Number(process.env.CHAT_IP_DAILY_CAP || 60);
 const GLOBAL_DAILY_CAP = Number(process.env.CHAT_GLOBAL_DAILY_CAP || 800);
 const MAX_TOOL_ROUNDS = 3;
 const BUDGET_MS = 8500; // 留余量给收尾，Netlify 流式硬上限 ~10s
-const BURST_CAP = 5;
-const BURST_REFILL_MS = 12000;
-
-// ============ 限流（内存桶，尽力而为；Serverless 实例会回收/横向扩容） ============
-const burst = new Map();   // ip -> tokens
-const daily = new Map();   // ip -> { day, used }
-const lastSeen = new Map(); // ip -> timestamp（用于清理）
-let globalUsed = 0;
-let globalDay = today();
-
-function today() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-function sweep() {
-  const now = Date.now();
-  for (const [k, t] of lastSeen) {
-    if (now - t > 24 * 3600 * 1000) {
-      burst.delete(k); daily.delete(k); lastSeen.delete(k);
-    }
-  }
-  if (burst.size > 5000) { burst.clear(); daily.clear(); lastSeen.clear(); }
-  if (globalDay !== today()) { globalDay = today(); globalUsed = 0; }
-}
-
-function takeBurstToken(ip) {
-  const now = Date.now();
-  const last = lastSeen.get(ip) || now;
-  const tokens = Math.min(BURST_CAP, (burst.get(ip) || BURST_CAP) + (now - last) / BURST_REFILL_MS);
-  if (tokens < 1) return false;
-  burst.set(ip, tokens - 1);
-  lastSeen.set(ip, now);
-  return true;
-}
-
-function checkRateLimit(ip) {
-  sweep();
-  const day = today();
-  if (globalDay !== day) { globalDay = day; globalUsed = 0; }
-  if (globalUsed >= GLOBAL_DAILY_CAP) return { limited: true, retryAfter: 3600 };
-  const rec = daily.get(ip);
-  if (rec && rec.day === day && rec.used >= IP_DAILY_CAP) {
-    return { limited: true, retryAfter: 60 };
-  }
-  if (!takeBurstToken(ip)) return { limited: true, retryAfter: 60 };
-  if (!rec || rec.day !== day) daily.set(ip, { day, used: 1 });
-  else rec.used++;
-  globalUsed++;
-  return { limited: false };
-}
 
 // ============ SSE 辅助 ============
 function sseFrame(obj) {
@@ -188,15 +139,6 @@ export default async (req, context) => {
 
   const ip = (context && context.ip) || req.headers.get("x-nf-client-connection-ip") || "unknown";
 
-  // 限流
-  const rl = checkRateLimit(ip);
-  if (rl.limited) {
-    return new Response(JSON.stringify({ error: "rate_limited", retryAfter: rl.retryAfter }), {
-      status: 429,
-      headers: { "Content-Type": "application/json", "Retry-After": String(rl.retryAfter) },
-    });
-  }
-
   // 读 body（20KB 上限）
   const { promise, tooLarge } = readBody(req, 20 * 1024);
   if (tooLarge) return new Response(JSON.stringify({ error: "payload_too_large" }), { status: 413, headers: { "Content-Type": "application/json" } });
@@ -207,6 +149,15 @@ export default async (req, context) => {
   try { parsed = JSON.parse(raw); } catch { return new Response(JSON.stringify({ error: "bad_request" }), { status: 400, headers: { "Content-Type": "application/json" } }); }
   const input = validateInput(parsed);
   if (input.error) return new Response(JSON.stringify({ error: input.error }), { status: 400, headers: { "Content-Type": "application/json" } });
+
+  const rl = await checkRateLimit(ip, { perIpCap: IP_DAILY_CAP, globalCap: GLOBAL_DAILY_CAP });
+  if (!rl.durable) console.warn('[chat] durable rate limiting is not configured');
+  if (rl.limited) {
+    return new Response(JSON.stringify({ error: "rate_limited", retryAfter: rl.retryAfter }), {
+      status: 429,
+      headers: { "Content-Type": "application/json", "Retry-After": String(rl.retryAfter) },
+    });
+  }
 
   const { messages, lang } = input;
 

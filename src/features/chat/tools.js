@@ -5,7 +5,8 @@
 import {
   getMatches, getTeams, getStandings, getBracket, getAwards,
   getGroups, getVenues, getPlayerNames,
-} from './store.js';
+} from '../../store.js';
+import { normalizeRound as normalizeSharedRound, normalizeTournamentDataset } from '../../shared/tournament-query/dataset.js';
 
 // ============ 数据（initChatTools 后填充） ============
 let MATCHES = [];
@@ -23,9 +24,9 @@ export async function initChatTools() {
       getMatches(), getTeams(), getStandings(), getBracket(),
       getAwards(), getGroups(), getVenues(), getPlayerNames(),
     ]);
-    MATCHES = Array.isArray(m) ? m : [];
-    TEAMS = t || {}; STANDINGS = s || {}; BRACKET = b || {}; AWARDS = a || {};
-    GROUPS = g || {}; VENUES = v || {}; PNAMES = p || {};
+    const data = normalizeTournamentDataset({ matches: m, teams: t, standings: s, bracket: b, awards: a, groups: g, venues: v, playerNames: p });
+    MATCHES = data.matches; TEAMS = data.teams; STANDINGS = data.standings; BRACKET = data.bracket;
+    AWARDS = data.awards; GROUPS = data.groups; VENUES = data.venues; PNAMES = data.playerNames;
     buildIndexes();
     return true;
   } catch (e) {
@@ -40,16 +41,7 @@ const ROUND_ALIAS = {
   third: 'third_place', third_place: 'third_place', final: 'final',
   quarterfinals: 'quarterfinal', semifinals: 'semifinal',
 };
-function normalizeRound(input) {
-  if (!input) return null;
-  const key = String(input).toLowerCase().trim();
-  if (ROUND_ALIAS[key]) return ROUND_ALIAS[key];
-  if (key.includes('round_of_32')) return 'round_of_32';
-  if (key.includes('round_of_16')) return 'round_of_16';
-  if (key.includes('quarter')) return 'quarterfinal';
-  if (key.includes('semi')) return 'semifinal';
-  return null;
-}
+const normalizeRound = normalizeSharedRound;
 
 // ============ 归一化工具（与 _data.mjs 一致） ============
 function parseMinute(s) {

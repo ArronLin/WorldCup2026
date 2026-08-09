@@ -93,7 +93,7 @@ export function flagSVG(code, size) {
     return `<div class="flag flag-${size}" style="background:var(--bg-elevated);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--text-secondary);border:1px solid var(--border-strong);border-radius:3px;">?</div>`;
   }
   // Use locally downloaded flag images from assets/flags/
-  return `<img class="flag flag-${size}" src="assets/flags/${code}.png" alt="${code}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><div class="flag flag-${size} flag-fallback" style="display:none;background:var(--bg-elevated);align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--text-secondary);border:1px solid var(--border-strong);border-radius:3px;">${code}</div>`;
+  return `<img class="flag flag-${size}" src="/assets/flags/${code}.png" alt="${code}" loading="lazy" /><div class="flag flag-${size} flag-fallback" style="display:none;background:var(--bg-elevated);align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--text-secondary);border:1px solid var(--border-strong);border-radius:3px;">${code}</div>`;
 }
 
 // Stage info

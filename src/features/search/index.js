@@ -1,7 +1,7 @@
 // ===== Global Search =====
-import { getTeams, getMatches, getPlayerNames } from './store.js';
-import { L, flagSVG, stageLabel } from './utils.js';
-import { t } from './i18n.js';
+import { getTeams, getMatches, getPlayerNames } from '../../store.js';
+import { L, flagSVG, stageLabel } from '../../utils.js';
+import { t } from '../../i18n.js';
 
 let data = null;
 let els = {};

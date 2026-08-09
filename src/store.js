@@ -1,20 +1,25 @@
 // ===== Data Store =====
 
-const cache = {};
-const DATA_VERSION = '8';
+const cache = new Map();
 
 async function loadJSON(name) {
-  if (cache[name]) return cache[name];
-  try {
-    const resp = await fetch(`data/${name}.json?v=${DATA_VERSION}`);
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    cache[name] = await resp.json();
-    return cache[name];
-  } catch (e) {
-    console.warn(`Failed to load data/${name}.json:`, e);
-    cache[name] = name === 'matches' ? [] : {};
-    return cache[name];
+  if (!cache.has(name)) {
+    const request = fetch(`/data/${name}.json`)
+      .then((resp) => {
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        return resp.json();
+      })
+      .catch((error) => {
+        console.warn(`Failed to load data/${name}.json:`, error);
+        return name === 'matches' ? [] : {};
+      });
+    cache.set(name, request);
   }
+  return cache.get(name);
+}
+
+export function clearDataCache() {
+  cache.clear();
 }
 
 export async function getTeams() {

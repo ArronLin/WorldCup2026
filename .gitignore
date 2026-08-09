@@ -15,7 +15,10 @@ desktop.ini
 
 # Node
 node_modules/
-package-lock.json
+dist/
+.vite/
+test-results/
+playwright-report/
 
 # Netlify local state
 .netlify/
