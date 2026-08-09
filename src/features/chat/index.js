@@ -4,9 +4,9 @@
 //  - ?mock：无 Key 纯 UI 调试（http://localhost:5120/?mock）
 //  - 本地 (localhost/127.0.0.1) + 已配置 Key：BYOK 直连所选服务商（前端工具循环 + SSE 流式）
 //  - 其他（Netlify 生产）：POST /.netlify/functions/chat（服务器 Key，固定 DeepSeek）
-import { t } from './i18n.js';
-import { isLocal, loadConfig, getProvider, hasUsableConfig, renderSettings } from './chat-settings.js?v=10';
-import { initChatTools, runTool, TOOL_SCHEMAS, buildSystemPrompt } from './chat-tools.js?v=10';
+import { t } from '../../i18n.js';
+import { isLocal, loadConfig, getProvider, hasUsableConfig, renderSettings } from './settings.js';
+import { initChatTools, runTool, TOOL_SCHEMAS, buildSystemPrompt } from './tools.js';
 
 const ENDPOINT = window.__CHAT_ENDPOINT || '/.netlify/functions/chat';
 const MOCK = new URLSearchParams(location.search).has('mock');
@@ -41,9 +41,6 @@ export async function initChat() {
   els.clear = document.getElementById('chatClear');
   els.settings = document.getElementById('chatSettings');
   if (!els.panel || !els.messages || !els.input || !els.form) return;
-
-  // 预加载前端工具数据（BYOK 直连模式需要）
-  toolsReady = await initChatTools();
 
   bindEvents();
   refreshChat();
@@ -281,6 +278,9 @@ async function directReply(aiEl, status) {
     busy = false; setSendState();
     return;
   }
+  // Only the localhost BYOK path needs the complete dataset and local tools.
+  // Defer that work until the user actually sends a local chat request.
+  if (!toolsReady) toolsReady = await initChatTools();
   if (!toolsReady) {
     removeThinking(aiEl);
   aiEl.wrap.classList.remove('is-streaming');

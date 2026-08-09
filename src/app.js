@@ -1,12 +1,8 @@
 // ===== App Entry Point =====
-import { initI18n, toggleLang, getLang, t } from './i18n.js';
+import { initI18n, toggleLang, t } from './i18n.js';
 import { initRouter, addRoute, navigate, handleRoute } from './router.js';
 import { getPlayerNames } from './store.js';
-import { initSearch, refreshSearch } from './search.js';
-import { initChat, refreshChat } from './chat.js?v=10';
-
-// Cache-busting version for dynamic imports
-const V = '?v=8';
+import { initSearch, refreshSearch } from './features/search/index.js';
 
 // Theme management
 function detectTheme() {
@@ -27,48 +23,47 @@ function toggleTheme() {
 
 // Register routes
 addRoute(/^\/?$/, async () => {
-  const { default: view } = await import('./views/home.js' + V);
+  const { default: view } = await import('./views/home.js');
   return view();
 });
 addRoute(/^\/schedule\/?$/, async () => {
-  const { default: view } = await import('./views/schedule.js' + V);
+  const { default: view } = await import('./views/schedule.js');
   return view();
 });
 addRoute(/^\/groups\/?$/, async () => {
-  const { default: view } = await import('./views/group-standings.js' + V);
+  const { default: view } = await import('./views/group-standings.js');
   return view();
 });
 addRoute(/^\/bracket\/?$/, async () => {
-  const { default: view } = await import('./views/bracket.js' + V);
+  const { default: view } = await import('./views/bracket.js');
   return view();
 });
 addRoute(/^\/teams\/?$/, async () => {
-  const { default: view } = await import('./views/teams.js' + V);
+  const { default: view } = await import('./views/teams.js');
   return view();
 });
 addRoute(/^\/awards\/?$/, async () => {
-  const { default: view } = await import('./views/awards.js' + V);
+  const { default: view } = await import('./views/awards.js');
   return view();
 });
 addRoute(/^\/match\/(\d+)\/?$/, async (id) => {
-  const { default: view } = await import('./views/match-detail.js' + V);
+  const { default: view } = await import('./views/match-detail.js');
   return view(id);
 });
 addRoute(/^\/team\/([A-Z]{3})\/?$/, async (code) => {
-  const { default: view } = await import('./views/team-detail.js' + V);
+  const { default: view } = await import('./views/team-detail.js');
   return view(code);
 });
 
 // Build navigation
 function buildNav() {
-  const lang = getLang();
   const items = [
-    { href: '#/', label: lang === 'zh' ? '首页' : 'Home' },
-    { href: '#/schedule', label: lang === 'zh' ? '赛程' : 'Schedule' },
-    { href: '#/groups', label: lang === 'zh' ? '积分榜' : 'Standings' },
-    { href: '#/bracket', label: lang === 'zh' ? '淘汰赛' : 'Bracket' },
-    { href: '#/teams', label: lang === 'zh' ? '球队' : 'Teams' },
-    { href: '#/awards', label: lang === 'zh' ? '奖项' : 'Awards' },
+    { href: '#/', label: t('nav.home') },
+    { href: '#/schedule', label: t('nav.schedule') },
+    { href: '#/groups', label: t('nav.groups') },
+    { href: '#/bracket', label: t('nav.bracket') },
+    { href: '#/teams', label: t('nav.teams') },
+    { href: '#/awards', label: t('nav.awards') },
   ];
   const nav = document.getElementById('navLinks');
   nav.innerHTML = items.map(i => `<a href="${i.href}" class="nav-link">${i.label}</a>`).join('');
@@ -76,20 +71,15 @@ function buildNav() {
 
 // Update language toggle button
 function updateLangToggle() {
-  const lang = getLang();
+  const lang = document.documentElement.lang;
   const btn = document.querySelector('.lang-current');
   if (btn) btn.textContent = lang === 'zh' ? 'EN' : '中文';
 }
 
 // Update footer
 function updateFooter() {
-  const lang = getLang();
   const ft = document.getElementById('footerText');
-  if (ft) {
-    ft.innerHTML = lang === 'zh'
-      ? '2026 FIFA 世界杯 · 数据来源：Wikipedia / football-data.org · 仅供学习参考'
-      : '2026 FIFA World Cup · Data: Wikipedia / football-data.org · For educational reference only';
-  }
+  if (ft) ft.textContent = t('footer.text');
 }
 
 // Handle language change — re-render everything
@@ -98,7 +88,7 @@ document.addEventListener('langchange', () => {
   updateLangToggle();
   updateFooter();
   refreshSearch();
-  refreshChat();
+  window.__refreshChat?.();
   // Re-render current view directly
   handleRoute();
 });
@@ -131,14 +121,17 @@ async function init() {
     toggleTheme();
   });
 
-  // Global search
-  await initSearch();
-
-  // AI chat assistant
-  await initChat();
-
   // Start router
   initRouter();
+
+  // These features must not delay first contentful render.
+  void initSearch();
+  import('./features/chat/index.js')
+    .then(({ initChat, refreshChat }) => {
+      window.__refreshChat = refreshChat;
+      return initChat();
+    })
+    .catch((error) => console.warn('Chat failed to initialize:', error));
 }
 
 init();

@@ -30,7 +30,7 @@ export default async function teamsView() {
       const conf = team.confederation || '';
       const rank = team.ranking != null ? `#${team.ranking}` : '';
       const sub = [conf, rank].filter(Boolean).join(' · ');
-      html += `<div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;cursor:pointer;background:var(--bg-elevated);transition:all 0.25s" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background='var(--bg-elevated)'" onclick="location.hash='#/team/${team.code}'">
+      html += `<div class="team-search-result" data-route="/team/${team.code}" role="link" tabindex="0" style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;cursor:pointer;background:var(--bg-elevated);transition:all 0.25s">
         ${flagSVG(team.code, 'sm')}
         <span style="font-weight:600;font-size:0.88rem">${L(team.name)}</span>
         ${sub ? `<span style="margin-left:auto;font-size:0.72rem;color:var(--text-muted)">${sub}</span>` : ''}

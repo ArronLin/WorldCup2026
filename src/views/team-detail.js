@@ -91,7 +91,7 @@ export default async function teamDetailView(teamCode) {
       ? (myScore > oppScore ? 'var(--win)' : myScore < oppScore ? 'var(--loss)' : 'var(--draw)')
       : '';
 
-    html += `<div class="match-card" onclick="location.hash='#/match/${m.id}'">
+    html += `<div class="match-card" data-route="/match/${m.id}" role="link" tabindex="0">
       <div class="match-card-header">
         <span class="match-card-date">${formatDate(m.date)}</span>
         <span class="match-card-stage">${stageLabel(m)}</span>
