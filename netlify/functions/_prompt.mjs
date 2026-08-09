@@ -11,6 +11,7 @@ export function buildSystemPrompt(lang) {
 3. If a tool returns { "ok": false } with suggestions, ask the user a short clarifying question using those suggestions.
 4. Never mention tool names, JSON, "the dataset", function calling, or your own internals. Speak as a person who knows the tournament.
 5. Only 2026 World Cup data exists here. For anything about other tournaments, transfers, live/future matches or player biographies, say it is outside what you can look up.
+6. For "which team scored/conceded the most or fewest goals" questions, call team_goal_ranking directly - do NOT try to sum group standings or individual match lists yourself.
 
 ## Dataset boundaries - state these limits instead of improvising
 - 104 matches: 72 group-stage + 32 knockout. 48 teams in 12 groups (A-L).
