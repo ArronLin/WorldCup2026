@@ -1,24 +1,26 @@
 // netlify/functions/_data.mjs
 // 共享数据层：一次性加载 data/*.json，集中处理所有已知数据陷阱，预构建索引。
 // 以 "_" 开头的文件不会被 Netlify 注册为独立函数。
-import matchesData   from "../../data/matches.json"   with { type: "json" };
-import teamsData     from "../../data/teams.json"     with { type: "json" };
-import standingsData from "../../data/standings.json" with { type: "json" };
-import bracketData   from "../../data/bracket.json"   with { type: "json" };
-import awardsData    from "../../data/awards.json"    with { type: "json" };
-import groupsData    from "../../data/groups.json"    with { type: "json" };
-import venuesData    from "../../data/venues.json"    with { type: "json" };
-import pnamesData    from "../../data/player-names.json" with { type: "json" };
+import matchesData   from "../../public/data/matches.json"   with { type: "json" };
+import teamsData     from "../../public/data/teams.json"     with { type: "json" };
+import standingsData from "../../public/data/standings.json" with { type: "json" };
+import bracketData   from "../../public/data/bracket.json"   with { type: "json" };
+import awardsData    from "../../public/data/awards.json"    with { type: "json" };
+import groupsData    from "../../public/data/groups.json"    with { type: "json" };
+import venuesData    from "../../public/data/venues.json"    with { type: "json" };
+import pnamesData    from "../../public/data/player-names.json" with { type: "json" };
+import { normalizeRound as normalizeSharedRound, normalizeTournamentDataset } from "../../src/shared/tournament-query/dataset.js";
 
 // ============ 基础数据导出 ============
-export const MATCHES = Array.isArray(matchesData) ? matchesData : [];
-export const TEAMS = teamsData && typeof teamsData === "object" ? teamsData : {};
-export const STANDINGS = standingsData && typeof standingsData === "object" ? standingsData : {};
-export const BRACKET = bracketData && typeof bracketData === "object" ? bracketData : {};
-export const AWARDS = awardsData && typeof awardsData === "object" ? awardsData : {};
-export const GROUPS = groupsData && typeof groupsData === "object" ? groupsData : {};
-export const VENUES = venuesData && typeof venuesData === "object" ? venuesData : {};
-export const PNAMES = pnamesData && typeof pnamesData === "object" ? pnamesData : {};
+const dataset = normalizeTournamentDataset({ matches: matchesData, teams: teamsData, standings: standingsData, bracket: bracketData, awards: awardsData, groups: groupsData, venues: venuesData, playerNames: pnamesData });
+export const MATCHES = dataset.matches;
+export const TEAMS = dataset.teams;
+export const STANDINGS = dataset.standings;
+export const BRACKET = dataset.bracket;
+export const AWARDS = dataset.awards;
+export const GROUPS = dataset.groups;
+export const VENUES = dataset.venues;
+export const PNAMES = dataset.playerNames;
 
 // ============ 轮次归一化 ============
 // matches.json 的 round 用单数 (quarterfinal/semifinal)，bracket.json 的键用复数 (quarterfinals/semifinals)。
@@ -37,17 +39,7 @@ const ROUND_ALIAS = {
   semifinals: "semifinal",
 };
 
-export function normalizeRound(input) {
-  if (!input) return null;
-  const key = String(input).toLowerCase().trim();
-  if (ROUND_ALIAS[key]) return ROUND_ALIAS[key];
-  // 兼容传完整英文
-  if (key.includes("round_of_32")) return "round_of_32";
-  if (key.includes("round_of_16")) return "round_of_16";
-  if (key.includes("quarter")) return "quarterfinal";
-  if (key.includes("semi")) return "semifinal";
-  return null;
-}
+export const normalizeRound = normalizeSharedRound;
 
 // bracket.json 轮次键 → matches 轮次名（处理单复数）
 const BRACKET_KEY_TO_ROUND = {

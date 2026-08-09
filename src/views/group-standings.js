@@ -40,7 +40,7 @@ export default async function standingsView() {
       const qualClass = (row.position === 1 || row.position === 2) ? 'qual-line' : 'elim-line';
       const gdVal = row.goalDifference ?? 0;
       const gd = gdVal > 0 ? `+${gdVal}` : gdVal;
-      html += `<tr class="${qualClass}" onclick="location.hash='#/team/${row.code}'" style="cursor:pointer">
+      html += `<tr class="${qualClass}" data-route="/team/${row.code}" style="cursor:pointer">
         <td>${pos}</td>
         <td><div class="team-cell">${flagSVG(row.code, 'sm')} ${L(row.name)}</div></td>
         <td>${row.played ?? 0}</td>

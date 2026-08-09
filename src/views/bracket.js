@@ -41,7 +41,7 @@ function renderMatch(bm, teams, isChampion, champPath) {
   const onPath = champPath.has(bm.id);
   const hasPen = !!bm.penaltyShootout;
 
-  let html = `<div class="bracket-match ${isChampion ? 'winner-glow' : ''} ${onPath ? 'champion-path' : ''}" onclick="location.hash='#/match/${bm.id}'">`;
+  let html = `<div class="bracket-match ${isChampion ? 'winner-glow' : ''} ${onPath ? 'champion-path' : ''}" data-route="/match/${bm.id}" role="link" tabindex="0">`;
   html += `<div class="bracket-team ${homeWon ? 'won' : (awayWon ? 'lost' : '')}">
     <span class="team-info">${flagSVG(bm.home, 'sm')}<span class="bracket-team-name">${homeName}</span></span>
     <span class="score">${bm.homeScore ?? '-'}</span>

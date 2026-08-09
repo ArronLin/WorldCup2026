@@ -2,6 +2,7 @@
 
 const routes = [];
 let currentView = null;
+let navigationId = 0;
 
 export function addRoute(pattern, handler) {
   routes.push({ pattern, handler });
@@ -22,6 +23,7 @@ function matchRoute(path) {
 }
 
 export async function handleRoute() {
+  const requestId = ++navigationId;
   const path = getHash();
   const matched = matchRoute(path);
 
@@ -50,6 +52,9 @@ export async function handleRoute() {
     console.error('Route error:', e);
     currentView = `<div class="loading"><p>Error: ${e.message}</p></div>`;
   }
+
+  // A slower, older route must never replace the currently requested page.
+  if (requestId !== navigationId) return;
 
   app.innerHTML = currentView;
   app.classList.add('app-container');
@@ -91,5 +96,27 @@ export function navigate(path) {
 
 export function initRouter() {
   window.addEventListener('hashchange', handleRoute);
+  document.addEventListener('click', (event) => {
+    const routeTarget = event.target.closest('[data-route]');
+    if (!routeTarget) return;
+    const path = routeTarget.dataset.route;
+    if (!path) return;
+    event.preventDefault();
+    navigate(path);
+  });
+  document.addEventListener('error', (event) => {
+    const image = event.target;
+    if (!image.matches?.('img.flag')) return;
+    image.style.display = 'none';
+    const fallback = image.nextElementSibling;
+    if (fallback?.classList.contains('flag-fallback')) fallback.style.display = 'flex';
+  }, true);
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    const routeTarget = event.target.closest?.('[data-route][role="link"]');
+    if (!routeTarget) return;
+    event.preventDefault();
+    navigate(routeTarget.dataset.route);
+  });
   handleRoute();
 }

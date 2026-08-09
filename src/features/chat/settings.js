@@ -2,7 +2,7 @@
 // 用户自带 Key 配置：7 家国内主流 OpenAI 兼容服务商。
 // 仅本地模式（localhost/127.0.0.1）允许填写 Key，存 localStorage。
 // Netlify 生产模式固定走 Functions（服务器 Key），不提供设置入口。
-import { t } from './i18n.js';
+import { t } from '../../i18n.js';
 
 const STORE_KEY = 'wc2026-chat-config';
 

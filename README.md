@@ -15,7 +15,7 @@
 
 ## 技术栈
 
-- 纯 HTML / CSS / JavaScript（无框架、无构建步骤）
+- 原生 HTML / CSS / JavaScript，使用 Vite 进行生产构建与资源哈希
 - ES Modules 模块化架构
 - Hash 路由实现单页应用
 - CSS 变量驱动的设计系统
@@ -65,17 +65,22 @@ WorldCup2026/
 
 由于使用了 ES Modules 和 fetch 加载 JSON 数据，需要通过 HTTP 服务器运行（不能直接用 `file://` 打开）。
 
-**Python:**
 ```bash
-python -m http.server 5120
+npm install
+npm run dev
 ```
 
-**Node.js:**
+发布前会自动运行数据契约校验；也可单独执行：
+
 ```bash
-npx serve -l 5120
+npm run validate:data
+npm test
+npm run build
 ```
 
-然后打开浏览器访问 `http://localhost:5120`。
+线上 AI 聊天使用 `DEEPSEEK_API_KEY`。为启用跨函数实例生效的限流，请在 Netlify 设置 `UPSTASH_REDIS_REST_URL` 和 `UPSTASH_REDIS_REST_TOKEN`；未配置时服务保持可用，但会输出不含用户内容的运维告警。
+
+启动后访问终端显示的本地地址；使用 Netlify CLI 时可运行 `netlify dev` 以同时调试 Functions。
 
 ## 数据来源
 
