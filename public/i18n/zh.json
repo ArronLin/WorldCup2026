@@ -158,5 +158,21 @@
   "chat.modeMock": "Mock 模式 · 仅界面演示",
   "chat.modeLocal": "本地直连",
   "chat.modeLocalUnset": "本地模式 · 点击 ⚙️ 配置模型",
-  "chat.modeServer": "线上模式 · 服务端提供"
+  "chat.modeServer": "线上模式 · 服务端提供",
+  "chat.voiceSettings": "语音",
+  "chat.voiceIn": "语音输入（麦克风）",
+  "chat.voiceOut": "语音播报回复",
+  "chat.ttsVoice": "播报音色",
+  "chat.ttsVoiceDefault": "默认",
+  "chat.ttsRate": "播报语速",
+  "chat.voiceSave": "保存语音设置",
+  "chat.voiceSaved": "语音设置已保存 ✅",
+  "chat.voiceSttUnsupported": "当前浏览器不支持语音输入，请使用 Chrome / Edge。",
+  "chat.voiceTtsUnsupported": "当前浏览器不支持语音播报，无法使用此功能。",
+  "chat.micOn": "聆听中…点击停止",
+  "chat.micOff": "语音输入",
+  "chat.copy": "复制",
+  "chat.copied": "已复制 ✅",
+  "chat.ttsStop": "停止朗读",
+  "chat.ttsReplay": "重新朗读"
 }

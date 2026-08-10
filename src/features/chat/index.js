@@ -7,6 +7,7 @@
 import { t } from '../../i18n.js';
 import { isLocal, loadConfig, getProvider, hasUsableConfig, renderSettings } from './settings.js';
 import { initChatTools, runTool, TOOL_SCHEMAS, buildSystemPrompt } from './tools.js';
+import { createSTT, createTTS, sttSupported } from './voice.js';
 
 const ENDPOINT = window.__CHAT_ENDPOINT || '/.netlify/functions/chat';
 const MOCK = new URLSearchParams(location.search).has('mock');
@@ -18,6 +19,9 @@ let busy = false;
 let controller = null;
 let greeted = false;
 let toolsReady = false;
+let tts = createTTS();
+let stt = null;          // 当前语音识别实例
+let recognizing = false; // 麦克风是否正在聆听
 
 // 全局调试钩子：把未捕获错误打到控制台，方便用户 F12 反馈
 if (typeof window !== 'undefined') {
@@ -40,6 +44,7 @@ export async function initChat() {
   els.send = document.getElementById('chatSend');
   els.clear = document.getElementById('chatClear');
   els.settings = document.getElementById('chatSettings');
+  els.mic = document.getElementById('chatMic');
   if (!els.panel || !els.messages || !els.input || !els.form) return;
 
   bindEvents();
@@ -53,12 +58,12 @@ export function refreshChat() {
   if (els.title) els.title.textContent = t('chat.title');
   if (els.subtitle) els.subtitle.textContent = t('chat.subtitle');
   if (els.input) els.input.placeholder = t('chat.placeholder');
-  if (els.send) els.send.setAttribute('aria-label', t('chat.send'));
+  if (els.send) { els.send.setAttribute('aria-label', t('chat.send')); if (!busy) els.send.textContent = t('chat.send'); }
   if (els.close) els.close.setAttribute('aria-label', t('chat.close'));
   if (els.toggle) { els.toggle.setAttribute('aria-label', t('chat.open')); els.toggle.title = t('chat.open'); }
   if (els.fab) { els.fab.setAttribute('aria-label', t('chat.open')); els.fab.title = t('chat.open'); }
   if (els.clear) els.clear.textContent = t('chat.clear');
-  if (els.settingsBtn) { els.settingsBtn.setAttribute('aria-label', t('chat.settingsTitle')); els.settingsBtn.title = t('chat.settingsTitle'); els.settingsBtn.style.display = isLocal() ? '' : 'none'; }
+  if (els.settingsBtn) { els.settingsBtn.setAttribute('aria-label', t('chat.settingsTitle')); els.settingsBtn.title = t('chat.settingsTitle'); els.settingsBtn.style.display = ''; }
   renderChips();
   if (greeted && els.messages) {
     const g = els.messages.querySelector('.chat-greeting');
@@ -125,6 +130,7 @@ function closePanel(reason = 'manual') {
   els.panel.classList.remove('open');
   els.panel.setAttribute('aria-hidden', 'true');
   if (settingsOpen()) closeSettings();
+  if (tts) tts.cancel();
   if (controller) { controller.abort(); controller = null; busy = false; setSendState(); }
 }
 
@@ -183,6 +189,7 @@ function renderModeBanner() {
 // ---------- 发送 ----------
 function send(text) {
   if (busy) return;
+  tts.cancel(); // 打断任何正在播放的语音播报
   const msg = (text || '').trim();
   if (!msg) return;
 
@@ -252,6 +259,8 @@ async function functionsReply(aiEl, status) {
     removeThinking(aiEl);
   aiEl.wrap.classList.remove('is-streaming');
     if (!acc) throw new ChatError('net');
+    maybeSpeak(acc);
+    attachReplyActions(aiEl, acc);
     history.push({ role: 'assistant', content: acc });
   } catch (e) {
     removeThinking(aiEl);
@@ -424,6 +433,8 @@ async function directReply(aiEl, status) {
     removeThinking(aiEl);
   aiEl.wrap.classList.remove('is-streaming');
     if (!acc.trim()) throw new ChatError('net');
+    maybeSpeak(acc);
+    attachReplyActions(aiEl, acc);
     history.push({ role: 'assistant', content: acc });
   } catch (e) {
     console.warn('[chat] directReply catch', e && e.name, e && e.code, e && e.message);
@@ -460,6 +471,8 @@ async function mockReply(aiEl, status, msg) {
     aiEl.inner.innerHTML = renderMd(acc);
     els.messages.scrollTop = els.messages.scrollHeight;
   }
+  maybeSpeak(demo);
+  attachReplyActions(aiEl, demo);
   history.push({ role: 'assistant', content: demo });
   aiEl.wrap.classList.remove('is-streaming');
   busy = false;
@@ -550,6 +563,10 @@ function bindEvents() {
     const btn = e.target.closest('.chat-chip');
     if (btn) send(btn.dataset.q);
   });
+  if (els.mic) {
+    if (!sttSupported()) els.mic.style.display = 'none';
+    else els.mic.addEventListener('click', onMicClick);
+  }
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && els.panel && els.panel.classList.contains('open')) {
@@ -569,4 +586,91 @@ function bindEvents() {
       closePanel('outside-click');
     }
   });
+}
+
+// ---------- 语音 ----------
+// TTS：回复完整文本落盘时，若用户开启了语音播报则朗读
+function maybeSpeak(text) {
+  const cfg = loadConfig() || {};
+  if (!cfg.voiceOut) return;
+  tts.speak(text, { voice: cfg.ttsVoice || null, rate: cfg.ttsRate || 1 });
+}
+
+// 给 AI 回复气泡附加操作条：复制全部 / 停止朗读 / 重新朗读
+function attachReplyActions(aiEl, mdText) {
+  if (!aiEl || !aiEl.wrap) return;
+  const plain = (aiEl.inner && aiEl.inner.textContent) || mdText || '';
+  const cfg = loadConfig() || {};
+
+  const bar = document.createElement('div');
+  bar.className = 'chat-reply-actions';
+
+  // 复制全部回复（优先 clipboard API，非安全上下文回退 execCommand）
+  const copyBtn = document.createElement('button');
+  copyBtn.type = 'button';
+  copyBtn.className = 'chat-reply-action';
+  copyBtn.textContent = t('chat.copy');
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(plain);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = plain;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch { /* ignore */ }
+      document.body.removeChild(ta);
+    }
+    copyBtn.textContent = t('chat.copied');
+    setTimeout(() => { copyBtn.textContent = t('chat.copy'); }, 1500);
+  });
+  bar.appendChild(copyBtn);
+
+  // 仅当开启了语音播报时才提供停止 / 重播
+  if (cfg.voiceOut) {
+    const stopBtn = document.createElement('button');
+    stopBtn.type = 'button';
+    stopBtn.className = 'chat-reply-action';
+    stopBtn.textContent = t('chat.ttsStop');
+    stopBtn.addEventListener('click', () => { tts.cancel(); });
+    bar.appendChild(stopBtn);
+
+    const replayBtn = document.createElement('button');
+    replayBtn.type = 'button';
+    replayBtn.className = 'chat-reply-action';
+    replayBtn.textContent = t('chat.ttsReplay');
+    replayBtn.addEventListener('click', () => {
+      tts.speak(mdText, { voice: cfg.ttsVoice || null, rate: cfg.ttsRate || 1 });
+    });
+    bar.appendChild(replayBtn);
+  }
+
+  aiEl.wrap.appendChild(bar);
+}
+
+// 麦克风点击：正在朗读则先停止；否则开始/停止语音识别
+function onMicClick() {
+  if (tts.speaking()) { tts.cancel(); return; }
+  if (recognizing) { if (stt) stt.stop(); return; }
+  stt = createSTT({
+    lang: window.__lang || 'zh',
+    onInterim: (txt) => { if (els.input) els.input.value = txt; },
+    onFinal: (txt) => { if (els.input) els.input.value = txt; send(txt); },
+    onState: (s) => {
+      recognizing = s;
+      if (els.mic) {
+        els.mic.classList.toggle('recording', s);
+        els.mic.setAttribute('aria-pressed', s ? 'true' : 'false');
+        els.mic.title = s ? t('chat.micOn') : t('chat.micOff');
+      }
+    },
+    onError: (e) => {
+      recognizing = false;
+      if (els.mic) { els.mic.classList.remove('recording'); els.mic.setAttribute('aria-pressed', 'false'); }
+      console.warn('[chat] STT error', e && (e.error || e.message || e));
+    },
+  });
+  stt.start();
 }

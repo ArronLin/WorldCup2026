@@ -2,7 +2,9 @@
 // 用户自带 Key 配置：7 家国内主流 OpenAI 兼容服务商。
 // 仅本地模式（localhost/127.0.0.1）允许填写 Key，存 localStorage。
 // Netlify 生产模式固定走 Functions（服务器 Key），不提供设置入口。
+// 语音设置是跨模式能力（本地/线上都可用），故放在 isLocal() 守卫之外。
 import { t } from '../../i18n.js';
+import { ttsSupported, sttSupported, getVoices, onVoicesChanged } from './voice.js';
 
 const STORE_KEY = 'wc2026-chat-config';
 
@@ -87,6 +89,10 @@ export function loadConfig() {
       provider: p.id,
       apiKey: typeof c.apiKey === 'string' ? c.apiKey : '',
       model: p.models.includes(c.model) ? c.model : p.defaultModel,
+      voiceOut: !!c.voiceOut,
+      voiceIn: !!c.voiceIn,
+      ttsVoice: typeof c.ttsVoice === 'string' ? c.ttsVoice : '',
+      ttsRate: (typeof c.ttsRate === 'number') ? c.ttsRate : 1,
     };
   } catch (e) {
     return null;
@@ -122,6 +128,42 @@ export function renderSettings(container, { onChange, onBack } = {}) {
   const wrap = document.createElement('div');
   wrap.className = 'chat-settings';
 
+  // 所有配置控件的引用（语音 + Key），供统一的 gatherConfig 使用
+  let sel = null;
+  let modelSel = null;
+  let keyInput = null;
+  let inChk = null;
+  let outChk = null;
+  let voiceSel = null;
+  let rateInput = null;
+
+  // 从当前面板读取完整配置（无论点哪个保存按钮都生效）
+  function gatherConfig() {
+    const voiceCfg = {
+      voiceOut: outChk ? outChk.checked : false,
+      voiceIn: inChk ? inChk.checked : false,
+      ttsVoice: voiceSel ? voiceSel.value : '',
+      ttsRate: (rateInput && parseFloat(rateInput.value)) || 1,
+    };
+    if (isLocal() && sel && keyInput && modelSel) {
+      const p = getProvider(sel.value);
+      return {
+        provider: p.id,
+        apiKey: keyInput.value.trim(),
+        model: modelSel.value,
+        ...voiceCfg,
+      };
+    }
+    // 线上模式：保留已有的 provider/apiKey/model（即使线上不用，也避免误清空）
+    const prev = loadConfig() || {};
+    return {
+      provider: prev.provider || 'deepseek',
+      apiKey: prev.apiKey || '',
+      model: prev.model || '',
+      ...voiceCfg,
+    };
+  }
+
   const titleRow = document.createElement('div');
   titleRow.className = 'chat-settings-title-row';
   const backBtn = document.createElement('button');
@@ -140,12 +182,135 @@ export function renderSettings(container, { onChange, onBack } = {}) {
   titleRow.appendChild(title);
   wrap.appendChild(titleRow);
 
+  // ---- 语音设置（本地与线上均可见）----
+  const cfgNow = loadConfig() || {};
+  const vTitle = document.createElement('div');
+  vTitle.className = 'chat-settings-subtitle';
+  vTitle.textContent = t('chat.voiceSettings');
+  wrap.appendChild(vTitle);
+
+  // 语音输入开关
+  const inLabel = document.createElement('label');
+  inLabel.className = 'chat-settings-check';
+  inChk = document.createElement('input');
+  inChk.type = 'checkbox';
+  inChk.checked = !!cfgNow.voiceIn;
+  if (!sttSupported()) inChk.disabled = true;
+  const inSpan = document.createElement('span');
+  inSpan.textContent = t('chat.voiceIn');
+  inLabel.appendChild(inChk);
+  inLabel.appendChild(inSpan);
+  wrap.appendChild(inLabel);
+  if (!sttSupported()) {
+    const hint = document.createElement('div');
+    hint.className = 'chat-settings-warn';
+    hint.textContent = t('chat.voiceSttUnsupported');
+    wrap.appendChild(hint);
+  }
+
+  // 语音播报开关
+  const outLabel = document.createElement('label');
+  outLabel.className = 'chat-settings-check';
+  outChk = document.createElement('input');
+  outChk.type = 'checkbox';
+  outChk.checked = !!cfgNow.voiceOut;
+  if (!ttsSupported()) outChk.disabled = true;
+  const outSpan = document.createElement('span');
+  outSpan.textContent = t('chat.voiceOut');
+  outLabel.appendChild(outChk);
+  outLabel.appendChild(outSpan);
+  wrap.appendChild(outLabel);
+
+  // 音色选择
+  const voiceLabel = document.createElement('label');
+  voiceLabel.className = 'chat-settings-label';
+  voiceLabel.textContent = t('chat.ttsVoice');
+  voiceSel = document.createElement('select');
+  voiceSel.className = 'chat-settings-input';
+  const fillVoices = () => {
+    voiceSel.innerHTML = '';
+    const noneOpt = document.createElement('option');
+    noneOpt.value = '';
+    noneOpt.textContent = t('chat.ttsVoiceDefault');
+    voiceSel.appendChild(noneOpt);
+    const voices = getVoices();
+    const tag = window.__lang || 'zh';
+    const baseLang = (l) => (l || '').replace(/-/g, '').slice(0, 2).toLowerCase();
+    const matchLang = (v) => baseLang(v.lang) === baseLang(tag);
+    let matched = false;
+    voices.forEach((v) => {
+      const o = document.createElement('option');
+      o.value = v.name;
+      o.textContent = `${v.name} (${v.lang})`;
+      // 仅当已存音色与全站语言一致时保持选中，否则交给下面的默认同语言音色
+      if (v.name === cfgNow.ttsVoice && matchLang(v)) { o.selected = true; matched = true; }
+      voiceSel.appendChild(o);
+    });
+    // 已存音色为空或与全站语言不一致时，默认选中一个同语言音色，使下拉与全站语言一致
+    if (!matched) {
+      const first = voices.find(matchLang);
+      if (first) voiceSel.value = first.name;
+    }
+  };
+  fillVoices();
+  onVoicesChanged(fillVoices);
+  voiceLabel.appendChild(voiceSel);
+  wrap.appendChild(voiceLabel);
+
+  // 语速
+  const curRate = (typeof cfgNow.ttsRate === 'number') ? cfgNow.ttsRate : 1;
+  const rateLabel = document.createElement('label');
+  rateLabel.className = 'chat-settings-label';
+  rateLabel.textContent = `${t('chat.ttsRate')} (${curRate.toFixed(1)}x)`;
+  rateInput = document.createElement('input');
+  rateInput.type = 'range';
+  rateInput.min = '0.5';
+  rateInput.max = '2';
+  rateInput.step = '0.1';
+  rateInput.value = String(curRate);
+  rateInput.className = 'chat-settings-range';
+  rateInput.addEventListener('input', () => {
+    rateLabel.textContent = `${t('chat.ttsRate')} (${parseFloat(rateInput.value).toFixed(1)}x)`;
+  });
+  rateLabel.appendChild(rateInput);
+  wrap.appendChild(rateLabel);
+
+  // 保存语音设置
+  const vBtnRow = document.createElement('div');
+  vBtnRow.className = 'chat-settings-actions';
+  const vSave = document.createElement('button');
+  vSave.type = 'button';
+  vSave.className = 'chat-settings-btn primary';
+  vSave.textContent = t('chat.voiceSave');
+  vBtnRow.appendChild(vSave);
+  wrap.appendChild(vBtnRow);
+  const vStatus = document.createElement('div');
+  vStatus.className = 'chat-settings-status';
+  wrap.appendChild(vStatus);
+  if (!ttsSupported()) {
+    const hint2 = document.createElement('div');
+    hint2.className = 'chat-settings-warn';
+    hint2.textContent = t('chat.voiceTtsUnsupported');
+    wrap.appendChild(hint2);
+  }
+  vSave.addEventListener('click', () => {
+    const merged = gatherConfig();
+    if (saveConfig(merged)) {
+      vStatus.textContent = t('chat.voiceSaved');
+      vStatus.className = 'chat-settings-status ok';
+      if (onChange) onChange();
+    } else {
+      vStatus.textContent = t('chat.settingsSaveFail');
+      vStatus.className = 'chat-settings-status error';
+    }
+  });
+
   // 仅本地模式显示 Key 表单
   if (isLocal()) {
     const label = document.createElement('label');
     label.className = 'chat-settings-label';
     label.textContent = t('chat.settingsProvider');
-    const sel = document.createElement('select');
+    sel = document.createElement('select');
     sel.className = 'chat-settings-input';
     PROVIDERS.forEach((p) => {
       const opt = document.createElement('option');
@@ -160,7 +325,7 @@ export function renderSettings(container, { onChange, onBack } = {}) {
     const modelLabel = document.createElement('label');
     modelLabel.className = 'chat-settings-label';
     modelLabel.textContent = t('chat.settingsModel');
-    const modelSel = document.createElement('select');
+    modelSel = document.createElement('select');
     modelSel.className = 'chat-settings-input';
     current.models.forEach((m) => {
       const opt = document.createElement('option');
@@ -175,7 +340,7 @@ export function renderSettings(container, { onChange, onBack } = {}) {
     const keyLabel = document.createElement('label');
     keyLabel.className = 'chat-settings-label';
     keyLabel.textContent = t('chat.settingsApiKey');
-    const keyInput = document.createElement('input');
+    keyInput = document.createElement('input');
     keyInput.type = 'password';
     keyInput.className = 'chat-settings-input';
     keyInput.placeholder = 'sk-...';
@@ -234,8 +399,7 @@ export function renderSettings(container, { onChange, onBack } = {}) {
     });
 
     saveBtn.addEventListener('click', () => {
-      const p = getProvider(sel.value);
-      const cfg2 = { provider: p.id, apiKey: keyInput.value.trim(), model: modelSel.value };
+      const cfg2 = gatherConfig();
       if (saveConfig(cfg2)) {
         status.textContent = t('chat.settingsSaved');
         status.className = 'chat-settings-status ok';

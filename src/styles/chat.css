@@ -562,6 +562,38 @@
   .chat-bubble.ai.is-streaming .chat-bubble-inner::after { animation: none; }
 }
 
+/* AI 回复操作条：复制 / 停止朗读 / 重新朗读 */
+.chat-reply-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+  opacity: .55;
+  transition: opacity .15s ease;
+}
+.chat-bubble.ai:hover .chat-reply-actions { opacity: 1; }
+.chat-reply-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  font-size: .72rem;
+  line-height: 1.4;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.chat-reply-action:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
 /* 响应式 */
 @media (min-width: 861px) {
   .chat-fab { display: none; }
@@ -576,4 +608,63 @@
     width: auto;
     height: min(560px, calc(100vh - 16px));
   }
+}
+
+/* ===== 语音控件 ===== */
+/* 麦克风按钮 */
+.chat-mic {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition),
+    background var(--transition), transform var(--transition-bounce), box-shadow var(--transition);
+}
+.chat-mic:hover { border-color: var(--accent); color: var(--text-primary); }
+.chat-mic:active { transform: scale(.94); }
+.chat-mic.recording {
+  border-color: var(--card-red);
+  color: #fff;
+  background: var(--card-red);
+  animation: chat-mic-pulse 1.4s ease-out infinite;
+}
+@keyframes chat-mic-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--card-red) 55%, transparent); }
+  100% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--card-red) 0%, transparent); }
+}
+
+/* 语音设置区 */
+.chat-settings-subtitle {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.chat-settings-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .78rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.chat-settings-check input {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.chat-settings-range {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
 }

@@ -158,5 +158,21 @@
   "chat.modeMock": "Mock mode · UI demo only",
   "chat.modeLocal": "Local direct",
   "chat.modeLocalUnset": "Local mode · configure via ⚙️",
-  "chat.modeServer": "Online mode · served by backend"
+  "chat.modeServer": "Online mode · served by backend",
+  "chat.voiceSettings": "Voice",
+  "chat.voiceIn": "Voice input (microphone)",
+  "chat.voiceOut": "Speak replies aloud",
+  "chat.ttsVoice": "Voice",
+  "chat.ttsVoiceDefault": "Default",
+  "chat.ttsRate": "Speech rate",
+  "chat.voiceSave": "Save voice settings",
+  "chat.voiceSaved": "Voice settings saved ✅",
+  "chat.voiceSttUnsupported": "Voice input is not supported in this browser. Use Chrome / Edge.",
+  "chat.voiceTtsUnsupported": "Speech synthesis is not supported in this browser.",
+  "chat.micOn": "Listening… click to stop",
+  "chat.micOff": "Voice input",
+  "chat.copy": "Copy",
+  "chat.copied": "Copied ✅",
+  "chat.ttsStop": "Stop reading",
+  "chat.ttsReplay": "Replay"
 }
