@@ -1,5 +1,5 @@
 // ===== Chat Tools (browser) =====
-// 19 个 AI 工具的前端实现：与 netlify/functions/_tools.mjs 逻辑一致，
+// 20 个 AI 工具的前端实现：与 netlify/functions/_tools.mjs 逻辑一致（⚠️ 新增/删除工具须同步两处），
 // 数据源改为 store.js（浏览器 fetch data/*.json）。
 // 由 initChatTools() 预加载全部数据到内存（~205KB），随后工具同步执行。
 import {
@@ -570,6 +570,49 @@ function tCompareGroups(args) {
   return ok({ groups: out });
 }
 
+// 20. team_goal_ranking —— 球队进球/失球榜（全赛事或按阶段）
+function tTeamGoalRanking(args) {
+  const scope = args.scope; // all | group | knockout
+  const pool = scope === "group" ? MATCHES.filter((m) => m.stage === "group")
+            : scope === "knockout" ? MATCHES.filter((m) => m.stage === "knockout")
+            : MATCHES;
+  const gf = new Map(), ga = new Map(), played = new Map(), zh = new Map();
+  for (const m of pool) {
+    const h = m.home.code, a = m.away.code;
+    gf.set(h, (gf.get(h) || 0) + m.homeScore);
+    ga.set(h, (ga.get(h) || 0) + m.awayScore);
+    gf.set(a, (gf.get(a) || 0) + m.awayScore);
+    ga.set(a, (ga.get(a) || 0) + m.homeScore);
+    played.set(h, (played.get(h) || 0) + 1);
+    played.set(a, (played.get(a) || 0) + 1);
+    if (m.home.nameZh) zh.set(h, m.home.nameZh);
+    if (m.away.nameZh) zh.set(a, m.away.nameZh);
+  }
+  const rows = Object.keys(TEAMS).map((code) => {
+    const t = TEAMS[code];
+    const enName = (t.name && t.name.en) ? t.name.en : t.name;
+    const zhName = (t.name && t.name.zh) ? t.name.zh : (zh.get(code) || enName);
+    return {
+      code,
+      name: enName,
+      nameZh: zhName,
+      gf: gf.get(code) || 0,
+      ga: ga.get(code) || 0,
+      played: played.get(code) || 0,
+    };
+  });
+  const limit = Math.min(Number(args.limit || 10), 48);
+  const byFor = rows.slice().sort((x, y) => (y.gf - x.gf) || (x.ga - y.ga) || x.code.localeCompare(y.code));
+  const byAgainst = rows.slice().sort((x, y) => (y.ga - x.ga) || (x.gf - y.gf) || x.code.localeCompare(y.code));
+  return ok({
+    scope: scope || "all",
+    topFor: byFor.slice(0, limit),
+    topAgainst: byAgainst.slice(0, limit),
+    mostFor: byFor[0] ? { code: byFor[0].code, name: byFor[0].name, nameZh: byFor[0].nameZh, gf: byFor[0].gf } : null,
+    mostAgainst: byAgainst[0] ? { code: byAgainst[0].code, name: byAgainst[0].name, nameZh: byAgainst[0].nameZh, ga: byAgainst[0].ga } : null,
+  });
+}
+
 // ============ 注册表 ============
 const TOOLS = {
   get_match: tGetMatch, list_matches: tListMatches, get_standings: tGetStandings,
@@ -579,7 +622,7 @@ const TOOLS = {
   highest_scoring_matches: tHighestScoringMatches, compare_scorers: tCompareScorers,
   card_rankings_by_player: tCardRankingsByPlayer, card_rankings_by_team: tCardRankingsByTeam,
   cards_in_match: tCardsInMatch, head_to_head: tHeadToHead,
-  team_knockout_record: tTeamKnockoutRecord, compare_groups: tCompareGroups,
+  team_knockout_record: tTeamKnockoutRecord, compare_groups: tCompareGroups, team_goal_ranking: tTeamGoalRanking,
 };
 
 export function runTool(name, args) {
@@ -593,26 +636,149 @@ export function runTool(name, args) {
 }
 
 // ============ TOOL_SCHEMAS（OpenAI 兼容，与 _tools.mjs 一致） ============
+const teamProp = (desc, required = false) => ({ type: "string", description: desc, ...(required ? {} : {}) });
+
 export const TOOL_SCHEMAS = [
-  { type: 'function', function: { name: 'get_match', description: 'Get one match with full detail: score, all goals (scorer, minute, penalty/own-goal flags), all cards, stadium, referee, attendance, extra time and penalty shootout. Use when the user asks about a specific game.', parameters: { type: 'object', properties: { match_id: { type: 'integer', description: 'Match id 1-104' }, team_a: { type: 'string' }, team_b: { type: 'string' }, date: { type: 'string' } }, required: [] } } },
-  { type: 'function', function: { name: 'list_matches', description: 'List matches filtered by team, group, stage or knockout round. Returns compact summaries (no goal/card detail). Use get_match for detail.', parameters: { type: 'object', properties: { team: { type: 'string' }, group: { type: 'string', enum: ['A','B','C','D','E','F','G','H','I','J','K','L'] }, stage: { type: 'string', enum: ['group','knockout'] }, round: { type: 'string', enum: ['r32','r16','qf','sf','third_place','final'] }, date_from: { type: 'string' }, date_to: { type: 'string' }, limit: { type: 'integer', default: 20, maximum: 104 } }, required: [] } } },
-  { type: 'function', function: { name: 'get_standings', description: 'Group stage standings table (P W D L GF GA GD Pts, position) for one group or all 12 groups A-L.', parameters: { type: 'object', properties: { group: { type: 'string', enum: ['A','B','C','D','E','F','G','H','I','J','K','L'] } }, required: [] } } },
-  { type: 'function', function: { name: 'get_bracket', description: 'Knockout bracket. Returns the pairings, scores and winners for one round or the whole bracket.', parameters: { type: 'object', properties: { round: { type: 'string', enum: ['r32','r16','qf','sf','third_place','final'] } }, required: [] } } },
-  { type: 'function', function: { name: 'get_awards', description: 'Final standings (champion, runner-up, third, fourth) and individual awards: Golden Ball, Golden Boot, Golden Glove, Best Young Player, Fair Play, plus overall tournament stats.', parameters: { type: 'object', properties: {}, required: [] } } },
-  { type: 'function', function: { name: 'get_team_info', description: 'Profile of one team: FIFA ranking, confederation, group, group-stage record, and its full path through the tournament.', parameters: { type: 'object', properties: { team: { type: 'string' } }, required: ['team'] } } },
-  { type: 'function', function: { name: 'get_venue_info', description: 'Stadium information (name, city, country, capacity). Omit name to list all 16 venues.', parameters: { type: 'object', properties: { name: { type: 'string' } }, required: [] } } },
-  { type: 'function', function: { name: 'get_top_scorers', description: 'Top goalscorers ranking computed from every match. Own goals are excluded. Optionally restrict to one team.', parameters: { type: 'object', properties: { limit: { type: 'integer', default: 10, maximum: 50 }, team: { type: 'string' } }, required: [] } } },
-  { type: 'function', function: { name: 'get_top_assists', description: 'Top assists ranking. Only the official top 10 is available in the dataset.', parameters: { type: 'object', properties: { limit: { type: 'integer', default: 10, maximum: 10 } }, required: [] } } },
-  { type: 'function', function: { name: 'tournament_goal_stats', description: 'Aggregate scoring stats: total goals, goals per match, penalties, own goals, clean sheets, draws, biggest margin, and goals bucketed by 15-minute periods. Scope can be the whole tournament, the group stage, the knockout stage, one group or one round.', parameters: { type: 'object', properties: { scope: { type: 'string', enum: ['all','group','knockout'], default: 'all' }, group: { type: 'string', enum: ['A','B','C','D','E','F','G','H','I','J','K','L'] }, round: { type: 'string', enum: ['r32','r16','qf','sf','third_place','final'] } }, required: [] } } },
-  { type: 'function', function: { name: 'biggest_wins', description: 'Matches ranked by winning margin (largest first). Draws excluded.', parameters: { type: 'object', properties: { limit: { type: 'integer', default: 5, maximum: 20 }, scope: { type: 'string', enum: ['all','group','knockout'], default: 'all' } }, required: [] } } },
-  { type: 'function', function: { name: 'highest_scoring_matches', description: 'Matches ranked by total goals in the game (highest first).', parameters: { type: 'object', properties: { limit: { type: 'integer', default: 5, maximum: 20 }, scope: { type: 'string', enum: ['all','group','knockout'], default: 'all' } }, required: [] } } },
-  { type: 'function', function: { name: 'compare_scorers', description: "Side-by-side comparison of 2 to 5 players' goal records: goals, penalties, open-play goals, the matches they scored in and the minutes.", parameters: { type: 'object', properties: { players: { type: 'array', items: { type: 'string' }, minItems: 2, maxItems: 5 } }, required: ['players'] } } },
-  { type: 'function', function: { name: 'card_rankings_by_player', description: "Discipline ranking by individual. Only 'yellow' and 'red' card types exist in this dataset. Some entries are coaches, flagged with isStaff.", parameters: { type: 'object', properties: { type: { type: 'string', enum: ['all','yellow','red'], default: 'all' }, limit: { type: 'integer', default: 10, maximum: 50 }, team: { type: 'string' }, scope: { type: 'string', enum: ['all','group','knockout'], default: 'all' } }, required: [] } } },
-  { type: 'function', function: { name: 'card_rankings_by_team', description: 'Discipline ranking by team, including cards per match since knockout teams played more games.', parameters: { type: 'object', properties: { type: { type: 'string', enum: ['all','yellow','red'], default: 'all' }, limit: { type: 'integer', default: 10, maximum: 48 }, scope: { type: 'string', enum: ['all','group','knockout'], default: 'all' } }, required: [] } } },
-  { type: 'function', function: { name: 'cards_in_match', description: 'All yellow and red cards shown in one match, sorted chronologically.', parameters: { type: 'object', properties: { match_id: { type: 'integer' }, team_a: { type: 'string' }, team_b: { type: 'string' } }, required: [] } } },
-  { type: 'function', function: { name: 'head_to_head', description: 'Every meeting between two teams in this tournament, with an aggregated win/draw/loss and goals summary. Returns played=0 if they never met.', parameters: { type: 'object', properties: { team_a: { type: 'string' }, team_b: { type: 'string' } }, required: ['team_a', 'team_b'] } } },
-  { type: 'function', function: { name: 'team_knockout_record', description: "A team's knockout-stage run: how far it went, who eliminated it, round-by-round results including extra time and penalty shootouts.", parameters: { type: 'object', properties: { team: { type: 'string' } }, required: ['team'] } } },
-  { type: 'function', function: { name: 'compare_groups', description: 'Compare group-stage groups on goals, goals per match, draws, cards and the strongest team. Omit groups to compare all 12.', parameters: { type: 'object', properties: { groups: { type: 'array', items: { type: 'string', enum: ['A','B','C','D','E','F','G','H','I','J','K','L'] } } }, required: [] } } },
+  { type: "function", function: {
+    name: "get_match", description: "Get one match with full detail: score, all goals (scorer, minute, penalty/own-goal flags), all cards, stadium, referee, attendance, extra time and penalty shootout. Use when the user asks about a specific game.",
+    parameters: { type: "object", properties: {
+      match_id: { type: "integer", description: "Match id 1-104" },
+      team_a: teamProp("Team name or 3-letter code, e.g. 'Spain', '西班牙', 'ESP'"),
+      team_b: teamProp("Second team name or 3-letter code"),
+      date: { type: "string", description: "YYYY-MM-DD, disambiguates when two teams met twice" },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "list_matches", description: "List matches filtered by team, group, stage or knockout round. Returns compact summaries (no goal/card detail). Use get_match for detail.",
+    parameters: { type: "object", properties: {
+      team: teamProp("Team name or 3-letter code"),
+      group: { type: "string", enum: ["A","B","C","D","E","F","G","H","I","J","K","L"], description: "Group letter (group stage only)" },
+      stage: { type: "string", enum: ["group","knockout"], description: "Stage filter" },
+      round: { type: "string", enum: ["r32","r16","qf","sf","third_place","final"], description: "Knockout round" },
+      date_from: { type: "string", description: "YYYY-MM-DD" },
+      date_to: { type: "string", description: "YYYY-MM-DD" },
+      limit: { type: "integer", default: 20, maximum: 104 },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "get_standings", description: "Group stage standings table (P W D L GF GA GD Pts, position) for one group or all 12 groups A-L.",
+    parameters: { type: "object", properties: {
+      group: { type: "string", enum: ["A","B","C","D","E","F","G","H","I","J","K","L"], description: "Group letter; omit for all 12" },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "get_bracket", description: "Knockout bracket. Returns the pairings, scores and winners for one round or the whole bracket.",
+    parameters: { type: "object", properties: {
+      round: { type: "string", enum: ["r32","r16","qf","sf","third_place","final"], description: "Round; omit for the full bracket" },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "get_awards", description: "Final standings (champion, runner-up, third, fourth) and individual awards: Golden Ball, Golden Boot, Golden Glove, Best Young Player, Fair Play, plus overall tournament stats.",
+    parameters: { type: "object", properties: {}, required: [] } } },
+
+  { type: "function", function: {
+    name: "get_team_info", description: "Profile of one team: FIFA ranking, confederation, group, group-stage record, and its full path through the tournament.",
+    parameters: { type: "object", properties: {
+      team: teamProp("Team name or 3-letter code, e.g. 'Spain', '西班牙', 'ESP'", true),
+    }, required: ["team"] } } },
+
+  { type: "function", function: {
+    name: "get_venue_info", description: "Stadium information (name, city, country, capacity). Omit name to list all 16 venues.",
+    parameters: { type: "object", properties: {
+      name: teamProp("Venue or city name, e.g. 'Azteca' or 'Estadio Azteca'"),
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "get_top_scorers", description: "Top goalscorers ranking computed from every match. Own goals are excluded. Optionally restrict to one team.",
+    parameters: { type: "object", properties: {
+      limit: { type: "integer", default: 10, maximum: 50 },
+      team: teamProp("Optional team filter"),
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "get_top_assists", description: "Top assists ranking. Only the official top 10 is available in the dataset.",
+    parameters: { type: "object", properties: {
+      limit: { type: "integer", default: 10, maximum: 10 },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "tournament_goal_stats", description: "Aggregate scoring stats: total goals, goals per match, penalties, own goals, clean sheets, draws, biggest margin, and goals bucketed by 15-minute periods. Scope can be the whole tournament, the group stage, the knockout stage, one group or one round.",
+    parameters: { type: "object", properties: {
+      scope: { type: "string", enum: ["all","group","knockout"], default: "all" },
+      group: { type: "string", enum: ["A","B","C","D","E","F","G","H","I","J","K","L"], description: "Restrict to a group" },
+      round: { type: "string", enum: ["r32","r16","qf","sf","third_place","final"], description: "Restrict to a knockout round" },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "biggest_wins", description: "Matches ranked by winning margin (largest first). Draws excluded.",
+    parameters: { type: "object", properties: {
+      limit: { type: "integer", default: 5, maximum: 20 },
+      scope: { type: "string", enum: ["all","group","knockout"], default: "all" },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "highest_scoring_matches", description: "Matches ranked by total goals in the game (highest first).",
+    parameters: { type: "object", properties: {
+      limit: { type: "integer", default: 5, maximum: 20 },
+      scope: { type: "string", enum: ["all","group","knockout"], default: "all" },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "compare_scorers", description: "Side-by-side comparison of 2 to 5 players' goal records: goals, penalties, open-play goals, the matches they scored in and the minutes.",
+    parameters: { type: "object", properties: {
+      players: { type: "array", items: { type: "string" }, minItems: 2, maxItems: 5, description: "Player names in English or Chinese, e.g. [\"Mbappé\",\"梅西\"]" },
+    }, required: ["players"] } } },
+
+  { type: "function", function: {
+    name: "card_rankings_by_player", description: "Discipline ranking by individual. Only 'yellow' and 'red' card types exist in this dataset. Some entries are coaches, flagged with isStaff.",
+    parameters: { type: "object", properties: {
+      type: { type: "string", enum: ["all","yellow","red"], default: "all" },
+      limit: { type: "integer", default: 10, maximum: 50 },
+      team: teamProp("Optional team filter"),
+      scope: { type: "string", enum: ["all","group","knockout"], default: "all" },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "card_rankings_by_team", description: "Discipline ranking by team, including cards per match since knockout teams played more games.",
+    parameters: { type: "object", properties: {
+      type: { type: "string", enum: ["all","yellow","red"], default: "all" },
+      limit: { type: "integer", default: 10, maximum: 48 },
+      scope: { type: "string", enum: ["all","group","knockout"], default: "all" },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "cards_in_match", description: "All yellow and red cards shown in one match, sorted chronologically.",
+    parameters: { type: "object", properties: {
+      match_id: { type: "integer", description: "Match id 1-104" },
+      team_a: teamProp("Optional: team A"),
+      team_b: teamProp("Optional: team B"),
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "head_to_head", description: "Every meeting between two teams in this tournament, with an aggregated win/draw/loss and goals summary. Returns played=0 if they never met.",
+    parameters: { type: "object", properties: {
+      team_a: teamProp("Team name or 3-letter code, e.g. 'Spain', '西班牙', 'ESP'", true),
+      team_b: teamProp("Second team name or 3-letter code", true),
+    }, required: ["team_a","team_b"] } } },
+
+  { type: "function", function: {
+    name: "team_knockout_record", description: "A team's knockout-stage run: how far it went, who eliminated it, round-by-round results including extra time and penalty shootouts.",
+    parameters: { type: "object", properties: {
+      team: teamProp("Team name or 3-letter code", true),
+    }, required: ["team"] } } },
+
+  { type: "function", function: {
+    name: "compare_groups", description: "Compare group-stage groups on goals, goals per match, draws, cards and the strongest team. Omit groups to compare all 12.",
+    parameters: { type: "object", properties: {
+      groups: { type: "array", items: { type: "string", enum: ["A","B","C","D","E","F","G","H","I","J","K","L"] }, description: "Optional list of groups" },
+    }, required: [] } } },
+
+  { type: "function", function: {
+    name: "team_goal_ranking", description: "Ranking of all 48 teams by total goals SCORED (for) or CONCEDED (against) across the WHOLE tournament (group stage + knockout). Use this for 'which team scored the most / fewest goals' or 'which team conceded the most / fewest goals' questions. Returns the top N by goals-for and by goals-against, plus the single leading team for each. Scope can be the whole tournament, group stage only, or knockout only.",
+    parameters: { type: "object", properties: {
+      limit: { type: "integer", default: 10, maximum: 48, description: "How many teams to return in each ranking" },
+      scope: { type: "string", enum: ["all","group","knockout"], default: "all", description: "all = whole tournament, group = group stage only, knockout = knockout stage only" },
+    }, required: [] } } },
 ];
 
 // ============ 系统提示词（与 _prompt.mjs 一致） ============
@@ -626,6 +792,7 @@ export function buildSystemPrompt(lang) {
 3. If a tool returns { "ok": false } with suggestions, ask the user a short clarifying question using those suggestions.
 4. Never mention tool names, JSON, "the dataset", function calling, or your own internals. Speak as a person who knows the tournament.
 5. Only 2026 World Cup data exists here. For anything about other tournaments, transfers, live/future matches or player biographies, say it is outside what you can look up.
+6. For "which team scored/conceded the most or fewest goals" questions, call team_goal_ranking directly - do NOT try to sum group standings or individual match lists yourself.
 
 ## Dataset boundaries - state these limits instead of improvising
 - 104 matches: 72 group-stage + 32 knockout. 48 teams in 12 groups (A-L).

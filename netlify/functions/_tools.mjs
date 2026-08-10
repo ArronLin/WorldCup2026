@@ -1,5 +1,6 @@
 // netlify/functions/_tools.mjs
-// 19 个 AI 工具实现 + TOOL_SCHEMAS（OpenAI 兼容 tools 数组）。
+// 20 个 AI 工具实现 + TOOL_SCHEMAS（OpenAI 兼容 tools 数组）。
+// ⚠️ 与 src/features/chat/tools.js 是同一套 20 工具的并行实现（本地 BYOK 模式在浏览器内运行），新增/删除工具须同步两处。
 // 统一返回契约：{ ok:true, data } 或 { ok:false, error, suggestions? }。
 // 工具层永不抛异常（try/catch 包裹），抛异常会中断 SSE 流。
 import {
@@ -325,17 +326,13 @@ function tCardRankingsByTeam(args) {
   const pool = filterByScope(MATCHES, args);
   const tally = new Map();
   for (const m of pool) {
-    const teamsSeen = new Set();
     for (const c of m.cards || []) {
       if (!c.team) continue;
       if (!tally.has(c.team)) tally.set(c.team, { team: c.team, yellow: 0, red: 0, total: 0, matches: 0 });
       const e = tally.get(c.team);
       if (c.type === "red") e.red++; else e.yellow++;
       e.total++;
-      teamsSeen.add(c.team);
     }
-    // 出场次数按"该队是否在本场有牌"计——更准确的做法是统计该队所有出场
-    for (const t of teamsSeen) { /* placeholder */ }
   }
   // 出场次数统一用 BY_TEAM（全赛事出场）
   const rows = [...tally.values()].map((e) => {
