@@ -54,6 +54,12 @@ addRoute(/^\/team\/([A-Z]{3})\/?$/, async (code) => {
   const { default: view } = await import('./views/team-detail.js');
   return view(code);
 });
+// 模式必须自行捕获查询串：getHash() 返回 location.hash.slice(1)，
+// 所以 #/history?team=ESP 的 path 是 '/history?team=ESP'，沿用 /^\/history\/?$/ 会掉进 404。
+addRoute(/^\/history(?:\?(.*))?$/, async (query) => {
+  const { default: view } = await import('./views/history.js');
+  return view(query);
+});
 
 // Build navigation
 function buildNav() {
@@ -63,6 +69,7 @@ function buildNav() {
     { href: '#/groups', label: t('nav.groups') },
     { href: '#/bracket', label: t('nav.bracket') },
     { href: '#/teams', label: t('nav.teams') },
+    { href: '#/history', label: t('nav.history') },
     { href: '#/awards', label: t('nav.awards') },
   ];
   const nav = document.getElementById('navLinks');

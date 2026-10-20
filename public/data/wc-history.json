@@ -1,0 +1,3021 @@
+{
+  "meta": {
+    "editions": [
+      1998,
+      2002,
+      2006,
+      2010,
+      2014,
+      2018,
+      2022
+    ],
+    "teams": [
+      "ARG",
+      "ENG",
+      "ESP",
+      "FRA"
+    ]
+  },
+  "coverage": {
+    "ARG": {
+      "1998": "complete",
+      "2002": "complete",
+      "2006": "complete",
+      "2010": "complete",
+      "2014": "complete",
+      "2018": "complete",
+      "2022": "complete"
+    },
+    "ENG": {
+      "1998": "complete",
+      "2002": "complete",
+      "2006": "complete",
+      "2010": "complete",
+      "2014": "complete",
+      "2018": "complete",
+      "2022": "complete"
+    },
+    "ESP": {
+      "1998": "complete",
+      "2002": "complete",
+      "2006": "complete",
+      "2010": "complete",
+      "2014": "complete",
+      "2018": "complete",
+      "2022": "complete"
+    },
+    "FRA": {
+      "1998": "complete",
+      "2002": "complete",
+      "2006": "complete",
+      "2010": "complete",
+      "2014": "complete",
+      "2018": "complete",
+      "2022": "complete"
+    }
+  },
+  "matches": [
+    {
+      "id": "1998-group-FRA-RSA",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-12",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "RSA",
+        "name": {
+          "en": "South Africa",
+          "zh": "南非"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 0
+    },
+    {
+      "id": "1998-group-ESP-NGA",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-13",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "NGA",
+        "name": {
+          "en": "Nigeria",
+          "zh": "尼日利亚"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 3
+    },
+    {
+      "id": "1998-group-ARG-JPN",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-14",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "JPN",
+        "name": {
+          "en": "Japan",
+          "zh": "日本"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "1998-group-ENG-TUN",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-15",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "TUN",
+        "name": {
+          "en": "Tunisia",
+          "zh": "突尼斯"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 0
+    },
+    {
+      "id": "1998-group-FRA-KSA",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-18",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "KSA",
+        "name": {
+          "en": "Saudi Arabia",
+          "zh": "沙特阿拉伯"
+        }
+      },
+      "homeScore": 4,
+      "awayScore": 0
+    },
+    {
+      "id": "1998-group-ESP-PAR",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-19",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "PAR",
+        "name": {
+          "en": "Paraguay",
+          "zh": "巴拉圭"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "1998-group-ARG-JAM",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-21",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "JAM",
+        "name": {
+          "en": "Jamaica",
+          "zh": "牙买加"
+        }
+      },
+      "homeScore": 5,
+      "awayScore": 0
+    },
+    {
+      "id": "1998-group-ROU-ENG",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-22",
+      "home": {
+        "code": "ROU",
+        "name": {
+          "en": "Romania",
+          "zh": "罗马尼亚"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "1998-group-ESP-BUL",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-24",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "BUL",
+        "name": {
+          "en": "Bulgaria",
+          "zh": "保加利亚"
+        }
+      },
+      "homeScore": 6,
+      "awayScore": 1
+    },
+    {
+      "id": "1998-group-FRA-DEN",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-24",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "DEN",
+        "name": {
+          "en": "Denmark",
+          "zh": "丹麦"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "1998-group-ARG-CRO",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-26",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "CRO",
+        "name": {
+          "en": "Croatia",
+          "zh": "克罗地亚"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "1998-group-COL-ENG",
+      "edition": 1998,
+      "round": "group",
+      "date": "1998-06-26",
+      "home": {
+        "code": "COL",
+        "name": {
+          "en": "Colombia",
+          "zh": "哥伦比亚"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 2
+    },
+    {
+      "id": "1998-round_of_16-FRA-PAR",
+      "edition": 1998,
+      "round": "round_of_16",
+      "date": "1998-06-28",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "PAR",
+        "name": {
+          "en": "Paraguay",
+          "zh": "巴拉圭"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0,
+      "note": "aet"
+    },
+    {
+      "id": "1998-round_of_16-ARG-ENG",
+      "edition": 1998,
+      "round": "round_of_16",
+      "date": "1998-06-30",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 2,
+      "shootout": {
+        "home": 4,
+        "away": 3
+      }
+    },
+    {
+      "id": "1998-quarterfinal-ITA-FRA",
+      "edition": 1998,
+      "round": "quarterfinal",
+      "date": "1998-07-03",
+      "home": {
+        "code": "ITA",
+        "name": {
+          "en": "Italy",
+          "zh": "意大利"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "shootout": {
+        "home": 3,
+        "away": 4
+      }
+    },
+    {
+      "id": "1998-quarterfinal-NED-ARG",
+      "edition": 1998,
+      "round": "quarterfinal",
+      "date": "1998-07-04",
+      "home": {
+        "code": "NED",
+        "name": {
+          "en": "Netherlands",
+          "zh": "荷兰"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "1998-semifinal-FRA-CRO",
+      "edition": 1998,
+      "round": "semifinal",
+      "date": "1998-07-08",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "CRO",
+        "name": {
+          "en": "Croatia",
+          "zh": "克罗地亚"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "1998-final-BRA-FRA",
+      "edition": 1998,
+      "round": "final",
+      "date": "1998-07-12",
+      "home": {
+        "code": "BRA",
+        "name": {
+          "en": "Brazil",
+          "zh": "巴西"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 3
+    },
+    {
+      "id": "2002-group-FRA-SEN",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-05-31",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "SEN",
+        "name": {
+          "en": "Senegal",
+          "zh": "塞内加尔"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2002-group-ARG-NGA",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-06-02",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "NGA",
+        "name": {
+          "en": "Nigeria",
+          "zh": "尼日利亚"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "2002-group-ENG-SWE",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-06-02",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "SWE",
+        "name": {
+          "en": "Sweden",
+          "zh": "瑞典"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1
+    },
+    {
+      "id": "2002-group-ESP-SVN",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-06-02",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "SVN",
+        "name": {
+          "en": "Slovenia",
+          "zh": "斯洛文尼亚"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 1
+    },
+    {
+      "id": "2002-group-FRA-URU",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-06-06",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "URU",
+        "name": {
+          "en": "Uruguay",
+          "zh": "乌拉圭"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "2002-group-ARG-ENG",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-06-07",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2002-group-ESP-PAR",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-06-07",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "PAR",
+        "name": {
+          "en": "Paraguay",
+          "zh": "巴拉圭"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 1
+    },
+    {
+      "id": "2002-group-DEN-FRA",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-06-11",
+      "home": {
+        "code": "DEN",
+        "name": {
+          "en": "Denmark",
+          "zh": "丹麦"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 0
+    },
+    {
+      "id": "2002-group-NGA-ENG",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-06-12",
+      "home": {
+        "code": "NGA",
+        "name": {
+          "en": "Nigeria",
+          "zh": "尼日利亚"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "2002-group-RSA-ESP",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-06-12",
+      "home": {
+        "code": "RSA",
+        "name": {
+          "en": "South Africa",
+          "zh": "南非"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 3
+    },
+    {
+      "id": "2002-group-SWE-ARG",
+      "edition": 2002,
+      "round": "group",
+      "date": "2002-06-12",
+      "home": {
+        "code": "SWE",
+        "name": {
+          "en": "Sweden",
+          "zh": "瑞典"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1
+    },
+    {
+      "id": "2002-round_of_16-DEN-ENG",
+      "edition": 2002,
+      "round": "round_of_16",
+      "date": "2002-06-15",
+      "home": {
+        "code": "DEN",
+        "name": {
+          "en": "Denmark",
+          "zh": "丹麦"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 3
+    },
+    {
+      "id": "2002-round_of_16-ESP-IRL",
+      "edition": 2002,
+      "round": "round_of_16",
+      "date": "2002-06-16",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "IRL",
+        "name": {
+          "en": "Republic of Ireland",
+          "zh": "爱尔兰"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1,
+      "shootout": {
+        "home": 3,
+        "away": 2
+      }
+    },
+    {
+      "id": "2002-quarterfinal-ENG-BRA",
+      "edition": 2002,
+      "round": "quarterfinal",
+      "date": "2002-06-21",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "BRA",
+        "name": {
+          "en": "Brazil",
+          "zh": "巴西"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 2
+    },
+    {
+      "id": "2002-quarterfinal-ESP-KOR",
+      "edition": 2002,
+      "round": "quarterfinal",
+      "date": "2002-06-22",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "KOR",
+        "name": {
+          "en": "South Korea",
+          "zh": "韩国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "shootout": {
+        "home": 3,
+        "away": 5
+      }
+    },
+    {
+      "id": "2006-group-ARG-CIV",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-10",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "CIV",
+        "name": {
+          "en": "Ivory Coast",
+          "zh": "科特迪瓦"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "2006-group-ENG-PAR",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-10",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "PAR",
+        "name": {
+          "en": "Paraguay",
+          "zh": "巴拉圭"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "2006-group-FRA-SUI",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-13",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "SUI",
+        "name": {
+          "en": "Switzerland",
+          "zh": "瑞士"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "2006-group-ESP-UKR",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-14",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "UKR",
+        "name": {
+          "en": "Ukraine",
+          "zh": "乌克兰"
+        }
+      },
+      "homeScore": 4,
+      "awayScore": 0
+    },
+    {
+      "id": "2006-group-ENG-TTO",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-15",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "TTO",
+        "name": {
+          "en": "Trinidad and Tobago",
+          "zh": "特立尼达和多巴哥"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 0
+    },
+    {
+      "id": "2006-group-ARG-SCG",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-16",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "SCG",
+        "name": {
+          "en": "Serbia and Montenegro",
+          "zh": "塞尔维亚和黑山"
+        }
+      },
+      "homeScore": 6,
+      "awayScore": 0
+    },
+    {
+      "id": "2006-group-FRA-KOR",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-18",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "KOR",
+        "name": {
+          "en": "South Korea",
+          "zh": "韩国"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1
+    },
+    {
+      "id": "2006-group-ESP-TUN",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-19",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "TUN",
+        "name": {
+          "en": "Tunisia",
+          "zh": "突尼斯"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 1
+    },
+    {
+      "id": "2006-group-SWE-ENG",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-20",
+      "home": {
+        "code": "SWE",
+        "name": {
+          "en": "Sweden",
+          "zh": "瑞典"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 2
+    },
+    {
+      "id": "2006-group-NED-ARG",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-21",
+      "home": {
+        "code": "NED",
+        "name": {
+          "en": "Netherlands",
+          "zh": "荷兰"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "2006-group-KSA-ESP",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-23",
+      "home": {
+        "code": "KSA",
+        "name": {
+          "en": "Saudi Arabia",
+          "zh": "沙特阿拉伯"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2006-group-TGO-FRA",
+      "edition": 2006,
+      "round": "group",
+      "date": "2006-06-23",
+      "home": {
+        "code": "TGO",
+        "name": {
+          "en": "Togo",
+          "zh": "多哥"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 2
+    },
+    {
+      "id": "2006-round_of_16-ARG-MEX",
+      "edition": 2006,
+      "round": "round_of_16",
+      "date": "2006-06-24",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "MEX",
+        "name": {
+          "en": "Mexico",
+          "zh": "墨西哥"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1,
+      "note": "aet"
+    },
+    {
+      "id": "2006-round_of_16-ENG-ECU",
+      "edition": 2006,
+      "round": "round_of_16",
+      "date": "2006-06-25",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "ECU",
+        "name": {
+          "en": "Ecuador",
+          "zh": "厄瓜多尔"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "2006-round_of_16-ESP-FRA",
+      "edition": 2006,
+      "round": "round_of_16",
+      "date": "2006-06-27",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 3
+    },
+    {
+      "id": "2006-quarterfinal-GER-ARG",
+      "edition": 2006,
+      "round": "quarterfinal",
+      "date": "2006-06-30",
+      "home": {
+        "code": "GER",
+        "name": {
+          "en": "Germany",
+          "zh": "德国"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1,
+      "shootout": {
+        "home": 4,
+        "away": 2
+      }
+    },
+    {
+      "id": "2006-quarterfinal-BRA-FRA",
+      "edition": 2006,
+      "round": "quarterfinal",
+      "date": "2006-07-01",
+      "home": {
+        "code": "BRA",
+        "name": {
+          "en": "Brazil",
+          "zh": "巴西"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2006-quarterfinal-ENG-POR",
+      "edition": 2006,
+      "round": "quarterfinal",
+      "date": "2006-07-01",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "POR",
+        "name": {
+          "en": "Portugal",
+          "zh": "葡萄牙"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "shootout": {
+        "home": 1,
+        "away": 3
+      }
+    },
+    {
+      "id": "2006-semifinal-POR-FRA",
+      "edition": 2006,
+      "round": "semifinal",
+      "date": "2006-07-05",
+      "home": {
+        "code": "POR",
+        "name": {
+          "en": "Portugal",
+          "zh": "葡萄牙"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2006-final-ITA-FRA",
+      "edition": 2006,
+      "round": "final",
+      "date": "2006-07-09",
+      "home": {
+        "code": "ITA",
+        "name": {
+          "en": "Italy",
+          "zh": "意大利"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1,
+      "shootout": {
+        "home": 5,
+        "away": 3
+      }
+    },
+    {
+      "id": "2010-group-URU-FRA",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-11",
+      "home": {
+        "code": "URU",
+        "name": {
+          "en": "Uruguay",
+          "zh": "乌拉圭"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "2010-group-ARG-NGA",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-12",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "NGA",
+        "name": {
+          "en": "Nigeria",
+          "zh": "尼日利亚"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "2010-group-ENG-USA",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-12",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "USA",
+        "name": {
+          "en": "United States",
+          "zh": "美国"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1
+    },
+    {
+      "id": "2010-group-ESP-SUI",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-16",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "SUI",
+        "name": {
+          "en": "Switzerland",
+          "zh": "瑞士"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2010-group-ARG-KOR",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-17",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "KOR",
+        "name": {
+          "en": "South Korea",
+          "zh": "韩国"
+        }
+      },
+      "homeScore": 4,
+      "awayScore": 1
+    },
+    {
+      "id": "2010-group-FRA-MEX",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-17",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "MEX",
+        "name": {
+          "en": "Mexico",
+          "zh": "墨西哥"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 2
+    },
+    {
+      "id": "2010-group-ENG-ALG",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-18",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "ALG",
+        "name": {
+          "en": "Algeria",
+          "zh": "阿尔及利亚"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "2010-group-ESP-HON",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-21",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "HON",
+        "name": {
+          "en": "Honduras",
+          "zh": "洪都拉斯"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 0
+    },
+    {
+      "id": "2010-group-FRA-RSA",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-22",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "RSA",
+        "name": {
+          "en": "South Africa",
+          "zh": "南非"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 2
+    },
+    {
+      "id": "2010-group-GRE-ARG",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-22",
+      "home": {
+        "code": "GRE",
+        "name": {
+          "en": "Greece",
+          "zh": "希腊"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 2
+    },
+    {
+      "id": "2010-group-SVN-ENG",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-23",
+      "home": {
+        "code": "SVN",
+        "name": {
+          "en": "Slovenia",
+          "zh": "斯洛文尼亚"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2010-group-CHI-ESP",
+      "edition": 2010,
+      "round": "group",
+      "date": "2010-06-25",
+      "home": {
+        "code": "CHI",
+        "name": {
+          "en": "Chile",
+          "zh": "智利"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 2
+    },
+    {
+      "id": "2010-round_of_16-ARG-MEX",
+      "edition": 2010,
+      "round": "round_of_16",
+      "date": "2010-06-27",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "MEX",
+        "name": {
+          "en": "Mexico",
+          "zh": "墨西哥"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 1
+    },
+    {
+      "id": "2010-round_of_16-GER-ENG",
+      "edition": 2010,
+      "round": "round_of_16",
+      "date": "2010-06-27",
+      "home": {
+        "code": "GER",
+        "name": {
+          "en": "Germany",
+          "zh": "德国"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 4,
+      "awayScore": 1
+    },
+    {
+      "id": "2010-round_of_16-ESP-POR",
+      "edition": 2010,
+      "round": "round_of_16",
+      "date": "2010-06-29",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "POR",
+        "name": {
+          "en": "Portugal",
+          "zh": "葡萄牙"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "2010-quarterfinal-ARG-GER",
+      "edition": 2010,
+      "round": "quarterfinal",
+      "date": "2010-07-03",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "GER",
+        "name": {
+          "en": "Germany",
+          "zh": "德国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 4
+    },
+    {
+      "id": "2010-quarterfinal-PAR-ESP",
+      "edition": 2010,
+      "round": "quarterfinal",
+      "date": "2010-07-03",
+      "home": {
+        "code": "PAR",
+        "name": {
+          "en": "Paraguay",
+          "zh": "巴拉圭"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2010-semifinal-GER-ESP",
+      "edition": 2010,
+      "round": "semifinal",
+      "date": "2010-07-07",
+      "home": {
+        "code": "GER",
+        "name": {
+          "en": "Germany",
+          "zh": "德国"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2010-final-NED-ESP",
+      "edition": 2010,
+      "round": "final",
+      "date": "2010-07-11",
+      "home": {
+        "code": "NED",
+        "name": {
+          "en": "Netherlands",
+          "zh": "荷兰"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1,
+      "note": "aet"
+    },
+    {
+      "id": "2014-group-ESP-NED",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-13",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "NED",
+        "name": {
+          "en": "Netherlands",
+          "zh": "荷兰"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 5
+    },
+    {
+      "id": "2014-group-ENG-ITA",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-14",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "ITA",
+        "name": {
+          "en": "Italy",
+          "zh": "意大利"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 2
+    },
+    {
+      "id": "2014-group-ARG-BIH",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-15",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "BIH",
+        "name": {
+          "en": "Bosnia and Herzegovina",
+          "zh": "波黑"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "2014-group-FRA-HON",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-15",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "HON",
+        "name": {
+          "en": "Honduras",
+          "zh": "洪都拉斯"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 0
+    },
+    {
+      "id": "2014-group-ESP-CHI",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-18",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "CHI",
+        "name": {
+          "en": "Chile",
+          "zh": "智利"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 2
+    },
+    {
+      "id": "2014-group-URU-ENG",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-19",
+      "home": {
+        "code": "URU",
+        "name": {
+          "en": "Uruguay",
+          "zh": "乌拉圭"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "2014-group-SUI-FRA",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-20",
+      "home": {
+        "code": "SUI",
+        "name": {
+          "en": "Switzerland",
+          "zh": "瑞士"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 5
+    },
+    {
+      "id": "2014-group-ARG-IRN",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-21",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "IRN",
+        "name": {
+          "en": "Iran",
+          "zh": "伊朗"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "2014-group-AUS-ESP",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-23",
+      "home": {
+        "code": "AUS",
+        "name": {
+          "en": "Australia",
+          "zh": "澳大利亚"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 3
+    },
+    {
+      "id": "2014-group-CRC-ENG",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-24",
+      "home": {
+        "code": "CRC",
+        "name": {
+          "en": "Costa Rica",
+          "zh": "哥斯达黎加"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "2014-group-ECU-FRA",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-25",
+      "home": {
+        "code": "ECU",
+        "name": {
+          "en": "Ecuador",
+          "zh": "厄瓜多尔"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "2014-group-NGA-ARG",
+      "edition": 2014,
+      "round": "group",
+      "date": "2014-06-25",
+      "home": {
+        "code": "NGA",
+        "name": {
+          "en": "Nigeria",
+          "zh": "尼日利亚"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 3
+    },
+    {
+      "id": "2014-round_of_16-FRA-NGA",
+      "edition": 2014,
+      "round": "round_of_16",
+      "date": "2014-06-30",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "NGA",
+        "name": {
+          "en": "Nigeria",
+          "zh": "尼日利亚"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 0
+    },
+    {
+      "id": "2014-round_of_16-ARG-SUI",
+      "edition": 2014,
+      "round": "round_of_16",
+      "date": "2014-07-01",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "SUI",
+        "name": {
+          "en": "Switzerland",
+          "zh": "瑞士"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0,
+      "note": "aet"
+    },
+    {
+      "id": "2014-quarterfinal-FRA-GER",
+      "edition": 2014,
+      "round": "quarterfinal",
+      "date": "2014-07-04",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "GER",
+        "name": {
+          "en": "Germany",
+          "zh": "德国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2014-quarterfinal-ARG-BEL",
+      "edition": 2014,
+      "round": "quarterfinal",
+      "date": "2014-07-05",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "BEL",
+        "name": {
+          "en": "Belgium",
+          "zh": "比利时"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "2014-semifinal-NED-ARG",
+      "edition": 2014,
+      "round": "semifinal",
+      "date": "2014-07-09",
+      "home": {
+        "code": "NED",
+        "name": {
+          "en": "Netherlands",
+          "zh": "荷兰"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "shootout": {
+        "home": 2,
+        "away": 4
+      }
+    },
+    {
+      "id": "2014-final-GER-ARG",
+      "edition": 2014,
+      "round": "final",
+      "date": "2014-07-13",
+      "home": {
+        "code": "GER",
+        "name": {
+          "en": "Germany",
+          "zh": "德国"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0,
+      "note": "aet"
+    },
+    {
+      "id": "2018-group-POR-ESP",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-15",
+      "home": {
+        "code": "POR",
+        "name": {
+          "en": "Portugal",
+          "zh": "葡萄牙"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 3
+    },
+    {
+      "id": "2018-group-ARG-ISL",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-16",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "ISL",
+        "name": {
+          "en": "Iceland",
+          "zh": "冰岛"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1
+    },
+    {
+      "id": "2018-group-FRA-AUS",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-16",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "AUS",
+        "name": {
+          "en": "Australia",
+          "zh": "澳大利亚"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "2018-group-TUN-ENG",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-18",
+      "home": {
+        "code": "TUN",
+        "name": {
+          "en": "Tunisia",
+          "zh": "突尼斯"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 2
+    },
+    {
+      "id": "2018-group-IRN-ESP",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-20",
+      "home": {
+        "code": "IRN",
+        "name": {
+          "en": "Iran",
+          "zh": "伊朗"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2018-group-ARG-CRO",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-21",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "CRO",
+        "name": {
+          "en": "Croatia",
+          "zh": "克罗地亚"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 3
+    },
+    {
+      "id": "2018-group-FRA-PER",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-21",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "PER",
+        "name": {
+          "en": "Peru",
+          "zh": "秘鲁"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "2018-group-ENG-PAN",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-24",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "PAN",
+        "name": {
+          "en": "Panama",
+          "zh": "巴拿马"
+        }
+      },
+      "homeScore": 6,
+      "awayScore": 1
+    },
+    {
+      "id": "2018-group-ESP-MAR",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-25",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "MAR",
+        "name": {
+          "en": "Morocco",
+          "zh": "摩洛哥"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 2
+    },
+    {
+      "id": "2018-group-DEN-FRA",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-26",
+      "home": {
+        "code": "DEN",
+        "name": {
+          "en": "Denmark",
+          "zh": "丹麦"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "2018-group-NGA-ARG",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-26",
+      "home": {
+        "code": "NGA",
+        "name": {
+          "en": "Nigeria",
+          "zh": "尼日利亚"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 2
+    },
+    {
+      "id": "2018-group-ENG-BEL",
+      "edition": 2018,
+      "round": "group",
+      "date": "2018-06-28",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "BEL",
+        "name": {
+          "en": "Belgium",
+          "zh": "比利时"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 1
+    },
+    {
+      "id": "2018-round_of_16-FRA-ARG",
+      "edition": 2018,
+      "round": "round_of_16",
+      "date": "2018-06-30",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 4,
+      "awayScore": 3
+    },
+    {
+      "id": "2018-round_of_16-ESP-RUS",
+      "edition": 2018,
+      "round": "round_of_16",
+      "date": "2018-07-01",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "RUS",
+        "name": {
+          "en": "Russia",
+          "zh": "俄罗斯"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1,
+      "shootout": {
+        "home": 3,
+        "away": 4
+      }
+    },
+    {
+      "id": "2018-round_of_16-COL-ENG",
+      "edition": 2018,
+      "round": "round_of_16",
+      "date": "2018-07-03",
+      "home": {
+        "code": "COL",
+        "name": {
+          "en": "Colombia",
+          "zh": "哥伦比亚"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1,
+      "shootout": {
+        "home": 3,
+        "away": 4
+      }
+    },
+    {
+      "id": "2018-quarterfinal-URU-FRA",
+      "edition": 2018,
+      "round": "quarterfinal",
+      "date": "2018-07-06",
+      "home": {
+        "code": "URU",
+        "name": {
+          "en": "Uruguay",
+          "zh": "乌拉圭"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 2
+    },
+    {
+      "id": "2018-quarterfinal-SWE-ENG",
+      "edition": 2018,
+      "round": "quarterfinal",
+      "date": "2018-07-07",
+      "home": {
+        "code": "SWE",
+        "name": {
+          "en": "Sweden",
+          "zh": "瑞典"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 2
+    },
+    {
+      "id": "2018-semifinal-FRA-BEL",
+      "edition": 2018,
+      "round": "semifinal",
+      "date": "2018-07-10",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "BEL",
+        "name": {
+          "en": "Belgium",
+          "zh": "比利时"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "2018-semifinal-CRO-ENG",
+      "edition": 2018,
+      "round": "semifinal",
+      "date": "2018-07-11",
+      "home": {
+        "code": "CRO",
+        "name": {
+          "en": "Croatia",
+          "zh": "克罗地亚"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1,
+      "note": "aet"
+    },
+    {
+      "id": "2018-third_place-BEL-ENG",
+      "edition": 2018,
+      "round": "third_place",
+      "date": "2018-07-14",
+      "home": {
+        "code": "BEL",
+        "name": {
+          "en": "Belgium",
+          "zh": "比利时"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 0
+    },
+    {
+      "id": "2018-final-FRA-CRO",
+      "edition": 2018,
+      "round": "final",
+      "date": "2018-07-15",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "CRO",
+        "name": {
+          "en": "Croatia",
+          "zh": "克罗地亚"
+        }
+      },
+      "homeScore": 4,
+      "awayScore": 2
+    },
+    {
+      "id": "2022-group-ENG-IRN",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-21",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "IRN",
+        "name": {
+          "en": "Iran",
+          "zh": "伊朗"
+        }
+      },
+      "homeScore": 6,
+      "awayScore": 2
+    },
+    {
+      "id": "2022-group-ARG-KSA",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-22",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "KSA",
+        "name": {
+          "en": "Saudi Arabia",
+          "zh": "沙特阿拉伯"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 2
+    },
+    {
+      "id": "2022-group-FRA-AUS",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-22",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "AUS",
+        "name": {
+          "en": "Australia",
+          "zh": "澳大利亚"
+        }
+      },
+      "homeScore": 4,
+      "awayScore": 1
+    },
+    {
+      "id": "2022-group-ESP-CRC",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-23",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "CRC",
+        "name": {
+          "en": "Costa Rica",
+          "zh": "哥斯达黎加"
+        }
+      },
+      "homeScore": 7,
+      "awayScore": 0
+    },
+    {
+      "id": "2022-group-ENG-USA",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-25",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "USA",
+        "name": {
+          "en": "United States",
+          "zh": "美国"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "2022-group-ARG-MEX",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-26",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "MEX",
+        "name": {
+          "en": "Mexico",
+          "zh": "墨西哥"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 0
+    },
+    {
+      "id": "2022-group-FRA-DEN",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-26",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "DEN",
+        "name": {
+          "en": "Denmark",
+          "zh": "丹麦"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "2022-group-ESP-GER",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-27",
+      "home": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "away": {
+        "code": "GER",
+        "name": {
+          "en": "Germany",
+          "zh": "德国"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 1
+    },
+    {
+      "id": "2022-group-WAL-ENG",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-29",
+      "home": {
+        "code": "WAL",
+        "name": {
+          "en": "Wales",
+          "zh": "威尔士"
+        }
+      },
+      "away": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 3
+    },
+    {
+      "id": "2022-group-POL-ARG",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-30",
+      "home": {
+        "code": "POL",
+        "name": {
+          "en": "Poland",
+          "zh": "波兰"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 2
+    },
+    {
+      "id": "2022-group-TUN-FRA",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-11-30",
+      "home": {
+        "code": "TUN",
+        "name": {
+          "en": "Tunisia",
+          "zh": "突尼斯"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 0
+    },
+    {
+      "id": "2022-group-JPN-ESP",
+      "edition": 2022,
+      "round": "group",
+      "date": "2022-12-01",
+      "home": {
+        "code": "JPN",
+        "name": {
+          "en": "Japan",
+          "zh": "日本"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "2022-round_of_16-ARG-AUS",
+      "edition": 2022,
+      "round": "round_of_16",
+      "date": "2022-12-03",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "AUS",
+        "name": {
+          "en": "Australia",
+          "zh": "澳大利亚"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "2022-round_of_16-ENG-SEN",
+      "edition": 2022,
+      "round": "round_of_16",
+      "date": "2022-12-04",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "SEN",
+        "name": {
+          "en": "Senegal",
+          "zh": "塞内加尔"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 0
+    },
+    {
+      "id": "2022-round_of_16-FRA-POL",
+      "edition": 2022,
+      "round": "round_of_16",
+      "date": "2022-12-04",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "POL",
+        "name": {
+          "en": "Poland",
+          "zh": "波兰"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 1
+    },
+    {
+      "id": "2022-round_of_16-MAR-ESP",
+      "edition": 2022,
+      "round": "round_of_16",
+      "date": "2022-12-06",
+      "home": {
+        "code": "MAR",
+        "name": {
+          "en": "Morocco",
+          "zh": "摩洛哥"
+        }
+      },
+      "away": {
+        "code": "ESP",
+        "name": {
+          "en": "Spain",
+          "zh": "西班牙"
+        }
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "shootout": {
+        "home": 3,
+        "away": 0
+      }
+    },
+    {
+      "id": "2022-quarterfinal-NED-ARG",
+      "edition": 2022,
+      "round": "quarterfinal",
+      "date": "2022-12-09",
+      "home": {
+        "code": "NED",
+        "name": {
+          "en": "Netherlands",
+          "zh": "荷兰"
+        }
+      },
+      "away": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 2,
+      "shootout": {
+        "home": 3,
+        "away": 4
+      }
+    },
+    {
+      "id": "2022-quarterfinal-ENG-FRA",
+      "edition": 2022,
+      "round": "quarterfinal",
+      "date": "2022-12-10",
+      "home": {
+        "code": "ENG",
+        "name": {
+          "en": "England",
+          "zh": "英格兰"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 1,
+      "awayScore": 2
+    },
+    {
+      "id": "2022-semifinal-ARG-CRO",
+      "edition": 2022,
+      "round": "semifinal",
+      "date": "2022-12-13",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "CRO",
+        "name": {
+          "en": "Croatia",
+          "zh": "克罗地亚"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 0
+    },
+    {
+      "id": "2022-semifinal-FRA-MAR",
+      "edition": 2022,
+      "round": "semifinal",
+      "date": "2022-12-14",
+      "home": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "away": {
+        "code": "MAR",
+        "name": {
+          "en": "Morocco",
+          "zh": "摩洛哥"
+        }
+      },
+      "homeScore": 2,
+      "awayScore": 0
+    },
+    {
+      "id": "2022-final-ARG-FRA",
+      "edition": 2022,
+      "round": "final",
+      "date": "2022-12-18",
+      "home": {
+        "code": "ARG",
+        "name": {
+          "en": "Argentina",
+          "zh": "阿根廷"
+        }
+      },
+      "away": {
+        "code": "FRA",
+        "name": {
+          "en": "France",
+          "zh": "法国"
+        }
+      },
+      "homeScore": 3,
+      "awayScore": 3,
+      "shootout": {
+        "home": 4,
+        "away": 2
+      }
+    }
+  ]
+}

@@ -92,9 +92,13 @@ img, svg { display: block; max-width: 100%; }
 }
 .logo-text b { font-weight: 700; color: var(--accent); }
 
+/* 导航项增至 7 项后需收紧间距：.topbar-inner 有 max-width，
+   因此 .nav-links 的可用宽度在所有 ≥1280px 视口下恒为 542px（不随视口增长）。
+   实测 7 项原样式合计 593px，溢出 51px，导致末项被裁切且滚动条隐藏、无任何提示。
+   收紧后合计约 525px，恢复全部项可见。 */
 .nav-links {
   display: flex;
-  gap: var(--space-xs);
+  gap: 2px;
   flex: 1;
   overflow-x: auto;
   scrollbar-width: none;
@@ -102,7 +106,7 @@ img, svg { display: block; max-width: 100%; }
 .nav-links::-webkit-scrollbar { display: none; }
 
 .nav-link {
-  padding: 8px 14px;
+  padding: 8px 10px;
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
   font-weight: 500;

@@ -85,6 +85,13 @@ export async function getGroups() {
   return loadJSON('groups');
 }
 
+// 历届世界杯战绩快照（四强 × 1998–2022 共 7 届）。
+// 视图不得绕过 store 直接 fetch（章程原则 VI）。失败时 loadJSON 降级为 {}，
+// 因此消费方必须容忍缺少 matches/coverage 字段。
+export async function getWorldCupHistory() {
+  return loadJSON('wc-history');
+}
+
 // Get player name translations (en -> zh)
 export async function getPlayerNames() {
   return loadJSON('player-names');
