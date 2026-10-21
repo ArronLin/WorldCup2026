@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "preset": {
+    "id": "easeus-sdd",
+    "name": "EaseUS 可配置 SDD 工作流",
+    "version": "1.8.0",
+    "description": "Claude Code / Codex：Wiki + CodeGraph 与可编辑工程规则",
+    "author": "Project maintainers",
+    "license": "MIT"
+  },
+  "requires": {
+    "speckit_version": ">=1.1.3,<1.3.0"
+  },
+  "provides": {
+    "templates": [
+      {
+        "type": "command",
+        "name": "speckit.constitution",
+        "file": "commands/speckit.constitution.md",
+        "strategy": "wrap",
+        "description": "EaseUS SDD/constitution 阶段约定"
+      },
+      {
+        "type": "command",
+        "name": "speckit.specify",
+        "file": "commands/speckit.specify.md",
+        "strategy": "wrap",
+        "description": "EaseUS SDD/specify 阶段约定"
+      },
+      {
+        "type": "command",
+        "name": "speckit.clarify",
+        "file": "commands/speckit.clarify.md",
+        "strategy": "wrap",
+        "description": "EaseUS SDD/clarify 阶段约定"
+      },
+      {
+        "type": "command",
+        "name": "speckit.plan",
+        "file": "commands/speckit.plan.md",
+        "strategy": "wrap",
+        "description": "EaseUS SDD/plan 阶段约定"
+      },
+      {
+        "type": "command",
+        "name": "speckit.checklist",
+        "file": "commands/speckit.checklist.md",
+        "strategy": "wrap",
+        "description": "EaseUS SDD/checklist 阶段约定"
+      },
+      {
+        "type": "command",
+        "name": "speckit.tasks",
+        "file": "commands/speckit.tasks.md",
+        "strategy": "wrap",
+        "description": "EaseUS SDD/tasks 阶段约定"
+      },
+      {
+        "type": "command",
+        "name": "speckit.analyze",
+        "file": "commands/speckit.analyze.md",
+        "strategy": "wrap",
+        "description": "EaseUS SDD/analyze 阶段约定"
+      },
+      {
+        "type": "command",
+        "name": "speckit.implement",
+        "file": "commands/speckit.implement.md",
+        "strategy": "wrap",
+        "description": "EaseUS SDD/implement 阶段约定"
+      },
+      {
+        "type": "command",
+        "name": "speckit.converge",
+        "file": "commands/speckit.converge.md",
+        "strategy": "wrap",
+        "description": "EaseUS SDD/converge 阶段约定"
+      },
+      {
+        "type": "template",
+        "name": "constitution-template",
+        "file": "templates/constitution-template-addendum.md",
+        "strategy": "append",
+        "description": "中文双底座 SDD 补充要求"
+      },
+      {
+        "type": "template",
+        "name": "spec-template",
+        "file": "templates/spec-template-addendum.md",
+        "strategy": "append",
+        "description": "中文双底座 SDD 补充要求"
+      },
+      {
+        "type": "template",
+        "name": "plan-template",
+        "file": "templates/plan-template-addendum.md",
+        "strategy": "append",
+        "description": "中文双底座 SDD 补充要求"
+      },
+      {
+        "type": "template",
+        "name": "tasks-template",
+        "file": "templates/tasks-template-addendum.md",
+        "strategy": "append",
+        "description": "中文双底座 SDD 补充要求"
+      },
+      {
+        "type": "template",
+        "name": "checklist-template",
+        "file": "templates/checklist-template-addendum.md",
+        "strategy": "append",
+        "description": "中文双底座 SDD 补充要求"
+      }
+    ]
+  },
+  "tags": [
+    "zh-CN",
+    "tdd",
+    "codegraph",
+    "opendeepwiki",
+    "brownfield"
+  ]
+}

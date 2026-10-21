@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "project": {
+    "path": "<由 configure 根据 --project 写入>",
+    "repository_id": "<项目或仓库 ID>",
+    "source_snapshot": "unknown"
+  },
+  "sources": {
+    "codegraph": {
+      "access": "填写真实 MCP 工具名/参数说明，或 CLI 访问方法",
+      "index_path": "<Index 路径>",
+      "snapshot": "unknown",
+      "server_name": "codegraph",
+      "mcp": null
+    },
+    "opendeepwiki": {
+      "access": "填写 MCP 工具名或可读取的文档入口",
+      "location": "<仓库范围文档 URL 或本地路径>",
+      "snapshot": "unknown",
+      "server_name": "opendeepwiki",
+      "mcp": null
+    }
+  },
+  "verification": {
+    "new_code_baseline": "unknown",
+    "known_commands": []
+  },
+  "policy": {
+    "language": "zh-CN",
+    "tdd_required": true,
+    "new_unit_line_coverage_minimum": 0.8
+  }
+}

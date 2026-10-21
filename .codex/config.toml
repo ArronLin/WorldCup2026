@@ -1,0 +1,3 @@
+[mcp_servers.speckit_wizard]
+command = "powershell.exe"
+args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ".specify/easeus/mcp-launch.ps1"]

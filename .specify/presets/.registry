@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "presets": {
+    "easeus-sdd": {
+      "version": "1.8.0",
+      "source": "local",
+      "manifest_hash": "sha256:71661b150aabba3c0ed393d0df671181ca78f7cb06092219baf8e631e3f786ae",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "codex": [
+          "speckit.constitution",
+          "speckit.specify",
+          "speckit.clarify",
+          "speckit.plan",
+          "speckit.checklist",
+          "speckit.tasks",
+          "speckit.analyze",
+          "speckit.implement",
+          "speckit.converge"
+        ]
+      },
+      "registered_skills": {
+        "codex": [
+          "speckit-constitution",
+          "speckit-specify",
+          "speckit-clarify",
+          "speckit-plan",
+          "speckit-checklist",
+          "speckit-tasks",
+          "speckit-analyze",
+          "speckit-implement",
+          "speckit-converge"
+        ]
+      },
+      "installed_at": "2026-10-20T07:53:59.600115+00:00"
+    },
+    "easeus-project": {
+      "version": "1.0.0",
+      "source": "local",
+      "manifest_hash": "sha256:d944f26616895d955b4a7e3a838d0062fb5f3dd1e081c8ba1a89d0c2df68c0a6",
+      "enabled": true,
+      "priority": 1,
+      "registered_commands": {},
+      "registered_skills": {},
+      "installed_at": "2026-10-20T07:54:02.234178+00:00"
+    }
+  }
+}

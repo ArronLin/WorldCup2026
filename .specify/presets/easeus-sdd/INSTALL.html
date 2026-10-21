@@ -1,0 +1,153 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>安装与使用 · 双底座 SDD Preset</title><style>
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:#f7f9fc;color:#19263a;font:16px/1.85 "Segoe UI","Microsoft YaHei",sans-serif}a{color:#2458d3;text-underline-offset:3px}aside{position:fixed;inset:0 auto 0 0;width:245px;padding:28px 22px;border-right:1px solid #dce4ee;background:#fff;overflow:auto}aside strong{display:block;font-size:21px;margin-bottom:5px}aside small{font-size:12px;color:#526379}nav{margin-top:25px}nav a{display:block;text-decoration:none;padding:7px 2px;font-size:13px;line-height:1.6;color:#43546b}main{margin-left:245px;max-width:1280px;padding:45px 55px 70px}h1{font-size:36px;line-height:1.4;letter-spacing:-.7px;margin:20px 0}h2{font-size:25px;margin:42px 0 13px;border-top:1px solid #dce4ee;padding-top:24px}h3{font-size:20px;margin-top:28px}p{margin:12px 0 18px}code{font:13px/1.7 Consolas,"Microsoft YaHei",monospace;background:#eaf0f8;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.9 Consolas,"Microsoft YaHei",monospace;padding:18px 22px;margin:0;background:#f0f4fa}.codebox{border:1px solid #d7e0ec;border-radius:9px;overflow:hidden;margin:18px 0}.codebox>div{padding:8px 14px;display:flex;justify-content:space-between;align-items:center;background:white;font-size:12px;color:#526379}button{cursor:pointer;border:1px solid #cbd6e5;background:#fff;border-radius:6px;padding:5px 12px;color:#244267;font:13px/1.5 inherit}button:hover{border-color:#2458d3}button:focus-visible,a:focus-visible{outline:3px solid #4774e0;outline-offset:3px}.tablewrap{overflow:auto;border:1px solid #dce4ee;border-radius:8px}table{border-collapse:collapse;width:100%;font-size:14px;min-width:590px;background:#fff}td,th{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid #dce4ee}th{background:#edf2f8}td p{margin:0}.eyebrow{color:#2458d3;font-size:12px;letter-spacing:2px}.meta{background:#edf3ff;padding:17px 20px;border-left:3px solid #2458d3;border-radius:4px;font-size:14px}li{margin:6px 0}#status{position:fixed;bottom:20px;right:25px;background:#17324f;color:white;border-radius:7px;padding:8px 15px;display:none}@media(max-width:780px){aside{position:static;width:auto;padding:18px 20px;border-right:0;border-bottom:1px solid #dce4ee}nav{display:flex;gap:15px;overflow:auto;margin-top:14px;white-space:nowrap}main{margin:0;padding:24px 20px 55px}h1{font-size:29px}h2{font-size:23px}pre{padding:14px;font-size:12px}}@media print{aside,button,#status{display:none!important}main{margin:0;padding:0;max-width:none}body{background:#fff;font-size:10pt}h1{font-size:23pt}h2{font-size:17pt}pre{font-size:8pt;background:#f5f5f5}.tablewrap{overflow:visible}table{min-width:0;font-size:9pt}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body><aside><strong>SDD / Preset</strong><small>1.0.0 · CLAUDE + CODEX</small><nav><a href="#heading-6">你会得到什么</a><a href="#heading-23">1. 解压和前置检查</a><a href="#heading-46">2. 仅在项目尚无 .specify 时初始化</a><a href="#heading-64">3. 安装到指定项目</a><a href="#heading-97">4. 后续修改路径与底座</a><a href="#heading-136">5. 可选：生成或合并 MCP 连接</a><a href="#heading-172">6. 检查配置与生效</a><a href="#heading-196">7. 建立或更新宪章</a><a href="#heading-214">8. 每个功能的日常 SDD</a><a href="#heading-251">9. 更新、卸载和故障处理</a><a href="#heading-279">10. 测试与适用限制</a><a href="#heading-294">官方参考</a></nav></aside><main><div class="eyebrow">INSTALLATION & USAGE</div><div class="meta">解压后从 README 的第1步开始。项目参数由配置工具管理，预设通过 Spec Kit 的正式组合机制安装。示例命令不会在本页执行。</div><h1 id="heading-0">双底座中文 TDD · Spec Kit Preset</h1>
+<p>版本：1.0.0。适用于已有代码仓库，支持 Claude Code 与 Codex Desktop。 声明兼容 Specify CLI ≥1.1.3、&lt;1.2.0；实际测试版本为 1.1.3。 配置工具使用 Python 3.11+ 标准库，无额外 Python 依赖。</p>
+<h2 id="heading-6">你会得到什么</h2>
+<ul>
+<li>9 个阶段命令采用 <code>wrap</code>，保留原工作流并加入阶段路由与质量约束。</li>
+<li>5 个产物模板采用 <code>append</code>，保留原模板并补充证据、测试和完成条件。</li>
+<li>默认中文；Wiki 提供背景，CodeGraph 定位代码，当前源码与运行结果核实结论。</li>
+<li>TDD；仅新增生产代码的单元测试行覆盖率 ≥80%，不要求存量或全项目达到80%。</li>
+<li>防止占位成功、恒真断言、mock 被测核心逻辑和无证据勾选任务。</li>
+<li>一个可重复执行的项目配置工具：安装、改参数、生成提示词、生效检查、卸载。</li>
+</ul>
+<p>预设不包含 CodeGraph/OpenDeepWiki 服务，不会自动建索引、更新 Wiki、 初始化 Git、升级软件、信任项目或绕过权限。 MCP 必须已经有真实部署/启动方法；可以只登记已有工具或 CLI，不重复配置连接。</p>
+<p><strong>这不是强制执行沙箱。</strong> 提示词政策不能从技术上阻止 Agent 写空测试。 必须通过真实测试、反向验证和适用的 CI/评审判断完成； <code>doctor</code> 仅检查配置与物化指令，不认证工具连接、覆盖率或业务正确性。</p>
+<h2 id="heading-23">1. 解压和前置检查</h2>
+<p>把压缩包解压到固定目录，例如 <code>D:\Tools\easeus-sdd</code>， 在该目录打开 PowerShell。以下示例请替换路径和底座信息。</p>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-1">复制</button></div><pre id="code-1" tabindex="0">python --version
+specify version --json
+specify init --help
+specify integration install --help
+python -X utf8 .\scripts\sdd_preset.py --help</pre></div>
+<p>尚未安装 Specify CLI 时，按团队选择安装已验证版本：</p>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-2">复制</button></div><pre id="code-2" tabindex="0">uv tool install &#x27;specify-cli==1.1.3&#x27;</pre></div>
+<p>已有 CLI 不重复安装，不自动升级。安装并登录实际使用的 Agent， 准备项目的编译器、构建和测试环境。Codex Desktop 不必另起 Codex CLI 会话； <code>codex</code> 是 Spec Kit 的集成键，项目技能会由桌面项目会话使用。</p>
+<h2 id="heading-46">2. 仅在项目尚无 .specify 时初始化</h2>
+<p>在目标代码仓库中执行，已有 <code>.specify/</code> 直接跳到第3步。</p>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-3">复制</button></div><pre id="code-3" tabindex="0">Set-Location -LiteralPath &#x27;D:\Repos\your-project&#x27;
+specify init --here --integration claude --script ps --non-interactive</pre></div>
+<p>初始集成也可以选 <code>--integration codex --integration-options=&quot;--skills&quot;</code>。 Linux/macOS 可按实际环境使用 <code>--script sh</code>，包内 Python 工具跨平台， 下面的多行终端例子使用 PowerShell 语法。</p>
+<p>非空目录可能要求 <code>--force</code>。先检查既有文件和潜在覆盖，再依实际帮助处理； 不要默认加 force，不重新 init 已初始化的项目，也不启用 Git 扩展来满足流程。 若只是生成集成文件、实际 Agent 在另一入口运行，可按当前版本支持的 <code>--ignore-agent-tools</code> 跳过 CLI 探测；它不等于已经验证 Agent。</p>
+<h2 id="heading-64">3. 安装到指定项目</h2>
+<p>回到解压后的包目录，执行：</p>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-4">复制</button></div><pre id="code-4" tabindex="0">python -X utf8 .\scripts\sdd_preset.py install --project &#x27;D:\Repos\your-project&#x27; --agents both --default-agent codex --repository-id &#x27;my-team/my-project&#x27; --codegraph-index &#x27;D:\Indexes\your-project&#x27; --codegraph-access &#x27;已配置的 CodeGraph MCP；projectPath 指向本项目&#x27; --wiki-location &#x27;https://your-wiki.example/OWNER/REPO&#x27; --wiki-access &#x27;已配置的 OpenDeepWiki MCP 或文档读取入口&#x27;</pre></div>
+<p>将示例地址换成真实仓库入口。也可以用 <code>--settings &#x27;D:\Config\project-settings.json&#x27;</code> 提供 JSON 补丁，省去长参数；<code>examples/project.example.json</code> 给出完整结构。 初次安装不提供来源信息也能完成注册，但上下文未配置，Agent 必须报告缺项。</p>
+<p>安装工具会：</p>
+<ol>
+<li>检查 CLI 版本、已有项目、配置类型和同名 MCP 冲突。</li>
+<li>补齐缺少的所选集成，安装本地预设，不使用 <code>--force</code>。</li>
+<li>分别激活 Claude/Codex、核实实际阶段技能，再设置你指定的默认集成。</li>
+<li>把项目参数存入 <code>.specify/easeus.json</code>。</li>
+<li>合并 AGENTS.md 受管理区块，CLAUDE.md 导入 @AGENTS.md， 保留其他原有内容；已有独立导入时避免重复。</li>
+<li>对配置工具改写的已有文件保留项目内备份。</li>
+</ol>
+<p>这是<strong>本地目录安装</strong>，不是向官方目录发布。CLI 会复制整个包到 <code>.specify/presets/easeus-sdd/</code>；以后改项目参数不用重新安装。 只用一种 Agent 时可选 <code>--agents claude --default-agent claude</code> 或 <code>--agents codex --default-agent codex</code>。</p>
+<p>如果另一高优先级 Preset 或项目 override 覆盖了命令，安装检查会报未生效， 不会强制覆盖。先检查 <code>specify preset resolve plan-template</code> 等结果， 再决定优先级或如何组合已有规则。 安装过程不是跨 CLI 操作的事务；中途失败可能保留已安装的集成或预设。 按错误检查状态，修正后继续；不要反复强制重装。</p>
+<h2 id="heading-97">4. 后续修改路径与底座</h2>
+<p>参数属于本工具，不是 <code>/speckit-*</code> 的原生参数。</p>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-5">复制</button></div><pre id="code-5" tabindex="0">python -X utf8 .\scripts\sdd_preset.py configure --project &#x27;D:\Repos\your-project&#x27; --codegraph-index &#x27;D:\Indexes\new-index&#x27; --codegraph-access &#x27;实际工具名与参数说明&#x27; --wiki-location &#x27;D:\Docs\your-project-wiki&#x27; --wiki-access &#x27;本地 Markdown 文档目录&#x27; --source-snapshot &#x27;源码版本或快照&#x27; --codegraph-snapshot &#x27;索引对应版本&#x27; --wiki-snapshot &#x27;文档对应版本&#x27; --baseline &#x27;明确的基准提交或源码快照&#x27;</pre></div>
+<p>项目迁移后，针对新路径重新 <code>configure</code>，核实底座是否仍对应正确仓库。 版本不知道就保留 <code>unknown</code>，不要用生成时间代替源码一致性。 来源可以是 MCP、CLI、Index 路径或可读取的本地文档；访问描述由 Agent 使用， 配置工具不会执行其中的命令。</p>
+<p><code>--dry-run</code> 可预览配置改动。配置工具的备份在： <code>.specify/easeus/backups/&lt;时间戳&gt;/</code>。 预设升级、卸载不自动删除项目配置与备份。不要在同一项目同时运行两次设置工具。 工具为备份目录和机器状态添加局部 .gitignore；它不会移除已经被跟踪的文件。 备份可能含原 MCP 配置，请按本地敏感文件管理，不将它作为共享配置发布。</p>
+<h3 id="heading-116">配置参数速查</h3>
+<div class="tablewrap"><table><thead><tr><th>参数</th><th>用途</th></tr></thead><tbody>
+<tr><td><code>--project</code></td><td>目标项目的现有目录，须已有 .specify</td></tr>
+<tr><td><code>--agents both/claude/codex</code></td><td>安装或检查的 Agent 范围</td></tr>
+<tr><td><code>--default-agent claude/codex</code></td><td>安装结束时保留的活动集成</td></tr>
+<tr><td><code>--settings FILE</code></td><td>合并 JSON 配置，命令行字段优先</td></tr>
+<tr><td><code>--repository-id</code></td><td>明确的项目/仓库身份</td></tr>
+<tr><td><code>--codegraph-access / --codegraph-index</code></td><td>实际访问说明与 Index 位置</td></tr>
+<tr><td><code>--wiki-access / --wiki-location</code></td><td>实际访问说明与仓库文档入口</td></tr>
+<tr><td><code>--source-snapshot / --codegraph-snapshot / --wiki-snapshot</code></td><td>适用版本或快照</td></tr>
+<tr><td><code>--baseline</code></td><td>新增可执行代码行的比较基线</td></tr>
+<tr><td><code>--write-mcp</code></td><td>显式合并项目 MCP；不默认为开启</td></tr>
+<tr><td><code>--priority</code></td><td>Preset 优先级，默认10；越小越优先</td></tr>
+</tbody></table></div>
+<p>政策固定为中文、TDD、0.80 新增行门槛；配置不能静默降低。 已知构建/测试/覆盖率命令可写入 JSON 的 <code>verification.known_commands</code> 数组， 工具只提供上下文，不自动运行这些命令。</p>
+<h2 id="heading-136">5. 可选：生成或合并 MCP 连接</h2>
+<p>如果两种 Agent 已经接通底座，<strong>无需使用此步骤</strong>。 配置中的 <code>access</code> 是访问说明，不能自动变成 MCP 服务。</p>
+<p>复制 <code>examples/http-settings.example.json</code> 或 <code>stdio-settings.example.json</code>， 改为真实 URL/可执行命令和参数，再执行：</p>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-6">复制</button></div><pre id="code-6" tabindex="0">python -X utf8 .\scripts\sdd_preset.py configure --project &#x27;D:\Repos\your-project&#x27; --settings &#x27;D:\Config\actual-mcp-settings.json&#x27;</pre></div>
+<p>默认只生成示例：</p>
+<ul>
+<li><code>.specify/easeus/mcp/claude.example.json</code></li>
+<li><code>.specify/easeus/mcp/codex.example.toml</code></li>
+</ul>
+<p>确认需要后，加 <code>--write-mcp</code> 合并真实配置：</p>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-7">复制</button></div><pre id="code-7" tabindex="0">python -X utf8 .\scripts\sdd_preset.py configure --project &#x27;D:\Repos\your-project&#x27; --settings &#x27;D:\Config\actual-mcp-settings.json&#x27; --write-mcp</pre></div>
+<p>Claude 使用项目 <code>.mcp.json</code>；Codex 使用项目 <code>.codex/config.toml</code>。 Codex 项目配置需要按客户端要求信任该项目，不自动修改信任设置。 同名服务器已有不同内容时，工具拒绝覆盖；其他服务和 TOML 注释保留。</p>
+<p>HTTP 可提供 <code>bearer_token_env_var</code>，只存环境变量名，不存密钥； Claude 将其映射为环境变量引用，Codex 保存变量名。 环境变量须在 Agent 实际启动环境中可用。OAuth 按服务与客户端流程登录。 stdio 用服务供应方真实的 <code>command</code> / <code>args</code>，本包不编造启动参数。 工具不会启动 MCP，也不证明服务器连通或仓库范围正确。</p>
+<p>打开新会话，在 Claude 的 <code>/mcp</code> 或 Codex 相应工具设置中确认服务； 然后让 Agent 实际查一份文档与一个真实符号，引用来源并核实源码。</p>
+<h2 id="heading-172">6. 检查配置与生效</h2>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-8">复制</button></div><pre id="code-8" tabindex="0">python -X utf8 .\scripts\sdd_preset.py doctor --project &#x27;D:\Repos\your-project&#x27; --agents both</pre></div>
+<ul>
+<li>退出0：结构和所选命令检查通过，仍可能有未知版本警告。</li>
+<li>退出1：生效检查失败；<code>--strict-metadata</code> 也会把元数据警告作为失败。</li>
+<li>退出2：路径、参数、文件或工具错误。</li>
+</ul>
+<p><code>doctor</code> 检查配置、注册/启用状态、共享锚点及18个技能中的政策/核心组合标记。 它不对真实 MCP、模型行为、业务语义或测试有效性作通过判断。 不要将它的退出码作为 SDD 实施完成的门槛替代品。</p>
+<p>以下只读提示词应在两种 Agent 中分别执行：</p>
+<div class="codebox"><div><span>text</span><button type="button" data-copy="code-9">复制</button></div><pre id="code-9" tabindex="0">读取当前项目指令、.specify/easeus.json 和预设 common.md。
+列出实际加载的阶段入口。查询正确仓库的一份 Wiki 文档、
+一个 CodeGraph 符号及关系，用当前源码核实。
+说明适用版本、真实调用结果、一个已核实事实和仍未确认的事项。
+无法调用时报告真实限制，不用配置文件冒充工具结果。</pre></div>
+<h2 id="heading-196">7. 建立或更新宪章</h2>
+<p>安装不改写现有 <code>constitution.md</code>。在 Agent 中显式调用：</p>
+<p>Claude Code：</p>
+<div class="codebox"><div><span>text</span><button type="button" data-copy="code-10">复制</button></div><pre id="code-10" tabindex="0">/speckit-constitution
+按已安装 easeus-sdd 政策更新现有宪章。
+保留有效项目原则，中文编写，明确真实 TDD、有效测试、
+仅新增生产代码单元测试行覆盖率 ≥80%，并定义可检查的完成条件。
+不要实施业务功能或自动补测。</pre></div>
+<p>Codex Desktop 使用 <code>$speckit-constitution</code>，其余输入相同。 如果旧项目只有 <code>/speckit.constitution</code> 点号命令，应先按安装版本的集成 维护方式检查/迁移；本包不通过删除旧入口来强制迁移。</p>
+<h2 id="heading-214">8. 每个功能的日常 SDD</h2>
+<div class="tablewrap"><table><thead><tr><th>阶段</th><th>你提供的自然语言输入</th><th>主要底座/证据</th></tr></thead><tbody>
+<tr><td>specify</td><td>用户、触发、期望、异常/取消、验收、非目标</td><td>Wiki 背景；按需核实现状</td></tr>
+<tr><td>clarify</td><td>关注主题及对关键问题的回答</td><td>先查事实，再问产品决定</td></tr>
+<tr><td>plan</td><td>技术/兼容约束、比较基线、验证环境</td><td>CodeGraph + 当前源码</td></tr>
+<tr><td>checklist</td><td>需求质量的评审主题，可选</td><td>规格与计划；按需查背景</td></tr>
+<tr><td>tasks</td><td>TDD 依赖、有效断言与完成条件</td><td>复用计划；按需核实位置</td></tr>
+<tr><td>analyze</td><td>一致性关注点，可选</td><td>文档为主，必须只读</td></tr>
+<tr><td>implement</td><td>任务范围与实际验证命令</td><td>当前源码、真实测试与报告</td></tr>
+<tr><td>converge</td><td>最终实现及验证证据</td><td>按有效工作流检查差距</td></tr>
+</tbody></table></div>
+<p>以上是 Agent 命令后的文本参数，不是 CLI flags。 当前上游 converge 只追加任务，不修改应用代码。 本预设保留它的核心定义：有差距后运行 implement，再 converge。 若项目另有明确的自定义行为，以实际有效命令为准，不绕过写入边界。 自定义 checklist 的勾选是需求质量评审，不能被 implement 静默自批。</p>
+<h3 id="heading-233">自动生成已填项目参数的提示词</h3>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-11">复制</button></div><pre id="code-11" tabindex="0">python -X utf8 .\scripts\sdd_preset.py prompts --project &#x27;D:\Repos\your-project&#x27; --agent claude --stage specify --feature &#x27;新功能名称&#x27; --requirements &#x27;用户行为与验收要求&#x27;
+python -X utf8 .\scripts\sdd_preset.py prompts --project &#x27;D:\Repos\your-project&#x27; --agent codex --stage all --output &#x27;docs/sdd/prompts.txt&#x27;</pre></div>
+<p>支持所有9阶段及 <code>repair-tests</code>、<code>handoff</code>。 <code>--constraints</code> 提供明确约束，<code>--focus</code> 提供澄清/评审/实施范围。 未提供的需求保留中文占位符，不能直接当成完整需求执行。 导出文件只能位于所选项目内。 每功能目录按当前工作流解析，不能只凭 Git 分支名判断。</p>
+<p>发现空测试时先使用 <code>repair-tests</code> 提示词审查并形成修复任务， 再 implement；不要用“全返回 true”或覆盖率数字宣告完成。 跨 Agent 使用 <code>handoff</code>，交接实际文件、版本、任务和证据； 不要让两个 Agent 同时修改同一工作目录的相同文件。</p>
+<h2 id="heading-251">9. 更新、卸载和故障处理</h2>
+<p>只改项目路径或来源：使用 <code>configure</code>，不更新预设。 更新包：先备份有价值的定制和配置，使用旧包卸载，再用新包 install。 不建议把上游 <code>preset update</code> 当作有自动回滚的事务。</p>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-12">复制</button></div><pre id="code-12" tabindex="0">python -X utf8 .\scripts\sdd_preset.py uninstall --project &#x27;D:\Repos\your-project&#x27;</pre></div>
+<p>卸载通过官方 CLI 恢复核心阶段指令，移除未被用户编辑的共享锚点。 用户编辑过的锚点保留并提示人工检查。 保留项目参数、备份、MCP 配置、Agent 集成、宪章和功能文件； 不会自动断开工具或删除源码。 若直接使用 <code>specify preset remove easeus-sdd</code>，请自行清理指向 已卸载预设的项目指令锚点，避免新会话继续引用缺失文件。</p>
+<p>若规则不生效，检查：</p>
+<ol>
+<li><code>specify preset list --json</code> 中安装/启用状态和优先级。</li>
+<li>两种集成是否均执行过 <code>specify integration use &lt;agent&gt;</code>。</li>
+<li>实际 SKILL.md 是否包含 <code>easeus-sdd:policy:v1</code>。</li>
+<li>是否有更高优先级 override 或自定义阶段入口。</li>
+<li>是否打开了错误项目或仍在使用旧会话。</li>
+</ol>
+<p><code>preset disable</code> 不一定移除已经物化的命令；本工具 doctor 会把禁用状态报错。 需要停止整个预设行为时按卸载步骤处理，不仅禁用模板解析。</p>
+<h2 id="heading-279">10. 测试与适用限制</h2>
+<div class="codebox"><div><span>powershell</span><button type="button" data-copy="code-13">复制</button></div><pre id="code-13" tabindex="0">python -X utf8 -m unittest discover -s tests -v
+python -X utf8 .\tests\smoke_specify.py --work-root &#x27;D:\Temp\sdd-smoke&#x27; --initial-agent claude
+python -X utf8 .\tests\smoke_specify.py --work-root &#x27;D:\Temp\sdd-smoke&#x27; --initial-agent codex</pre></div>
+<p>集成测试仅在新建的隔离目录内初始化 Spec Kit，不初始化 Git； 需要真实 Specify CLI，但不执行 LLM、MCP 或业务测试。 <code>--work-root</code> 必须位于包目录外。只清理本次创建并核实范围的测试目录。</p>
+<p>参考核验：2026-10-15。实际 CLI 测试结果见 <code>docs/VALIDATION.json</code>。 本文不宣称所有未来 CLI 版本、企业权限设置或 Agent 执行行为都相同。</p>
+<h2 id="heading-294">官方参考</h2>
+<ul>
+<li><a href="https://github.github.com/spec-kit/reference/presets.html" target="_blank" rel="noopener noreferrer">Spec Kit Preset</a></li>
+<li><a href="https://github.github.com/spec-kit/reference/integrations.html" target="_blank" rel="noopener noreferrer">Spec Kit 集成</a></li>
+<li><a href="https://github.github.com/spec-kit/guides/customization.html" target="_blank" rel="noopener noreferrer">Spec Kit 定制</a></li>
+<li><a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener noreferrer">Claude 项目指令</a></li>
+<li><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener noreferrer">Claude MCP</a></li>
+<li><a href="https://developers.openai.com/codex/guides/agents-md" target="_blank" rel="noopener noreferrer">OpenAI Docs：项目指令</a></li>
+<li><a href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener noreferrer">OpenAI Docs：MCP</a></li>
+<li><a href="https://github.com/AIDotNet/OpenDeepWiki" target="_blank" rel="noopener noreferrer">OpenDeepWiki</a></li>
+</ul>
+<p>包内 wrapper/addendum 为项目自有内容，原 Spec Kit 命令仅在安装时组合， 不在发行包中复制上游完整命令。</p></main><div id="status" role="status" aria-live="polite"></div><script>
+document.querySelectorAll('[data-copy]').forEach(function(button){button.addEventListener('click',async function(){var text=document.getElementById(button.dataset.copy).textContent;var ok=false;try{if(navigator.clipboard){await navigator.clipboard.writeText(text);ok=true;}}catch(e){}if(!ok){var t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.top='-9999px';document.body.appendChild(t);t.select();try{ok=document.execCommand('copy');}catch(e){}t.remove();}var s=document.getElementById('status');s.textContent=ok?'已复制，请替换示例路径与连接参数。':'请手动选择代码内容复制。';s.style.display='block';setTimeout(function(){s.style.display='none';},2300);});});
+</script></body></html>

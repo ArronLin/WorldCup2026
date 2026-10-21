@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-15",
+  "preset_version": "1.0.0",
+  "tested_cli": "1.1.3",
+  "unit_tests": {
+    "count": 8,
+    "status": "passed"
+  },
+  "integration_runs": [
+    {
+      "project": "isolated fixture with Chinese, spaces, and apostrophe",
+      "cli": "1.1.3",
+      "checks": [
+        "install preserves constitution and creates no Git repository",
+        "all 18 materialized skills preserve upstream and include preset policy",
+        "all 5 appended template layers resolve through real CLI",
+        "doctor validates registration without claiming MCP or test success",
+        "configure is idempotent and preserves user instructions",
+        "doctor rejects disabled preset despite residual skills",
+        "uninstall restores both upstream skill sets and preserves user configuration"
+      ],
+      "mcp_verified": false,
+      "llm_execution_verified": false,
+      "status": "passed",
+      "initial_agent": "claude"
+    },
+    {
+      "project": "isolated fixture with Chinese, spaces, and apostrophe",
+      "cli": "1.1.3",
+      "checks": [
+        "install preserves constitution and creates no Git repository",
+        "all 18 materialized skills preserve upstream and include preset policy",
+        "all 5 appended template layers resolve through real CLI",
+        "doctor validates registration without claiming MCP or test success",
+        "configure is idempotent and preserves user instructions",
+        "doctor rejects disabled preset despite residual skills",
+        "uninstall restores both upstream skill sets and preserves user configuration"
+      ],
+      "mcp_verified": false,
+      "llm_execution_verified": false,
+      "status": "passed",
+      "initial_agent": "codex"
+    }
+  ],
+  "limits": [
+    "No live MCP connections tested",
+    "No Claude/Codex LLM execution tested",
+    "doctor is not semantic, test or coverage certification"
+  ]
+}

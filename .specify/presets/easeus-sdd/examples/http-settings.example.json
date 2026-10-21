@@ -1,0 +1,16 @@
+{
+  "sources": {
+    "codegraph": {
+      "mcp": {
+        "transport": "http",
+        "url": "https://replace-with-your-codegraph.example/mcp"
+      }
+    },
+    "opendeepwiki": {
+      "mcp": {
+        "transport": "http",
+        "url": "https://replace-with-your-wiki.example/api/mcp/OWNER/REPO"
+      }
+    }
+  }
+}

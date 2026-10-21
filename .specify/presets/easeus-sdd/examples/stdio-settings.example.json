@@ -1,0 +1,13 @@
+{
+  "sources": {
+    "codegraph": {
+      "mcp": {
+        "transport": "stdio",
+        "command": "REPLACE_WITH_INSTALLED_EXECUTABLE",
+        "args": [
+          "REPLACE_WITH_VENDOR_ARGUMENTS"
+        ]
+      }
+    }
+  }
+}

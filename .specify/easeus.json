@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "generated_by": "repo-sdd-studio",
+  "namespace": "easeus",
+  "project": {
+    "path": ".",
+    "repository_id": "WorldCup2026",
+    "source_snapshot": "unknown"
+  },
+  "sources": {
+    "opendeepwiki": {
+      "access": "MCP speckit_wizard：opendeepwiki__<工具名>；本机绑定由仓库适配向导管理",
+      "snapshot": "unknown",
+      "server_name": "speckit_wizard",
+      "location": "easeus/WorldCup2026",
+      "mcp": null
+    },
+    "codegraph": {
+      "access": "MCP speckit_wizard：codegraph__<工具名>；本机绑定由仓库适配向导管理",
+      "snapshot": "unknown",
+      "server_name": "speckit_wizard",
+      "index_path": "",
+      "mcp": null
+    }
+  },
+  "verification": {
+    "new_code_baseline": "每个功能开始时明确基线提交或可复现源码快照",
+    "known_commands": []
+  },
+  "policy": {
+    "language": "简体中文",
+    "tdd_required": true,
+    "new_unit_line_coverage_minimum": 0.8,
+    "valid_tests_required": true,
+    "evidence_required": true
+  }
+}

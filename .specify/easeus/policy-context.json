@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "speckit-preset-default",
+  "name": "应用默认规则",
+  "version": "1.8.0",
+  "example": false,
+  "specify_versions": ">=1.1.3,<1.3.0",
+  "description": "当前规则快照与项目评审结果。",
+  "rules": [],
+  "options": {},
+  "required_headings": {},
+  "template_additions": {},
+  "namespace": "easeus"
+}
