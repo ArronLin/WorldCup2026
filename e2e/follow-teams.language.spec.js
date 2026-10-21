@@ -1,0 +1,23 @@
+import {test,expect,follow} from './follow-fixtures.js';
+async function language(page,lang){await page.locator('#langToggle').click();await expect(page.locator('html')).toHaveAttribute('lang',lang)}
+test('Chinese-English-Chinese preserves details, filters, results and static notice',async({page})=>{
+ await follow(page,'ARG');for(const lang of ['en','zh']){await language(page,lang);await expect(page.locator('[data-follow-action=toggle]')).toHaveAttribute('aria-pressed','true');await expect(page.locator('[data-follow-action=toggle]')).toHaveText(lang==='en'?'Unfollow team':'取消关注');await expect(page.locator('.follow-demo')).toContainText(lang==='en'?'Static demo':'静态演示');}
+ await page.goto('/#/schedule');await page.getByRole('checkbox').check();await page.getByRole('button',{name:'小组赛',exact:true}).click();await expect(page.locator('[data-filter=group]')).toHaveAttribute('aria-pressed','true');const ids=await page.locator('#app .match-card').evaluateAll(es=>es.map(e=>e.dataset.route));
+ for(const lang of ['en','zh']){await language(page,lang);await expect(page.getByRole('checkbox')).toBeChecked();await expect(page.locator('[data-filter=group]')).toHaveAttribute('aria-pressed','true');await expect(page.locator('.follow-switch')).toContainText(lang==='en'?'Only followed teams':'只看已关注球队');expect(await page.locator('#app .match-card').evaluateAll(es=>es.map(e=>e.dataset.route))).toEqual(ids);}
+ await page.locator('#app .match-card').first().click();await expect(page.locator('.match-detail-page')).toBeVisible();
+});
+test('both empty states and unsaved warning translate in both directions',async({page})=>{
+ await page.goto('/#/schedule');await page.getByRole('checkbox').check();for(const lang of ['en','zh']){await language(page,lang);await expect(page.locator('.follow-empty')).toContainText(lang==='en'?'No followed teams yet':'还没有关注球队');}
+ await page.addInitScript(()=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k==='wc2026-followed-teams')throw Error('denied');return set.call(this,k,v)}});
+ await page.reload();await follow(page,'BRA');for(const lang of ['en','zh']){await language(page,lang);await expect(page.locator('.follow-notice')).toContainText(lang==='en'?'Unable to save':'无法保存');}
+ await page.goto('/#/schedule');await page.getByRole('checkbox').check();await page.getByRole('button',{name:'决赛',exact:true}).click();for(const lang of ['en','zh']){await language(page,lang);await expect(page.locator('.follow-empty')).toContainText(lang==='en'?'No matches':'当前筛选条件下没有比赛');await expect(page.locator('.follow-notice')).toContainText(lang==='en'?'Unable to save':'无法保存');}
+});
+
+test('English full journey works without AI; controls fit a narrow screen in both themes',async({page})=>{
+ let aiCalls=0;await page.route('**/.netlify/functions/**',route=>{aiCalls++;return route.abort()});
+ await page.goto('/#/team/ARG');await expect(page.locator('[data-follow-action=toggle]')).toHaveText('关注球队');await language(page,'en');await page.getByRole('button',{name:'Follow team',exact:true}).click();await expect(page.getByRole('button',{name:'Unfollow team',exact:true})).toHaveAttribute('aria-pressed','true');
+ await page.goto('/#/schedule');await expect(page.locator('html')).toHaveAttribute('lang','en');await page.getByRole('checkbox',{name:'Only followed teams'}).check();await page.getByRole('button',{name:'Group Stage',exact:true}).click();await expect(page.locator('[data-filter=group]')).toHaveAttribute('aria-pressed','true');await expect(page.locator('#app .match-card').first()).toBeVisible();
+ await page.screenshot({animations:'disabled',path:'specs/001-follow-teams/evidence/follow-schedule-desktop.png'});await page.setViewportSize({width:375,height:812});
+ expect(await page.locator('.follow-controls, .filter-tabs, .follow-demo').evaluateAll(es=>es.every(el=>{const r=el.getBoundingClientRect();return r.left>=0&&Math.ceil(r.right)<=innerWidth&&el.scrollWidth<=el.clientWidth+1}))).toBe(true);await page.screenshot({animations:'disabled',path:'specs/001-follow-teams/evidence/follow-schedule-mobile-dark.png'});await page.setViewportSize({width:1280,height:720});await page.locator('#themeToggle').click();await page.setViewportSize({width:375,height:812});await expect(page.locator('html')).toHaveAttribute('data-theme','light');await page.screenshot({animations:'disabled',path:'specs/001-follow-teams/evidence/follow-schedule-mobile-light.png'});
+ await page.locator('#app .match-card').first().click();await expect(page.locator('.match-detail-page')).toBeVisible();await expect(page.locator('html')).toHaveAttribute('lang','en');expect(aiCalls).toBe(0);
+});

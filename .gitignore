@@ -16,6 +16,9 @@ desktop.ini
 # Node
 node_modules/
 dist/
+.tmp/
+/coverage/
+build/
 .vite/
 test-results/
 playwright-report/

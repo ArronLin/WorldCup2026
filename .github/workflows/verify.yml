@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -17,5 +19,16 @@ jobs:
       - run: npm run validate:data
       - run: npm run build
       - run: npm test
+      - run: npm run coverage:baseline -- --manifest specs/001-follow-teams/coverage-baseline.json --output .tmp/follow-teams-baseline
+      - run: npm run test:coverage
+      - id: added-coverage
+        run: npm run coverage:added -- --baseline .tmp/follow-teams-baseline/baseline.json --output coverage/coverage-added.json
+      - if: ${{ !cancelled() && (steps.added-coverage.outcome == 'success' || steps.added-coverage.outcome == 'failure') }}
+        run: npm run coverage:html -- --input coverage/coverage-added.json --output coverage/added/index.html
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unit-coverage
+          path: coverage/
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e

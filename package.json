@@ -9,11 +9,20 @@
     "validate:data": "node scripts/validate-data.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:coverage": "node scripts/run-unit-coverage.mjs",
+    "coverage:baseline": "node scripts/capture-coverage-baseline.mjs",
+    "coverage:added": "node scripts/check-added-coverage.mjs",
+    "coverage:html": "node scripts/render-added-coverage.mjs",
+    "test:mutations:follow": "node scripts/check-follow-mutations.mjs",
+    "coverage:prove-unimported": "node scripts/prove-unimported-coverage.mjs"
   },
   "devDependencies": {
+    "@babel/parser": "7.29.9",
     "@playwright/test": "^1.57.0",
+    "@vitest/coverage-v8": "4.1.10",
     "ajv": "^8.17.1",
+    "jsdom": "26.1.0",
     "vite": "^7.2.0",
     "vitest": "^4.0.0"
   }
