@@ -1,0 +1,272 @@
+
+Running 20 tests using 8 workers
+
+  x   4 e2e\follow-teams.schedule.spec.js:2:1 › follows combine with stages and survive same-tab return, refresh resets only filters (31.7s)
+  x   3 e2e\follow-teams.persistence.spec.js:2:1 › real UI follows two teams, removes one, refreshes and restores in a new page (31.6s)
+  x   7 e2e\follow-teams.storage.spec.js:2:1 › corrupt and denied read records are reported without blocking browsing (31.2s)
+  x   2 e2e\follow-teams.keyboard-race.spec.js:2:1 › keyboard can follow, filter, select a stage and open a match with visible focus (31.6s)
+  x   1 e2e\follow-teams.empty-retry.spec.js:2:1 › no follows and no matches are separate, and removing the last follow updates returning schedule (31.9s)
+  x   8 e2e\history.spec.js:6:1 › 场景 A：单队 7 届倒序，每条含届次/轮次/对手/比分且无空白项 (31.7s)
+  x   6 e2e\smoke.spec.js:3:1 › routes, language switch and schedule filters are available (31.6s)
+  x   5 e2e\follow-teams.language.spec.js:3:1 › Chinese-English-Chinese preserves details, filters, results and static notice (31.7s)
+  ok 10 e2e\follow-teams.persistence.spec.js:10:1 › invalid team entries have no follow action (9.3s)
+  ok 12 e2e\follow-teams.storage.spec.js:6:1 › follow-key read denial allows a temporary follow; later save recovers (10.4s)
+  ok  9 e2e\follow-teams.schedule.spec.js:11:1 › fixture has exact union, stable grouped order and deduplicated IDs (12.5s)
+  ok 14 e2e\history.spec.js:37:1 › 场景 E（前半）：未选择态、非法参数回落、参数大小写不敏感 (8.0s)
+  ok 13 e2e\follow-teams.empty-retry.spec.js:7:1 › schedule 503 retries without losing saved follows (12.0s)
+  ok 11 e2e\follow-teams.keyboard-race.spec.js:9:1 › rapid filter changes and reversed language responses leave the latest intent visible (15.5s)
+  ok 17 e2e\history.spec.js:66:3 › 场景 D：语言切换后已选状态不丢失 › 切换为英文后选择原样保留 (3.7s)
+  ok 16 e2e\follow-teams.storage.spec.js:10:1 › write failure preserves state across routes; a later save persists the full set (4.8s)
+  ok 15 e2e\smoke.spec.js:12:1 › mock chat loads lazily and accepts a question (6.2s)
+  ok 19 e2e\follow-teams.storage.spec.js:16:1 › all storage denied still starts and allows temporary follows (4.9s)
+  ok 20 e2e\follow-teams.storage.spec.js:19:1 › 503 is an error and a user retry really fetches the data again (3.4s)
+  x  18 e2e\follow-teams.language.spec.js:9:1 › both empty states and unsaved warning translate in both directions (17.4s)
+
+
+  1) e2e\follow-teams.empty-retry.spec.js:2:1 › no follows and no matches are separate, and removing the last follow updates returning schedule 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4173/#/schedule", waiting until "load"
+
+
+      1 | import {test,expect,follow,team,followButton} from './follow-fixtures.js';
+      2 | test('no follows and no matches are separate, and removing the last follow updates returning schedule',async({page})=>{
+    > 3 |  await page.goto('/#/schedule');await page.getByRole('checkbox').check();await expect(page.getByText('还没有关注球队，先选择你支持的球队吧。')).toBeVisible();await expect(page.locator('#app a[href="#/teams"]')).toBeVisible();
+        |             ^
+      4 |  await follow(page,'ARG');await page.goto('/#/schedule');await expect(page.getByRole('checkbox')).toBeChecked();await expect(page.locator('#app .match-card').first()).toBeVisible();
+      5 |  await team(page,'ARG');await followButton(page).click();await expect(followButton(page)).toHaveAttribute('aria-pressed','false');await page.goto('/#/schedule');await expect(page.getByText('还没有关注球队，先选择你支持的球队吧。')).toBeVisible();
+      6 | });
+        at D:\GitHub\WorldCup2026\e2e\follow-teams.empty-retry.spec.js:3:13
+
+    Error Context: test-results\follow-teams.empty-retry-n-ce828--updates-returning-schedule\error-context.md
+
+  2) e2e\follow-teams.keyboard-race.spec.js:2:1 › keyboard can follow, filter, select a stage and open a match with visible focus 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4173/#/team/ARG", waiting until "load"
+
+
+       at follow-fixtures.js:8
+
+       6 | } });
+       7 | export const followButton = page => page.locator('[data-follow-action="toggle"]');
+    >  8 | export async function team(page, code) { await page.goto('/#/team/'+code); await expect(page.locator('html')).toHaveAttribute('lang','zh'); await expect(followButton(page)).toBeVisible(); }
+         |                                                     ^
+       9 | export async function follow(page,code) {await team(page,code);await followButton(page).click();await expect(followButton(page)).toHaveAttribute('aria-pressed','true');}
+      10 |
+      11 |
+        at team (D:\GitHub\WorldCup2026\e2e\follow-fixtures.js:8:53)
+        at D:\GitHub\WorldCup2026\e2e\follow-teams.keyboard-race.spec.js:3:8
+
+    Error Context: test-results\follow-teams.keyboard-race-1d6fb--a-match-with-visible-focus\error-context.md
+
+  3) e2e\follow-teams.language.spec.js:3:1 › Chinese-English-Chinese preserves details, filters, results and static notice 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4173/#/team/ARG", waiting until "load"
+
+
+       at follow-fixtures.js:8
+
+       6 | } });
+       7 | export const followButton = page => page.locator('[data-follow-action="toggle"]');
+    >  8 | export async function team(page, code) { await page.goto('/#/team/'+code); await expect(page.locator('html')).toHaveAttribute('lang','zh'); await expect(followButton(page)).toBeVisible(); }
+         |                                                     ^
+       9 | export async function follow(page,code) {await team(page,code);await followButton(page).click();await expect(followButton(page)).toHaveAttribute('aria-pressed','true');}
+      10 |
+      11 |
+        at team (D:\GitHub\WorldCup2026\e2e\follow-fixtures.js:8:53)
+        at follow (D:\GitHub\WorldCup2026\e2e\follow-fixtures.js:9:48)
+        at D:\GitHub\WorldCup2026\e2e\follow-teams.language.spec.js:4:8
+
+    Error Context: test-results\follow-teams.language-Chin-81ea5-s-results-and-static-notice\error-context.md
+
+  4) e2e\follow-teams.language.spec.js:9:1 › both empty states and unsaved warning translate in both directions 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('.follow-empty')
+    Expected substring: "No matches"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" with timeout 5000ms
+      - waiting for locator('.follow-empty')
+
+
+      11 |  await page.addInitScript(()=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k==='wc2026-followed-teams')throw Error('denied');return set.call(this,k,v)}});
+      12 |  await page.reload();await follow(page,'ARG');for(const lang of ['en','zh']){await language(page,lang);await expect(page.locator('.follow-notice')).toContainText(lang==='en'?'Unable to save':'无法保存');}
+    > 13 |  await page.goto('/#/schedule');await page.getByRole('checkbox').check();await page.getByRole('button',{name:'决赛',exact:true}).click();for(const lang of ['en','zh']){await language(page,lang);await expect(page.locator('.follow-empty')).toContainText(lang==='en'?'No matches':'当前筛选条件下没有比赛');await expect(page.locator('.follow-notice')).toContainText(lang==='en'?'Unable to save':'无法保存');}
+         |                                                                                                                                                                                                                                             ^
+      14 | });
+      15 |
+        at D:\GitHub\WorldCup2026\e2e\follow-teams.language.spec.js:13:237
+
+    Error Context: test-results\follow-teams.language-both-602c0-ranslate-in-both-directions\error-context.md
+
+  5) e2e\follow-teams.persistence.spec.js:2:1 › real UI follows two teams, removes one, refreshes and restores in a new page 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4173/#/team/ARG", waiting until "load"
+
+
+       at follow-fixtures.js:8
+
+       6 | } });
+       7 | export const followButton = page => page.locator('[data-follow-action="toggle"]');
+    >  8 | export async function team(page, code) { await page.goto('/#/team/'+code); await expect(page.locator('html')).toHaveAttribute('lang','zh'); await expect(followButton(page)).toBeVisible(); }
+         |                                                     ^
+       9 | export async function follow(page,code) {await team(page,code);await followButton(page).click();await expect(followButton(page)).toHaveAttribute('aria-pressed','true');}
+      10 |
+      11 |
+        at team (D:\GitHub\WorldCup2026\e2e\follow-fixtures.js:8:53)
+        at follow (D:\GitHub\WorldCup2026\e2e\follow-fixtures.js:9:48)
+        at D:\GitHub\WorldCup2026\e2e\follow-teams.persistence.spec.js:3:8
+
+    Error Context: test-results\follow-teams.persistence-r-618d5--and-restores-in-a-new-page\error-context.md
+
+  6) e2e\follow-teams.schedule.spec.js:2:1 › follows combine with stages and survive same-tab return, refresh resets only filters 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4173/#/team/ARG", waiting until "load"
+
+
+       at follow-fixtures.js:8
+
+       6 | } });
+       7 | export const followButton = page => page.locator('[data-follow-action="toggle"]');
+    >  8 | export async function team(page, code) { await page.goto('/#/team/'+code); await expect(page.locator('html')).toHaveAttribute('lang','zh'); await expect(followButton(page)).toBeVisible(); }
+         |                                                     ^
+       9 | export async function follow(page,code) {await team(page,code);await followButton(page).click();await expect(followButton(page)).toHaveAttribute('aria-pressed','true');}
+      10 |
+      11 |
+        at team (D:\GitHub\WorldCup2026\e2e\follow-fixtures.js:8:53)
+        at follow (D:\GitHub\WorldCup2026\e2e\follow-fixtures.js:9:48)
+        at D:\GitHub\WorldCup2026\e2e\follow-teams.schedule.spec.js:3:8
+
+    Error Context: test-results\follow-teams.schedule-foll-bb7ad-refresh-resets-only-filters\error-context.md
+
+  7) e2e\follow-teams.storage.spec.js:2:1 › corrupt and denied read records are reported without blocking browsing 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4173/#/team/ARG", waiting until "load"
+
+
+       at follow-fixtures.js:8
+
+       6 | } });
+       7 | export const followButton = page => page.locator('[data-follow-action="toggle"]');
+    >  8 | export async function team(page, code) { await page.goto('/#/team/'+code); await expect(page.locator('html')).toHaveAttribute('lang','zh'); await expect(followButton(page)).toBeVisible(); }
+         |                                                     ^
+       9 | export async function follow(page,code) {await team(page,code);await followButton(page).click();await expect(followButton(page)).toHaveAttribute('aria-pressed','true');}
+      10 |
+      11 |
+        at team (D:\GitHub\WorldCup2026\e2e\follow-fixtures.js:8:53)
+        at D:\GitHub\WorldCup2026\e2e\follow-teams.storage.spec.js:4:8
+
+    Error Context: test-results\follow-teams.storage-corru-29f28-d-without-blocking-browsing\error-context.md
+
+  8) e2e\history.spec.js:6:1 › 场景 A：单队 7 届倒序，每条含届次/轮次/对手/比分且无空白项 ───────────────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4173/#/history?team=ESP", waiting until "load"
+
+
+       5 |
+       6 | test('场景 A：单队 7 届倒序，每条含届次/轮次/对手/比分且无空白项', async ({ page }) => {
+    >  7 |   await page.goto('/#/history?team=ESP');
+         |              ^
+       8 |
+       9 |   await expect(page.locator('.history-page')).toBeVisible();
+      10 |
+        at D:\GitHub\WorldCup2026\e2e\history.spec.js:7:14
+
+    Error Context: test-results\history-场景-A：单队-7-届倒序，每条含届次-轮次-对手-比分且无空白项\error-context.md
+
+  9) e2e\smoke.spec.js:3:1 › routes, language switch and schedule filters are available ────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:4173/#/schedule", waiting until "load"
+
+
+      2 |
+      3 | test('routes, language switch and schedule filters are available', async ({ page }) => {
+    > 4 |   await page.goto('/#/schedule');
+        |              ^
+      5 |   await expect(page.locator('.schedule-page')).toBeVisible();
+      6 |   await page.getByRole('button', { name: /三十二强|Round of 32/ }).click();
+      7 |   await expect(page.locator('.match-section:visible')).not.toHaveCount(0);
+        at D:\GitHub\WorldCup2026\e2e\smoke.spec.js:4:14
+
+    Error Context: test-results\smoke-routes-language-swit-49e5a-edule-filters-are-available\error-context.md
+
+  9 failed
+    e2e\follow-teams.empty-retry.spec.js:2:1 › no follows and no matches are separate, and removing the last follow updates returning schedule 
+    e2e\follow-teams.keyboard-race.spec.js:2:1 › keyboard can follow, filter, select a stage and open a match with visible focus 
+    e2e\follow-teams.language.spec.js:3:1 › Chinese-English-Chinese preserves details, filters, results and static notice 
+    e2e\follow-teams.language.spec.js:9:1 › both empty states and unsaved warning translate in both directions 
+    e2e\follow-teams.persistence.spec.js:2:1 › real UI follows two teams, removes one, refreshes and restores in a new page 
+    e2e\follow-teams.schedule.spec.js:2:1 › follows combine with stages and survive same-tab return, refresh resets only filters 
+    e2e\follow-teams.storage.spec.js:2:1 › corrupt and denied read records are reported without blocking browsing 
+    e2e\history.spec.js:6:1 › 场景 A：单队 7 届倒序，每条含届次/轮次/对手/比分且无空白项 ────────────────────────────────────
+    e2e\smoke.spec.js:3:1 › routes, language switch and schedule filters are available ─────────────
+  11 passed (1.4m)
+[WebServer] (node:4928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+(node:23016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:25424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7020) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:25272) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21984) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:48004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26568) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:41724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:33856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:22344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45828) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:33972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

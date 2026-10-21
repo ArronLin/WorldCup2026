@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-21T02:39:44.974Z",
+  "runs": [
+    {
+      "suite": "unit",
+      "passed": 102,
+      "total": 102,
+      "exitCode": 0
+    },
+    {
+      "suite": "browser",
+      "passed": 24,
+      "total": 24,
+      "exitCode": 0
+    }
+  ],
+  "mappedTests": 47,
+  "htmlBytes": 278938,
+  "originalInputCount": 106,
+  "originalInputsChanged": [
+    "e2e/follow-teams.keyboard-race.spec.js"
+  ],
+  "brokenLocalLinks": [],
+  "evidenceSources": 162
+}

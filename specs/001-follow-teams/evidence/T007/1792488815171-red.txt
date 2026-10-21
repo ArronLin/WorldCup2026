@@ -1,0 +1,402 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/store-results.test.js (15 tests | 15 failed) 57ms
+     × returns the real ready snapshot and deduplicates concurrent fetches 23ms
+     × keeps an actually empty match list ready 3ms
+     × distinguishes network failures from empty data, including a legacy first caller 8ms
+     × distinguishes http failures from empty data, including a legacy first caller 3ms
+     × distinguishes parse failures from empty data, including a legacy first caller 2ms
+     × rejects malformed team dictionaries: null 2ms
+     × rejects malformed team dictionaries: undefined 1ms
+     × rejects malformed team dictionaries: {"ARG":null} 1ms
+     × rejects malformed team dictionaries: {"ARG":{"code":"BRA","name":{"zh":"ARG","en":"ARG"},"group":"A","stats":{}}} 1ms
+     × rejects malformed match inputs: {} 2ms
+     × rejects malformed match inputs: {"id":"1","stage":"group","group":"A","date":"2026-06-11","home":{"code":"ARG"},"away":{"code":"BRA"},"homeScore":1,"awayScore":0} 1ms
+     × rejects malformed match inputs: {"id":1,"stage":"group","group":"A","date":"2026-06-11","home":{"code":"XXX"},"away":{"code":"BRA"},"homeScore":1,"awayScore":0} 1ms
+     × rejects malformed match inputs: {"id":1,"stage":"unknown","group":"A","date":"2026-06-11","home":{"code":"ARG"},"away":{"code":"BRA"},"homeScore":1,"awayScore":0} 1ms
+     × retries just teams/matches and preserves unrelated cached resources 3ms
+     × does not let an old in-flight request replace a retried cache 2ms
+
+ Test Files  1 failed (1)
+      Tests  15 failed (15)
+   Start at  17:33:34
+   Duration  887ms (transform 160ms, setup 0ms, import 209ms, tests 57ms, environment 0ms)
+
+stderr | tests/store-results.test.js > observable tournament results and legacy cache > distinguishes network failures from empty data, including a legacy first caller
+Failed to load data/matches.json: Error: network
+    at D:/GitHub/WorldCup2026/tests/store-results.test.js:32:35
+    at Mock (file:///D:/GitHub/WorldCup2026/node_modules/@vitest/spy/dist/index.js:332:34)
+    at loadJSON (D:/GitHub/WorldCup2026/src/store.js:11:21)
+    at getMatches (D:/GitHub/WorldCup2026/src/store.js:48:10)
+    at D:/GitHub/WorldCup2026/tests/store-results.test.js:36:28
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+    at new Promise (<anonymous>)
+
+stderr | tests/store-results.test.js > observable tournament results and legacy cache > distinguishes http failures from empty data, including a legacy first caller
+Failed to load data/matches.json: Error: HTTP 503
+    at D:/GitHub/WorldCup2026/src/store.js:13:29
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+stderr | tests/store-results.test.js > observable tournament results and legacy cache > distinguishes parse failures from empty data, including a legacy first caller
+Failed to load data/matches.json: SyntaxError: json
+    at Object.json (D:/GitHub/WorldCup2026/tests/store-results.test.js:34:44)
+    at D:/GitHub/WorldCup2026/src/store.js:14:21
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 15 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > returns the real ready snapshot and deduplicates concurrent fetches
+AssertionError: expected { status: 'ready', teams: {}, …(1) } to deeply equal { status: 'ready', …(2) }
+
+- Expected
++ Received
+
+  {
+-   "matches": [
+-     {
+-       "away": {
+-         "code": "BRA",
+-       },
+-       "awayScore": 0,
+-       "date": "2026-06-11",
+-       "group": "A",
+-       "home": {
+-         "code": "ARG",
+-       },
+-       "homeScore": 1,
+-       "id": 1,
+-       "stage": "group",
+-     },
+-     {
+-       "away": {
+-         "code": "ARG",
+-       },
+-       "awayScore": 0,
+-       "date": "2026-06-12",
+-       "group": "A",
+-       "home": {
+-         "code": "ESP",
+-       },
+-       "homeScore": 0,
+-       "id": 2,
+-       "stage": "group",
+-     },
+-     {
+-       "away": {
+-         "code": "ESP",
+-       },
+-       "awayScore": 1,
+-       "date": "2026-07-19",
+-       "home": {
+-         "code": "BRA",
+-       },
+-       "homeScore": 0,
+-       "id": 3,
+-       "round": "final",
+-       "stage": "knockout",
+-     },
+-   ],
++   "matches": [],
+    "status": "ready",
+-   "teams": {
+-     "ARG": {
+-       "code": "ARG",
+-       "group": "A",
+-       "name": {
+-         "en": "ARG",
+-         "zh": "ARG",
+-       },
+-       "stats": {},
+-     },
+-     "BRA": {
+-       "code": "BRA",
+-       "group": "A",
+-       "name": {
+-         "en": "BRA",
+-         "zh": "BRA",
+-       },
+-       "stats": {},
+-     },
+-     "ESP": {
+-       "code": "ESP",
+-       "group": "A",
+-       "name": {
+-         "en": "ESP",
+-         "zh": "ESP",
+-       },
+-       "stats": {},
+-     },
+-   },
++   "teams": {},
+  }
+
+ ❯ tests/store-results.test.js:15:15
+     13|   it('returns the real ready snapshot and deduplicates concurrent fetc…
+     14|     const [a,b] = await Promise.all([getTournamentSnapshot(),getTourna…
+     15|     expect(a).toEqual({ status: 'ready', teams, matches });
+       |               ^
+     16|     expect(b).toEqual(a);
+     17|     expect(fetch).toHaveBeenCalledTimes(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/15]⎯
+
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > keeps an actually empty match list ready
+AssertionError: expected { status: 'ready', teams: {}, …(1) } to deeply equal { status: 'ready', …(2) }
+
+- Expected
++ Received
+
+  {
+    "matches": [],
+    "status": "ready",
+-   "teams": {
+-     "ARG": {
+-       "code": "ARG",
+-       "group": "A",
+-       "name": {
+-         "en": "ARG",
+-         "zh": "ARG",
+-       },
+-       "stats": {},
+-     },
+-     "BRA": {
+-       "code": "BRA",
+-       "group": "A",
+-       "name": {
+-         "en": "BRA",
+-         "zh": "BRA",
+-       },
+-       "stats": {},
+-     },
+-     "ESP": {
+-       "code": "ESP",
+-       "group": "A",
+-       "name": {
+-         "en": "ESP",
+-         "zh": "ESP",
+-       },
+-       "stats": {},
+-     },
+-   },
++   "teams": {},
+  }
+
+ ❯ tests/store-results.test.js:27:43
+     25|   it('keeps an actually empty match list ready', async () => {
+     26|     fetch.mockImplementation(async url => response(url.includes('teams…
+     27|     expect(await getTournamentSnapshot()).toEqual({ status:'ready', te…
+       |                                           ^
+     28|   });
+     29|   it.each(['network','http','parse'])('distinguishes %s failures from …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/15]⎯
+
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > distinguishes network failures from empty data, including a legacy first caller
+AssertionError: expected { status: 'ready', teams: {}, …(1) } to match object { status: 'error', …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "dataset": "matches",
+-   "kind": "network",
+-   "status": "error",
++   "status": "ready",
+  }
+
+ ❯ tests/store-results.test.js:37:43
+     35|     });
+     36|     expect(await getMatches()).toEqual([]);
+     37|     expect(await getTournamentSnapshot()).toMatchObject({status:'error…
+       |                                           ^
+     38|     expect(await getTeams()).toEqual(teams);
+     39|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/15]⎯
+
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > distinguishes http failures from empty data, including a legacy first caller
+AssertionError: expected { status: 'ready', teams: {}, …(1) } to match object { status: 'error', …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "dataset": "matches",
+-   "kind": "http",
+-   "status": "error",
++   "status": "ready",
+  }
+
+ ❯ tests/store-results.test.js:37:43
+     35|     });
+     36|     expect(await getMatches()).toEqual([]);
+     37|     expect(await getTournamentSnapshot()).toMatchObject({status:'error…
+       |                                           ^
+     38|     expect(await getTeams()).toEqual(teams);
+     39|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/15]⎯
+
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > distinguishes parse failures from empty data, including a legacy first caller
+AssertionError: expected { status: 'ready', teams: {}, …(1) } to match object { status: 'error', …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "dataset": "matches",
+-   "kind": "parse",
+-   "status": "error",
++   "status": "ready",
+  }
+
+ ❯ tests/store-results.test.js:37:43
+     35|     });
+     36|     expect(await getMatches()).toEqual([]);
+     37|     expect(await getTournamentSnapshot()).toMatchObject({status:'error…
+       |                                           ^
+     38|     expect(await getTeams()).toEqual(teams);
+     39|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/15]⎯
+
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > rejects malformed team dictionaries: null
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > rejects malformed team dictionaries: undefined
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > rejects malformed team dictionaries: {"ARG":null}
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > rejects malformed team dictionaries: {"ARG":{"code":"BRA","name":{"zh":"ARG","en":"ARG"},"group":"A","stats":{}}}
+AssertionError: expected { status: 'ready', teams: {}, …(1) } to match object { status: 'error', …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "dataset": "teams",
+-   "kind": "invalid-data",
+-   "status": "error",
++   "status": "ready",
+  }
+
+ ❯ tests/store-results.test.js:42:43
+     40|   it.each([null,[], { ARG: null }, { ARG: {...teams.ARG,code:'BRA'} }]…
+     41|     fetch.mockImplementation(async url => response(url.includes('teams…
+     42|     expect(await getTournamentSnapshot()).toMatchObject({status:'error…
+       |                                           ^
+     43|   });
+     44|   it.each([{},[{...matches[0],id:'1'}],[{...matches[0],home:{code:'XXX…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/15]⎯
+
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > rejects malformed match inputs: {}
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > rejects malformed match inputs: {"id":"1","stage":"group","group":"A","date":"2026-06-11","home":{"code":"ARG"},"away":{"code":"BRA"},"homeScore":1,"awayScore":0}
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > rejects malformed match inputs: {"id":1,"stage":"group","group":"A","date":"2026-06-11","home":{"code":"XXX"},"away":{"code":"BRA"},"homeScore":1,"awayScore":0}
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > rejects malformed match inputs: {"id":1,"stage":"unknown","group":"A","date":"2026-06-11","home":{"code":"ARG"},"away":{"code":"BRA"},"homeScore":1,"awayScore":0}
+AssertionError: expected { status: 'ready', teams: {}, …(1) } to match object { status: 'error', …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "dataset": "matches",
+-   "kind": "invalid-data",
+-   "status": "error",
++   "status": "ready",
+  }
+
+ ❯ tests/store-results.test.js:46:43
+     44|   it.each([{},[{...matches[0],id:'1'}],[{...matches[0],home:{code:'XXX…
+     45|     fetch.mockImplementation(async url => response(url.includes('teams…
+     46|     expect(await getTournamentSnapshot()).toMatchObject({status:'error…
+       |                                           ^
+     47|   });
+     48|   it('retries just teams/matches and preserves unrelated cached resour…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/15]⎯
+
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > retries just teams/matches and preserves unrelated cached resources
+AssertionError: expected 'ready' to be 'error' // Object.is equality
+
+Expected: "error"
+Received: "ready"
+
+ ❯ tests/store-results.test.js:51:52
+     49|     await getVenues();
+     50|     fetch.mockImplementation(async () => ({ok:false,status:503}));
+     51|     expect((await getTournamentSnapshot()).status).toBe('error');
+       |                                                    ^
+     52|     fetch.mockImplementation(async url => response(url.includes('teams…
+     53|     expect((await getTournamentSnapshot()).status).toBe('error');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/15]⎯
+
+ FAIL  tests/store-results.test.js > observable tournament results and legacy cache > does not let an old in-flight request replace a retried cache
+AssertionError: expected [] to deeply equal [ …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "away": {
+-       "code": "BRA",
+-     },
+-     "awayScore": 0,
+-     "date": "2026-06-11",
+-     "group": "A",
+-     "home": {
+-       "code": "ARG",
+-     },
+-     "homeScore": 1,
+-     "id": 1,
+-     "stage": "group",
+-   },
+-   {
+-     "away": {
+-       "code": "ARG",
+-     },
+-     "awayScore": 0,
+-     "date": "2026-06-12",
+-     "group": "A",
+-     "home": {
+-       "code": "ESP",
+-     },
+-     "homeScore": 0,
+-     "id": 2,
+-     "stage": "group",
+-   },
+-   {
+-     "away": {
+-       "code": "ESP",
+-     },
+-     "awayScore": 1,
+-     "date": "2026-07-19",
+-     "home": {
+-       "code": "BRA",
+-     },
+-     "homeScore": 0,
+-     "id": 3,
+-     "round": "final",
+-     "stage": "knockout",
+-   },
+- ]
++ []
+
+ ❯ tests/store-results.test.js:65:65
+     63|     await Promise.resolve();
+     64|     fetch.mockImplementation(async url => response(url.includes('teams…
+     65|     expect((await getTournamentSnapshot({retry:true})).matches).toEqua…
+       |                                                                 ^
+     66|     for(const r of resolvers) r.resolve(response(r.url.includes('teams…
+     67|     await old;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/15]⎯
+

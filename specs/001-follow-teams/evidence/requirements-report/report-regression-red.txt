@@ -1,0 +1,50 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/requirements-tdd-report.test.js (7 tests | 2 failed) 485ms
+   × resolves Playwright testDir-relative paths using the recorded rootDir 25ms
+   × opens every collapsed ancestor when following a test source link 90ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/requirements-tdd-report.test.js > resolves Playwright testDir-relative paths using the recorded rootDir
+AssertionError: expected 'a.spec.js' to be 'e2e/a.spec.js' // Object.is equality
+
+Expected: "e2e/a.spec.js"
+Received: "a.spec.js"
+
+ ❯ tests/requirements-tdd-report.test.js:14:52
+     12| it('resolves Playwright testDir-relative paths using the recorded root…
+     13|   const data={config:{rootDir:'D:/repo/e2e'},suites:[{file:'a.spec.js'…
+     14|   expect(normalizeBrowser(data,'D:/repo')[0].file).toBe('e2e/a.spec.js…
+       |                                                    ^
+     15| });
+     16| it('never counts missing, skipped, failed, flaky or partial mappings a…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/requirements-tdd-report.test.js > opens every collapsed ancestor when following a test source link
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/requirements-tdd-report.test.js:55:134
+     53|   const dom=new JSDOM(renderRequirementsReport(report),{runScripts:'da…
+     54|   d.querySelector('[data-open="test-source-0"]').click();
+     55|   const source=d.getElementById('test-source-0');expect(source.open).t…
+       |                                                                                                                                      ^
+     56|   dom.window.close();
+     57| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 5 passed (7)
+   Start at  10:17:49
+   Duration  3.37s (transform 232ms, setup 0ms, import 2.23s, tests 485ms, environment 1ms)
+

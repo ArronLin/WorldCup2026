@@ -1,0 +1,100 @@
+$ git clone --no-hardlinks --no-checkout . D:\GitHub\WorldCup2026\.tmp\follow-clean-ci
+Cloning into 'D:\GitHub\WorldCup2026\.tmp\follow-clean-ci'...
+done.
+
+$ git checkout --detach bb09b00616d2d7c151fbde512f7a11f7d35059aa
+HEAD is now at bb09b00 feat: 增加桌面快捷方式和一键启动
+
+$ C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js ci
+
+added 108 packages, and audited 109 packages in 43s
+
+25 packages are looking for funding
+  run `npm fund` for details
+
+5 vulnerabilities (3 moderate, 2 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues, run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+
+$ C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js run coverage:baseline -- --manifest specs/001-follow-teams/coverage-baseline.json --output .tmp/follow-teams-baseline
+
+> coverage:baseline
+> node scripts/capture-coverage-baseline.mjs --manifest specs/001-follow-teams/coverage-baseline.json --output .tmp/follow-teams-baseline
+
+重建固定基线：27 个文件，git-tree，bb09b00616d2d7c151fbde512f7a11f7d35059aa
+
+$ C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js run test:coverage
+
+> test:coverage
+> node scripts/run-unit-coverage.mjs
+
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026/.tmp/follow-clean-ci
+      Coverage enabled with v8
+
+ ❯ tests/added-coverage.test.js (0 test)
+ ❯ tests/follow-mutation-runner.test.js (6 tests | 1 failed) 7819ms
+   × restores after a timeout and reruns the healthy command 2087ms
+
+ Test Files  2 failed | 16 passed (18)
+      Tests  1 failed | 79 passed (80)
+   Start at  18:06:46
+   Duration  13.55s (transform 9.70s, setup 0ms, import 17.86s, tests 13.73s, environment 44.91s)
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/added-coverage.test.js [ tests/added-coverage.test.js ]
+Error: Cannot find module './fixtures/coverage/helpers.js' imported from D:/GitHub/WorldCup2026/.tmp/follow-clean-ci/tests/added-coverage.test.js
+ ❯ tests/added-coverage.test.js:3:1
+      1| import {describe,it,expect} from 'vitest';
+      2| import {readFileSync,renameSync,mkdirSync,rmSync} from 'node:fs';impor…
+      3| import {fixture,hash,patterns,coverage} from './fixtures/coverage/help…
+       | ^
+      4| import {auditCoverage,addedLines} from '../scripts/check-added-coverag…
+      5| import {rebuildBaseline} from '../scripts/capture-coverage-baseline.mj…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-mutation-runner.test.js > restores after a timeout and reruns the healthy command
+AssertionError: expected [Function] to throw error matching /timeout/i but got 'Tests failed after restoration'
+
+- Expected:
+/timeout/i
+
++ Received:
+"Tests failed after restoration"
+
+ ❯ tests/follow-mutation-runner.test.js:12:176
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+file:///D:/GitHub/WorldCup2026/.tmp/clean-ci.mjs:4
+function run(command,args,cwd=root){const r=spawnSync(command,args,{cwd,encoding:'utf8',timeout:180000,maxBuffer:16*1024*1024});console.log('$ '+[command,...args].join(' ')+'\n'+r.stdout+r.stderr);if(r.error||r.status!==0)throw Error('Clean verification command failed: '+r.error+' status '+r.status);}
+                                                                                                                                                                                                                                    ^
+
+Error: Clean verification command failed: undefined status 1
+    at run (file:///D:/GitHub/WorldCup2026/.tmp/clean-ci.mjs:4:229)
+    at npm (file:///D:/GitHub/WorldCup2026/.tmp/clean-ci.mjs:12:17)
+    at file:///D:/GitHub/WorldCup2026/.tmp/clean-ci.mjs:13:152
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.21.0

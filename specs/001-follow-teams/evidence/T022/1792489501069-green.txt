@@ -1,0 +1,73 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-state.test.js (12 tests | 2 failed) 36ms
+     × reports an unreadable record, but keeps a usable temporary state 15ms
+     × keeps the latest in-memory choice after write failure, never rereads old storage, and later saves the whole list 3ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 10 passed (12)
+   Start at  17:44:57
+   Duration  556ms (transform 90ms, setup 0ms, import 131ms, tests 36ms, environment 0ms)
+
+ 
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > reports an unreadable record, but keeps a usable temporary state
+AssertionError: expected { initialized: true, …(5) } to match object { teamCodes: [ 'ARG' ], …(1) }
+(4 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "saveIssue": "failed",
+-   "teamCodes": [
+-     "ARG",
+-   ],
++   "teamCodes": [],
+  }
+
+ ❯ tests/follow-state.test.js:51:43
+     49|     const storage={read:()=>({ok:false}),write:()=>({ok:false})};const…
+     50|     expect(state.initialize(teams).restoreIssue).toBe('unavailable');
+     51|     expect(state.setFollowed('ARG',true)).toMatchObject({teamCodes:['A…
+       |                                           ^
+     52|   });
+     53|   it('keeps the latest in-memory choice after write failure, never rer…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > keeps the latest in-memory choice after write failure, never rereads old storage, and later saves the whole list
+AssertionError: expected [] to deeply equal [ 'BRA' ]
+
+- Expected
++ Received
+
+- [
+-   "BRA",
+- ]
++ []
+
+ ❯ tests/follow-state.test.js:59:43
+     57|     expect(state.setFollowed('ARG',false)).toMatchObject({teamCodes:[]…
+     58|     state.initialize(teams);state.setFollowed('BRA',true);
+     59|     expect(state.getSnapshot().teamCodes).toEqual(['BRA']);expect(stor…
+       |                                           ^
+     60|     expect(JSON.parse(base.value()).teamCodes).toEqual(['ARG']);
+     61|     fail=false;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+RESTORED SHA256 54d64558981ae06029f3efa2749b00eca96c3d91582e2a767bb25de6dcd9fcbb
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+
+ Test Files  1 passed (1)
+      Tests  12 passed (12)
+   Start at  17:44:59
+   Duration  1.06s (transform 128ms, setup 0ms, import 198ms, tests 45ms, environment 0ms)
+
+ 

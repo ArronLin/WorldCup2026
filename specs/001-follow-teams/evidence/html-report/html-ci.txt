@@ -1,0 +1,5 @@
+
+> coverage:html
+> node scripts/render-added-coverage.mjs --input coverage/coverage-added.json --output coverage/added/index.html
+
+{"output":"D:\\GitHub\\WorldCup2026\\coverage\\added\\index.html","C":200,"D":200}

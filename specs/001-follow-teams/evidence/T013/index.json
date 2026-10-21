@@ -1,0 +1,25 @@
+{
+  "id": "T013",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792488934722-red.json",
+      "log": "1792488934722-red.txt",
+      "phase": "red",
+      "time": "2026-10-20T09:35:34.724Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/follow-stage.test.js"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": true,
+      "semanticRed": true
+    }
+  ],
+  "validEvidence": [
+    "1792488934722-red.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

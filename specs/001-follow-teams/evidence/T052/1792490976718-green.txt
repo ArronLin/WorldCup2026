@@ -1,0 +1,6 @@
+hash 1  Baseline hash mismatch: netlify/functions/_data.mjs
+
+commit 1  Command failed: git ls-tree -r --name-only 0000000000000000000000000000000000000000 -- src netlify/functions
+fatal: not a tree object
+
+

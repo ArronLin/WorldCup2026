@@ -1,0 +1,139 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/added-coverage.test.js (8 tests | 7 failed) 2132ms
+     × requires exact unrounded aggregate 80 percent, including new unimported code 74ms
+     × maps changed old lines and excludes unchanged source, comments and blanks 8ms
+     × maps a changed multiline continuation to its enclosing executable line 44ms
+     × fails closed for missing reports, stale source, invalid mapping and missing baseline source 37ms
+     × rebuilds the complete snapshot read-only and normalizes LF 30ms
+     × rejects corrupt hashes, missing snapshot, omitted files and escaping paths 24ms
+     × reads only the specified Git commit, rejects missing commit and incomplete manifest 1861ms
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 1 passed (8)
+   Start at  17:56:22
+   Duration  3.66s (transform 218ms, setup 0ms, import 335ms, tests 2.13s, environment 0ms)
+
+warning: in the working copy of 'src/a.js', LF will be replaced by CRLF the next time Git touches it
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/added-coverage.test.js > added executable line coverage > requires exact unrounded aggregate 80 percent, including new unimported code
+AssertionError: expected { C: +0, D: +0, passed: true, …(1) } to match object { C: 4, D: 5, passed: true }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "C": 4,
+-   "D": 5,
++   "C": 0,
++   "D": 0,
+    "passed": true,
+  }
+
+ ❯ tests/added-coverage.test.js:15:125
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/added-coverage.test.js > added executable line coverage > maps changed old lines and excludes unchanged source, comments and blanks
+AssertionError: expected [] to deeply equal [ 2, 4 ]
+
+- Expected
++ Received
+
+- [
+-   2,
+-   4,
+- ]
++ []
+
+ ❯ tests/added-coverage.test.js:18:51
+     16|  });
+     17|  it('maps changed old lines and excludes unchanged source, comments an…
+     18|  expect(addedLines('a\nb\nc\n','a\nB\nc\nnew\n')).toEqual([2,4]);
+       |                                                   ^
+     19|  const s='export const old = 1;\n// comment\n\nexport const next = 2;'…
+     20|  // Providers omit comments and blanks, rather than inventing statemen…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  tests/added-coverage.test.js > added executable line coverage > maps a changed multiline continuation to its enclosing executable line
+AssertionError: expected { C: +0, D: +0, passed: true, …(1) } to match object { C: 1, D: 1 }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "C": 1,
+-   "D": 1,
++   "C": 0,
++   "D": 0,
+  }
+
+ ❯ tests/added-coverage.test.js:25:389
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  tests/added-coverage.test.js > added executable line coverage > fails closed for missing reports, stale source, invalid mapping and missing baseline source
+AssertionError: expected [Function run] to throw an error
+ ❯ tests/added-coverage.test.js:31:116
+     29|  });
+     30|  it('fails closed for missing reports, stale source, invalid mapping a…
+     31|  const f=setup('export const x=1;',[1],'export const x=0;');f.put('cov…
+       |                                                                                                                    ^
+     32|  const g=setup('export const x=1;',[1]);g.put('src/a.js','export const…
+     33|  const h=setup('export const x=1;',[1],'export const x=0;');rmSync(pat…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  tests/added-coverage.test.js > fixed manifest reconstruction > rebuilds the complete snapshot read-only and normalizes LF
+AssertionError: expected undefined to deeply equal [ { path: 'src/a.js', …(1) } ]
+
+- Expected:
+[
+  {
+    "path": "src/a.js",
+    "sha256": "b40dedde60828bf61d1fadbfc3bb7ea2e0421e9511d22f1b5fb44ae5ba07dbb3",
+  },
+]
+
++ Received:
+undefined
+
+ ❯ tests/added-coverage.test.js:38:170
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  tests/added-coverage.test.js > fixed manifest reconstruction > rejects corrupt hashes, missing snapshot, omitted files and escaping paths
+AssertionError: expected [Function run] to throw an error
+ ❯ tests/added-coverage.test.js:40:255
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  tests/added-coverage.test.js > fixed manifest reconstruction > reads only the specified Git commit, rejects missing commit and incomplete manifest
+AssertionError: expected undefined to deeply equal [ { path: 'src/a.js', …(1) } ]
+
+- Expected:
+[
+  {
+    "path": "src/a.js",
+    "sha256": "b40dedde60828bf61d1fadbfc3bb7ea2e0421e9511d22f1b5fb44ae5ba07dbb3",
+  },
+]
+
++ Received:
+undefined
+
+ ❯ tests/added-coverage.test.js:44:417
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+

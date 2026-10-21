@@ -1,0 +1,22 @@
+
+Running 9 tests using 3 workers
+
+  ok 3 e2e\follow-teams.storage.spec.js:2:1 › corrupt and denied read records are reported without blocking browsing (6.6s)
+  ok 1 e2e\smoke.spec.js:3:1 › routes, language switch and schedule filters are available (7.5s)
+  ok 4 e2e\follow-teams.storage.spec.js:6:1 › follow-key read denial allows a temporary follow; later save recovers (2.5s)
+  ok 2 e2e\follow-teams.persistence.spec.js:2:1 › real UI follows two teams, removes one, refreshes and restores in a new page (11.2s)
+  ok 5 e2e\smoke.spec.js:12:1 › mock chat loads lazily and accepts a question (5.1s)
+  ok 7 e2e\follow-teams.persistence.spec.js:10:1 › invalid team entries have no follow action (1.6s)
+  ok 6 e2e\follow-teams.storage.spec.js:10:1 › write failure preserves state across routes; a later save persists the full set (3.7s)
+  ok 8 e2e\follow-teams.storage.spec.js:16:1 › all storage denied still starts and allows temporary follows (2.0s)
+  ok 9 e2e\follow-teams.storage.spec.js:19:1 › 503 is an error and a user retry really fetches the data again (1.9s)
+
+  9 passed (29.0s)
+[WebServer] (node:27392) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+(node:33860) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:43752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

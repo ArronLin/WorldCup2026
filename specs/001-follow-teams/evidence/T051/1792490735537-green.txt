@@ -1,0 +1,14 @@
+
+> test
+> vitest run
+
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+
+ Test Files  18 passed (18)
+      Tests  90 passed (90)
+   Start at  18:05:27
+   Duration  7.62s (transform 3.34s, setup 0ms, import 5.17s, tests 15.11s, environment 23.66s)
+
+warning: in the working copy of 'src/a.js', LF will be replaced by CRLF the next time Git touches it

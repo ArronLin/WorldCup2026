@@ -1,0 +1,37 @@
+{
+  "id": "T051",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792490683137-green.json",
+      "log": "1792490683137-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:04:43.139Z",
+      "command": [
+        "node",
+        "scripts/check-follow-mutations.mjs"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490735537-green.json",
+      "log": "1792490735537-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:05:35.538Z",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792490683137-green.json",
+    "1792490735537-green.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

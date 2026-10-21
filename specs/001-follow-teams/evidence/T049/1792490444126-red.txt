@@ -1,0 +1,107 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-mutation-runner.test.js (6 tests | 6 failed) 378ms
+   × detects a real assertion failure, restores exact bytes and verifies the healthy test afterwards 51ms
+   × rejects a surviving mutant and restores 15ms
+   × rejects syntax/collection errors rather than counting them as killed mutants 11ms
+   × restores after a timeout and reruns the healthy command 10ms
+   × refuses mutations if the original test already fails or the anchor is absent 11ms
+   × CLI exits nonzero on a survivor without leaving its fixture modified 273ms
+
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+   Start at  18:00:42
+   Duration  1.65s (transform 141ms, setup 0ms, import 229ms, tests 378ms, environment 1ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-mutation-runner.test.js > detects a real assertion failure, restores exact bytes and verifies the healthy test afterwards
+AssertionError: expected { caught: false, restored: false } to match object { caught: true, restored: true }
+
+- Expected
++ Received
+
+  {
+-   "caught": true,
+-   "restored": true,
++   "caught": false,
++   "restored": false,
+  }
+
+ ❯ tests/follow-mutation-runner.test.js:8:63
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/follow-mutation-runner.test.js > rejects a surviving mutant and restores
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/follow-mutation-runner.test.js:10:108
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/follow-mutation-runner.test.js > rejects syntax/collection errors rather than counting them as killed mutants
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/follow-mutation-runner.test.js:11:150
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/follow-mutation-runner.test.js > restores after a timeout and reruns the healthy command
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/follow-mutation-runner.test.js:12:176
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/follow-mutation-runner.test.js > refuses mutations if the original test already fails or the anchor is absent
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/follow-mutation-runner.test.js:13:157
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  tests/follow-mutation-runner.test.js > CLI exits nonzero on a survivor without leaving its fixture modified
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/follow-mutation-runner.test.js:15:260
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+

@@ -1,0 +1,35 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/added-coverage.test.js (9 tests | 1 failed) 1930ms
+   × accepts provider null end columns as end-of-line, and rejects empty or out-of-range executable maps 54ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 passed (9)
+   Start at  17:59:46
+   Duration  3.02s (transform 195ms, setup 0ms, import 324ms, tests 1.93s, environment 1ms)
+
+warning: in the working copy of 'src/a.js', LF will be replaced by CRLF the next time Git touches it
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/added-coverage.test.js > accepts provider null end columns as end-of-line, and rejects empty or out-of-range executable maps
+AssertionError: expected { schemaVersion: 1, …(10) } to match object { C: +0, D: 1, passed: false }
+(8 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "C": 0,
+-   "D": 1,
+-   "passed": false,
++   "D": 0,
++   "passed": true,
+  }
+
+ ❯ tests/added-coverage.test.js:49:249
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

@@ -1,0 +1,137 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-state.test.js (12 tests | 9 failed) 85ms
+     × restores once, validates codes and exposes independent sorted copies 31ms
+     × adds and removes multiple teams without duplicates and restores the saved list after refresh 5ms
+     × reports corrupt records without overwriting them: {broken 11ms
+     × reports corrupt records without overwriting them: null 3ms
+     × reports corrupt records without overwriting them: [] 3ms
+     × reports corrupt records without overwriting them: {"version":2,"teamCodes":[]} 3ms
+     × reports corrupt records without overwriting them: {"version":1,"teamCodes":{}} 3ms
+     × reports an unreadable record, but keeps a usable temporary state 3ms
+     × keeps the latest in-memory choice after write failure, never rereads old storage, and later saves the whole list 3ms
+
+ Test Files  1 failed (1)
+      Tests  9 failed | 3 passed (12)
+   Start at  17:36:47
+   Duration  991ms (transform 127ms, setup 0ms, import 191ms, tests 85ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > restores once, validates codes and exposes independent sorted copies
+AssertionError: expected [] to deeply equal [ 'ARG', 'BRA' ]
+
+- Expected
++ Received
+
+- [
+-   "ARG",
+-   "BRA",
+- ]
++ []
+
+ ❯ tests/follow-state.test.js:17:32
+     15|     const state=createFollowState({storage});
+     16|     const snapshot=state.initialize(teams);
+     17|     expect(snapshot.teamCodes).toEqual(['ARG','BRA']);
+       |                                ^
+     18|     expect(snapshot.initialized).toBe(true);
+     19|     expect(Object.keys(snapshot).sort()).toEqual(['initialized','teamC…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > adds and removes multiple teams without duplicates and restores the saved list after refresh
+AssertionError: expected [] to deeply equal [ 'ARG', 'BRA' ]
+
+- Expected
++ Received
+
+- [
+-   "ARG",
+-   "BRA",
+- ]
++ []
+
+ ❯ tests/follow-state.test.js:28:43
+     26|     const storage=memoryStorage();const state=createFollowState({stora…
+     27|     state.setFollowed('ARG',true);state.setFollowed('BRA',true);state.…
+     28|     expect(state.getSnapshot().teamCodes).toEqual(['ARG','BRA']);
+       |                                           ^
+     29|     expect(JSON.parse(storage.value())).toEqual({version:1,teamCodes:[…
+     30|     expect(state.setFollowed('ARG',false).teamCodes).toEqual(['BRA']);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > reports corrupt records without overwriting them: {broken
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > reports corrupt records without overwriting them: null
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > reports corrupt records without overwriting them: []
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > reports corrupt records without overwriting them: {"version":2,"teamCodes":[]}
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > reports corrupt records without overwriting them: {"version":1,"teamCodes":{}}
+AssertionError: expected { initialized: false, …(5) } to match object { initialized: true, …(2) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "initialized": true,
+-   "restoreIssue": "corrupt",
++   "initialized": false,
++   "restoreIssue": null,
+    "teamCodes": [],
+  }
+
+ ❯ tests/follow-state.test.js:37:37
+     35|   it.each(['{broken','null','[]','{"version":2,"teamCodes":[]}','{"ver…
+     36|     const storage=memoryStorage(value);const state=createFollowState({…
+     37|     expect(state.initialize(teams)).toMatchObject({initialized:true,te…
+       |                                     ^
+     38|     expect(storage.value()).toBe(value);
+     39|     expect(state.setFollowed('ARG',true).restoreIssue).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > reports an unreadable record, but keeps a usable temporary state
+AssertionError: expected null to be 'unavailable' // Object.is equality
+
+- Expected:
+"unavailable"
+
++ Received:
+null
+
+ ❯ tests/follow-state.test.js:50:50
+     48|   it('reports an unreadable record, but keeps a usable temporary state…
+     49|     const storage={read:()=>({ok:false}),write:()=>({ok:false})};const…
+     50|     expect(state.initialize(teams).restoreIssue).toBe('unavailable');
+       |                                                  ^
+     51|     expect(state.setFollowed('ARG',true)).toMatchObject({teamCodes:['A…
+     52|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  tests/follow-state.test.js > follow state and versioned persistence > keeps the latest in-memory choice after write failure, never rereads old storage, and later saves the whole list
+AssertionError: expected { initialized: false, …(5) } to match object { teamCodes: [], saveIssue: 'failed' }
+(4 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "saveIssue": "failed",
++   "saveIssue": null,
+    "teamCodes": [],
+  }
+
+ ❯ tests/follow-state.test.js:57:44
+     55|     const storage={read:vi.fn(base.read),write:vi.fn((key,value)=>fail…
+     56|     const state=createFollowState({storage});state.initialize(teams);
+     57|     expect(state.setFollowed('ARG',false)).toMatchObject({teamCodes:[]…
+       |                                            ^
+     58|     state.initialize(teams);state.setFollowed('BRA',true);
+     59|     expect(state.getSnapshot().teamCodes).toEqual(['BRA']);expect(stor…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+

@@ -1,0 +1,49 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/browser-storage.test.js (3 tests | 2 failed) 57ms
+     × reads missing and present values, and writes only the requested key 43ms
+     × does not acquire storage until an operation occurs 6ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  17:32:27
+   Duration  1.09s (transform 90ms, setup 0ms, import 147ms, tests 57ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/browser-storage.test.js > safe browser storage > reads missing and present values, and writes only the requested key
+AssertionError: expected { ok: false } to deeply equal { ok: true, value: null }
+
+- Expected
++ Received
+
+  {
+-   "ok": true,
+-   "value": null,
++   "ok": false,
+  }
+
+ ❯ tests/browser-storage.test.js:9:36
+      7|     const storage = { getItem: k => values.get(k) ?? null, setItem: (k…
+      8|     const adapter = createBrowserStorage(() => storage);
+      9|     expect(adapter.read('follow')).toEqual({ ok: true, value: null });
+       |                                    ^
+     10|     expect(adapter.write('follow','saved')).toEqual({ ok: true });
+     11|     expect(adapter.read('follow')).toEqual({ ok: true, value: 'saved' …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/browser-storage.test.js > safe browser storage > does not acquire storage until an operation occurs
+AssertionError: expected "vi.fn()" to be called once, but got 0 times
+ ❯ tests/browser-storage.test.js:27:24
+     25|     expect(getStorage).not.toHaveBeenCalled();
+     26|     adapter.read('x');
+     27|     expect(getStorage).toHaveBeenCalledOnce();
+       |                        ^
+     28|   });
+     29| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+

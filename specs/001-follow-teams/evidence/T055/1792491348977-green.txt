@@ -1,0 +1,5 @@
+
+> coverage:added
+> node scripts/check-added-coverage.mjs --baseline .tmp/follow-teams-baseline/baseline.json
+
+{"C":200,"D":200,"ratio":1,"passed":true}

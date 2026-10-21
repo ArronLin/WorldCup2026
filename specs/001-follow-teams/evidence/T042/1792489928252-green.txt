@@ -1,0 +1,55 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-localization.test.js (1 test | 1 failed) 842ms
+   × actual app keeps state, results, warnings, scroll and focused follow control across both languages 837ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  17:51:57
+   Duration  4.18s (transform 428ms, setup 0ms, import 265ms, tests 842ms, environment 2.30s)
+
+ 
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-localization.test.js > actual app keeps state, results, warnings, scroll and focused follow control across both languages
+AssertionError: expected { initialized: true, …(5) } to deeply equal { initialized: true, …(5) }
+
+- Expected
++ Received
+
+  {
+-   "followOnly": true,
++   "followOnly": false,
+    "initialized": true,
+    "restoreIssue": null,
+    "saveIssue": "failed",
+-   "stage": "final",
++   "stage": "all",
+    "teamCodes": [
+      "BRA",
+    ],
+  }
+
+ ❯ tests/follow-localization.test.js:16:79
+     14|  for(const [lang,label] of [['en','Only followed teams'],['zh','只看已关注球…
+     15|  await i18n.setLang(lang);await vi.waitFor(()=>expect(document.querySe…
+     16|  expect(document.documentElement.lang).toBe(lang);expect(state.getSnap…
+       |                                                                               ^
+     17|  expect([...document.querySelectorAll('#app [data-route]')].map(e=>e.d…
+     18|  expect(document.activeElement.dataset.followFocus).toBe('follow-only'…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+RESTORED SHA256 34cdac4cb08370d96199aa88e74f80b1e8bf53a32280aa309ab733ab7112e470
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  17:52:03
+   Duration  4.29s (transform 511ms, setup 0ms, import 368ms, tests 915ms, environment 2.29s)
+
+ 

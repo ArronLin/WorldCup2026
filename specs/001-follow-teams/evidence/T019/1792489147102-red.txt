@@ -1,0 +1,67 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-team-detail.test.js (0 test)
+ ❯ tests/follow-controller.test.js (3 tests | 2 failed) 171ms
+   × delegates once, updates real state synchronously and supports disposal 131ms
+   × consumes retry once, disables duplicate retries and recovers after completion 26ms
+
+ Test Files  2 failed (2)
+      Tests  2 failed | 1 passed (3)
+   Start at  17:39:03
+   Duration  3.92s (transform 473ms, setup 0ms, import 267ms, tests 171ms, environment 5.14s)
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-team-detail.test.js [ tests/follow-team-detail.test.js ]
+Error: ENOENT: no such file or directory, open 'D:\public\i18n\zh.json'
+ ❯ tests/fixtures/follow-dom.js:4:87
+      2| import { vi } from 'vitest';
+      3| import { teams, matches } from './follow-teams.js';
+      4| export const dictionaries = Object.fromEntries(['zh','en'].map(lang=>[…
+       |                                                                                       ^
+      5| export function installFetch() {
+      6|   const fixture = { teams, matches, 'player-names':{}, venues:{} };
+ ❯ tests/fixtures/follow-dom.js:4:60
+ ❯ tests/follow-team-detail.test.js:3:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-controller.test.js > delegates once, updates real state synchronously and supports disposal
+AssertionError: expected [Function] to be [Function] // Object.is equality
+
+Compared values have no visual difference.
+
+ ❯ tests/follow-controller.test.js:17:49
+     15|   const refresh=vi.fn(async()=>({committed:true}));const root=document…
+     16|   const dispose=initFollowTeams({root,state,refresh});
+     17|   expect(initFollowTeams({root,state,refresh})).toBe(dispose);
+       |                                                 ^
+     18|   root.querySelector('[data-follow-action="toggle"]').click();
+     19|   expect(state.getSnapshot().teamCodes).toEqual(['ARG']);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/follow-controller.test.js > consumes retry once, disables duplicate retries and recovers after completion
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/follow-controller.test.js:28:27
+     26|   const root=document.querySelector('#app');const dispose=initFollowTe…
+     27|   const button=root.querySelector('[data-follow-action="retry"]');butt…
+     28|   expect(button.disabled).toBe(true);expect(refresh).toHaveBeenCalledO…
+       |                           ^
+     29|   expect(consumeRetry()).toBe(true);expect(consumeRetry()).toBe(false);
+     30|   finish({committed:true});await Promise.resolve();await Promise.resol…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+

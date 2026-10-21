@@ -1,0 +1,61 @@
+
+> test:e2e
+> playwright test
+
+
+Running 21 tests using 2 workers
+····················T
+
+  1) e2e\follow-teams.language.spec.js:16:1 › English full journey works without AI; controls fit a narrow screen in both themes 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#themeToggle')
+        - locator resolved to <button title="Theme" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <input type="text" id="searchInput" autocomplete="off" aria-label="Search" class="search-input" placeholder="Search teams, players, matches…"/> from <div id="searchContainer" class="search-container">…</div> subtree intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <input type="text" id="searchInput" autocomplete="off" aria-label="Search" class="search-input" placeholder="Search teams, players, matches…"/> from <div id="searchContainer" class="search-container">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        44 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <input type="text" id="searchInput" autocomplete="off" aria-label="Search" class="search-input" placeholder="Search teams, players, matches…"/> from <div id="searchContainer" class="search-container">…</div> subtree intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      19 |  await page.goto('/#/schedule');await expect(page.locator('html')).toHaveAttribute('lang','en');await page.getByRole('checkbox',{name:'Only followed teams'}).check();await page.getByRole('button',{name:'Group Stage',exact:true}).click();await expect(page.locator('[data-filter=group]')).toHaveAttribute('aria-pressed','true');await expect(page.locator('#app .match-card').first()).toBeVisible();
+      20 |  await page.screenshot({animations:'disabled',path:'specs/001-follow-teams/evidence/follow-schedule-desktop.png'});await page.setViewportSize({width:375,height:812});
+    > 21 |  expect(await page.locator('.follow-controls, .filter-tabs, .follow-demo').evaluateAll(es=>es.every(el=>{const r=el.getBoundingClientRect();return r.left>=0&&Math.ceil(r.right)<=innerWidth&&el.scrollWidth<=el.clientWidth+1}))).toBe(true);await page.screenshot({animations:'disabled',path:'specs/001-follow-teams/evidence/follow-schedule-mobile-dark.png'});await page.locator('#themeToggle').click();await expect(page.locator('html')).toHaveAttribute('data-theme','light');await page.screenshot({animations:'disabled',path:'specs/001-follow-teams/evidence/follow-schedule-mobile-light.png'});
+         |                                                                                                                                                                                                                                                                                                                                                                                                        ^
+      22 |  await page.locator('#app .match-card').first().click();await expect(page.locator('.match-detail-page')).toBeVisible();await expect(page.locator('html')).toHaveAttribute('lang','en');expect(aiCalls).toBe(0);
+      23 | });
+      24 |
+        at D:\GitHub\WorldCup2026\e2e\follow-teams.language.spec.js:21:392
+
+    Error Context: test-results\follow-teams.language-Engl-66ce2-arrow-screen-in-both-themes\error-context.md
+
+  1 failed
+    e2e\follow-teams.language.spec.js:16:1 › English full journey works without AI; controls fit a narrow screen in both themes 
+  20 passed (53.8s)
+[WebServer] (node:44636) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+(node:17092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

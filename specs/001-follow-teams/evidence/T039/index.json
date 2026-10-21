@@ -1,0 +1,28 @@
+{
+  "id": "T039",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792489812923-refactor.json",
+      "log": "1792489812923-refactor.txt",
+      "phase": "refactor",
+      "time": "2026-10-20T09:50:12.925Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/follow-language.test.js",
+        "tests/browser-storage.test.js",
+        "tests/router-follow.test.js",
+        "tests/data.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792489812923-refactor.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

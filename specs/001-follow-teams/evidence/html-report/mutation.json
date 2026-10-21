@@ -1,0 +1,9 @@
+{
+  "time": "2026-10-21T01:30:26.621Z",
+  "mutation": "反转新增行已覆盖/未覆盖判断",
+  "mutantExitCode": 1,
+  "restoredExitCode": 0,
+  "beforeHash": "000f0385d104085cd4455adac03d8727411f266e6c01e2e73cb1d0253801181e",
+  "afterHash": "000f0385d104085cd4455adac03d8727411f266e6c01e2e73cb1d0253801181e",
+  "restored": true
+}

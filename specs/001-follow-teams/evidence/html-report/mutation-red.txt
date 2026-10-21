@@ -1,0 +1,55 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/added-coverage-html.test.js (5 tests | 2 failed) 759ms
+   × renders aggregate and per-file coverage; labels covered/uncovered source and escapes source HTML 249ms
+   × filters files, exposes D=0 as not applicable, and switches actual source line visibility 136ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 3 passed (5)
+   Start at  09:30:21
+   Duration  2.64s (transform 114ms, setup 0ms, import 1.56s, tests 759ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/added-coverage-html.test.js > renders aggregate and per-file coverage; labels covered/uncovered source and escapes source HTML
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/added-coverage-html.test.js:35:103
+     33|   expect(doc.querySelector('[data-summary="fraction"]')?.textContent).…
+     34|   expect(doc.querySelector('[data-summary="missing"]')?.textContent).t…
+     35|   expect(doc.querySelector('[data-source="src/a.js"] [data-line="1"]')…
+       |                                                                                                       ^
+     36|   expect(doc.querySelector('[data-source="src/a.js"] [data-line="2"]')…
+     37|   expect(doc.querySelector('[data-source="src/a.js"] [data-line="3"]')…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/added-coverage-html.test.js > filters files, exposes D=0 as not applicable, and switches actual source line visibility
+AssertionError: expected [ '1' ] to deeply equal [ '2' ]
+
+- Expected
++ Received
+
+  [
+-   "2",
++   "1",
+  ]
+
+ ❯ tests/added-coverage-html.test.js:60:46
+     58|   const mode = doc.querySelector('#line-mode'); mode.value = 'uncovere…
+     59|   const visible = [...doc.querySelectorAll('[data-source="src/a.js"] […
+     60|   expect(visible.map(el => el.dataset.line)).toEqual(['2']);
+       |                                              ^
+     61|   dom.window.close();
+     62| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+

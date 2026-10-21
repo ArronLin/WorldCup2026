@@ -1,0 +1,22 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ No test files found, exiting with code 1
+
+filter: =
+include: tests/**/*.test.js
+exclude:  **/node_modules/**, **/.git/**
+
+
+RESTORED SHA256 54d64558981ae06029f3efa2749b00eca96c3d91582e2a767bb25de6dcd9fcbb
+file:///D:/GitHub/WorldCup2026/.tmp/mutate.mjs:10
+if(result.status===0 || !/AssertionError/.test(result.stdout+result.stderr))throw Error('mutant not caught by assertion');
+                                                                                  ^
+
+Error: mutant not caught by assertion
+    at file:///D:/GitHub/WorldCup2026/.tmp/mutate.mjs:10:83
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.21.0

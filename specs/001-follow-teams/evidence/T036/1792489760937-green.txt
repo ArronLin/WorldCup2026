@@ -1,0 +1,22 @@
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 35 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                           6.30 kB │ gzip:  2.07 kB
+dist/assets/index-Hkcfhr5X.css           51.53 kB │ gzip:  9.25 kB
+dist/assets/not-found-iY6KYdt9.js         0.45 kB │ gzip:  0.35 kB │ map:   0.84 kB
+dist/assets/view-CxrS7suS.js              0.55 kB │ gzip:  0.36 kB │ map:   1.23 kB
+dist/assets/dataset-sNOTAC4B.js           1.00 kB │ gzip:  0.46 kB │ map:   2.66 kB
+dist/assets/teams-CbRKmf4t.js             1.23 kB │ gzip:  0.73 kB │ map:   2.94 kB
+dist/assets/group-standings-Bou8uJv9.js   1.63 kB │ gzip:  0.71 kB │ map:   3.88 kB
+dist/assets/bracket-Dpx1AzXw.js           3.39 kB │ gzip:  1.46 kB │ map:  10.41 kB
+dist/assets/schedule-DpmVB6lf.js          3.53 kB │ gzip:  1.41 kB │ map:   8.14 kB
+dist/assets/history-BpTxUXd5.js           3.80 kB │ gzip:  1.61 kB │ map:  14.19 kB
+dist/assets/team-detail-DPDrJiA-.js       4.13 kB │ gzip:  1.66 kB │ map:  10.07 kB
+dist/assets/match-detail-BFPiEfJM.js      4.65 kB │ gzip:  1.48 kB │ map:  12.03 kB
+dist/assets/awards-BtTDoFnr.js            5.13 kB │ gzip:  1.54 kB │ map:  11.24 kB
+dist/assets/home-Dnkb7lRO.js              5.38 kB │ gzip:  1.58 kB │ map:  11.30 kB
+dist/assets/index-DBpe1k7F.js            22.70 kB │ gzip:  8.56 kB │ map:  63.16 kB
+dist/assets/index-BrZ3vKji.js            53.51 kB │ gzip: 17.78 kB │ map: 153.98 kB
+✓ built in 2.45s

@@ -1,0 +1,61 @@
+{
+  "time": "2026-10-20T10:04:43.111Z",
+  "node": "v24.21.0",
+  "results": [
+    {
+      "name": "主客OR错误改为AND",
+      "file": "D:\\GitHub\\WorldCup2026\\src\\features\\follow-teams\\matches.js",
+      "caught": true,
+      "restored": true,
+      "beforeHash": "74fb0602c9fdbc595628ad5ab4b81a9e7822bf7f8f0f10377a17a125fa0add5b",
+      "afterHash": "74fb0602c9fdbc595628ad5ab4b81a9e7822bf7f8f0f10377a17a125fa0add5b",
+      "exitCode": 1,
+      "stdout": "\n RUN  v4.1.10 D:/GitHub/WorldCup2026\n\n ❯ tests/follow-matches.test.js (2 tests | 2 failed) 38ms\n     × selects home OR away with multiple-team union and stable ID deduplication 29ms\n     × intersects stage with follows and keeps full results with follow disabled 4ms\n\n Test Files  1 failed (1)\n      Tests  2 failed (2)\n   Start at  18:03:36\n   Duration  1.17s (transform 157ms, setup 0ms, import 232ms, tests 38ms, environment 0ms)\n\n",
+      "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/follow-matches.test.js > match selection > selects home OR away with multiple-team union and stable ID deduplication\nAssertionError: expected [ 1 ] to deeply equal [ 2, 1, 3 ]\n\n- Expected\n+ Received\n\n  [\n-   2,\n    1,\n-   3,\n  ]\n\n ❯ tests/follow-matches.test.js:8:90\n      6|  it('selects home OR away with multiple-team union and stable ID dedup…\n      7|  const input=[matches[1],matches[0],matches[0],matches[2]];const befor…\n      8|  expect(ids(selectMatches(input,{teamCodes:['ARG','BRA'],followOnly:tr…\n       |                                                                                          ^\n      9|  expect(ids(selectMatches(matches,{teamCodes:['ARG'],followOnly:true,s…\n     10|  });\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯\n\n FAIL  tests/follow-matches.test.js > match selection > intersects stage with follows and keeps full results with follow disabled\nAssertionError: expected [] to deeply equal [ 3 ]\n\n- Expected\n+ Received\n\n- [\n-   3,\n- ]\n+ []\n\n ❯ tests/follow-matches.test.js:13:88\n     11|  it('intersects stage with follows and keeps full results with follow …\n     12|  expect(ids(selectMatches(matches,{teamCodes:['ARG'],followOnly:true,s…\n     13|  expect(ids(selectMatches(matches,{teamCodes:['BRA'],followOnly:true,s…\n       |                                                                                        ^\n     14|  expect(ids(selectMatches(matches,{teamCodes:[],followOnly:false,stage…\n     15|  expect(ids(selectMatches([...matches,matches[0]],{teamCodes:[],follow…\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯\n\n"
+    },
+    {
+      "name": "阶段AND错误改为OR",
+      "file": "D:\\GitHub\\WorldCup2026\\src\\features\\follow-teams\\matches.js",
+      "caught": true,
+      "restored": true,
+      "beforeHash": "74fb0602c9fdbc595628ad5ab4b81a9e7822bf7f8f0f10377a17a125fa0add5b",
+      "afterHash": "74fb0602c9fdbc595628ad5ab4b81a9e7822bf7f8f0f10377a17a125fa0add5b",
+      "exitCode": 1,
+      "stdout": "\n RUN  v4.1.10 D:/GitHub/WorldCup2026\n\n ❯ tests/follow-matches.test.js (2 tests | 2 failed) 49ms\n     × selects home OR away with multiple-team union and stable ID deduplication 36ms\n     × intersects stage with follows and keeps full results with follow disabled 7ms\n\n Test Files  1 failed (1)\n      Tests  2 failed (2)\n   Start at  18:03:46\n   Duration  1.21s (transform 148ms, setup 0ms, import 225ms, tests 49ms, environment 0ms)\n\n",
+      "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/follow-matches.test.js > match selection > selects home OR away with multiple-team union and stable ID deduplication\nAssertionError: expected [ 1, 2, 3 ] to deeply equal [ 1, 2 ]\n\n- Expected\n+ Received\n\n  [\n    1,\n    2,\n+   3,\n  ]\n\n ❯ tests/follow-matches.test.js:9:86\n      7|  const input=[matches[1],matches[0],matches[0],matches[2]];const befor…\n      8|  expect(ids(selectMatches(input,{teamCodes:['ARG','BRA'],followOnly:tr…\n      9|  expect(ids(selectMatches(matches,{teamCodes:['ARG'],followOnly:true,s…\n       |                                                                                      ^\n     10|  });\n     11|  it('intersects stage with follows and keeps full results with follow …\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯\n\n FAIL  tests/follow-matches.test.js > match selection > intersects stage with follows and keeps full results with follow disabled\nAssertionError: expected [ 1, 2, 3 ] to deeply equal []\n\n- Expected\n+ Received\n\n- []\n+ [\n+   1,\n+   2,\n+   3,\n+ ]\n\n ❯ tests/follow-matches.test.js:12:88\n     10|  });\n     11|  it('intersects stage with follows and keeps full results with follow …\n     12|  expect(ids(selectMatches(matches,{teamCodes:['ARG'],followOnly:true,s…\n       |                                                                                        ^\n     13|  expect(ids(selectMatches(matches,{teamCodes:['BRA'],followOnly:true,s…\n     14|  expect(ids(selectMatches(matches,{teamCodes:[],followOnly:false,stage…\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯\n\n"
+    },
+    {
+      "name": "错误删除ID去重",
+      "file": "D:\\GitHub\\WorldCup2026\\src\\features\\follow-teams\\matches.js",
+      "caught": true,
+      "restored": true,
+      "beforeHash": "74fb0602c9fdbc595628ad5ab4b81a9e7822bf7f8f0f10377a17a125fa0add5b",
+      "afterHash": "74fb0602c9fdbc595628ad5ab4b81a9e7822bf7f8f0f10377a17a125fa0add5b",
+      "exitCode": 1,
+      "stdout": "\n RUN  v4.1.10 D:/GitHub/WorldCup2026\n\n ❯ tests/follow-matches.test.js (2 tests | 2 failed) 24ms\n     × selects home OR away with multiple-team union and stable ID deduplication 18ms\n     × intersects stage with follows and keeps full results with follow disabled 2ms\n\n Test Files  1 failed (1)\n      Tests  2 failed (2)\n   Start at  18:03:54\n   Duration  483ms (transform 81ms, setup 0ms, import 123ms, tests 24ms, environment 0ms)\n\n",
+      "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/follow-matches.test.js > match selection > selects home OR away with multiple-team union and stable ID deduplication\nAssertionError: expected [ 2, 1, 1, 3 ] to deeply equal [ 2, 1, 3 ]\n\n- Expected\n+ Received\n\n  [\n    2,\n    1,\n+   1,\n    3,\n  ]\n\n ❯ tests/follow-matches.test.js:8:90\n      6|  it('selects home OR away with multiple-team union and stable ID dedup…\n      7|  const input=[matches[1],matches[0],matches[0],matches[2]];const befor…\n      8|  expect(ids(selectMatches(input,{teamCodes:['ARG','BRA'],followOnly:tr…\n       |                                                                                          ^\n      9|  expect(ids(selectMatches(matches,{teamCodes:['ARG'],followOnly:true,s…\n     10|  });\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯\n\n FAIL  tests/follow-matches.test.js > match selection > intersects stage with follows and keeps full results with follow disabled\nAssertionError: expected [ 1, 2, 3, 1 ] to deeply equal [ 1, 2, 3 ]\n\n- Expected\n+ Received\n\n  [\n    1,\n    2,\n    3,\n+   1,\n  ]\n\n ❯ tests/follow-matches.test.js:15:98\n     13|  expect(ids(selectMatches(matches,{teamCodes:['BRA'],followOnly:true,s…\n     14|  expect(ids(selectMatches(matches,{teamCodes:[],followOnly:false,stage…\n     15|  expect(ids(selectMatches([...matches,matches[0]],{teamCodes:[],follow…\n       |                                                                                                  ^\n     16|  expect(selectMatches(matches,{teamCodes:[],followOnly:true,stage:'all…\n     17|  expect(selectMatches([],{teamCodes:['ARG'],followOnly:true,stage:'all…\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯\n\n"
+    },
+    {
+      "name": "保存失败错误回滚",
+      "file": "D:\\GitHub\\WorldCup2026\\src\\features\\follow-teams\\state.js",
+      "caught": true,
+      "restored": true,
+      "beforeHash": "067604de7c42a3b38be1bae36247de6db1208062ddb1c988c0852407cf631dd0",
+      "afterHash": "067604de7c42a3b38be1bae36247de6db1208062ddb1c988c0852407cf631dd0",
+      "exitCode": 1,
+      "stdout": "\n RUN  v4.1.10 D:/GitHub/WorldCup2026\n\n ❯ tests/follow-state.test.js (12 tests | 2 failed) 57ms\n     × reports an unreadable record, but keeps a usable temporary state 26ms\n     × keeps the latest in-memory choice after write failure, never rereads old storage, and later saves the whole list 4ms\n\n Test Files  1 failed (1)\n      Tests  2 failed | 10 passed (12)\n   Start at  18:04:00\n   Duration  953ms (transform 144ms, setup 0ms, import 223ms, tests 57ms, environment 0ms)\n\n",
+      "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/follow-state.test.js > follow state and versioned persistence > reports an unreadable record, but keeps a usable temporary state\nAssertionError: expected { initialized: true, …(5) } to match object { teamCodes: [ 'ARG' ], …(1) }\n(4 matching properties omitted from actual)\n\n- Expected\n+ Received\n\n  {\n    \"saveIssue\": \"failed\",\n-   \"teamCodes\": [\n-     \"ARG\",\n-   ],\n+   \"teamCodes\": [],\n  }\n\n ❯ tests/follow-state.test.js:51:43\n     49|     const storage={read:()=>({ok:false}),write:()=>({ok:false})};const…\n     50|     expect(state.initialize(teams).restoreIssue).toBe('unavailable');\n     51|     expect(state.setFollowed('ARG',true)).toMatchObject({teamCodes:['A…\n       |                                           ^\n     52|   });\n     53|   it('keeps the latest in-memory choice after write failure, never rer…\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯\n\n FAIL  tests/follow-state.test.js > follow state and versioned persistence > keeps the latest in-memory choice after write failure, never rereads old storage, and later saves the whole list\nAssertionError: expected [] to deeply equal [ 'BRA' ]\n\n- Expected\n+ Received\n\n- [\n-   \"BRA\",\n- ]\n+ []\n\n ❯ tests/follow-state.test.js:59:43\n     57|     expect(state.setFollowed('ARG',false)).toMatchObject({teamCodes:[]…\n     58|     state.initialize(teams);state.setFollowed('BRA',true);\n     59|     expect(state.getSnapshot().teamCodes).toEqual(['BRA']);expect(stor…\n       |                                           ^\n     60|     expect(JSON.parse(base.value()).teamCodes).toEqual(['ARG']);\n     61|     fail=false;\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯\n\n"
+    },
+    {
+      "name": "切语言错误重置筛选",
+      "file": "D:\\GitHub\\WorldCup2026\\src\\app.js",
+      "caught": true,
+      "restored": true,
+      "beforeHash": "34cdac4cb08370d96199aa88e74f80b1e8bf53a32280aa309ab733ab7112e470",
+      "afterHash": "34cdac4cb08370d96199aa88e74f80b1e8bf53a32280aa309ab733ab7112e470",
+      "exitCode": 1,
+      "stdout": "\n RUN  v4.1.10 D:/GitHub/WorldCup2026\n\n ❯ tests/follow-localization.test.js (1 test | 1 failed) 378ms\n   × actual app keeps state, results, warnings, scroll and focused follow control across both languages 375ms\n\n Test Files  1 failed (1)\n      Tests  1 failed (1)\n   Start at  18:04:35\n   Duration  5.01s (transform 169ms, setup 0ms, import 106ms, tests 378ms, environment 3.57s)\n\n",
+      "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/follow-localization.test.js > actual app keeps state, results, warnings, scroll and focused follow control across both languages\nAssertionError: expected { initialized: true, …(5) } to deeply equal { initialized: true, …(5) }\n\n- Expected\n+ Received\n\n  {\n-   \"followOnly\": true,\n+   \"followOnly\": false,\n    \"initialized\": true,\n    \"restoreIssue\": null,\n    \"saveIssue\": \"failed\",\n-   \"stage\": \"final\",\n+   \"stage\": \"all\",\n    \"teamCodes\": [\n      \"BRA\",\n    ],\n  }\n\n ❯ tests/follow-localization.test.js:16:79\n     14|  for(const [lang,label] of [['en','Only followed teams'],['zh','只看已关注球…\n     15|  await i18n.setLang(lang);await vi.waitFor(()=>expect(document.querySe…\n     16|  expect(document.documentElement.lang).toBe(lang);expect(state.getSnap…\n       |                                                                               ^\n     17|  expect([...document.querySelectorAll('#app [data-route]')].map(e=>e.d…\n     18|  expect(document.activeElement.dataset.followFocus).toBe('follow-only'…\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n"
+    }
+  ]
+}

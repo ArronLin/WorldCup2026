@@ -1,0 +1,95 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/requirements-tdd-report.test.js (5 tests | 5 failed) 108ms
+   × normalizes real Vitest and nested Playwright results and preserves retries and skipped tests 15ms
+   × never counts missing, skipped, failed, flaky or partial mappings as fully verified 2ms
+   × requires ordered valid semantic Red and passing Green/Refactor; does not infer per-case TDD 4ms
+   × rejects duplicate requirements and ambiguous selectors rather than inventing coverage 2ms
+   × renders offline traceability with escaped input, independent metrics and real working filters 82ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/requirements-tdd-report.test.js > normalizes real Vitest and nested Playwright results and preserves retries and skipped tests
+AssertionError: expected undefined to match object { file: 'tests/a.test.js', …(1) }
+
+- Expected:
+{
+  "file": "tests/a.test.js",
+  "status": "passed",
+}
+
++ Received:
+undefined
+
+ ❯ tests/requirements-tdd-report.test.js:8:173
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/requirements-tdd-report.test.js > never counts missing, skipped, failed, flaky or partial mappings as fully verified
+TypeError: Cannot read properties of undefined (reading 'status')
+ ❯ tests/requirements-tdd-report.test.js:13:41
+     11| });
+     12| it('never counts missing, skipped, failed, flaky or partial mappings a…
+     13|   expect(evaluateItems(mapping,cases)[0].status).toBe('verified');
+       |                                         ^
+     14|   for(const status of ['failed','skipped','flaky']) expect(evaluateIte…
+     15|   expect(evaluateItems(mapping,[])[0].status).toBe('unverified');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/requirements-tdd-report.test.js > requires ordered valid semantic Red and passing Green/Refactor; does not infer per-case TDD
+AssertionError: expected { complete: false, …(1) } to match object { complete: true, …(1) }
+
+- Expected
++ Received
+
+  {
+-   "complete": true,
++   "complete": false,
+    "perCaseVerified": false,
+  }
+
+ ❯ tests/requirements-tdd-report.test.js:25:29
+     23|     {phase:'refactor',time:'2026-10-20T01:02:00Z',exitCode:0,valid:tru…
+     24|   ];
+     25|   expect(assessCycle(rows)).toMatchObject({complete:true,perCaseVerifi…
+       |                             ^
+     26|   expect(assessCycle(rows.map(r=>({...r,semanticRed:false})) ).complet…
+     27|   expect(assessCycle(rows.map(r=>({...r,assertionFailure:false})) ).co…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/requirements-tdd-report.test.js > rejects duplicate requirements and ambiguous selectors rather than inventing coverage
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/requirements-tdd-report.test.js:32:91
+     30| });
+     31| it('rejects duplicate requirements and ambiguous selectors rather than…
+     32|   expect(()=>evaluateItems({...mapping,items:[...mapping.items,...mapp…
+       |                                                                                           ^
+     33|   expect(()=>evaluateItems(mapping,[...cases,{...cases[0],id:'other'}]…
+     34| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/requirements-tdd-report.test.js > renders offline traceability with escaped input, independent metrics and real working filters
+TypeError: Cannot read properties of null (reading 'textContent')
+ ❯ tests/requirements-tdd-report.test.js:38:57
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  10:08:11
+   Duration  1.59s (transform 71ms, setup 0ms, import 1.06s, tests 108ms, environment 0ms)
+

@@ -1,0 +1,13 @@
+
+> test
+> vitest run --run tests/follow-mutation-runner.test.js
+
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  18:07:44
+   Duration  3.98s (transform 93ms, setup 0ms, import 149ms, tests 3.27s, environment 0ms)
+

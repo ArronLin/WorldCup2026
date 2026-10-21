@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-localization.test.js (1 test | 1 failed) 839ms
+   × actual app keeps state, results, warnings, scroll and focused follow control across both languages 834ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  17:50:21
+   Duration  3.76s (transform 435ms, setup 0ms, import 265ms, tests 839ms, environment 1.94s)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-localization.test.js > actual app keeps state, results, warnings, scroll and focused follow control across both languages
+AssertionError: expected undefined to be 'follow-only' // Object.is equality
+
+- Expected:
+"follow-only"
+
++ Received:
+undefined
+
+ ❯ tests/follow-localization.test.js:18:53
+     16|  expect(document.documentElement.lang).toBe(lang);expect(state.getSnap…
+     17|  expect([...document.querySelectorAll('#app [data-route]')].map(e=>e.d…
+     18|  expect(document.activeElement.dataset.followFocus).toBe('follow-only'…
+       |                                                     ^
+     19|  expect(document.querySelector('.follow-notice').textContent).toContai…
+     20|  }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

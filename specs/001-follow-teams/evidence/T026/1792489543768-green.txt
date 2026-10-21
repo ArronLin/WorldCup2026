@@ -1,0 +1,56 @@
+
+Running 9 tests using 3 workers
+
+  ok 3 e2e\follow-teams.storage.spec.js:2:1 › corrupt and denied read records are reported without blocking browsing (5.3s)
+  ok 1 e2e\smoke.spec.js:3:1 › routes, language switch and schedule filters are available (6.6s)
+  ok 4 e2e\follow-teams.storage.spec.js:6:1 › follow-key read denial allows a temporary follow; later save recovers (2.2s)
+  ok 2 e2e\follow-teams.persistence.spec.js:2:1 › real UI follows two teams, removes one, refreshes and restores in a new page (8.9s)
+  ok 6 e2e\follow-teams.storage.spec.js:10:1 › write failure preserves state across routes; a later save persists the full set (3.4s)
+  ok 5 e2e\smoke.spec.js:12:1 › mock chat loads lazily and accepts a question (5.0s)
+  ok 7 e2e\follow-teams.persistence.spec.js:10:1 › invalid team entries have no follow action (2.8s)
+  x  8 e2e\follow-teams.storage.spec.js:16:1 › all storage denied still starts and allows temporary follows (6.7s)
+  ok 9 e2e\follow-teams.storage.spec.js:19:1 › 503 is an error and a user retry really fetches the data again (2.1s)
+
+
+  1) e2e\follow-teams.storage.spec.js:16:1 › all storage denied still starts and allows temporary follows 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('html')
+    Expected: "zh"
+    Received: "en"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" with timeout 5000ms
+      - waiting for locator('html')
+        12 × locator resolved to <html lang="en" data-theme="dark">…</html>
+           - unexpected value "en"
+
+
+       at follow-fixtures.js:8
+
+       6 | } });
+       7 | export const followButton = page => page.locator('[data-follow-action="toggle"]');
+    >  8 | export async function team(page, code) { await page.goto('/#/team/'+code); await expect(page.locator('html')).toHaveAttribute('lang','zh'); await expect(followButton(page)).toBeVisible(); }
+         |                                                                                                               ^
+       9 | export async function follow(page,code) {await team(page,code);await followButton(page).click();await expect(followButton(page)).toHaveAttribute('aria-pressed','true');}
+      10 |
+        at team (D:\GitHub\WorldCup2026\e2e\follow-fixtures.js:8:111)
+        at D:\GitHub\WorldCup2026\e2e\follow-teams.storage.spec.js:17:108
+
+    Error Context: test-results\follow-teams.storage-all-s-a3eff-nd-allows-temporary-follows\error-context.md
+
+  1 failed
+    e2e\follow-teams.storage.spec.js:16:1 › all storage denied still starts and allows temporary follows 
+  8 passed (36.0s)
+[WebServer] (node:30620) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+(node:22700) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:46408) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:5884) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:18204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

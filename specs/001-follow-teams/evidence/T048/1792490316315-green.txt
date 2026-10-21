@@ -1,0 +1,21 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026/tests/fixtures/coverage/unimported-project
+      Coverage enabled with v8
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  17:58:35
+   Duration  786ms (transform 86ms, setup 0ms, import 133ms, tests 11ms, environment 1ms)
+
+file:///D:/GitHub/WorldCup2026/.tmp/prove-coverage.mjs:4
+const raw=readFileSync(path.join(root,'coverage/coverage-final.json'),'utf8'),report=JSON.parse(raw),missing=report[path.join(root,'src/unloaded.js').replaceAll('\\','/')];if(!missing||!Object.values(missing.s).length||!Object.values(missing.s).every(h=>h===0))throw Error('Unimported file omitted or falsely covered');
+                                                                                                                                                                                                                                                                           ^
+
+Error: Unimported file omitted or falsely covered
+    at file:///D:/GitHub/WorldCup2026/.tmp/prove-coverage.mjs:4:268
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.21.0

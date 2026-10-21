@@ -1,0 +1,6 @@
+Listing tests:
+  follow-teams.keyboard-race.spec.js:2:1 › keyboard can follow, filter, select a stage and open a match with visible focus
+  follow-teams.keyboard-race.spec.js:9:1 › rapid filter changes and reversed language responses leave the latest intent visible
+  follow-teams.language.spec.js:3:1 › Chinese-English-Chinese preserves details, filters, results and static notice
+  follow-teams.language.spec.js:9:1 › both empty states and unsaved warning translate in both directions
+Total: 4 tests in 2 files

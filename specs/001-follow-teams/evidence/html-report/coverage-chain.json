@@ -1,0 +1,64 @@
+{
+  "time": "2026-10-21T01:29:20.691Z",
+  "node": "v24.21.0",
+  "results": [
+    {
+      "name": "baseline",
+      "command": [
+        "npm",
+        "run",
+        "coverage:baseline",
+        "--",
+        "--manifest",
+        "specs/001-follow-teams/coverage-baseline.json",
+        "--output",
+        ".tmp/follow-teams-baseline"
+      ],
+      "exitCode": 0,
+      "time": "2026-10-21T01:28:48.614Z"
+    },
+    {
+      "name": "coverage",
+      "command": [
+        "npm",
+        "run",
+        "test:coverage"
+      ],
+      "exitCode": 0,
+      "time": "2026-10-21T01:29:15.118Z"
+    },
+    {
+      "name": "audit",
+      "command": [
+        "npm",
+        "run",
+        "coverage:added",
+        "--",
+        "--baseline",
+        ".tmp/follow-teams-baseline/baseline.json",
+        "--output",
+        "coverage/coverage-added.json"
+      ],
+      "exitCode": 0,
+      "time": "2026-10-21T01:29:18.753Z"
+    },
+    {
+      "name": "html-ci",
+      "command": [
+        "npm",
+        "run",
+        "coverage:html",
+        "--",
+        "--input",
+        "coverage/coverage-added.json",
+        "--output",
+        "coverage/added/index.html"
+      ],
+      "exitCode": 0,
+      "time": "2026-10-21T01:29:20.687Z"
+    }
+  ],
+  "C": 200,
+  "D": 200,
+  "passed": true
+}

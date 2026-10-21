@@ -1,0 +1,26 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/added-coverage-html.test.js (5 tests | 1 failed) 510ms
+   × filters files, exposes D=0 as not applicable, and switches actual source line visibility 72ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/added-coverage-html.test.js > filters files, exposes D=0 as not applicable, and switches actual source line visibility
+AssertionError: expected "vi.fn()" to be called once, but got 0 times
+ ❯ tests/added-coverage-html.test.js:55:26
+     53|   const search = doc.querySelector('#file-search'); search.value = 'sr…
+     54|   expect(rows()).toHaveLength(1); rows()[0].querySelector('button').cl…
+     55|   expect(scrollToSource).toHaveBeenCalledOnce();
+       |                          ^
+     56|   expect(doc.querySelector('[data-source="src/z.js"]').hidden).toBe(fa…
+     57|   search.value = 'missing-file'; search.dispatchEvent(new Event('input…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  09:31:56
+   Duration  1.86s (transform 89ms, setup 0ms, import 1.05s, tests 510ms, environment 0ms)
+

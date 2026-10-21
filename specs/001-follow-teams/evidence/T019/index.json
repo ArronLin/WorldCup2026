@@ -1,0 +1,42 @@
+{
+  "id": "T019",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792489147102-red.json",
+      "log": "1792489147102-red.txt",
+      "phase": "red",
+      "time": "2026-10-20T09:39:07.105Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/follow-team-detail.test.js",
+        "tests/follow-controller.test.js"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": true,
+      "semanticRed": false
+    },
+    {
+      "metadata": "1792489313369-red.json",
+      "log": "1792489313369-red.txt",
+      "phase": "red",
+      "time": "2026-10-20T09:41:53.371Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/follow-team-detail.test.js",
+        "tests/follow-controller.test.js"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": true,
+      "semanticRed": true
+    }
+  ],
+  "validEvidence": [
+    "1792489313369-red.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

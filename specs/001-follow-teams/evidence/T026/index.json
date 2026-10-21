@@ -1,0 +1,59 @@
+{
+  "id": "T026",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792489505089-green.json",
+      "log": "1792489505089-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:45:05.091Z",
+      "command": [
+        "node",
+        "node_modules/vite/bin/vite.js",
+        "build"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792489543768-green.json",
+      "log": "1792489543768-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:45:43.772Z",
+      "command": [
+        "node",
+        "node_modules/playwright/cli.js",
+        "test",
+        "e2e/follow-teams.storage.spec.js",
+        "e2e/follow-teams.persistence.spec.js",
+        "e2e/smoke.spec.js"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": false,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792489611318-green.json",
+      "log": "1792489611318-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:46:51.322Z",
+      "command": [
+        "node",
+        "node_modules/playwright/cli.js",
+        "test",
+        "e2e/follow-teams.storage.spec.js",
+        "e2e/follow-teams.persistence.spec.js",
+        "e2e/smoke.spec.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792489505089-green.json",
+    "1792489611318-green.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "T049",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792490444126-red.json",
+      "log": "1792490444126-red.txt",
+      "phase": "red",
+      "time": "2026-10-20T10:00:44.128Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/follow-mutation-runner.test.js"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": true,
+      "semanticRed": true
+    }
+  ],
+  "validEvidence": [
+    "1792490444126-red.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

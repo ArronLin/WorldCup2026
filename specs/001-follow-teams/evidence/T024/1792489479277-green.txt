@@ -1,0 +1,9 @@
+Listing tests:
+  follow-teams.persistence.spec.js:2:1 › real UI follows two teams, removes one, refreshes and restores in a new page
+  follow-teams.persistence.spec.js:10:1 › invalid team entries have no follow action
+  follow-teams.storage.spec.js:2:1 › corrupt and denied read records are reported without blocking browsing
+  follow-teams.storage.spec.js:6:1 › follow-key read denial allows a temporary follow; later save recovers
+  follow-teams.storage.spec.js:10:1 › write failure preserves state across routes; a later save persists the full set
+  follow-teams.storage.spec.js:16:1 › all storage denied still starts and allows temporary follows
+  follow-teams.storage.spec.js:19:1 › 503 is an error and a user retry really fetches the data again
+Total: 7 tests in 2 files

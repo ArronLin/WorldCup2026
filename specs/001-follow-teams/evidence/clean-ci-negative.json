@@ -1,0 +1,31 @@
+{
+  "time": "2026-10-20T10:09:36.695Z",
+  "results": [
+    {
+      "name": "hash",
+      "exitCode": 1,
+      "command": [
+        "scripts/capture-coverage-baseline.mjs",
+        "--manifest",
+        "specs/001-follow-teams/negative-hash.json",
+        "--output",
+        ".tmp/negative-hash"
+      ],
+      "stdout": "",
+      "stderr": "Baseline hash mismatch: netlify/functions/_data.mjs\n"
+    },
+    {
+      "name": "commit",
+      "exitCode": 1,
+      "command": [
+        "scripts/capture-coverage-baseline.mjs",
+        "--manifest",
+        "specs/001-follow-teams/negative-commit.json",
+        "--output",
+        ".tmp/negative-commit"
+      ],
+      "stdout": "",
+      "stderr": "Command failed: git ls-tree -r --name-only 0000000000000000000000000000000000000000 -- src netlify/functions\nfatal: not a tree object\n\n"
+    }
+  ]
+}

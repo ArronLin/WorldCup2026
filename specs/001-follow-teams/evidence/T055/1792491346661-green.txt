@@ -1,0 +1,63 @@
+
+> test:coverage
+> node scripts/run-unit-coverage.mjs
+
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+      Coverage enabled with v8
+
+
+ Test Files  18 passed (18)
+      Tests  90 passed (90)
+   Start at  18:15:35
+   Duration  10.59s (transform 1.38s, setup 0ms, import 2.41s, tests 10.36s, environment 13.14s)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   14.07 |    12.06 |   17.33 |    15.5 |                   
+ netlify/functions |       0 |        0 |       0 |       0 |                   
+  _data.mjs        |       0 |        0 |       0 |       0 | 15-250            
+  _prompt.mjs      |       0 |        0 |       0 |       0 | 5-6               
+  _tools.mjs       |       0 |        0 |       0 |       0 | 14-553            
+  chat.mjs         |       0 |        0 |       0 |       0 | 10-302            
+  rate-limit.mjs   |       0 |        0 |       0 |       0 | 1-46              
+ src               |   58.12 |    49.13 |   53.39 |   62.69 |                   
+  app.js           |   71.62 |    41.66 |      50 |   71.42 | ...18,127,132,146 
+  i18n.js          |   95.12 |    83.33 |     100 |     100 | 12-23,43          
+  router.js        |   65.06 |    62.79 |   71.42 |   67.56 | ...19-123,126-130 
+  store.js         |   51.08 |    54.54 |   44.44 |      50 | ...30-137,147-171 
+  utils.js         |   27.65 |    28.57 |   31.57 |   38.46 | ...-72,93,131-165 
+ src/features/chat |       0 |        0 |       0 |       0 |                   
+  index.js         |       0 |        0 |       0 |       0 | 12-675            
+  settings.js      |       0 |        0 |       0 |       0 | 9-447             
+  tools.js         |       0 |        0 |       0 |       0 | 12-787            
+  voice.js         |       0 |        0 |       0 |       0 | 6-122             
+ ...s/follow-teams |     100 |    97.56 |   94.44 |     100 |                   
+  controller.js    |     100 |     90.9 |   83.33 |     100 | 26-41             
+ ...eatures/search |    8.14 |        3 |    6.66 |    8.41 |                   
+  index.js         |    8.14 |        3 |    6.66 |    8.41 | 17-28,34-225      
+ ...urnament-query |   86.15 |       50 |    92.3 |   95.91 |                   
+  dataset.js       |   68.75 |     18.6 |      50 |      90 | 20                
+  history.js       |   91.83 |    86.48 |     100 |   97.43 | 36                
+ src/views         |   18.14 |     18.8 |   24.32 |   17.59 |                   
+  awards.js        |       0 |        0 |       0 |       0 | 7-142             
+  bracket.js       |       0 |        0 |       0 |       0 | 9-145             
+  ...-standings.js |       0 |        0 |       0 |       0 | 7-63              
+  history.js       |       0 |        0 |       0 |       0 | 13-121            
+  home.js          |       0 |        0 |       0 |       0 | 7-135             
+  match-detail.js  |       0 |        0 |       0 |       0 | 7-158             
+  not-found.js     |       0 |        0 |       0 |       0 | 4-5               
+  schedule.js      |      96 |    76.19 |     100 |     100 | 36-39,52-60,71-79 
+  team-detail.js   |   89.79 |    80.23 |      75 |   89.13 | 72-80             
+  teams.js         |       0 |        0 |       0 |       0 | 7-42              
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 14.07% ( 501/3559 )
+Branches     : 12.06% ( 337/2793 )
+Functions    : 17.33% ( 95/548 )
+Lines        : 15.5% ( 431/2780 )
+================================================================================
+warning: in the working copy of 'src/a.js', LF will be replaced by CRLF the next time Git touches it

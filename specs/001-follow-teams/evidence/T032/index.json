@@ -1,0 +1,38 @@
+{
+  "id": "T032",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792489701438-refactor.json",
+      "log": "1792489701438-refactor.txt",
+      "phase": "refactor",
+      "time": "2026-10-20T09:48:21.469Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": false,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792489750634-refactor.json",
+      "log": "1792489750634-refactor.txt",
+      "phase": "refactor",
+      "time": "2026-10-20T09:49:10.637Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792489750634-refactor.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

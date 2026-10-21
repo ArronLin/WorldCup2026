@@ -1,0 +1,86 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/router-follow.test.js (4 tests | 4 failed) 110ms
+   × preserves controls while rendering, then restores focus and scroll only for control updates 79ms
+   × does not let an older response commit or steal focus 16ms
+   × keeps ordinary Event calls compatible and ignores unsafe focus selectors 6ms
+   × reports a missing app without crashing 7ms
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  17:34:47
+   Duration  2.10s (transform 123ms, setup 0ms, import 121ms, tests 110ms, environment 1.34s)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/router-follow.test.js > preserves controls while rendering, then restores focus and scroll only for control updates
+AssertionError: expected null to be <button …(1)></button> // Object.is equality
+
+- Expected:
+<button
+  data-follow-focus="follow-only"
+>
+  old
+</button>
+
++ Received:
+null
+
+ ❯ tests/router-follow.test.js:18:44
+     16|   const old = document.querySelector('button'); old.focus();
+     17|   const pending = router.handleRoute({preserveScroll:true,focusKey:'fo…
+     18|   expect(document.querySelector('button')).toBe(old);
+       |                                            ^
+     19|   finish('<button data-follow-focus="follow-only">new</button>');
+     20|   expect(await pending).toEqual({committed:true,path:'/schedule'});
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/router-follow.test.js > does not let an older response commit or steal focus
+TypeError: Cannot read properties of undefined (reading 'committed')
+ ❯ tests/router-follow.test.js:30:39
+     28|   const old = router.handleRoute({preserveScroll:true,focusKey:'follow…
+     29|   location.hash='#/teams';
+     30|   expect((await router.handleRoute()).committed).toBe(true);
+       |                                       ^
+     31|   finish('<button data-follow-focus="follow-only">obsolete</button>');
+     32|   expect(await old).toEqual({committed:false,path:'/schedule'});
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/router-follow.test.js > keeps ordinary Event calls compatible and ignores unsafe focus selectors
+TypeError: Cannot read properties of undefined (reading 'committed')
+ ❯ tests/router-follow.test.js:38:62
+     36| it('keeps ordinary Event calls compatible and ignores unsafe focus sel…
+     37|   router.addRoute(/^\/schedule$/, async()=>'<button data-follow-focus=…
+     38|   expect((await router.handleRoute(new Event('hashchange'))).committed…
+       |                                                              ^
+     39|   expect(window.scrollTo).toHaveBeenCalledWith(0,0);
+     40|   await expect(router.handleRoute({preserveScroll:true,focusKey:'[auto…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/router-follow.test.js > reports a missing app without crashing
+AssertionError: expected undefined to deeply equal { committed: false, path: '/schedule' }
+
+- Expected:
+{
+  "committed": false,
+  "path": "/schedule",
+}
+
++ Received:
+undefined
+
+ ❯ tests/router-follow.test.js:45:38
+     43| it('reports a missing app without crashing', async () => {
+     44|   document.body.innerHTML='';
+     45|   expect(await router.handleRoute()).toEqual({committed:false,path:'/s…
+       |                                      ^
+     46| });
+     47|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+

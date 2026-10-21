@@ -1,0 +1,5 @@
+
+> coverage:baseline
+> node scripts/capture-coverage-baseline.mjs --manifest specs/001-follow-teams/coverage-baseline.json --output .tmp/follow-teams-baseline
+
+重建固定基线：27 个文件，git-tree，bb09b00616d2d7c151fbde512f7a11f7d35059aa

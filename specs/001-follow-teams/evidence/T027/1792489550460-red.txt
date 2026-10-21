@@ -1,0 +1,61 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-matches.test.js (2 tests | 2 failed) 25ms
+     × selects home OR away with multiple-team union and stable ID deduplication 18ms
+     × intersects stage with follows and keeps full results with follow disabled 3ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  17:45:49
+   Duration  727ms (transform 118ms, setup 0ms, import 167ms, tests 25ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-matches.test.js > match selection > selects home OR away with multiple-team union and stable ID deduplication
+AssertionError: expected [ 2, 1, 1, 3 ] to deeply equal [ 2, 1, 3 ]
+
+- Expected
++ Received
+
+  [
+    2,
+    1,
++   1,
+    3,
+  ]
+
+ ❯ tests/follow-matches.test.js:8:90
+      6|  it('selects home OR away with multiple-team union and stable ID dedup…
+      7|  const input=[matches[1],matches[0],matches[0],matches[2]];const befor…
+      8|  expect(ids(selectMatches(input,{teamCodes:['ARG','BRA'],followOnly:tr…
+       |                                                                                          ^
+      9|  expect(ids(selectMatches(matches,{teamCodes:['ARG'],followOnly:true,s…
+     10|  });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/follow-matches.test.js > match selection > intersects stage with follows and keeps full results with follow disabled
+AssertionError: expected [ 1, 2, 3 ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   1,
++   2,
++   3,
++ ]
+
+ ❯ tests/follow-matches.test.js:12:88
+     10|  });
+     11|  it('intersects stage with follows and keeps full results with follow …
+     12|  expect(ids(selectMatches(matches,{teamCodes:['ARG'],followOnly:true,s…
+       |                                                                                        ^
+     13|  expect(ids(selectMatches(matches,{teamCodes:['BRA'],followOnly:true,s…
+     14|  expect(ids(selectMatches(matches,{teamCodes:[],followOnly:false,stage…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+

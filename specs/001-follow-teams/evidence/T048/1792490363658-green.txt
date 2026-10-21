@@ -1,0 +1,12 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026/tests/fixtures/coverage/unimported-project
+      Coverage enabled with v8
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  17:59:22
+   Duration  881ms (transform 81ms, setup 0ms, import 119ms, tests 8ms, environment 0ms)
+
+{"schemaVersion":1,"baselineHash":"e7877e7d3fb3849623d55ab57c3e4f6894dead54a04cd6d95017f46b443e2e92","reportHash":"902a5cad2a0b02246eeca72297da3ab031ec038f5397a596b2b8e2ec2d2a6743","definition":"Istanbul source-mapped executable statement-start lines; changed multiline tokens map to their enclosing statement starts; comments/whitespace excluded with Babel tokens","C":1,"D":2,"ratio":0.5,"passed":false,"notApplicable":false,"files":[{"path":"src/loaded.js","sourceHash":"6512b1c1a66da9d5ad54aeb8ccb1bffd221abd101cabe5cc9ab7f80f32c3b3bb","baseHash":null,"renamedFrom":null,"changedLines":[1],"addedExecutableLines":[1],"hitLines":[1],"C":1,"D":1},{"path":"src/unloaded.js","sourceHash":"cf4584b5413f82880ec0637854f514cf4f4de73c56449274bcc77be758daffe7","baseHash":null,"renamedFrom":null,"changedLines":[1],"addedExecutableLines":[1],"hitLines":[],"C":0,"D":1}]}
+PASS: real unimported zero-hit line counted, 1/2 rejected.

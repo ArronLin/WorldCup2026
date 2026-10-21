@@ -1,0 +1,148 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-filters.test.js (1 test | 1 failed) 70ms
+   × patches independent filters, rejects invalid values, preserves follows/issues and never persists filters 64ms
+ ❯ tests/follow-schedule.test.js (3 tests | 3 failed) 802ms
+   × renders native controls, unique count, stable groups and real detail links 633ms
+   × distinguishes no follows, no matches and data errors without clearing state 102ms
+   × delegates checkbox and stages synchronously; rerender reads the latest intent 61ms
+
+ Test Files  2 failed (2)
+      Tests  4 failed (4)
+   Start at  17:46:56
+   Duration  5.48s (transform 697ms, setup 0ms, import 623ms, tests 872ms, environment 3.36s)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-filters.test.js > patches independent filters, rejects invalid values, preserves follows/issues and never persists filters
+AssertionError: expected { initialized: true, …(5) } to match object { teamCodes: [ 'ARG' ], …(2) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "followOnly": true,
++   "followOnly": false,
+    "stage": "all",
+    "teamCodes": [
+      "ARG",
+    ],
+  }
+
+ ❯ tests/follow-filters.test.js:6:54
+      4| it('patches independent filters, rejects invalid values, preserves fol…
+      5|  const storage=memoryStorage();const state=createFollowState({storage}…
+      6|  expect(state.setScheduleFilters({followOnly:true})).toMatchObject({te…
+       |                                                      ^
+      7|  expect(state.setScheduleFilters({stage:'final'})).toMatchObject({foll…
+      8|  expect(state.setScheduleFilters({stage:'bogus',followOnly:'yes',teamC…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/follow-schedule.test.js > renders native controls, unique count, stable groups and real detail links
+AssertionError: expected null not to be null
+ ❯ tests/follow-schedule.test.js:9:87
+      7| const app=()=>document.querySelector('#app');const ids=()=>[...documen…
+      8| it('renders native controls, unique count, stable groups and real deta…
+      9|  app().innerHTML=await view();expect(app().querySelector('input[type=c…
+       |                                                                                       ^
+     10|  expect(ids()).toEqual(['/match/1','/match/2','/match/3']);expect(app(…
+     11|  state.setFollowed('ARG',true);state.setScheduleFilters({followOnly:tr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/follow-schedule.test.js > distinguishes no follows, no matches and data errors without clearing state
+AssertionError: expected '赛程从小组赛到决赛的全部 3 场比赛全部小组赛决赛小组 A\n    \n…' to contain '还没有关注球队'
+
+- Expected
++ Received
+
+- 还没有关注球队
++ 赛程从小组赛到决赛的全部 3 场比赛全部小组赛决赛小组 A
++     
++       
++         6月11日 
++         小组赛
++       
++       
++         
++           ARG
++           ARG
++         
++         1-0
++         
++           BRA
++           BRA
++         
++       
++       
++       
++         
++         1
++       
++     
++     
++       
++         6月12日 
++         小组赛
++       
++       
++         
++           ESP
++           ESP
++         
++         0-0
++         
++           ARG
++           ARG
++         
++       
++       
++       
++         
++         2
++       
++     决赛
++     
++       
++         7月19日 
++         决赛
++       
++       
++         
++           BRA
++           BRA
++         
++         0-1
++         
++           ESP
++           ESP
++         
++       
++       
++       
++         
++         3
++       
++     
+
+ ❯ tests/follow-schedule.test.js:16:114
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/follow-schedule.test.js > delegates checkbox and stages synchronously; rerender reads the latest intent
+TypeError: Cannot set properties of null (setting 'checked')
+ ❯ tests/follow-schedule.test.js:22:56
+     20| it('delegates checkbox and stages synchronously; rerender reads the la…
+     21|  app().innerHTML=await view();state.setFollowed('BRA',true);const refr…
+     22|  const input=app().querySelector('input');input.checked=true;input.dis…
+       |                                                        ^
+     23|  expect(state.getSnapshot()).toMatchObject({followOnly:true,stage:'fin…
+     24| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+

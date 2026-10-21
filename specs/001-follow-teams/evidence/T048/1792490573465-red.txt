@@ -1,0 +1,34 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/added-coverage.test.js (10 tests | 1 failed) 2618ms
+   × counts changed multiline template contents and fails missing-file coverage even with a freshly bound report 122ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 9 passed (10)
+   Start at  18:02:47
+   Duration  6.25s (transform 596ms, setup 0ms, import 775ms, tests 2.62s, environment 0ms)
+
+warning: in the working copy of 'src/a.js', LF will be replaced by CRLF the next time Git touches it
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/added-coverage.test.js > counts changed multiline template contents and fails missing-file coverage even with a freshly bound report
+AssertionError: expected { schemaVersion: 1, …(10) } to match object { C: 1, D: 1 }
+(9 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "C": 1,
+-   "D": 1,
++   "C": 0,
++   "D": 0,
+  }
+
+ ❯ tests/added-coverage.test.js:53:427
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

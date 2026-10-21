@@ -1,0 +1,70 @@
+{
+  "id": "T054",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792491093620-green.json",
+      "log": "1792491093620-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:11:33.621Z",
+      "command": [
+        "npm",
+        "run",
+        "test:e2e"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": false,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792491226869-green.json",
+      "log": "1792491226869-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:13:46.870Z",
+      "command": [
+        "npm",
+        "run",
+        "test:e2e"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": false,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792491273668-green.json",
+      "log": "1792491273668-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:14:33.669Z",
+      "command": [
+        "node",
+        "node_modules/playwright/cli.js",
+        "test",
+        "e2e/follow-teams.language.spec.js",
+        "--grep",
+        "English"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792491330423-green.json",
+      "log": "1792491330423-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:15:30.424Z",
+      "command": [
+        "npm",
+        "run",
+        "test:e2e"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792491273668-green.json",
+    "1792491330423-green.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

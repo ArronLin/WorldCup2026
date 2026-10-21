@@ -1,0 +1,162 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-controller.test.js (3 tests | 2 failed) 199ms
+   × delegates once, updates real state synchronously and supports disposal 147ms
+   × consumes retry once, disables duplicate retries and recovers after completion 34ms
+ ❯ tests/follow-team-detail.test.js (9 tests | 9 failed) 1683ms
+   × renders a real accessible follow control and preserves all original team matches 389ms
+   × rejects missing, invalid and unknown team codes: undefined 30ms
+   × rejects missing, invalid and unknown team codes:  17ms
+   × rejects missing, invalid and unknown team codes: arg 28ms
+   × rejects missing, invalid and unknown team codes: XXX 16ms
+   × rejects missing, invalid and unknown team codes: ARG<script> 13ms
+   × separates data failure from unknown team and never initializes or clears a saved list 15ms
+   × shows corrupted/read/write failures as warnings without suppressing valid browsing 40ms
+   × boots the actual app and permits temporary follow when all localStorage access is denied 1129ms
+
+ Test Files  2 failed (2)
+      Tests  11 failed | 1 passed (12)
+     Errors  1 error
+   Start at  17:41:48
+   Duration  4.72s (transform 611ms, setup 0ms, import 542ms, tests 1.88s, environment 4.27s)
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-controller.test.js > delegates once, updates real state synchronously and supports disposal
+AssertionError: expected [Function] to be [Function] // Object.is equality
+
+Compared values have no visual difference.
+
+ ❯ tests/follow-controller.test.js:17:49
+     15|   const refresh=vi.fn(async()=>({committed:true}));const root=document…
+     16|   const dispose=initFollowTeams({root,state,refresh});
+     17|   expect(initFollowTeams({root,state,refresh})).toBe(dispose);
+       |                                                 ^
+     18|   root.querySelector('[data-follow-action="toggle"]').click();
+     19|   expect(state.getSnapshot().teamCodes).toEqual(['ARG']);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  tests/follow-controller.test.js > consumes retry once, disables duplicate retries and recovers after completion
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/follow-controller.test.js:28:27
+     26|   const root=document.querySelector('#app');const dispose=initFollowTe…
+     27|   const button=root.querySelector('[data-follow-action="retry"]');butt…
+     28|   expect(button.disabled).toBe(true);expect(refresh).toHaveBeenCalledO…
+       |                           ^
+     29|   expect(consumeRetry()).toBe(true);expect(consumeRetry()).toBe(false);
+     30|   finish({committed:true});await Promise.resolve();await Promise.resol…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  tests/follow-team-detail.test.js > renders a real accessible follow control and preserves all original team matches
+AssertionError: expected null not to be null
+ ❯ tests/follow-team-detail.test.js:16:22
+     14|   document.querySelector('#app').innerHTML=await view('ARG');
+     15|   const button=document.querySelector('[data-follow-action="toggle"]');
+     16|   expect(button).not.toBeNull();expect(button.getAttribute('aria-press…
+       |                      ^
+     17|   expect(button.textContent).toBe('关注球队');
+     18|   expect(document.querySelectorAll('[data-route^="/match/"]')).toHaveL…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  tests/follow-team-detail.test.js > rejects missing, invalid and unknown team codes: undefined
+ FAIL  tests/follow-team-detail.test.js > rejects missing, invalid and unknown team codes: 
+ FAIL  tests/follow-team-detail.test.js > rejects missing, invalid and unknown team codes: arg
+ FAIL  tests/follow-team-detail.test.js > rejects missing, invalid and unknown team codes: XXX
+ FAIL  tests/follow-team-detail.test.js > rejects missing, invalid and unknown team codes: ARG<script>
+AssertionError: expected '暂无数据返回' to contain '找不到球队'
+
+Expected: "找不到球队"
+Received: "暂无数据返回"
+
+ ❯ tests/follow-team-detail.test.js:27:54
+     25|   expect(document.querySelector('[data-follow-action="toggle"]')).toBe…
+     26|   expect(document.querySelector('a[href="#/teams"]')).not.toBeNull();
+     27|   expect(document.querySelector('#app').textContent).toContain('找不到球队'…
+       |                                                      ^
+     28| });
+     29| it('separates data failure from unknown team and never initializes or …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  tests/follow-team-detail.test.js > separates data failure from unknown team and never initializes or clears a saved list
+AssertionError: expected '暂无数据返回' to contain '赛事数据加载失败'
+
+Expected: "赛事数据加载失败"
+Received: "暂无数据返回"
+
+ ❯ tests/follow-team-detail.test.js:33:54
+     31|   fetch.mockImplementation(async()=>({ok:false,status:503}));
+     32|   const html=await view('ARG');document.querySelector('#app').innerHTM…
+     33|   expect(document.querySelector('#app').textContent).toContain('赛事数据加载…
+       |                                                      ^
+     34|   expect(document.querySelector('[data-follow-action="retry"]')).not.t…
+     35|   expect(state.getSnapshot().initialized).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  tests/follow-team-detail.test.js > shows corrupted/read/write failures as warnings without suppressing valid browsing
+TypeError: Cannot read properties of null (reading 'textContent')
+ ❯ tests/follow-team-detail.test.js:41:51
+     39|   localStorage.setItem('wc2026-followed-teams','{broken');
+     40|   document.querySelector('#app').innerHTML=await view('ARG');
+     41|   expect(document.querySelector('[role="status"]').textContent).toCont…
+       |                                                   ^
+     42|   expect(document.querySelectorAll('[data-route^="/match/"]')).toHaveL…
+     43| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  tests/follow-team-detail.test.js > boots the actual app and permits temporary follow when all localStorage access is denied
+AssertionError: expected null not to be null
+ ❯ tests/follow-team-detail.test.js:49:92
+     47|   location.hash='#/team/ARG';
+     48|   await import('../src/app.js');
+     49|   await vi.waitFor(()=>expect(document.querySelector('[data-follow-act…
+       |                                                                                            ^
+     50|   document.querySelector('[data-follow-action="toggle"]').click();
+     51|   await vi.waitFor(()=>expect(state.getSnapshot().teamCodes).toEqual([…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+Error: denied
+ ❯ tests/follow-team-detail.test.js:45:71
+     43| });
+     44| it('boots the actual app and permits temporary follow when all localSt…
+     45|   vi.spyOn(window,'localStorage','get').mockImplementation(()=>{throw …
+       |                                                                       ^
+     46|   vi.doMock('../src/features/chat/index.js',()=>({initChat:()=>{},refr…
+     47|   location.hash='#/team/ARG';
+ ❯ get node_modules/@vitest/spy/dist/index.js:332:34
+ ❯ detectTheme src/app.js:9:17
+ ❯ init src/app.js:106:14
+ ❯ src/app.js:144:1
+ ❯ processTicksAndRejections node:internal/process/task_queues:104:5
+ ❯ VitestModuleEvaluator._runInlinedModule node_modules/vitest/dist/module-evaluator.js:206:4
+ ❯ VitestModuleRunner.directRequest node_modules/vite/dist/node/module-runner.js:1146:59
+ ❯ VitestModuleRunner.cachedRequest node_modules/vite/dist/node/module-runner.js:1053:73
+ ❯ tests/follow-team-detail.test.js:48:3
+
+This error originated in "tests/follow-team-detail.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "boots the actual app and permits temporary follow when all localStorage access is denied". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+

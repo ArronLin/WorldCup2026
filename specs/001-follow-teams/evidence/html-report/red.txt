@@ -1,0 +1,86 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/added-coverage-html.test.js (4 tests | 4 failed) 305ms
+   × renders aggregate and per-file coverage; labels covered/uncovered source and escapes source HTML 218ms
+   × filters files, exposes D=0 as not applicable, and switches actual source line visibility 40ms
+   × refuses stale sources, inconsistent counts, duplicate paths and out-of-range lines 13ms
+   × represents D=0 as not applicable rather than 100 percent 30ms
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  09:21:21
+   Duration  40.92s (transform 347ms, setup 0ms, import 37.66s, tests 305ms, environment 1ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/added-coverage-html.test.js > renders aggregate and per-file coverage; labels covered/uncovered source and escapes source HTML
+AssertionError: the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string
+ ❯ tests/added-coverage-html.test.js:31:68
+     29|   const dom = new JSDOM(f.render(), { runScripts: 'dangerously' });
+     30|   const doc = dom.window.document;
+     31|   expect(doc.querySelector('[data-summary="ratio"]')?.textContent).toC…
+       |                                                                    ^
+     32|   expect(doc.querySelector('[data-summary="fraction"]')?.textContent).…
+     33|   expect(doc.querySelector('[data-summary="missing"]')?.textContent).t…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/added-coverage-html.test.js > filters files, exposes D=0 as not applicable, and switches actual source line visibility
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/added-coverage-html.test.js:47:18
+     45|   const { document: doc, Event } = dom.window;
+     46|   const rows = () => [...doc.querySelectorAll('[data-file-row]')].filt…
+     47|   expect(rows()).toHaveLength(1);
+       |                  ^
+     48|   const all = doc.querySelector('#show-all'); all.checked = true; all.…
+     49|   expect(rows()).toHaveLength(2); expect(rows()[1].textContent).toCont…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/added-coverage-html.test.js > refuses stale sources, inconsistent counts, duplicate paths and out-of-range lines
+AssertionError: expected [Function render] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/added-coverage-html.test.js:65:20
+     63| it('refuses stale sources, inconsistent counts, duplicate paths and ou…
+     64|   const f = fixture(); writeFileSync(path.join(f.root, 'src/a.js'), 'e…
+     65|   expect(f.render).toThrow(/hash|摘要/i);
+       |                    ^
+     66|   for (const change of [
+     67|     f => f.report.C = 0,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/added-coverage-html.test.js > represents D=0 as not applicable rather than 100 percent
+AssertionError: expected undefined to be '不适用' // Object.is equality
+
+- Expected:
+"不适用"
+
++ Received:
+undefined
+
+ ❯ tests/added-coverage-html.test.js:79:68
+     77|   Object.assign(f.report.files[0], { C:0, D:0, changedLines:[3], added…
+     78|   const doc = new JSDOM(f.render()).window.document;
+     79|   expect(doc.querySelector('[data-summary="ratio"]')?.textContent).toB…
+       |                                                                    ^
+     80|   expect(doc.querySelector('#file-empty')?.textContent).toContain('没有符…
+     81| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+

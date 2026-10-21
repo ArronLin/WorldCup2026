@@ -1,0 +1,37 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-language.test.js (3 tests | 2 failed) 240ms
+   × commits only the latest language and dictionary when responses arrive in reverse order 182ms
+   × toggles from the pending intent, while no partial language commit occurs 27ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  17:49:25
+   Duration  6.45s (transform 306ms, setup 0ms, import 386ms, tests 240ms, environment 4.94s)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-language.test.js > commits only the latest language and dictionary when responses arrive in reverse order
+AssertionError: expected 'stale English' to be '最新中文' // Object.is equality
+
+Expected: "最新中文"
+Received: "stale English"
+
+ ❯ tests/follow-language.test.js:12:32
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/follow-language.test.js > toggles from the pending intent, while no partial language commit occurs
+AssertionError: expected 'en' to be 'zh' // Object.is equality
+
+Expected: "zh"
+Received: "en"
+
+ ❯ tests/follow-language.test.js:17:51
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+

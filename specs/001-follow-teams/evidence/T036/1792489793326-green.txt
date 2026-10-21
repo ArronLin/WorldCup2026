@@ -1,0 +1,51 @@
+
+Running 11 tests using 4 workers
+
+  ok  3 e2e\follow-teams.storage.spec.js:2:1 › corrupt and denied read records are reported without blocking browsing (4.5s)
+  ok  5 e2e\follow-teams.storage.spec.js:6:1 › follow-key read denial allows a temporary follow; later save recovers (2.7s)
+  ok  1 e2e\follow-teams.empty-retry.spec.js:2:1 › no follows and no matches are separate, and removing the last follow updates returning schedule (7.3s)
+  ok  2 e2e\follow-teams.persistence.spec.js:2:1 › real UI follows two teams, removes one, refreshes and restores in a new page (9.1s)
+  ok  4 e2e\follow-teams.schedule.spec.js:2:1 › follows combine with stages and survive same-tab return, refresh resets only filters (9.9s)
+  ok  8 e2e\follow-teams.persistence.spec.js:10:1 › invalid team entries have no follow action (2.5s)
+  ok  6 e2e\follow-teams.storage.spec.js:10:1 › write failure preserves state across routes; a later save persists the full set (4.8s)
+  ok  7 e2e\follow-teams.empty-retry.spec.js:7:1 › schedule 503 retries without losing saved follows (5.2s)
+  ok 10 e2e\follow-teams.storage.spec.js:16:1 › all storage denied still starts and allows temporary follows (2.3s)
+  x   9 e2e\follow-teams.schedule.spec.js:11:1 › fixture has exact union, stable grouped order and deduplicated IDs (4.7s)
+  ok 11 e2e\follow-teams.storage.spec.js:19:1 › 503 is an error and a user retry really fetches the data again (2.1s)
+
+
+  1) e2e\follow-teams.schedule.spec.js:11:1 › fixture has exact union, stable grouped order and deduplicated IDs 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 1
+
+    - Array [
+    -   "/match/3",
+    - ]
+    + Array []
+
+      15 |  await follow(page,'ARG');await page.goto('/#/schedule');await page.getByRole('checkbox').check();
+      16 |  await expect(page.locator('[data-follow-count]')).toHaveText('共 2 场比赛');expect(await page.locator('#app .match-card').evaluateAll(es=>es.map(e=>e.dataset.route))).toEqual(['/match/2','/match/1']);
+    > 17 |  await page.getByRole('button',{name:'决赛',exact:true}).click();await expect(page.getByText('当前筛选条件下没有比赛。')).toBeVisible();await page.getByRole('checkbox').uncheck();expect(await page.locator('#app .match-card').evaluateAll(es=>es.map(e=>e.dataset.route))).toEqual(['/match/3']);
+         |                                                                                                                                                                                                                                                                 ^
+      18 | });
+      19 |
+        at D:\GitHub\WorldCup2026\e2e\follow-teams.schedule.spec.js:17:257
+
+    Error Context: test-results\follow-teams.schedule-fixt-95cbe--order-and-deduplicated-IDs\error-context.md
+
+  1 failed
+    e2e\follow-teams.schedule.spec.js:11:1 › fixture has exact union, stable grouped order and deduplicated IDs 
+  10 passed (29.5s)
+[WebServer] (node:43996) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+(node:27972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:40508) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

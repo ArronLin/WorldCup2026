@@ -1,0 +1,45 @@
+{
+  "id": "T042",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792489851325-refactor.json",
+      "log": "1792489851325-refactor.txt",
+      "phase": "refactor",
+      "time": "2026-10-20T09:50:51.326Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/follow-localization.test.js",
+        "tests/follow-language.test.js",
+        "tests/router-follow.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792489928252-green.json",
+      "log": "1792489928252-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:52:08.260Z",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        ".tmp/mutate.mjs",
+        "src/app.js",
+        "  const focusKey =",
+        "  import('./features/follow-teams/state.js').then(({followState}) => followState.setScheduleFilters({followOnly:false,stage:'all'}));\n  const focusKey =",
+        "tests/follow-localization.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792489851325-refactor.json",
+    "1792489928252-green.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

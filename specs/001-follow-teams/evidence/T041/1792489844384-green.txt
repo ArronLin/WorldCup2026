@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  17:50:40
+   Duration  4.21s (transform 439ms, setup 0ms, import 266ms, tests 903ms, environment 2.20s)
+

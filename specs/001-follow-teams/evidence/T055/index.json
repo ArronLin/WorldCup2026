@@ -1,0 +1,62 @@
+{
+  "id": "T055",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792491332825-green.json",
+      "log": "1792491332825-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:15:32.826Z",
+      "command": [
+        "npm",
+        "run",
+        "coverage:baseline",
+        "--",
+        "--manifest",
+        "specs/001-follow-teams/coverage-baseline.json",
+        "--output",
+        ".tmp/follow-teams-baseline"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792491346661-green.json",
+      "log": "1792491346661-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:15:46.662Z",
+      "command": [
+        "npm",
+        "run",
+        "test:coverage"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792491348977-green.json",
+      "log": "1792491348977-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:15:48.978Z",
+      "command": [
+        "npm",
+        "run",
+        "coverage:added",
+        "--",
+        "--baseline",
+        ".tmp/follow-teams-baseline/baseline.json"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792491332825-green.json",
+    "1792491346661-green.json",
+    "1792491348977-green.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

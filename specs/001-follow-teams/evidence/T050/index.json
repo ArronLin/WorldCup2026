@@ -1,0 +1,58 @@
+{
+  "id": "T050",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792490493258-green.json",
+      "log": "1792490493258-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:01:33.260Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/follow-mutation-runner.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490503043-refactor.json",
+      "log": "1792490503043-refactor.txt",
+      "phase": "refactor",
+      "time": "2026-10-20T10:01:43.045Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/follow-mutation-runner.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490868918-green.json",
+      "log": "1792490868918-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:07:48.920Z",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--run",
+        "tests/follow-mutation-runner.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792490493258-green.json",
+    "1792490503043-refactor.json",
+    "1792490868918-green.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

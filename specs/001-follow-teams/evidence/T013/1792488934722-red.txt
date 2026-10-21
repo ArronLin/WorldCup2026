@@ -1,0 +1,41 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/follow-stage.test.js (2 tests | 1 failed) 36ms
+   × defines the existing ordered stages once and classifies every supported match 30ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  17:35:33
+   Duration  981ms (transform 116ms, setup 0ms, import 174ms, tests 36ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/follow-stage.test.js > defines the existing ordered stages once and classifies every supported match
+AssertionError: expected [] to deeply equal [ 'group', 'round_of_32', …(5) ]
+
+- Expected
++ Received
+
+- [
+-   "group",
+-   "round_of_32",
+-   "round_of_16",
+-   "quarterfinal",
+-   "semifinal",
+-   "third_place",
+-   "final",
+- ]
++ []
+
+ ❯ tests/follow-stage.test.js:4:22
+      2| import { stageOrder, matchCategory, isFilterStage } from '../src/featu…
+      3| it('defines the existing ordered stages once and classifies every supp…
+      4|   expect(stageOrder).toEqual(['group','round_of_32','round_of_16','qua…
+       |                      ^
+      5|   expect(matchCategory({stage:'group'})).toBe('group');
+      6|   for(const round of stageOrder.slice(1)) expect(matchCategory({stage:…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

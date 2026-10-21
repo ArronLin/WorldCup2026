@@ -1,0 +1,50 @@
+{
+  "id": "T052",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792490820088-green.json",
+      "log": "1792490820088-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:07:00.091Z",
+      "command": [
+        "node",
+        ".tmp/clean-ci.mjs"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": false,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490905139-green.json",
+      "log": "1792490905139-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:08:25.140Z",
+      "command": [
+        "node",
+        ".tmp/clean-ci.mjs"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490976718-green.json",
+      "log": "1792490976718-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:09:36.719Z",
+      "command": [
+        "node",
+        ".tmp/clean-negative.mjs"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792490905139-green.json",
+    "1792490976718-green.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

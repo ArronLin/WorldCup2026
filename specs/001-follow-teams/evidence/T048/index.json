@@ -1,0 +1,175 @@
+{
+  "id": "T048",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792490311552-refactor.json",
+      "log": "1792490311552-refactor.txt",
+      "phase": "refactor",
+      "time": "2026-10-20T09:58:31.553Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/added-coverage.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490316315-green.json",
+      "log": "1792490316315-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:58:36.317Z",
+      "command": [
+        "node",
+        ".tmp/prove-coverage.mjs"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": false,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490328225-green.json",
+      "log": "1792490328225-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:58:48.227Z",
+      "command": [
+        "node",
+        "scripts/run-unit-coverage.mjs"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490363658-green.json",
+      "log": "1792490363658-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:59:23.659Z",
+      "command": [
+        "node",
+        "scripts/prove-unimported-coverage.mjs"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490389147-red.json",
+      "log": "1792490389147-red.txt",
+      "phase": "red",
+      "time": "2026-10-20T09:59:49.148Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/added-coverage.test.js"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": true,
+      "semanticRed": true
+    },
+    {
+      "metadata": "1792490407921-green.json",
+      "log": "1792490407921-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:00:07.922Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/added-coverage.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490413074-refactor.json",
+      "log": "1792490413074-refactor.txt",
+      "phase": "refactor",
+      "time": "2026-10-20T10:00:13.075Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/added-coverage.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490538748-red.json",
+      "log": "1792490538748-red.txt",
+      "phase": "red",
+      "time": "2026-10-20T10:02:18.751Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/added-coverage.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": false,
+      "semanticRed": false
+    },
+    {
+      "metadata": "1792490573465-red.json",
+      "log": "1792490573465-red.txt",
+      "phase": "red",
+      "time": "2026-10-20T10:02:53.467Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/added-coverage.test.js"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": true,
+      "semanticRed": true
+    },
+    {
+      "metadata": "1792490601492-green.json",
+      "log": "1792490601492-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T10:03:21.493Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/added-coverage.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792490610327-refactor.json",
+      "log": "1792490610327-refactor.txt",
+      "phase": "refactor",
+      "time": "2026-10-20T10:03:30.329Z",
+      "command": [
+        "node",
+        "scripts/prove-unimported-coverage.mjs"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792490311552-refactor.json",
+    "1792490328225-green.json",
+    "1792490363658-green.json",
+    "1792490389147-red.json",
+    "1792490407921-green.json",
+    "1792490413074-refactor.json",
+    "1792490573465-red.json",
+    "1792490601492-green.json",
+    "1792490610327-refactor.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}

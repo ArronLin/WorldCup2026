@@ -1,0 +1,69 @@
+{
+  "id": "T002",
+  "reviewed": true,
+  "attempts": [
+    {
+      "metadata": "1792488609180-green.json",
+      "log": "1792488609180-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:30:09.182Z",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exitCode": 4294963248,
+      "runnerAccepted": false,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792488659642-green.json",
+      "log": "1792488659642-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:30:59.646Z",
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "tests/environment-node.test.js",
+        "tests/environment-dom.test.js"
+      ],
+      "exitCode": 1,
+      "runnerAccepted": false,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792488725810-green.json",
+      "log": "1792488725810-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:32:05.815Z",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    },
+    {
+      "metadata": "1792488742410-green.json",
+      "log": "1792488742410-green.txt",
+      "phase": "green",
+      "time": "2026-10-20T09:32:22.412Z",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/environment-node.test.js",
+        "tests/environment-dom.test.js"
+      ],
+      "exitCode": 0,
+      "runnerAccepted": true,
+      "semanticRed": null
+    }
+  ],
+  "validEvidence": [
+    "1792488725810-green.json",
+    "1792488742410-green.json"
+  ],
+  "note": "保留失败尝试；依赖/收集错误不作为业务Red。Refactor含审视后无需改动的回归。最终验收统一见acceptance.md。"
+}
