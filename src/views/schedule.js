@@ -1,105 +1,51 @@
 // ===== Schedule View =====
 import { t } from '../i18n.js';
-import { getMatches, getTeams, getVenues } from '../store.js';
-import { L, formatDate, flagSVG, stageLabel, STAGES, translateStadium } from '../utils.js';
+import { getTournamentSnapshot } from '../store.js';
+import { L, formatDate, flagSVG, stageLabel, translateStadium } from '../utils.js';
+import { followState } from '../features/follow-teams/state.js';
+import { matchCategory, stageOrder, selectMatches } from '../features/follow-teams/matches.js';
+import { consumeRetry } from '../features/follow-teams/controller.js';
+import { renderFollowNotice, renderDataError } from '../features/follow-teams/view.js';
 
 export default async function scheduleView() {
-  const [matches, teams, venues] = await Promise.all([getMatches(), getTeams(), getVenues()]);
-  const lang = window.__lang || 'zh';
-
-  // Determine the effective category for each match:
-  // group stage -> 'group', knockout -> the `round` field (e.g. 'round_of_32')
-  function matchCategory(m) {
-    if (m.stage === 'knockout') return m.round || 'knockout';
-    return m.stage || 'group';
+  const result = await getTournamentSnapshot({ retry: consumeRetry() });
+  if (result.status !== 'ready') return renderDataError(followState.getSnapshot());
+  followState.initialize(result.teams);
+  const snapshot = followState.getSnapshot();
+  const matches = selectMatches(result.matches, snapshot);
+  const teams = result.teams;
+  const present = new Set(result.matches.map(matchCategory));
+  const tabs = stageOrder.filter(c => present.has(c));
+  let html = '<div class="schedule-page"><h1 class="page-title">' + t('nav.schedule') + '</h1>';
+  html += '<p class="page-subtitle" data-follow-count role="status">' + t('follow.count', { count: matches.length }) + '</p>';
+  html += '<div class="follow-controls"><label class="follow-switch"><input type="checkbox" data-follow-action="filter" data-follow-focus="follow-only" ' + (snapshot.followOnly ? 'checked' : '') + '> ' + t('follow.only') + '</label></div>';
+  html += renderFollowNotice(snapshot);
+  html += '<p class="follow-demo">' + t('follow.demo') + '</p>';
+  html += '<div class="filter-tabs" id="scheduleFilter">';
+  for (const cat of ['all', ...tabs]) {
+    const active = snapshot.stage === cat;
+    html += '<button type="button" class="filter-tab ' + (active ? 'active' : '') + '" aria-pressed="' + active + '" data-follow-action="stage" data-filter="' + cat + '" data-follow-focus="follow-stage-' + cat + '">' + (cat === 'all' ? t('schedule.all') : stageLabel(cat)) + '</button>';
   }
-
-  // Ordered categories used for filter tabs
-  const categoryOrder = ['group', 'round_of_32', 'round_of_16', 'quarterfinal', 'semifinal', 'third_place', 'final'];
-
-  // Collect categories that actually have matches, preserving the defined order
-  const present = new Set(matches.map(matchCategory));
-  const tabs = categoryOrder.filter(c => present.has(c));
-
-  // Group matches by category
-  const byCategory = {};
-  matches.forEach(m => {
-    const cat = matchCategory(m);
-    if (!byCategory[cat]) byCategory[cat] = [];
-    byCategory[cat].push(m);
-  });
-
-  let html = `<div class="schedule-page">`;
-  html += `<h1 class="page-title">${t('nav.schedule')}</h1>`;
-  html += `<p class="page-subtitle">${t('schedule.matchCount', { count: matches.length })}</p>`;
-
-  // Filter tabs
-  html += `<div class="filter-tabs" id="scheduleFilter">`;
-  html += `<button class="filter-tab active" data-filter="all">${t('schedule.all')}</button>`;
-  for (const cat of tabs) {
-    html += `<button class="filter-tab" data-filter="${cat}">${stageLabel(cat)}</button>`;
+  html += '</div>';
+  if (!matches.length) {
+    html += '<div class="follow-empty"><p>' + t(snapshot.followOnly && !snapshot.teamCodes.length ? 'follow.noTeams' : 'follow.noMatches') + '</p><a href="#/teams" class="back-link">' + t('follow.chooseTeams') + '</a></div>';
   }
-  html += `</div>`;
-
-  // Match sections
   for (const cat of tabs) {
-    const catMatches = byCategory[cat];
+    const catMatches = matches.filter(m => matchCategory(m) === cat);
     if (cat === 'group') {
-      // Sub-group by group letter
-      const byGroup = {};
-      catMatches.forEach(m => {
-        const g = m.group || '?';
-        if (!byGroup[g]) byGroup[g] = [];
-        byGroup[g].push(m);
-      });
-      const groupKeys = Object.keys(byGroup).sort();
-      for (const gk of groupKeys) {
-        html += `<div class="match-section" data-stage="group" data-group="${gk}">`;
-        html += `<h2 class="section-title">${t('common.group')} ${gk}</h2>`;
-        html += `<div class="match-grid">`;
-        for (const m of byGroup[gk]) {
-          html += renderMatchCard(m, teams);
-        }
-        html += `</div></div>`;
+      const groups = [...new Set(catMatches.map(m => m.group || '?'))].sort();
+      for (const group of groups) {
+        html += '<div class="match-section" data-stage="group" data-group="' + group + '"><h2 class="section-title">' + t('common.group') + ' ' + group + '</h2><div class="match-grid">';
+        for (const m of catMatches.filter(m => (m.group || '?') === group)) html += renderMatchCard(m, teams);
+        html += '</div></div>';
       }
-    } else {
-      html += `<div class="match-section" data-stage="${cat}">`;
-      html += `<h2 class="section-title">${stageLabel(cat)}</h2>`;
-      html += `<div class="match-grid">`;
-      for (const m of catMatches) {
-        html += renderMatchCard(m, teams);
-      }
-      html += `</div></div>`;
+    } else if (catMatches.length) {
+      html += '<div class="match-section" data-stage="' + cat + '"><h2 class="section-title">' + stageLabel(cat) + '</h2><div class="match-grid">';
+      for (const m of catMatches) html += renderMatchCard(m, teams);
+      html += '</div></div>';
     }
   }
-
-  html += `</div>`;
-
-  // Add filter logic (will be attached after render)
-  setTimeout(() => {
-    const filterContainer = document.getElementById('scheduleFilter');
-    if (!filterContainer) return;
-    filterContainer.addEventListener('click', (e) => {
-      const tab = e.target.closest('.filter-tab');
-      if (!tab) return;
-      const filter = tab.dataset.filter;
-
-      // Update active
-      filterContainer.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      // Show/hide sections
-      document.querySelectorAll('.match-section').forEach(sec => {
-        if (filter === 'all') {
-          sec.style.display = '';
-        } else {
-          sec.style.display = sec.dataset.stage === filter ? '' : 'none';
-        }
-      });
-    });
-  }, 50);
-
-  return html;
+  return html + '</div>';
 }
 
 function renderMatchCard(m, teams) {

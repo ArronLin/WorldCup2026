@@ -4,16 +4,19 @@ import { initRouter, addRoute, navigate, handleRoute } from './router.js';
 import { getPlayerNames } from './store.js';
 import { initSearch, refreshSearch } from './features/search/index.js';
 
+import { browserStorage } from './browser-storage.js';
+import { initFollowTeams } from './features/follow-teams/controller.js';
+
 // Theme management
 function detectTheme() {
-  const saved = localStorage.getItem('wc2026-theme');
+  const saved = browserStorage.read('wc2026-theme').value;
   if (saved) return saved;
   return 'dark';
 }
 
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('wc2026-theme', theme);
+  browserStorage.write('wc2026-theme', theme);
 }
 
 function toggleTheme() {
@@ -50,7 +53,7 @@ addRoute(/^\/match\/(\d+)\/?$/, async (id) => {
   const { default: view } = await import('./views/match-detail.js');
   return view(id);
 });
-addRoute(/^\/team\/([A-Z]{3})\/?$/, async (code) => {
+addRoute(/^\/team(?:\/(.*?))?\/?$/, async (code) => {
   const { default: view } = await import('./views/team-detail.js');
   return view(code);
 });
@@ -91,13 +94,14 @@ function updateFooter() {
 
 // Handle language change — re-render everything
 document.addEventListener('langchange', () => {
+  const focusKey = document.activeElement?.dataset.followFocus;
   buildNav();
   updateLangToggle();
   updateFooter();
   refreshSearch();
   window.__refreshChat?.();
   // Re-render current view directly
-  handleRoute();
+  handleRoute({ preserveScroll: true, focusKey });
 });
 
 // Initialize
@@ -129,6 +133,7 @@ async function init() {
   });
 
   // Start router
+  initFollowTeams();
   initRouter();
 
   // These features must not delay first contentful render.

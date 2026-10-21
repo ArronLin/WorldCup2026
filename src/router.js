@@ -1,7 +1,6 @@
 // ===== Hash Router =====
 
 const routes = [];
-let currentView = null;
 let navigationId = 0;
 
 export function addRoute(pattern, handler) {
@@ -22,16 +21,19 @@ function matchRoute(path) {
   return null;
 }
 
-export async function handleRoute() {
+export async function handleRoute(options = {}) {
   const requestId = ++navigationId;
   const path = getHash();
   const matched = matchRoute(path);
 
   const app = document.getElementById('app');
-  if (!app) return;
+  if (!app) return { committed: false, path };
+  let currentView;
 
   // Show loading
-  app.innerHTML = '<div class="loading"><div class="loading-spinner"></div><p id="loadingText">Loading...</p></div>';
+  if (!options.preserveScroll) {
+    app.innerHTML = '<div class="loading"><div class="loading-spinner"></div><p id="loadingText">Loading...</p></div>';
+  }
 
   // Update loading text
   const loadingText = document.getElementById('loadingText');
@@ -54,7 +56,7 @@ export async function handleRoute() {
   }
 
   // A slower, older route must never replace the currently requested page.
-  if (requestId !== navigationId) return;
+  if (requestId !== navigationId) return { committed: false, path };
 
   app.innerHTML = currentView;
   app.classList.add('app-container');
@@ -79,7 +81,16 @@ export async function handleRoute() {
   });
 
   // Scroll to top
-  window.scrollTo(0, 0);
+  if (!options.preserveScroll) window.scrollTo(0, 0);
+  const focusKeys = ['follow-team', 'follow-only', 'follow-retry', 'follow-stage-all', 'follow-stage-group',
+    'follow-stage-round_of_32', 'follow-stage-round_of_16', 'follow-stage-quarterfinal',
+    'follow-stage-semifinal', 'follow-stage-third_place', 'follow-stage-final'];
+  if (focusKeys.includes(options.focusKey)) {
+    const target = [...app.querySelectorAll('[data-follow-focus]')]
+      .find(el => el.dataset.followFocus === options.focusKey);
+    target?.focus({ preventScroll: true });
+  }
+  return { committed: true, path };
 }
 
 function updateNavActive(path) {

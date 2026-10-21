@@ -1,29 +1,30 @@
+import { browserStorage } from './browser-storage.js';
 // ===== i18n Engine =====
 
 let dict = {};
 let currentLang = 'zh';
+let intendedLang = 'zh';
+let requestId = 0;
 
 function detectLang() {
-  const saved = localStorage.getItem('wc2026-lang');
-  if (saved) return saved;
+  const saved = browserStorage.read('wc2026-lang').value;
+  if (saved === 'zh' || saved === 'en') return saved;
   const nav = navigator.language || 'zh';
   return nav.toLowerCase().startsWith('zh') ? 'zh' : 'en';
 }
 
 export async function initI18n() {
-  currentLang = detectLang();
-  await loadDict(currentLang);
-  document.documentElement.lang = currentLang;
-  window.__lang = currentLang;
+  await requestLanguage(detectLang(), false);
 }
 
 async function loadDict(lang) {
   try {
     const resp = await fetch(`i18n/${lang}.json`);
-    dict = await resp.json();
+    if (!resp.ok) throw new Error('Dictionary request failed');
+    return await resp.json();
   } catch (e) {
     console.warn('Failed to load i18n dict:', e);
-    dict = {};
+    return {};
   }
 }
 
@@ -38,17 +39,26 @@ export function t(key, vars) {
   return s;
 }
 
-export async function setLang(lang) {
+async function requestLanguage(lang, notify) {
+  if (lang !== 'zh' && lang !== 'en') return;
+  intendedLang = lang;
+  const id = ++requestId;
+  const nextDict = await loadDict(lang);
+  if (id !== requestId) return;
+  dict = nextDict;
   currentLang = lang;
-  localStorage.setItem('wc2026-lang', lang);
+  browserStorage.write('wc2026-lang', lang);
   document.documentElement.lang = lang;
   window.__lang = lang;
-  await loadDict(lang);
-  document.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
+  if (notify) document.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
+}
+
+export async function setLang(lang) {
+  await requestLanguage(lang, true);
 }
 
 export function getLang() { return currentLang; }
 
 export function toggleLang() {
-  return setLang(currentLang === 'zh' ? 'en' : 'zh');
+  return setLang(intendedLang === 'zh' ? 'en' : 'zh');
 }

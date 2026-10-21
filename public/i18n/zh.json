@@ -197,5 +197,19 @@
   "history.notQualified": "未参赛",
   "history.sameTeam": "请选择两支不同的球队",
   "history.entry": "历届世界杯战绩",
-  "history.shootout": "点球大战"
+  "history.shootout": "点球大战",
+  "follow.follow": "关注球队",
+  "follow.unfollow": "取消关注",
+  "follow.teamNotFound": "找不到球队",
+  "follow.restore.corrupt": "关注记录已损坏，请重新选择球队。",
+  "follow.restore.unavailable": "无法读取关注记录，可在本次浏览中临时关注。",
+  "follow.saveFailed": "无法保存，刷新后可能丢失。",
+  "follow.loadError": "赛事数据加载失败",
+  "follow.retry": "重试",
+  "follow.demo": "当前展示静态演示数据，不代表实时赛况或官方信息。",
+  "follow.only": "只看已关注球队",
+  "follow.count": "共 {count} 场比赛",
+  "follow.noTeams": "还没有关注球队，先选择你支持的球队吧。",
+  "follow.noMatches": "当前筛选条件下没有比赛。",
+  "follow.chooseTeams": "去关注球队"
 }

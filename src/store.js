@@ -1,21 +1,45 @@
 // ===== Data Store =====
+import { matchCategory } from './features/follow-teams/matches.js';
 
 const cache = new Map();
 
-async function loadJSON(name) {
+async function loadJSONResult(name) {
   if (!cache.has(name)) {
-    const request = fetch(`/data/${name}.json`)
-      .then((resp) => {
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-        return resp.json();
-      })
-      .catch((error) => {
-        console.warn(`Failed to load data/${name}.json:`, error);
-        return name === 'matches' ? [] : {};
-      });
+    const request = (async () => {
+      let resp;
+      try { resp = await fetch(`/data/${name}.json`); }
+      catch { return { status: 'error', dataset: name, kind: 'network' }; }
+      if (!resp.ok) return { status: 'error', dataset: name, kind: 'http' };
+      try { return { status: 'ready', data: await resp.json() }; }
+      catch { return { status: 'error', dataset: name, kind: 'parse' }; }
+    })();
     cache.set(name, request);
   }
   return cache.get(name);
+}
+
+async function loadJSON(name) {
+  const result = await loadJSONResult(name);
+  return result.status === 'ready' ? result.data : name === 'matches' ? [] : {};
+}
+
+export async function getTournamentSnapshot({ retry = false } = {}) {
+  if (retry) { cache.delete('teams'); cache.delete('matches'); }
+  const [teamResult, matchResult] = await Promise.all([loadJSONResult('teams'), loadJSONResult('matches')]);
+  if (teamResult.status === 'error') return teamResult;
+  if (matchResult.status === 'error') return matchResult;
+  const teams = teamResult.data;
+  const matches = matchResult.data;
+  if (!teams || typeof teams !== 'object' || Array.isArray(teams)
+    || Object.entries(teams).some(([code, team]) => !/^[A-Z]{3}$/.test(code) || !team || team.code !== code)) {
+    return { status: 'error', dataset: 'teams', kind: 'invalid-data' };
+  }
+  if (!Array.isArray(matches) || matches.some(m => !m || !Number.isInteger(m.id)
+    || !Object.hasOwn(teams, m.home?.code) || !Object.hasOwn(teams, m.away?.code)
+    || !matchCategory(m))) {
+    return { status: 'error', dataset: 'matches', kind: 'invalid-data' };
+  }
+  return { status: 'ready', teams, matches };
 }
 
 export function clearDataCache() {

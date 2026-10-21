@@ -848,3 +848,26 @@ img.flag { display: inline-block; }
   .match-detail-score { font-size: 2.5rem; }
   .bracket { padding-bottom: var(--space-md); }
 }
+
+/* Follow teams: native controls and persistent feedback. */
+.follow-controls { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin:1rem 0; }
+.follow-controls button, [data-follow-action="retry"] { min-height:44px; }
+.filter-btn {
+  padding:10px 18px;
+  border:1px solid var(--border-strong);
+  border-radius:var(--radius-sm);
+  color:var(--text-primary);
+  background:var(--bg-elevated);
+  font-size:0.9rem;
+  font-weight:600;
+}
+.filter-btn:hover { background:var(--bg-hover); }
+.filter-btn[aria-pressed="true"] { background:var(--accent-gradient); color:#0A0E1A; }
+.filter-btn:disabled { cursor:wait; opacity:0.65; }
+.follow-switch { display:inline-flex; align-items:center; gap:10px; min-height:44px; cursor:pointer; }
+.follow-switch input { width:18px; height:18px; accent-color:var(--accent); }
+.schedule-page .filter-tab { min-height:44px; }
+[data-follow-focus]:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.follow-notice { padding:1rem; border:1px solid var(--accent); border-radius:8px; }
+.follow-demo { color:var(--text-secondary); font-size:0.875rem; }
+.follow-empty { padding:2rem 1rem; text-align:center; }

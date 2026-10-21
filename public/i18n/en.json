@@ -197,5 +197,19 @@
   "history.notQualified": "Did not qualify",
   "history.sameTeam": "Please pick two different teams",
   "history.entry": "World Cup history",
-  "history.shootout": "Penalty shootout"
+  "history.shootout": "Penalty shootout",
+  "follow.follow": "Follow team",
+  "follow.unfollow": "Unfollow team",
+  "follow.teamNotFound": "Team not found",
+  "follow.restore.corrupt": "Your saved follows are corrupted. Please select your teams again.",
+  "follow.restore.unavailable": "Saved follows cannot be read. You can follow teams for this session.",
+  "follow.saveFailed": "Unable to save. Changes may be lost after a refresh.",
+  "follow.loadError": "Tournament data could not be loaded",
+  "follow.retry": "Retry",
+  "follow.demo": "Static demo data. Results do not represent live scores or official tournament information.",
+  "follow.only": "Only followed teams",
+  "follow.count": "{count} matches",
+  "follow.noTeams": "No followed teams yet. Choose the teams you support.",
+  "follow.noMatches": "No matches for the current filters.",
+  "follow.chooseTeams": "Choose teams to follow"
 }

@@ -1,20 +1,26 @@
 // ===== Team Detail View =====
 import { t } from '../i18n.js';
-import { getTeam, getTeams, getMatchesByTeam, getTeamTopScorers } from '../store.js';
+import { getTournamentSnapshot, getTeamTopScorers } from '../store.js';
+import { followState } from '../features/follow-teams/state.js';
+import { consumeRetry } from '../features/follow-teams/controller.js';
+import { renderFollowNotice, renderDataError } from '../features/follow-teams/view.js';
 import { L, formatDate, flagSVG, stageLabel, icon, translatePlayer, translateStadium } from '../utils.js';
 
 export default async function teamDetailView(teamCode) {
-  const team = await getTeam(teamCode);
+  const result = await getTournamentSnapshot({ retry: consumeRetry() });
+  if (result.status !== 'ready') return renderDataError(followState.getSnapshot());
+  followState.initialize(result.teams);
+  const team = /^[A-Z]{3}$/.test(teamCode) ? result.teams[teamCode] : null;
 
   if (!team) {
-    return `<div class="loading"><p>${t('common.noData')}</p><a href="#/teams" class="back-link">${t('common.back')}</a></div>`;
+    return `<div class="loading"><p>${t('follow.teamNotFound')}</p><a href="#/teams" class="back-link">${t('common.back')}</a></div>`;
   }
 
-  const [allTeams, matches, topScorers] = await Promise.all([
-    getTeams(),
-    getMatchesByTeam(team.code),
-    getTeamTopScorers(team.code),
-  ]);
+  const allTeams = result.teams;
+  const matches = result.matches.filter(m => m.home.code === team.code || m.away.code === team.code);
+  const topScorers = await getTeamTopScorers(team.code);
+  const snapshot = followState.getSnapshot();
+  const followed = snapshot.teamCodes.includes(team.code);
   const lang = window.__lang || 'zh';
 
   // Sort matches by date
@@ -33,6 +39,10 @@ export default async function teamDetailView(teamCode) {
       <p>${team.confederation || ''} · ${t('common.group')} ${team.group || ''}${team.ranking != null ? ' · ' + (lang === 'zh' ? '排名' : 'Ranking') + ' #' + team.ranking : ''}</p>
     </div>
   </div>`;
+
+  html += '<div class="follow-controls"><button type="button" class="filter-btn" data-follow-action="toggle" data-team="' + team.code + '" data-follow-focus="follow-team" aria-pressed="' + followed + '">' + t(followed ? 'follow.unfollow' : 'follow.follow') + '</button></div>';
+  html += renderFollowNotice(snapshot);
+  html += '<p class="follow-demo">' + t('follow.demo') + '</p>';
 
   // Stats table
   html += `<h2 class="section-title">${t('team.stats')}</h2>`;
