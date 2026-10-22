@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "traceability",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "spec_position": {
+            "type": "string",
+            "minLength": 1
+          },
+          "applicability": {
+            "enum": [
+              "automated",
+              "manual",
+              "not_applicable"
+            ]
+          },
+          "tests": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "provider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "locator": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "container": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "string"
+                },
+                "file": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "level": {
+                  "enum": [
+                    "unit",
+                    "integration",
+                    "e2e",
+                    "other"
+                  ]
+                },
+                "tdd_applicable": {
+                  "type": "boolean"
+                },
+                "tdd_reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "provider",
+                "locator",
+                "container",
+                "parameters",
+                "file",
+                "level",
+                "tdd_applicable",
+                "tdd_reason"
+              ]
+            }
+          },
+          "reason": {
+            "type": "string"
+          },
+          "confirmed_by": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "spec_position",
+          "applicability",
+          "tests"
+        ]
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "spec_position": {
+            "type": "string",
+            "minLength": 1
+          },
+          "applicability": {
+            "enum": [
+              "automated",
+              "manual",
+              "not_applicable"
+            ]
+          },
+          "tests": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "provider": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "locator": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "container": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "string"
+                },
+                "file": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "level": {
+                  "enum": [
+                    "unit",
+                    "integration",
+                    "e2e",
+                    "other"
+                  ]
+                },
+                "tdd_applicable": {
+                  "type": "boolean"
+                },
+                "tdd_reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "provider",
+                "locator",
+                "container",
+                "parameters",
+                "file",
+                "level",
+                "tdd_applicable",
+                "tdd_reason"
+              ]
+            }
+          },
+          "reason": {
+            "type": "string"
+          },
+          "confirmed_by": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "spec_position",
+          "applicability",
+          "tests"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "requirements",
+    "scenarios"
+  ]
+}

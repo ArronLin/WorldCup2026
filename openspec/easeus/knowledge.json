@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "opendeepwiki": {
+      "server_name": "openspec_wizard",
+      "tool_prefix": "opendeepwiki__",
+      "repository_id": "easeus/WorldCup2026",
+      "snapshot": "unknown",
+      "bindings_location": "本机独立绑定，由向导管理"
+    },
+    "codegraph": {
+      "server_name": "openspec_wizard",
+      "tool_prefix": "codegraph__",
+      "repository_id": "",
+      "snapshot": "unknown",
+      "bindings_location": "本机独立绑定，由向导管理"
+    }
+  }
+}

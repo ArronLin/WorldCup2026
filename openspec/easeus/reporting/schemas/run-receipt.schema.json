@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "run-receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phase": {
+      "enum": [
+        "red",
+        "green",
+        "refactor",
+        "final"
+      ]
+    },
+    "suite": {
+      "type": "string",
+      "minLength": 1
+    },
+    "level": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cycle": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "started_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "finished_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "command": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "exit_code": {
+      "type": "integer"
+    },
+    "source_before": {
+      "type": "object"
+    },
+    "source_after": {
+      "type": "object"
+    },
+    "tests_before": {
+      "type": "object"
+    },
+    "tests_after": {
+      "type": "object"
+    },
+    "stable": {
+      "type": "boolean"
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "test_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "provider": {
+            "type": "string",
+            "minLength": 1
+          },
+          "level": {
+            "enum": [
+              "unit",
+              "integration",
+              "e2e",
+              "other"
+            ]
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "container": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": "string"
+          },
+          "file": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "failed",
+              "skipped",
+              "todo",
+              "not_run",
+              "error",
+              "flaky",
+              "expected_failure",
+              "unknown"
+            ]
+          },
+          "original_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "attempts": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "duration_ms": {
+            "type": "number",
+            "minimum": 0
+          },
+          "run_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "failure": {
+            "type": "string"
+          },
+          "failure_kind": {
+            "enum": [
+              "assertion",
+              "infrastructure",
+              "unknown",
+              "none"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "test_id",
+          "provider",
+          "level",
+          "locator",
+          "container",
+          "parameters",
+          "file",
+          "status",
+          "original_status",
+          "attempts",
+          "duration_ms",
+          "run_id",
+          "failure",
+          "failure_kind",
+          "evidence"
+        ]
+      }
+    },
+    "global_errors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "classification": {
+      "type": "string",
+      "minLength": 1
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "config_fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "rules_fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "previous_receipt_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "refactor_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "phase",
+    "suite",
+    "level",
+    "cycle",
+    "targets",
+    "requirements",
+    "started_at",
+    "finished_at",
+    "command",
+    "exit_code",
+    "source_before",
+    "source_after",
+    "tests_before",
+    "tests_after",
+    "stable",
+    "files",
+    "results",
+    "global_errors",
+    "classification",
+    "diagnostics",
+    "config_fingerprint",
+    "rules_fingerprint",
+    "previous_receipt_hash",
+    "refactor_reason"
+  ]
+}

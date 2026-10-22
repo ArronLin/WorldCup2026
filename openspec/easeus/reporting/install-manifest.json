@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "owner": "repo-sdd-studio",
+  "tool_version": "1.0.0",
+  "files": {
+    "config.json": "95dd757e31fd76d7f152b2d4491a808dbedb6f6e12bcce0b8b8a9947f8a8817c",
+    "LICENSE": "f821a09b1c45878039e52b5c5cb9ac3d696979695bf76ade030860f882e3af10",
+    "README.md": "91751f2279680fbe2b9d506dcdf7fe42ad2ceffa445b6855c68fdfb98a80368e",
+    "run.ps1": "a3ee563b96c80c7ca96327c185543f315b7ed3030379572e82d6c0938cb2630b",
+    "schemas/baseline.schema.json": "e94a29988da5604df83cce688c892f8ca2f229651708802163044e282a5f298b",
+    "schemas/collect.schema.json": "804722c6f3be61b91c84da6e66a773084ee319b75e10a9e9e834d0ecaf3bdace",
+    "schemas/config.schema.json": "761b5b0618585c2354d4ef5d9b1a77ee7fc1b7129835db5fa2840cc75de6f0df",
+    "schemas/coverage.schema.json": "9785c9838e4bc4733e67720118e18dc4ae4a2b6dcf2585a4f4bc882966b7b866",
+    "schemas/feature.schema.json": "2211488bca62ec11e442622e1ad7bd59d97f1a9f4bed33de132c48d02d5d742a",
+    "schemas/results.schema.json": "408ddcdb9ebc5e8ea1b909398ec9101f0fca7990ece1ae4b2ee7458b28fffef9",
+    "schemas/run-receipt.schema.json": "5bec8744b42a1cacde2ccb0439506cad104f1fce24b857a1f3d3a651573c4e27",
+    "schemas/traceability.schema.json": "d4cf7486967f787f10e4858538d0cd2a05b12da03b2f0f191cafc06751724d26",
+    "runtime/v1/cli.py": "ee6848e064073d25aaef36c8424670f99ae3c8998d1d47bde4a66f88a9076758",
+    "runtime/v1/sdd_reporting/cli.py": "6da47f0ecb24d282c98d5bf0c48e08295a3bfd62cfa9dce1c1739d4bd28541f0",
+    "runtime/v1/sdd_reporting/config.py": "76d05d458f7cc8fc252dbb2780b0e60020f80075e2cfe68443236698b4edef72",
+    "runtime/v1/sdd_reporting/contracts.py": "3481e37b9d225d4cd08df81af49b2369bee06c4f90c9fdf9b6e2570163888629",
+    "runtime/v1/sdd_reporting/coverage.py": "249586ab7f3963b05095dc85787ec1e532b93664c9c8a10a5878258b794a6e2f",
+    "runtime/v1/sdd_reporting/importers.py": "0d37d8648e7d0a2d8ebc38e7824fa3f1d2f02f8e81c065534501d2af46554af7",
+    "runtime/v1/sdd_reporting/pipeline.py": "2146400df00323a206a5bd7011a3783f2da53af119260ab4952f2fd9e3390059",
+    "runtime/v1/sdd_reporting/render.py": "23c4de525621811e3f92244b86d367c6e64dc13e46b84e73a9c707779342176c",
+    "runtime/v1/sdd_reporting/runs.py": "383c19a32fd3e13b870fff626f9975a23ee032827b5208a01d4e3f2aea78ffd1",
+    "runtime/v1/sdd_reporting/specification.py": "bbac082d9425e4c977c7a9dfaea2e71e82d03a15bc16bc790cc0ca7429004f1f",
+    "runtime/v1/sdd_reporting/trace.py": "5205a93d7120a6016c538825470f8f0294befcb5f651f1ab04273070da4640b6",
+    "runtime/v1/sdd_reporting/workspace.py": "a294bb0196026dc1f232fdda75cdadb8535a7520ad20ebf060fbdef7ecd9bcb7",
+    "runtime/v1/sdd_reporting/__init__.py": "4cde5b6e55cbee00af52cf57c72269e7fdfb04ad61a7201e2b957dea773dffcf"
+  }
+}

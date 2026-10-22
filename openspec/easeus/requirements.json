@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "revision": "05dbc8d389a143eca61a474587d728c2",
+  "updated_at": "2026-10-22T04:42:29.345270+00:00",
+  "rules": [
+    {
+      "id": "language",
+      "text": "使用{{language}}交互和编写自然语言产物；命令、标识符与固定标记保持兼容。",
+      "title": "交互与产物语言",
+      "enabled": true,
+      "kind": "language",
+      "parameters": {
+        "language": "简体中文"
+      }
+    },
+    {
+      "id": "tdd",
+      "text": "新增或修改的可单测行为与缺陷修复执行真实 Red → Green → Refactor，记录实际失败与通过证据，不伪造历史 Red。",
+      "title": "真实 TDD",
+      "enabled": true,
+      "kind": "tdd",
+      "parameters": {}
+    },
+    {
+      "id": "coverage",
+      "text": "仅新增自有生产代码的单元测试行覆盖率不低于 {{minimum_percent}}%；以本功能明确基线计算新增可执行行的未舍入汇总比值，不要求存量代码或全项目达到 {{minimum_percent}}%。集成或端到端覆盖率不能替代该指标，无新增可执行行记为不适用。",
+      "title": "新增生产代码单测行覆盖率",
+      "enabled": true,
+      "kind": "coverage",
+      "parameters": {
+        "minimum_percent": 80
+      }
+    },
+    {
+      "id": "tests",
+      "text": "测试必须调用真实被测生产逻辑，包含能识别错误行为的断言并实际发现和执行。禁止占位成功、恒真断言、mock 掉被测核心、静默跳过与无证据勾选完成；关键控制逻辑采用可恢复的反向验证或适用变异测试。",
+      "title": "有效测试与完成证据",
+      "enabled": true,
+      "kind": "tests",
+      "parameters": {}
+    },
+    {
+      "id": "evidence",
+      "text": "知识库与源码说明现状，已确认需求定义期望；关键结论记录来源与适用版本，未知必须明确，现状缺陷不得自动固化为规范。",
+      "title": "来源与事实核实",
+      "enabled": true,
+      "kind": "evidence",
+      "parameters": {}
+    },
+    {
+      "id": "feature-reports",
+      "title": "功能测试 HTML 报告",
+      "enabled": true,
+      "kind": "reports",
+      "text": "按选定设置生成本功能报告，使用真实测试结果和可追溯证据，缺失或失败必须如实展示。",
+      "parameters": {
+        "added_coverage_html": true,
+        "requirements_tdd_html": true
+      }
+    }
+  ],
+  "content_fingerprint": "620a5b53d7324e8bcb82c0b4cb75fbbe4332a4705f7faf038741a0fd0b21b705"
+}

@@ -1,0 +1,467 @@
+name: easeus-project
+version: 1
+description: Default OpenSpec workflow - proposal → specs → design → tasks
+artifacts:
+- id: proposal
+  generates: proposal.md
+  description: Initial proposal document outlining the change
+  template: proposal.md
+  instruction: "Create the proposal document that establishes WHY this change is needed.\n\nSections:\n- **Why**:\
+    \ 1-2 sentences on the problem or opportunity. What problem does this solve? Why now?\n- **What Changes**: Bullet\
+    \ list of changes. Be specific about new capabilities, modifications, or removals. Mark breaking changes with\
+    \ **BREAKING**.\n- **Capabilities**: Identify which specs will be created or modified:\n  - **New Capabilities**:\
+    \ List capabilities being introduced. Each becomes a new `specs/<capability-path>/spec.md`. Use kebab-case for\
+    \ path segments you introduce (e.g., `user-auth` or `identity/user-auth`) and follow the project's existing\
+    \ spec organization.\n  - **Modified Capabilities**: List existing capabilities whose REQUIREMENTS are changing.\
+    \ Only include if spec-level behavior changes (not just implementation details). Each needs a delta spec file.\
+    \ Use the exact existing path under `openspec/specs/`. Leave empty if no requirement changes.\n- **Impact**:\
+    \ Affected code, APIs, dependencies, or systems.\n\nIMPORTANT: The Capabilities section is critical. It creates\
+    \ the contract between\nproposal and specs phases. Research existing specs before filling this in:\nrun `openspec\
+    \ list --specs` for the project's capability inventory, then\n`openspec show \"<spec-id>\" --type spec --json\
+    \ --no-scenarios` for any that\nlook related - that returns a capability's purpose and requirement texts\nwithout\
+    \ pulling whole spec files into context. Append `--store \"<id>\"` to\nboth commands only for a registered standalone\
+    \ store, and keep `--type\nspec`: a change and a spec sharing a name is otherwise an ambiguous-item\nerror.\
+    \ `openspec list` without `--specs` lists in-flight changes, not\nspecs - it never shows what the project already\
+    \ covers. Reuse an existing\ncapability's exact path instead of introducing a near-duplicate name.\nThe filtered\
+    \ read is only an overview. Before deciding what is already\ncovered or what should change, read each relevant\
+    \ spec in full, including\nscenarios, with `openspec show \"<spec-id>\" --type spec` (same `--store` rule).\n\
+    Each capability listed here will need a corresponding spec file.\n\nEvery change must either declare at least\
+    \ one capability (new or\nmodified) or explicitly opt out of specs: `openspec validate` rejects a\nchange with\
+    \ zero deltas unless the change's `.openspec.yaml` sets\n`skip_specs: true`. Use `skip_specs: true` only when\
+    \ no spec-level\nbehavior changes (pure refactor, tooling, docs) - specs describe\nbehavior, so if behavior\
+    \ does not change, no spec should change either.\nDo not invent a requirement just to satisfy validation.\n\n\
+    Keep it concise (1-2 pages). Focus on the \"why\" not the \"how\" -\nimplementation details belong in design.md.\n\
+    \nThis is the foundation - specs, design, and tasks all build on this.\n\n<!-- REPO-SDD-OPENSPEC:RULES:START\
+    \ -->\n<!-- rules:620a5b53d7324e8bcb82c0b4cb75fbbe4332a4705f7faf038741a0fd0b21b705 -->\n仅适用于 OpenSpec 工作流。先读取\
+    \ `openspec/easeus/project-rules.md` 和当前规则快照。\n使用 openspec_wizard MCP 先查询 opendeepwiki__<工具名>，再 codegraph__<工具名>，最后核实当前文件。\n\
+    ### 交互与产物语言\n使用简体中文交互和编写自然语言产物；命令、标识符与固定标记保持兼容。\n\n### 真实 TDD\n新增或修改的可单测行为与缺陷修复执行真实 Red → Green → Refactor，记录实际失败与通过证据，不伪造历史\
+    \ Red。\n\n### 新增生产代码单测行覆盖率\n仅新增自有生产代码的单元测试行覆盖率不低于 80%；以本功能明确基线计算新增可执行行的未舍入汇总比值，不要求存量代码或全项目达到 80%。集成或端到端覆盖率不能替代该指标，无新增可执行行记为不适用。\n\
+    \n### 有效测试与完成证据\n测试必须调用真实被测生产逻辑，包含能识别错误行为的断言并实际发现和执行。禁止占位成功、恒真断言、mock 掉被测核心、静默跳过与无证据勾选完成；关键控制逻辑采用可恢复的反向验证或适用变异测试。\n\
+    \n### 来源与事实核实\n知识库与源码说明现状，已确认需求定义期望；关键结论记录来源与适用版本，未知必须明确，现状缺陷不得自动固化为规范。\n\n### 功能测试 HTML 报告\n按选定设置生成本功能报告，使用真实测试结果和可追溯证据，缺失或失败必须如实展示。\n\
+    - 规划变更时先用 OpenDeepWiki 理解背景，再用 CodeGraph 定位实现与调用关系；索引未命中、路径错配或版本不明时，用 repo_read 核对当前文件。记录来源、版本未知项及需求与现状的差异，不以未命中推断文件不存在，也不把现状缺陷写成期望行为。\n\
+    - 在 OpenSpec design/tasks 中把验收场景关联到真实生产逻辑、测试源码及实际 Red/Green/Refactor 证据，关键控制逻辑关联可恢复反向验证。按已确认答案逐功能明确生产范围、排除项和基线；将结果采集、单元覆盖率适配及两类\
+    \ HTML 报告缺口列为具体任务。新增自有生产代码的单测行覆盖率按未舍入汇总比值判断是否达到 80%，无新增可执行行标记不适用；缺失或未执行的证据如实保留，不勾选完成。\n## 当前启用的功能报告\n入口：`powershell.exe\
+    \ -NoProfile -ExecutionPolicy Bypass -File openspec/easeus/reporting/run.ps1 <doctor|spec-index|baseline|check|run|finalize>\
+    \ --feature openspec/changes/<变更>`。先 spec-index 获取各能力的 OSR/OSS 稳定 ID 和精确来源位置，建立 traceability.json 到真实测试的映射。新增、修改、删除、改名均须明确处理，手工或不适用项注明原因和确认人。首次生产修改前\
+    \ baseline --confirm-before-changes；doctor 暴露缺口时在 design/tasks 安排采集适配任务。真实 run --phase red/green/refactor 记录过程，缺失历史\
+    \ Red 不补造。使用仓库自己的测试命令和标准格式结果，不限定语言、测试框架或包管理器。最终各套件 run --phase final 后 finalize，核对 HTML、report-status.json 及退出码，未通过不得勾选报告完成任务。归档前核实报告当前有效；这是应用提供的检查，不是\
+    \ OpenSpec 原生强制归档门禁。\n<!-- REPO-SDD-OPENSPEC:RULES:END -->"
+  requires: []
+- id: specs
+  generates: specs/**/*.md
+  description: Detailed specifications for the change
+  template: spec.md
+  instruction: 'Create specification files that define WHAT the system should do.
+
+
+    A spec is a behavior contract, not an implementation plan.
+
+
+    Good spec content:
+
+    - Observable behavior users or downstream systems rely on
+
+    - Inputs, outputs, and error conditions
+
+    - External constraints (security, privacy, reliability, compatibility)
+
+    - Scenarios that can be tested or explicitly validated
+
+
+    Avoid in specs:
+
+    - Internal class/function names
+
+    - Library or framework choices
+
+    - Step-by-step implementation details
+
+    - Detailed execution plans (those belong in design.md or tasks.md)
+
+
+    Quick test: if the implementation can change without changing externally
+
+    visible behavior, it likely does not belong in the spec.
+
+
+    Create one spec file per capability listed in the proposal''s Capabilities section.
+
+    `<capability-path>` is the spec directory relative to `specs/` (for example,
+
+    `user-auth` or `identity/user-auth`). Preserve the full path:
+
+    - New capabilities: use the exact path from the proposal at `specs/<capability-path>/spec.md`. Any path segment
+    newly introduced in the proposal must be kebab-case. Follow the project''s existing organization; do not add
+    a new domain level when the project uses a flat layout.
+
+    - Modified capabilities: use the exact existing path from `openspec/specs/<capability-path>/` when creating
+    the delta at `specs/<capability-path>/spec.md`. Run `openspec list --specs` to confirm that path before writing
+    the delta, appending `--store "<id>"` only for a registered standalone store - a mistyped or invented path targets
+    a capability that does not exist rather than the one you meant. Do not move or rename the capability.
+
+
+    There must be at least one spec file unless the change''s `.openspec.yaml`
+
+    sets `skip_specs: true` (no spec-level behavior change) - `openspec validate`
+
+    rejects a zero-delta change without that marker. If the proposal lists no
+
+    capabilities and `skip_specs` is not set, revisit the proposal first.
+
+
+    Delta operations (use ## headers):
+
+    - **ADDED Requirements**: New capabilities
+
+    - **MODIFIED Requirements**: Changed behavior - MUST include full updated content
+
+    - **REMOVED Requirements**: Deprecated features - MUST include **Reason** and **Migration**
+
+    - **RENAMED Requirements**: Name changes only - use FROM:/TO: format
+
+
+    Format requirements:
+
+    - Each requirement: `### Requirement: <name>` followed by description
+
+    - Use SHALL/MUST for normative requirements (avoid should/may)
+
+    - Each scenario: `#### Scenario: <name>` with WHEN/THEN format
+
+    - **CRITICAL**: Scenarios MUST use exactly 4 hashtags (`####`). Using 3 hashtags or bullets will fail silently.
+
+    - Every requirement MUST have at least one scenario.
+
+
+    New capabilities only: the delta spec''s first section is `## Purpose` -
+
+    one or two sentences (50+ characters, or `openspec validate --strict`
+
+    reports it as too brief) describing what the capability is for. Archive
+
+    copies it into the main spec it creates; without it the new main spec is
+
+    left with a `TBD ... Update Purpose after archive` placeholder to fill in
+
+    by hand. Do NOT add `## Purpose` to a delta for an existing capability -
+
+    that spec already has one and the delta''s is ignored. To change an
+
+    existing capability''s Purpose - including a leftover `TBD` placeholder -
+
+    edit `<planningHome.root>/openspec/specs/<capability-path>/spec.md`
+
+    directly. `planningHome.root` comes from the `openspec instructions ...
+
+    --json` response. Always use it rather than a repo-relative path: it
+
+    resolves to the store whenever the change lives in one - whether that
+
+    came from `--store`, a project `store:` pointer, or a global default
+
+    store - and to the current repository otherwise. Do not try to work out
+
+    which case applies; the field already has.
+
+
+    MODIFIED requirements workflow:
+
+    1. Locate the existing requirement in `<planningHome.root>/openspec/specs/<capability-path>/spec.md` (the same
+    store-aware root as above)
+
+    2. Copy the ENTIRE requirement block (from `### Requirement:` through all scenarios)
+
+    3. Paste under `## MODIFIED Requirements` and edit to reflect new behavior
+
+    4. Ensure header text matches exactly (whitespace-insensitive)
+
+
+    Common pitfall: Using MODIFIED with partial content loses detail at archive time.
+
+    If adding new concerns without changing existing behavior, use ADDED instead.
+
+
+    Example (a new capability, so its first section is `## Purpose`):
+
+    ```
+
+    # Spec Delta
+
+
+    ## Purpose
+
+
+    Lets users take their data out of the product in a portable format.
+
+
+    ## ADDED Requirements
+
+
+    ### Requirement: User can export data
+
+    The system SHALL allow users to export their data in CSV format.
+
+
+    #### Scenario: Successful export
+
+    - **WHEN** user clicks "Export" button
+
+    - **THEN** system downloads a CSV file with all user data
+
+
+    ## REMOVED Requirements
+
+
+    ### Requirement: Legacy export
+
+    **Reason**: Replaced by new export system
+
+    **Migration**: Use new export endpoint at /api/v2/export
+
+    ```
+
+
+    Specs should be testable - each scenario is a potential test case.
+
+
+    <!-- REPO-SDD-OPENSPEC:RULES:START -->
+
+    <!-- rules:620a5b53d7324e8bcb82c0b4cb75fbbe4332a4705f7faf038741a0fd0b21b705 -->
+
+    仅适用于 OpenSpec 工作流。先读取 `openspec/easeus/project-rules.md` 和当前规则快照。
+
+    使用 openspec_wizard MCP 先查询 opendeepwiki__<工具名>，再 codegraph__<工具名>，最后核实当前文件。
+
+    ### 交互与产物语言
+
+    使用简体中文交互和编写自然语言产物；命令、标识符与固定标记保持兼容。
+
+
+    ### 真实 TDD
+
+    新增或修改的可单测行为与缺陷修复执行真实 Red → Green → Refactor，记录实际失败与通过证据，不伪造历史 Red。
+
+
+    ### 新增生产代码单测行覆盖率
+
+    仅新增自有生产代码的单元测试行覆盖率不低于 80%；以本功能明确基线计算新增可执行行的未舍入汇总比值，不要求存量代码或全项目达到 80%。集成或端到端覆盖率不能替代该指标，无新增可执行行记为不适用。
+
+
+    ### 有效测试与完成证据
+
+    测试必须调用真实被测生产逻辑，包含能识别错误行为的断言并实际发现和执行。禁止占位成功、恒真断言、mock 掉被测核心、静默跳过与无证据勾选完成；关键控制逻辑采用可恢复的反向验证或适用变异测试。
+
+
+    ### 来源与事实核实
+
+    知识库与源码说明现状，已确认需求定义期望；关键结论记录来源与适用版本，未知必须明确，现状缺陷不得自动固化为规范。
+
+
+    ### 功能测试 HTML 报告
+
+    按选定设置生成本功能报告，使用真实测试结果和可追溯证据，缺失或失败必须如实展示。
+
+    - 规划变更时先用 OpenDeepWiki 理解背景，再用 CodeGraph 定位实现与调用关系；索引未命中、路径错配或版本不明时，用 repo_read 核对当前文件。记录来源、版本未知项及需求与现状的差异，不以未命中推断文件不存在，也不把现状缺陷写成期望行为。
+
+    - 在 OpenSpec design/tasks 中把验收场景关联到真实生产逻辑、测试源码及实际 Red/Green/Refactor 证据，关键控制逻辑关联可恢复反向验证。按已确认答案逐功能明确生产范围、排除项和基线；将结果采集、单元覆盖率适配及两类
+    HTML 报告缺口列为具体任务。新增自有生产代码的单测行覆盖率按未舍入汇总比值判断是否达到 80%，无新增可执行行标记不适用；缺失或未执行的证据如实保留，不勾选完成。
+
+    ## 当前启用的功能报告
+
+    入口：`powershell.exe -NoProfile -ExecutionPolicy Bypass -File openspec/easeus/reporting/run.ps1 <doctor|spec-index|baseline|check|run|finalize>
+    --feature openspec/changes/<变更>`。先 spec-index 获取各能力的 OSR/OSS 稳定 ID 和精确来源位置，建立 traceability.json 到真实测试的映射。新增、修改、删除、改名均须明确处理，手工或不适用项注明原因和确认人。首次生产修改前
+    baseline --confirm-before-changes；doctor 暴露缺口时在 design/tasks 安排采集适配任务。真实 run --phase red/green/refactor 记录过程，缺失历史
+    Red 不补造。使用仓库自己的测试命令和标准格式结果，不限定语言、测试框架或包管理器。最终各套件 run --phase final 后 finalize，核对 HTML、report-status.json 及退出码，未通过不得勾选报告完成任务。归档前核实报告当前有效；这是应用提供的检查，不是
+    OpenSpec 原生强制归档门禁。
+
+    <!-- REPO-SDD-OPENSPEC:RULES:END -->'
+  requires:
+  - proposal
+- id: design
+  generates: design.md
+  description: Technical design document with implementation details
+  template: design.md
+  instruction: "Create the design document that explains HOW to implement the change.\n\nWhen to include design.md\
+    \ (create only if any apply):\n- Cross-cutting change (multiple services/modules) or new architectural pattern\n\
+    - New external dependency or significant data model changes\n- Security, performance, or migration complexity\n\
+    - Ambiguity that benefits from technical decisions before coding\n\nSections:\n- **Context**: Only the current\
+    \ state and constraints needed to explain the approach. Reference the proposal for motivation instead of restating\
+    \ it (e.g., \"See proposal.md - Why\").\n- **Goals / Non-Goals**: What this design achieves and explicitly excludes.\
+    \ Don't restate the proposal's scope - add only design-level boundaries.\n- **Decisions**: Key technical choices\
+    \ with rationale (why X over Y?). Include alternatives considered for each decision.\n- **Risks / Trade-offs**:\
+    \ Known limitations, things that could go wrong. Format: [Risk] → Mitigation\n- **Migration Plan**: Steps to\
+    \ deploy, rollback strategy (if applicable)\n- **Open Questions**: Unknowns that can safely be answered later\
+    \ without\n  changing the specs, the approach, or the task breakdown. Omit if none.\n\nOpen questions are for\
+    \ genuinely deferrable unknowns, not decisions you\nskipped. If a question would change the specs, the chosen\
+    \ approach, or\nthe task breakdown, resolve it now - ask the user instead of guessing.\n\nFocus on architecture\
+    \ and approach, not line-by-line implementation.\nThe proposal covers why and what; design covers how. Reference\
+    \ the\nproposal for motivation and, once written, the specs for requirements -\nif a section would only restate\
+    \ them, point to them instead.\n\nGood design docs explain the \"why\" behind technical decisions.\n\n<!-- REPO-SDD-OPENSPEC:RULES:START\
+    \ -->\n<!-- rules:620a5b53d7324e8bcb82c0b4cb75fbbe4332a4705f7faf038741a0fd0b21b705 -->\n仅适用于 OpenSpec 工作流。先读取\
+    \ `openspec/easeus/project-rules.md` 和当前规则快照。\n使用 openspec_wizard MCP 先查询 opendeepwiki__<工具名>，再 codegraph__<工具名>，最后核实当前文件。\n\
+    ### 交互与产物语言\n使用简体中文交互和编写自然语言产物；命令、标识符与固定标记保持兼容。\n\n### 真实 TDD\n新增或修改的可单测行为与缺陷修复执行真实 Red → Green → Refactor，记录实际失败与通过证据，不伪造历史\
+    \ Red。\n\n### 新增生产代码单测行覆盖率\n仅新增自有生产代码的单元测试行覆盖率不低于 80%；以本功能明确基线计算新增可执行行的未舍入汇总比值，不要求存量代码或全项目达到 80%。集成或端到端覆盖率不能替代该指标，无新增可执行行记为不适用。\n\
+    \n### 有效测试与完成证据\n测试必须调用真实被测生产逻辑，包含能识别错误行为的断言并实际发现和执行。禁止占位成功、恒真断言、mock 掉被测核心、静默跳过与无证据勾选完成；关键控制逻辑采用可恢复的反向验证或适用变异测试。\n\
+    \n### 来源与事实核实\n知识库与源码说明现状，已确认需求定义期望；关键结论记录来源与适用版本，未知必须明确，现状缺陷不得自动固化为规范。\n\n### 功能测试 HTML 报告\n按选定设置生成本功能报告，使用真实测试结果和可追溯证据，缺失或失败必须如实展示。\n\
+    - 规划变更时先用 OpenDeepWiki 理解背景，再用 CodeGraph 定位实现与调用关系；索引未命中、路径错配或版本不明时，用 repo_read 核对当前文件。记录来源、版本未知项及需求与现状的差异，不以未命中推断文件不存在，也不把现状缺陷写成期望行为。\n\
+    - 在 OpenSpec design/tasks 中把验收场景关联到真实生产逻辑、测试源码及实际 Red/Green/Refactor 证据，关键控制逻辑关联可恢复反向验证。按已确认答案逐功能明确生产范围、排除项和基线；将结果采集、单元覆盖率适配及两类\
+    \ HTML 报告缺口列为具体任务。新增自有生产代码的单测行覆盖率按未舍入汇总比值判断是否达到 80%，无新增可执行行标记不适用；缺失或未执行的证据如实保留，不勾选完成。\n## 当前启用的功能报告\n入口：`powershell.exe\
+    \ -NoProfile -ExecutionPolicy Bypass -File openspec/easeus/reporting/run.ps1 <doctor|spec-index|baseline|check|run|finalize>\
+    \ --feature openspec/changes/<变更>`。先 spec-index 获取各能力的 OSR/OSS 稳定 ID 和精确来源位置，建立 traceability.json 到真实测试的映射。新增、修改、删除、改名均须明确处理，手工或不适用项注明原因和确认人。首次生产修改前\
+    \ baseline --confirm-before-changes；doctor 暴露缺口时在 design/tasks 安排采集适配任务。真实 run --phase red/green/refactor 记录过程，缺失历史\
+    \ Red 不补造。使用仓库自己的测试命令和标准格式结果，不限定语言、测试框架或包管理器。最终各套件 run --phase final 后 finalize，核对 HTML、report-status.json 及退出码，未通过不得勾选报告完成任务。归档前核实报告当前有效；这是应用提供的检查，不是\
+    \ OpenSpec 原生强制归档门禁。\n<!-- REPO-SDD-OPENSPEC:RULES:END -->"
+  requires:
+  - proposal
+- id: tasks
+  generates: tasks.md
+  description: Implementation checklist with trackable tasks
+  template: tasks.md
+  instruction: "Create the task list that breaks down the implementation work.\n\nBefore writing tasks, check design.md\
+    \ for Open Questions. If any of them\nwould change what gets built, resolve them with the user first - do not\n\
+    bake an unstated assumption into the task list.\n\n**IMPORTANT: Follow the template below exactly.** The apply\
+    \ phase parses\ncheckbox format to track progress. A box holding only `x` counts as done,\nupper or lower case\
+    \ and with any spacing, so `- [ x]` is done too. Every\nother marker, including `- [~]`, `- [-]` and an empty\
+    \ `- []`, reads as\nunfinished. A line with no checkbox is not tracked at all.\n\nGuidelines:\n- Group related\
+    \ tasks under ## numbered headings\n- Each task MUST be a checkbox: `- [ ] X.Y Task description`\n- Tasks should\
+    \ be small enough to complete in one session\n- Order tasks by dependency (what must be done first?)\n- Each\
+    \ task MUST state how to verify completion (a test, command,\n  observable behavior, or delivered artifact).\
+    \ Put the verification in\n  that task's checkbox description. Use a separate verification task only\n  when\
+    \ it checks broader integration or system behavior that spans\n  multiple implementation tasks.\n- Each task\
+    \ group MUST land the tests and documentation its own work\n  calls for. Do NOT collect testing or documentation\
+    \ into a final group -\n  when a late group first exercises work from an early one, the failures\n  cascade\
+    \ back through every group in between and force rework. A group\n  whose work calls for neither, such as scaffolding\
+    \ or dependency setup,\n  carries neither. A final group is for integration checks only, not for\n  the tests\
+    \ and docs an earlier group owed.\n\nExample:\n```\n# Tasks\n\n## 1. Setup\n\n- [ ] 1.1 Create new module structure\
+    \ and verify expected files are present\n- [ ] 1.2 Add dependencies to package.json and verify package installation\
+    \ succeeds\n\n## 2. Core Implementation\n\n- [ ] 2.1 Implement data export function and verify the export test\
+    \ passes\n- [ ] 2.2 Add CSV formatting utilities and verify unit tests cover quoting and delimiters\n- [ ] 2.3\
+    \ Document the export API in docs/export.md and verify the documented command runs as written\n```\n\nReference\
+    \ specs for what needs to be built, design for how to build it.\n\n<!-- REPO-SDD-OPENSPEC:RULES:START -->\n\
+    <!-- rules:620a5b53d7324e8bcb82c0b4cb75fbbe4332a4705f7faf038741a0fd0b21b705 -->\n仅适用于 OpenSpec 工作流。先读取 `openspec/easeus/project-rules.md`\
+    \ 和当前规则快照。\n使用 openspec_wizard MCP 先查询 opendeepwiki__<工具名>，再 codegraph__<工具名>，最后核实当前文件。\n### 交互与产物语言\n使用简体中文交互和编写自然语言产物；命令、标识符与固定标记保持兼容。\n\
+    \n### 真实 TDD\n新增或修改的可单测行为与缺陷修复执行真实 Red → Green → Refactor，记录实际失败与通过证据，不伪造历史 Red。\n\n### 新增生产代码单测行覆盖率\n仅新增自有生产代码的单元测试行覆盖率不低于\
+    \ 80%；以本功能明确基线计算新增可执行行的未舍入汇总比值，不要求存量代码或全项目达到 80%。集成或端到端覆盖率不能替代该指标，无新增可执行行记为不适用。\n\n### 有效测试与完成证据\n测试必须调用真实被测生产逻辑，包含能识别错误行为的断言并实际发现和执行。禁止占位成功、恒真断言、mock\
+    \ 掉被测核心、静默跳过与无证据勾选完成；关键控制逻辑采用可恢复的反向验证或适用变异测试。\n\n### 来源与事实核实\n知识库与源码说明现状，已确认需求定义期望；关键结论记录来源与适用版本，未知必须明确，现状缺陷不得自动固化为规范。\n\
+    \n### 功能测试 HTML 报告\n按选定设置生成本功能报告，使用真实测试结果和可追溯证据，缺失或失败必须如实展示。\n- 规划变更时先用 OpenDeepWiki 理解背景，再用 CodeGraph 定位实现与调用关系；索引未命中、路径错配或版本不明时，用\
+    \ repo_read 核对当前文件。记录来源、版本未知项及需求与现状的差异，不以未命中推断文件不存在，也不把现状缺陷写成期望行为。\n- 在 OpenSpec design/tasks 中把验收场景关联到真实生产逻辑、测试源码及实际\
+    \ Red/Green/Refactor 证据，关键控制逻辑关联可恢复反向验证。按已确认答案逐功能明确生产范围、排除项和基线；将结果采集、单元覆盖率适配及两类 HTML 报告缺口列为具体任务。新增自有生产代码的单测行覆盖率按未舍入汇总比值判断是否达到\
+    \ 80%，无新增可执行行标记不适用；缺失或未执行的证据如实保留，不勾选完成。\n## 当前启用的功能报告\n入口：`powershell.exe -NoProfile -ExecutionPolicy Bypass\
+    \ -File openspec/easeus/reporting/run.ps1 <doctor|spec-index|baseline|check|run|finalize> --feature openspec/changes/<变更>`。先\
+    \ spec-index 获取各能力的 OSR/OSS 稳定 ID 和精确来源位置，建立 traceability.json 到真实测试的映射。新增、修改、删除、改名均须明确处理，手工或不适用项注明原因和确认人。首次生产修改前\
+    \ baseline --confirm-before-changes；doctor 暴露缺口时在 design/tasks 安排采集适配任务。真实 run --phase red/green/refactor 记录过程，缺失历史\
+    \ Red 不补造。使用仓库自己的测试命令和标准格式结果，不限定语言、测试框架或包管理器。最终各套件 run --phase final 后 finalize，核对 HTML、report-status.json 及退出码，未通过不得勾选报告完成任务。归档前核实报告当前有效；这是应用提供的检查，不是\
+    \ OpenSpec 原生强制归档门禁。\n<!-- REPO-SDD-OPENSPEC:RULES:END -->"
+  requires:
+  - specs
+  - design
+apply:
+  requires:
+  - tasks
+  tracks: tasks.md
+  instruction: 'Read context files, work through pending tasks, mark complete as you go.
+
+    Pause if you hit blockers or need clarification.
+
+
+    使用简体中文交互和记录自然语言内容，保留 OpenSpec 固定标记、命令、标识符及任务复选框格式。本文件是未来实施阶段的执行指令，不是业务需求或额外业务文档；本次模板适配本身不授权实施、写文件、运行命令或测试。
+
+
+    实施开始时，使用所选变更实际返回的 schema、planningHome、changeRoot、actionContext、contextFiles、任务与状态，读取全部上下文文件及当前有效项目规范。项目规范尚未落盘时明确缺失，不能将评审草稿描述为已安装配置。保留现有自定义产物和用户未提交内容。遵循本次有效规则与已采纳
+    Agent 约定；共享 AGENTS.md/CLAUDE.md 中另一框架的受管区段不适用，不加载其规范、Preset、专属约定或报告入口。
+
+
+    保留 CLI 控制的 blocked、ready、all_done、missingArtifacts 与进度语义。context 和 operationGuidance 不能作为完成证据或绕过阻塞的依据。缺少必要产物、需求不明确，或出现会改变范围、验收、兼容性和技术方案的问题时，记录具体阻塞及受影响任务，暂停相关实施并澄清；不得静默缩减、延后或豁免指定行为。
+
+
+    开始修改前核实当前源码及测试，记录来源与适用版本。先用 OpenDeepWiki 理解背景，再用 CodeGraph 定位实现和调用关系；版本不明、未命中或路径错配时用 repo_read 核对。不能据未命中推断文件不存在，也不能将现状缺陷固化为期望。检查实际工作区与规划基线差异；基线漂移或已有未提交内容影响统计时，先更新可追溯比较方案，不能覆盖用户工作或任意选取有利基线。
+
+
+    按功能确认自有生产范围、排除理由与新增路径，默认参考 src/**/*.js 和 netlify/functions/**/*.mjs。修改生产代码前保存明确基线、相关源码清单与哈希。补齐 reporting 通用契约需要的生产包含/排除项、测试源码清单、真实套件分类、实际命令、结果和覆盖率格式及独立输出位置；当前能力缺口作为
+    tasks 中的实际工作完成并验证，不能根据现有脚本存在宣称适配就绪。
+
+
+    逐项处理未完成任务。新增或修改的可单测行为及缺陷修复执行真实 Red → Green → Refactor：先编写调用真实生产逻辑且能识别错误行为的断言，实际发现并执行测试，确认因目标行为不符失败；再最小实现并通过，随后重构与复跑。每阶段记录实际命令、时间、退出码、用例身份、失败断言或通过结果、测试及生产源码哈希和原始证据位置，核对断言变化。不得用占位成功、恒真断言、mock
+    掉核心逻辑、静默跳过或环境故障代替验证。历史 Red 缺失保持缺失，补充反向验证不能改写历史。
+
+
+    关键控制逻辑执行可恢复的反向验证或适用变异测试，记录目标错误、捕获它的测试及实际结果；恢复临时变更后核对源码并复跑相关测试。测试、文档与过程证据随各自实施任务完成，不集中留到最后。
+
+
+    维护稳定需求 ID、场景 ID、生产逻辑、测试源码路径、用例身份、关键断言与实际执行记录之间的映射。需求改名或拆分时保留可追溯关系，不能只按显示标题猜测匹配。无行为变化且 skip_specs 生效时关联真实任务验收目标，不为报告新增业务需求。
+
+
+    采集真实 unit、integration、e2e 结果并分别分类；测试框架名称不能代替套件性质。按已配置适配器提供 unified/junit/trx 之一的结果，以及 unified/lcov/cobertura
+    之一的覆盖率；原生格式需要转换时先验证转换正确，报告核心保持通用。测试源码清单必须能核实断言变化。保存原始数据、采集命令、源码和结果哈希，避免旧报告或不同工作区结果混入本功能。
+
+
+    新增行单测覆盖率仅统计相对功能基线新增的自有生产可执行行，包含未导入和未命中的新增行。核对最终源码与采集源码一致，按去重后的总覆盖新增可执行行数 / 总新增可执行行数，以未舍入汇总比值 >= 0.8 判定。不得平均文件百分比，不要求存量或全项目达到
+    80%，不得用集成或端到端覆盖率替代。无新增可执行行时记录不适用及依据；缺少基线、源码或采集数据时记录缺失，不能记为不适用或通过。
+
+
+    按 design/tasks 约定的位置生成本功能新增行单测覆盖率 HTML 与需求/TDD HTML。前者展示范围、基线、分子分母、未覆盖行和判定证据；后者展示稳定需求/场景映射、实际执行状态、测试源码/断言关联及真实
+    Red/Green/Refactor 证据。两者如实展示缺失、失败、跳过、未执行及有依据的不适用，并验证可打开、证据链接可解析、哈希可核对、汇总与原始结果一致。报告生成成功不能替代行为验收通过；不直接沿用历史功能或另一框架入口。
+
+
+    使用当前仓库核实的验证入口。现有 npm test、npm run build、npm run test:e2e 和 npm run test:coverage 只作为工程入口参考；根据本功能已配置的采集参数执行并记录真实结果，不假定已有历史报告命令符合通用契约。需要端到端验证时先从当前工作区构建，确认
+    4173 预览服务提供本仓库当前产物。语言相关场景显式控制初始语言并断言实际切换结果；AI 相关验证明确覆盖 mock 界面、BYOK 或 Netlify Function 中哪条真实路径，界面演示不能证明服务端行为。
+
+
+    只有任务指定行为、交付与验证证据全部满足后，才将对应 - [ ] 改为 - [x]。部分实现、失败、跳过、未执行、缺证据或未解决采集缺口均不能勾选完成。保留失败记录并说明影响，不以减少范围、修改断言迎合错误行为或移除新增行来通过门槛。
+
+
+    结束或暂停时，报告实际完成与剩余任务、执行过的验证及其结果、基线与范围、新增行单测覆盖率判定、两类 HTML 位置及证据缺口。完成检查核对所有需求/场景或任务验收映射、TDD 证据、反向验证与恢复、覆盖率数据一致性及报告真实性。不得编造测试通过、覆盖率或历史
+    Red，不以 CLI 文件存在状态代替实施完成；满足全部要求后再按当前 OpenSpec 工作流处理后续归档。
+
+
+    <!-- REPO-SDD-OPENSPEC:RULES:START -->
+
+    <!-- rules:620a5b53d7324e8bcb82c0b4cb75fbbe4332a4705f7faf038741a0fd0b21b705 -->
+
+    仅适用于 OpenSpec 工作流。先读取 `openspec/easeus/project-rules.md` 和当前规则快照。
+
+    使用 openspec_wizard MCP 先查询 opendeepwiki__<工具名>，再 codegraph__<工具名>，最后核实当前文件。
+
+    ### 交互与产物语言
+
+    使用简体中文交互和编写自然语言产物；命令、标识符与固定标记保持兼容。
+
+
+    ### 真实 TDD
+
+    新增或修改的可单测行为与缺陷修复执行真实 Red → Green → Refactor，记录实际失败与通过证据，不伪造历史 Red。
+
+
+    ### 新增生产代码单测行覆盖率
+
+    仅新增自有生产代码的单元测试行覆盖率不低于 80%；以本功能明确基线计算新增可执行行的未舍入汇总比值，不要求存量代码或全项目达到 80%。集成或端到端覆盖率不能替代该指标，无新增可执行行记为不适用。
+
+
+    ### 有效测试与完成证据
+
+    测试必须调用真实被测生产逻辑，包含能识别错误行为的断言并实际发现和执行。禁止占位成功、恒真断言、mock 掉被测核心、静默跳过与无证据勾选完成；关键控制逻辑采用可恢复的反向验证或适用变异测试。
+
+
+    ### 来源与事实核实
+
+    知识库与源码说明现状，已确认需求定义期望；关键结论记录来源与适用版本，未知必须明确，现状缺陷不得自动固化为规范。
+
+
+    ### 功能测试 HTML 报告
+
+    按选定设置生成本功能报告，使用真实测试结果和可追溯证据，缺失或失败必须如实展示。
+
+    - 规划变更时先用 OpenDeepWiki 理解背景，再用 CodeGraph 定位实现与调用关系；索引未命中、路径错配或版本不明时，用 repo_read 核对当前文件。记录来源、版本未知项及需求与现状的差异，不以未命中推断文件不存在，也不把现状缺陷写成期望行为。
+
+    - 在 OpenSpec design/tasks 中把验收场景关联到真实生产逻辑、测试源码及实际 Red/Green/Refactor 证据，关键控制逻辑关联可恢复反向验证。按已确认答案逐功能明确生产范围、排除项和基线；将结果采集、单元覆盖率适配及两类
+    HTML 报告缺口列为具体任务。新增自有生产代码的单测行覆盖率按未舍入汇总比值判断是否达到 80%，无新增可执行行标记不适用；缺失或未执行的证据如实保留，不勾选完成。
+
+    ## 当前启用的功能报告
+
+    入口：`powershell.exe -NoProfile -ExecutionPolicy Bypass -File openspec/easeus/reporting/run.ps1 <doctor|spec-index|baseline|check|run|finalize>
+    --feature openspec/changes/<变更>`。先 spec-index 获取各能力的 OSR/OSS 稳定 ID 和精确来源位置，建立 traceability.json 到真实测试的映射。新增、修改、删除、改名均须明确处理，手工或不适用项注明原因和确认人。首次生产修改前
+    baseline --confirm-before-changes；doctor 暴露缺口时在 design/tasks 安排采集适配任务。真实 run --phase red/green/refactor 记录过程，缺失历史
+    Red 不补造。使用仓库自己的测试命令和标准格式结果，不限定语言、测试框架或包管理器。最终各套件 run --phase final 后 finalize，核对 HTML、report-status.json 及退出码，未通过不得勾选报告完成任务。归档前核实报告当前有效；这是应用提供的检查，不是
+    OpenSpec 原生强制归档门禁。
+
+    <!-- REPO-SDD-OPENSPEC:RULES:END -->'

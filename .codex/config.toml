@@ -1,3 +1,10 @@
 [mcp_servers.speckit_wizard]
 command = "powershell.exe"
 args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ".specify/easeus/mcp-launch.ps1"]
+
+[mcp_servers.openspec_wizard]
+command = "powershell.exe"
+args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "openspec/easeus/mcp-launch.ps1"]
+env_vars = ["APPDATA", "LOCALAPPDATA", "OPENSPEC_STUDIO_STATE", "PATH", "SPECKIT_WIZARD_STATE", "SystemRoot", "TEMP", "TMP", "USERPROFILE"]
+startup_timeout_sec = 30
+tool_timeout_sec = 60
