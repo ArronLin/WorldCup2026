@@ -3,10 +3,12 @@ import { t } from '../i18n.js';
 import { getTeams } from '../store.js';
 import { L, flagSVG } from '../utils.js';
 import { buildTeamGroups, groupFilterState, isGroupVisible } from '../features/team-group-filter/state.js';
+import { setGroups, getCounts } from '../features/team-group-filter/count.js';
 
 export default async function teamsView() {
   const teams = await getTeams();
   const groups = buildTeamGroups(teams);
+  setGroups(groups);
   groupFilterState.syncGroups(groups.map(group => group.key));
   const { availableGroups, selectedGroups } = groupFilterState.getSnapshot();
 
@@ -20,7 +22,7 @@ export default async function teamsView() {
     html += `<label class="team-group-option"><input type="checkbox" data-team-group-action="select" data-team-group="${group}"${selectedGroups.includes(group) ? ' checked' : ''}> ${t('common.group')} ${group}</label>`;
   }
   html += `<button type="button" class="filter-btn" data-team-group-action="all">${t('teams.filter.all')}</button></div></fieldset>`;
-  html += `<p class="team-group-summary" data-team-group-summary role="status">${t(selectedGroups.length ? 'teams.filter.showingSelected' : 'teams.filter.showingAll')}</p>`;
+  html += `<p class="team-group-summary" data-team-group-summary role="status">${t('teams.filter.count', getCounts(selectedGroups))}</p>`;
 
   html += `<div class="group-grid">`;
   for (const group of groups) {

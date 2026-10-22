@@ -9,11 +9,11 @@ it('updates union synchronously without replacing controls or losing focus; clea
   a.focus(); a.click();
   expect(visibleCodes(root)).toEqual(['AAA', 'AAB']);
   expect(document.activeElement).toBe(a); expect(checkbox(root, 'A')).toBe(a);
-  expect(root.querySelector('[data-team-group-summary]').textContent).toBe('显示所选小组');
+  expect(root.querySelector('[data-team-group-summary]').textContent).toBe('当前显示 2 / 4 支球队');
   checkbox(root, 'C').click(); expect(visibleCodes(root)).toEqual(['AAA', 'AAB', 'CCC']);
   a.click(); expect(visibleCodes(root)).toEqual(['CCC']);
   checkbox(root, 'C').click(); expect(visibleCodes(root)).toEqual(['AAA', 'AAB', 'BBB', 'CCC']);
-  expect(root.querySelector('[data-team-group-summary]').textContent).toBe('显示全部球队');
+  expect(root.querySelector('[data-team-group-summary]').textContent).toBe('当前显示 4 / 4 支球队');
 });
 it('selects all, handles rapid changes and repeated show-all actions', async () => {
   mounted = await mountTeams(); const { root, state } = mounted;
@@ -44,8 +44,8 @@ it('uses the active English dictionary for updates after language re-render', as
   mounted = await mountTeams(); const { root, view, i18n } = mounted;
   checkbox(root, 'A').click(); await i18n.setLang('en'); root.innerHTML = await view();
   checkbox(root, 'C').click();
-  expect(root.querySelector('[data-team-group-summary]').textContent).toBe('Showing selected groups');
+  expect(root.querySelector('[data-team-group-summary]').textContent).toBe('Showing 3 / 4 teams');
   expect(visibleCodes(root)).toEqual(['AAA', 'AAB', 'CCC']);
   root.querySelector('[data-team-group-action="all"]').click();
-  expect(root.querySelector('[data-team-group-summary]').textContent).toBe('Showing all teams');
+  expect(root.querySelector('[data-team-group-summary]').textContent).toBe('Showing 4 / 4 teams');
 });

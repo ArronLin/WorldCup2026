@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="4" failures="0" errors="0" time="0.0060112">
+    <testsuite name="tests/team-filter-count.test.js" timestamp="2026-10-22T06:52:58.771Z" hostname="DESKTOP-2OQ3CDQ" tests="4" failures="0" errors="0" skipped="0" time="0.0060112">
+        <testcase classname="tests/team-filter-count.test.js" name="count-all" time="0.0031272">
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-unequal-union" time="0.0004917">
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-unknown" time="0.0002584">
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-data-replacement" time="0.0003462">
+        </testcase>
+    </testsuite>
+</testsuites>

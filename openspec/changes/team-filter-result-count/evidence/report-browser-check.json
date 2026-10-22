@@ -1,0 +1,16 @@
+[
+  {
+    "name": "coverage-added",
+    "links": 0,
+    "bytes": 707567,
+    "title": "新增生产代码单测行覆盖率",
+    "text": "新增生产代码单测行覆盖率\n报告验收通过\n\nopenspec/changes/team-filter-result-count · 2026-10-22T07:01:20.349793+00:00\n\n生成 ID：d72fe56cc7274081a6f09acc94a3fc3d\n源码指纹：8c55bba9c5074cfd18f8b3c6f976f660a3cd3ff28c13c7c89cd108867afe992e\n\n新增行单测覆盖率\n100.00%\n已覆盖 / 新增可执行行\n12 / 12\n本功能门槛\n80.00%\n\n提供方声明的可执行行；可选 v1 statement-ranges 映射多行改动 · 提供方 {'id': 'v8', 'version': '4.1.10'} · 运行 d617a79e5bea40ab9088cb4c1c939a88\n\n搜索文件\n显示全部文件（包括无新增可执行行的文件）\nsrc/features/team-group-filter/controller.js · 1/1\nsrc/features/team-group-filter/count.js · "
+  },
+  {
+    "name": "requirements-tdd",
+    "links": 203,
+    "bytes": 102627,
+    "title": "需求与验收场景覆盖 · TDD 过程证据",
+    "text": "需求与验收场景覆盖 · TDD 过程证据\n报告验收通过\n\nopenspec/changes/team-filter-result-count · 2026-10-22T07:01:20.349793+00:00\n\n生成 ID：d72fe56cc7274081a6f09acc94a3fc3d\n源码指纹：8c55bba9c5074cfd18f8b3c6f976f660a3cd3ff28c13c7c89cd108867afe992e\n\n需求自动验证\n4/4（100.0%）\n场景自动验证\n8/8（100.0%）\n测试严格通过率\n169/169（100.0%）\nTDD 完整程度\n\n8/8（100.0%）\n\n手工与不适用项独立列出，不进入自动验证分母；重试通过不计入严格通过。未映射项保留在自动分母中。\n\nTDD 不适用项\n57d46871e00b022bf3ac447f67c94d1424969ec4f11690135ff790f9c6e0d97c：浏览器验收组合路径；对应新增逻辑已有unit/integration真实Red与Green\n66e9604bc79b5b1635a9e36034474"
+  }
+]

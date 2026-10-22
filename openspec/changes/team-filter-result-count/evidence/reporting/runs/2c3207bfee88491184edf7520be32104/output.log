@@ -1,0 +1,53 @@
+[WebServer] (node:19292) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 38 tests using 2 workers
+
+(node:42632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:22824) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/38] e2e\follow-teams.empty-retry.spec.js:2:1 › no follows and no matches are separate, and removing the last follow updates returning schedule
+[2/38] e2e\added-coverage-report.spec.js:25:1 › offline report shows true aggregates, both source statuses and optional D=0 files
+[3/38] e2e\added-coverage-report.spec.js:42:1 › keyboard, file search, line filters and copied line links work
+[4/38] e2e\added-coverage-report.spec.js:57:1 › 375px layout keeps page within the viewport and scrolls long code inside its panel
+[5/38] e2e\follow-teams.keyboard-race.spec.js:2:1 › keyboard can follow, filter, select a stage and open a match with visible focus
+[6/38] e2e\follow-teams.keyboard-race.spec.js:9:1 › rapid filter changes and reversed language responses leave the latest intent visible
+[7/38] e2e\follow-teams.empty-retry.spec.js:7:1 › schedule 503 retries without losing saved follows
+[8/38] e2e\follow-teams.language.spec.js:3:1 › Chinese-English-Chinese preserves details, filters, results and static notice
+[9/38] e2e\follow-teams.persistence.spec.js:2:1 › real UI follows two teams, removes one, refreshes and restores in a new page
+[10/38] e2e\follow-teams.persistence.spec.js:10:1 › invalid team entries have no follow action
+[11/38] e2e\follow-teams.language.spec.js:9:1 › both empty states and unsaved warning translate in both directions
+[12/38] e2e\follow-teams.schedule.spec.js:2:1 › follows combine with stages and survive same-tab return, refresh resets only filters
+[13/38] e2e\follow-teams.schedule.spec.js:11:1 › fixture has exact union, stable grouped order and deduplicated IDs
+[14/38] e2e\follow-teams.language.spec.js:16:1 › English full journey works without AI; controls fit a narrow screen in both themes
+[15/38] e2e\follow-teams.storage.spec.js:2:1 › corrupt and denied read records are reported without blocking browsing
+[16/38] e2e\follow-teams.storage.spec.js:6:1 › follow-key read denial allows a temporary follow; later save recovers
+[17/38] e2e\follow-teams.storage.spec.js:10:1 › write failure preserves state across routes; a later save persists the full set
+[18/38] e2e\history.spec.js:6:1 › 场景 A：单队 7 届倒序，每条含届次/轮次/对手/比分且无空白项
+[19/38] e2e\follow-teams.storage.spec.js:16:1 › all storage denied still starts and allows temporary follows
+[20/38] e2e\history.spec.js:37:1 › 场景 E（前半）：未选择态、非法参数回落、参数大小写不敏感
+[21/38] e2e\follow-teams.storage.spec.js:19:1 › 503 is an error and a user retry really fetches the data again
+[22/38] e2e\history.spec.js:66:3 › 场景 D：语言切换后已选状态不丢失 › 切换为英文后选择原样保留
+[23/38] e2e\smoke.spec.js:3:1 › routes, language switch and schedule filters are available
+[24/38] e2e\team-filter-count.spec.js:13:1 › count-journey
+[25/38] e2e\smoke.spec.js:12:1 › mock chat loads lazily and accepts a question
+[26/38] e2e\team-filter-count.spec.js:28:1 › count-language-navigation
+[27/38] e2e\team-group-filter.spec.js:14:1 › single and multiple groups, last cancellation and visible response within one second
+[28/38] e2e\team-filter-count.spec.js:36:1 › count-data-boundaries
+[29/38] e2e\team-group-filter.spec.js:37:1 › all groups, rapid changes and repeated show-all keep exact order without duplicates
+[30/38] e2e\team-filter-count.spec.js:43:35 › count-no-data-empty
+[31/38] e2e\team-filter-count.spec.js:43:35 › count-no-data-offline
+[32/38] e2e\team-group-filter.spec.js:47:1 › correct detail, return retains groups, refresh and a new page reset them
+[33/38] e2e\team-group-filter.spec.js:58:1 › real Chinese-English-Chinese changes preserve selected identities and all mode
+[34/38] e2e\team-group-filter.spec.js:71:1 › keyboard selection retains focus and hidden team cards leave the tab sequence
+[35/38] e2e\team-group-filter.spec.js:81:38 › empty data has a neutral bilingual message and no fabricated groups
+[36/38] e2e\team-group-filter.spec.js:81:38 › unavailable data is not described as an empty filter result
+[37/38] e2e\team-group-filter.spec.js:87:1 › unknown groups remain in all mode but never become options or selected results
+[38/38] e2e\team-group-filter.spec.js:96:1 › narrow and desktop controls wrap without overflow and have visible focus in both themes
+  38 passed (56.1s)

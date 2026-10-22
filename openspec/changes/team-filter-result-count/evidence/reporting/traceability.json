@@ -1,0 +1,353 @@
+{
+  "requirements": [
+    {
+      "applicability": "automated",
+      "description": "按实际列表显示数量",
+      "id": "OSR-07350e23b9fdc9d9f614",
+      "spec_position": "specs/team-filter-result-count/spec.md:9",
+      "tests": [
+        {
+          "container": "tests/team-filter-count-render.test.js",
+          "file": "tests/team-filter-count-render.test.js",
+          "level": "unit",
+          "locator": "tests/team-filter-count-render.test.js::count-render",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "tests/team-filter-count.test.js",
+          "file": "tests/team-filter-count.test.js",
+          "level": "unit",
+          "locator": "tests/team-filter-count.test.js::count-unequal-union",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        }
+      ]
+    },
+    {
+      "applicability": "automated",
+      "description": "筛选操作同步更新计数",
+      "id": "OSR-209388b3a03fd496814a",
+      "spec_position": "specs/team-filter-result-count/spec.md:23",
+      "tests": [
+        {
+          "container": "tests/team-filter-count-controller.test.js",
+          "file": "tests/team-filter-count-controller.test.js",
+          "level": "unit",
+          "locator": "tests/team-filter-count-controller.test.js::count-change",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "tests/team-filter-count-controller.test.js",
+          "file": "tests/team-filter-count-controller.test.js",
+          "level": "unit",
+          "locator": "tests/team-filter-count-controller.test.js::count-clear-rapid-focus",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        }
+      ]
+    },
+    {
+      "applicability": "automated",
+      "description": "语言与页面状态一致",
+      "id": "OSR-d28a9694a478c800d5ed",
+      "spec_position": "specs/team-filter-result-count/spec.md:37",
+      "tests": [
+        {
+          "container": "tests/team-filter-count-view.test.js",
+          "file": "tests/team-filter-count-view.test.js",
+          "level": "integration",
+          "locator": "tests/team-filter-count-view.test.js::count-language",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "tests/team-filter-count-view.test.js",
+          "file": "tests/team-filter-count-view.test.js",
+          "level": "integration",
+          "locator": "tests/team-filter-count-view.test.js::count-return-reset",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        }
+      ]
+    },
+    {
+      "applicability": "automated",
+      "description": "数据边界不误导",
+      "id": "OSR-1a556b49a291bda01e44",
+      "spec_position": "specs/team-filter-result-count/spec.md:51",
+      "tests": [
+        {
+          "container": "tests/team-filter-count.test.js",
+          "file": "tests/team-filter-count.test.js",
+          "level": "unit",
+          "locator": "tests/team-filter-count.test.js::count-unknown",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "tests/team-filter-count-view.test.js",
+          "file": "tests/team-filter-count-view.test.js",
+          "level": "integration",
+          "locator": "tests/team-filter-count-view.test.js::count-no-data",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "applicability": "automated",
+      "description": "首次显示全部",
+      "id": "OSS-55615deabbc9f9210ac3",
+      "spec_position": "specs/team-filter-result-count/spec.md:13",
+      "tests": [
+        {
+          "container": "tests/team-filter-count-render.test.js",
+          "file": "tests/team-filter-count-render.test.js",
+          "level": "unit",
+          "locator": "tests/team-filter-count-render.test.js::count-render",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "team-filter-count.spec.js",
+          "file": "e2e/team-filter-count.spec.js",
+          "level": "e2e",
+          "locator": "team-filter-count.spec.js::count-journey",
+          "parameters": "",
+          "provider": "playwright",
+          "tdd_applicable": false,
+          "tdd_reason": "浏览器验收组合路径；对应新增逻辑已有unit/integration真实Red与Green"
+        }
+      ]
+    },
+    {
+      "applicability": "automated",
+      "description": "不等大小的小组",
+      "id": "OSS-b75e36ee15a29c7f4fd7",
+      "spec_position": "specs/team-filter-result-count/spec.md:18",
+      "tests": [
+        {
+          "container": "tests/team-filter-count.test.js",
+          "file": "tests/team-filter-count.test.js",
+          "level": "unit",
+          "locator": "tests/team-filter-count.test.js::count-unequal-union",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "team-filter-count.spec.js",
+          "file": "e2e/team-filter-count.spec.js",
+          "level": "e2e",
+          "locator": "team-filter-count.spec.js::count-data-boundaries",
+          "parameters": "",
+          "provider": "playwright",
+          "tdd_applicable": false,
+          "tdd_reason": "浏览器验收组合路径；对应新增逻辑已有unit/integration真实Red与Green"
+        }
+      ]
+    },
+    {
+      "applicability": "automated",
+      "description": "选择追加和取消",
+      "id": "OSS-afa678975df12f640dae",
+      "spec_position": "specs/team-filter-result-count/spec.md:27",
+      "tests": [
+        {
+          "container": "tests/team-filter-count-controller.test.js",
+          "file": "tests/team-filter-count-controller.test.js",
+          "level": "unit",
+          "locator": "tests/team-filter-count-controller.test.js::count-change",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "team-filter-count.spec.js",
+          "file": "e2e/team-filter-count.spec.js",
+          "level": "e2e",
+          "locator": "team-filter-count.spec.js::count-journey",
+          "parameters": "",
+          "provider": "playwright",
+          "tdd_applicable": false,
+          "tdd_reason": "浏览器验收组合路径；对应新增逻辑已有unit/integration真实Red与Green"
+        }
+      ]
+    },
+    {
+      "applicability": "automated",
+      "description": "恢复全部和快速操作",
+      "id": "OSS-c739ce48ac60fb8d2e3a",
+      "spec_position": "specs/team-filter-result-count/spec.md:32",
+      "tests": [
+        {
+          "container": "tests/team-filter-count-controller.test.js",
+          "file": "tests/team-filter-count-controller.test.js",
+          "level": "unit",
+          "locator": "tests/team-filter-count-controller.test.js::count-clear-rapid-focus",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "team-filter-count.spec.js",
+          "file": "e2e/team-filter-count.spec.js",
+          "level": "e2e",
+          "locator": "team-filter-count.spec.js::count-journey",
+          "parameters": "",
+          "provider": "playwright",
+          "tdd_applicable": false,
+          "tdd_reason": "浏览器验收组合路径；对应新增逻辑已有unit/integration真实Red与Green"
+        }
+      ]
+    },
+    {
+      "applicability": "automated",
+      "description": "中英文来回切换",
+      "id": "OSS-2abf47e7fdae800e5dbf",
+      "spec_position": "specs/team-filter-result-count/spec.md:41",
+      "tests": [
+        {
+          "container": "tests/team-filter-count-view.test.js",
+          "file": "tests/team-filter-count-view.test.js",
+          "level": "integration",
+          "locator": "tests/team-filter-count-view.test.js::count-language",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "team-filter-count.spec.js",
+          "file": "e2e/team-filter-count.spec.js",
+          "level": "e2e",
+          "locator": "team-filter-count.spec.js::count-language-navigation",
+          "parameters": "",
+          "provider": "playwright",
+          "tdd_applicable": false,
+          "tdd_reason": "浏览器验收组合路径；对应新增逻辑已有unit/integration真实Red与Green"
+        }
+      ]
+    },
+    {
+      "applicability": "automated",
+      "description": "详情往返和刷新",
+      "id": "OSS-4b1d1b5a608d25edf018",
+      "spec_position": "specs/team-filter-result-count/spec.md:46",
+      "tests": [
+        {
+          "container": "tests/team-filter-count-view.test.js",
+          "file": "tests/team-filter-count-view.test.js",
+          "level": "integration",
+          "locator": "tests/team-filter-count-view.test.js::count-return-reset",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "team-filter-count.spec.js",
+          "file": "e2e/team-filter-count.spec.js",
+          "level": "e2e",
+          "locator": "team-filter-count.spec.js::count-language-navigation",
+          "parameters": "",
+          "provider": "playwright",
+          "tdd_applicable": false,
+          "tdd_reason": "浏览器验收组合路径；对应新增逻辑已有unit/integration真实Red与Green"
+        }
+      ]
+    },
+    {
+      "applicability": "automated",
+      "description": "未知分组球队",
+      "id": "OSS-1f2c92f41ece54ddb5ab",
+      "spec_position": "specs/team-filter-result-count/spec.md:55",
+      "tests": [
+        {
+          "container": "tests/team-filter-count.test.js",
+          "file": "tests/team-filter-count.test.js",
+          "level": "unit",
+          "locator": "tests/team-filter-count.test.js::count-unknown",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "team-filter-count.spec.js",
+          "file": "e2e/team-filter-count.spec.js",
+          "level": "e2e",
+          "locator": "team-filter-count.spec.js::count-data-boundaries",
+          "parameters": "",
+          "provider": "playwright",
+          "tdd_applicable": false,
+          "tdd_reason": "浏览器验收组合路径；对应新增逻辑已有unit/integration真实Red与Green"
+        }
+      ]
+    },
+    {
+      "applicability": "automated",
+      "description": "空数据或加载失败",
+      "id": "OSS-2ebeb93007156747db6a",
+      "spec_position": "specs/team-filter-result-count/spec.md:60",
+      "tests": [
+        {
+          "container": "tests/team-filter-count-view.test.js",
+          "file": "tests/team-filter-count-view.test.js",
+          "level": "integration",
+          "locator": "tests/team-filter-count-view.test.js::count-no-data",
+          "parameters": "",
+          "provider": "vitest",
+          "tdd_applicable": true,
+          "tdd_reason": ""
+        },
+        {
+          "container": "team-filter-count.spec.js",
+          "file": "e2e/team-filter-count.spec.js",
+          "level": "e2e",
+          "locator": "team-filter-count.spec.js::count-no-data-empty",
+          "parameters": "",
+          "provider": "playwright",
+          "tdd_applicable": false,
+          "tdd_reason": "浏览器验收组合路径；对应新增逻辑已有unit/integration真实Red与Green"
+        },
+        {
+          "container": "team-filter-count.spec.js",
+          "file": "e2e/team-filter-count.spec.js",
+          "level": "e2e",
+          "locator": "team-filter-count.spec.js::count-no-data-offline",
+          "parameters": "",
+          "provider": "playwright",
+          "tdd_applicable": false,
+          "tdd_reason": "浏览器验收组合路径；对应新增逻辑已有unit/integration真实Red与Green"
+        }
+      ]
+    }
+  ],
+  "schema_version": 1
+}

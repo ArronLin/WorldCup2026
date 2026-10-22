@@ -1,0 +1,144 @@
+{
+  "baseline_id": "066bebf607f043e2b95ce484c6fcec6a",
+  "config": {
+    "adapter": {
+      "id": "standard-formats",
+      "version": "1"
+    },
+    "capability_notes": [
+      "Vitest JUnit + V8 LCOV；Playwright JUnit，重试默认0；逐轮真实格式导入验证。",
+      "新计数模块、隔离控制器与隔离view为unit，其余既有混合套件保守归integration，不将其覆盖率计入门槛。"
+    ],
+    "config_fingerprint": "95db6e398b19034ffba108f15295b6410b44437eafd00832f0df6bda4b9dfcbc",
+    "confirmed": true,
+    "contract_version": 1,
+    "framework": "openspec",
+    "policy": {
+      "evidence_required": true,
+      "language": "简体中文",
+      "new_unit_line_coverage_minimum": 0.8,
+      "reports": {
+        "added_coverage_html": true,
+        "requirements_tdd_html": true
+      },
+      "tdd_required": true,
+      "valid_tests_required": true
+    },
+    "production_exclude": [],
+    "production_include": [
+      "src/**/*.js",
+      "netlify/functions/**/*.mjs",
+      "scripts/reporting/**/*.mjs"
+    ],
+    "rules_fingerprint": "620a5b53d7324e8bcb82c0b4cb75fbbe4332a4705f7faf038741a0fd0b21b705",
+    "schema_version": 1,
+    "suites": [
+      {
+        "args": [
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "tests/team-filter-count.test.js",
+          "tests/team-filter-count-controller.test.js",
+          "tests/team-filter-count-render.test.js",
+          "--coverage",
+          "--coverage.reportOnFailure",
+          "--coverage.reportsDirectory=.tmp/reporting/unit-coverage",
+          "--reporter=junit",
+          "--outputFile=.tmp/reporting/unit.xml"
+        ],
+        "collect": null,
+        "command": "node",
+        "coverage": {
+          "format": "lcov",
+          "path": ".tmp/reporting/unit-coverage/lcov.info",
+          "provider": {
+            "id": "v8",
+            "version": "4.1.10"
+          }
+        },
+        "cwd": ".",
+        "id": "unit",
+        "level": "unit",
+        "results": {
+          "format": "junit",
+          "path": ".tmp/reporting/unit.xml",
+          "provider": {
+            "id": "vitest",
+            "version": "4.1.10"
+          }
+        }
+      },
+      {
+        "args": [
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "--exclude=tests/team-filter-count.test.js",
+          "--exclude=tests/team-filter-count-controller.test.js",
+          "--exclude=tests/team-filter-count-render.test.js",
+          "--reporter=junit",
+          "--outputFile=.tmp/reporting/integration.xml"
+        ],
+        "collect": null,
+        "command": "node",
+        "coverage": null,
+        "cwd": ".",
+        "id": "integration",
+        "level": "integration",
+        "results": {
+          "format": "junit",
+          "path": ".tmp/reporting/integration.xml",
+          "provider": {
+            "id": "vitest",
+            "version": "4.1.10"
+          }
+        }
+      },
+      {
+        "args": [
+          "node_modules/@playwright/test/cli.js",
+          "test"
+        ],
+        "collect": null,
+        "command": "node",
+        "coverage": null,
+        "cwd": ".",
+        "id": "browser",
+        "level": "e2e",
+        "results": {
+          "format": "junit",
+          "path": ".tmp/reporting/browser.xml",
+          "provider": {
+            "id": "playwright",
+            "version": "1.62.1"
+          }
+        }
+      }
+    ],
+    "test_exclude": [],
+    "test_include": [
+      "tests/**/*.js",
+      "e2e/**/*.js"
+    ],
+    "tool_version": "1.0.0"
+  },
+  "config_fingerprint": "95db6e398b19034ffba108f15295b6410b44437eafd00832f0df6bda4b9dfcbc",
+  "created_at": "2026-10-22T06:51:33.628553+00:00",
+  "feature": "openspec/changes/team-filter-result-count",
+  "name": "team-filter-result-count",
+  "policy": {
+    "evidence_required": true,
+    "language": "简体中文",
+    "new_unit_line_coverage_minimum": 0.8,
+    "reports": {
+      "added_coverage_html": true,
+      "requirements_tdd_html": true
+    },
+    "tdd_required": true,
+    "valid_tests_required": true
+  },
+  "rules_fingerprint": "620a5b53d7324e8bcb82c0b4cb75fbbe4332a4705f7faf038741a0fd0b21b705",
+  "schema_version": 1,
+  "spec_path": "openspec/changes/team-filter-result-count/specs",
+  "specification_fingerprint": "a8ef836d3f4f0bf607da9008c8492559dd8c68976b2c0d7facc95309e3e1e84f",
+  "tool_version": "1.0.0"
+}

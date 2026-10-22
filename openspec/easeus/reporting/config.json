@@ -7,13 +7,102 @@
     "version": "1"
   },
   "confirmed": true,
-  "production_include": [],
+  "production_include": [
+    "src/**/*.js",
+    "netlify/functions/**/*.mjs",
+    "scripts/reporting/**/*.mjs"
+  ],
   "production_exclude": [],
-  "test_include": [],
+  "test_include": [
+    "tests/**/*.js",
+    "e2e/**/*.js"
+  ],
   "test_exclude": [],
-  "suites": [],
+  "suites": [
+    {
+      "id": "unit",
+      "level": "unit",
+      "command": "node",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/team-filter-count.test.js",
+        "tests/team-filter-count-controller.test.js",
+        "tests/team-filter-count-render.test.js",
+        "--coverage",
+        "--coverage.reportOnFailure",
+        "--coverage.reportsDirectory=.tmp/reporting/unit-coverage",
+        "--reporter=junit",
+        "--outputFile=.tmp/reporting/unit.xml"
+      ],
+      "cwd": ".",
+      "results": {
+        "format": "junit",
+        "path": ".tmp/reporting/unit.xml",
+        "provider": {
+          "id": "vitest",
+          "version": "4.1.10"
+        }
+      },
+      "coverage": {
+        "format": "lcov",
+        "path": ".tmp/reporting/unit-coverage/lcov.info",
+        "provider": {
+          "id": "v8",
+          "version": "4.1.10"
+        }
+      },
+      "collect": null
+    },
+    {
+      "id": "integration",
+      "level": "integration",
+      "command": "node",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--exclude=tests/team-filter-count.test.js",
+        "--exclude=tests/team-filter-count-controller.test.js",
+        "--exclude=tests/team-filter-count-render.test.js",
+        "--reporter=junit",
+        "--outputFile=.tmp/reporting/integration.xml"
+      ],
+      "cwd": ".",
+      "results": {
+        "format": "junit",
+        "path": ".tmp/reporting/integration.xml",
+        "provider": {
+          "id": "vitest",
+          "version": "4.1.10"
+        }
+      },
+      "coverage": null,
+      "collect": null
+    },
+    {
+      "id": "browser",
+      "level": "e2e",
+      "command": "node",
+      "args": [
+        "node_modules/@playwright/test/cli.js",
+        "test"
+      ],
+      "cwd": ".",
+      "results": {
+        "format": "junit",
+        "path": ".tmp/reporting/browser.xml",
+        "provider": {
+          "id": "playwright",
+          "version": "1.62.1"
+        }
+      },
+      "coverage": null,
+      "collect": null
+    }
+  ],
   "capability_notes": [
-    "发现项目清单：package.json；请核实测试命令和实际结果格式"
+    "Vitest JUnit + V8 LCOV；Playwright JUnit，重试默认0；逐轮真实格式导入验证。",
+    "新计数模块、隔离控制器与隔离view为unit，其余既有混合套件保守归integration，不将其覆盖率计入门槛。"
   ],
   "framework": "openspec",
   "policy": {
@@ -28,5 +117,5 @@
     }
   },
   "rules_fingerprint": "620a5b53d7324e8bcb82c0b4cb75fbbe4332a4705f7faf038741a0fd0b21b705",
-  "config_fingerprint": "9bcc2d73d61620fe664da1f97efa65d9eb47038937975b64b14e83ef1ab295b1"
+  "config_fingerprint": "95db6e398b19034ffba108f15295b6410b44437eafd00832f0df6bda4b9dfcbc"
 }

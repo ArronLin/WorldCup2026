@@ -1,0 +1,13 @@
+{
+  "config_fingerprint": "95db6e398b19034ffba108f15295b6410b44437eafd00832f0df6bda4b9dfcbc",
+  "feature": "openspec/changes/team-filter-result-count",
+  "generated_at": "2026-10-22T07:01:20.349793+00:00",
+  "generation_id": "d72fe56cc7274081a6f09acc94a3fc3d",
+  "issues": [],
+  "passed": true,
+  "rules_fingerprint": "620a5b53d7324e8bcb82c0b4cb75fbbe4332a4705f7faf038741a0fd0b21b705",
+  "schema_version": 1,
+  "source_fingerprint": "8c55bba9c5074cfd18f8b3c6f976f660a3cd3ff28c13c7c89cd108867afe992e",
+  "specification_fingerprint": "a8ef836d3f4f0bf607da9008c8492559dd8c68976b2c0d7facc95309e3e1e84f",
+  "test_fingerprint": "14fb59ddda6c54431db2ce670bd2474a1aaee3d93cec8a9e376cdcabbdb67861"
+}

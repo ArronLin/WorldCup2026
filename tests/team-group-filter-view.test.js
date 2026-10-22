@@ -8,7 +8,7 @@ it('renders all group options, clear action, names and original team order', asy
   expect([...root.querySelectorAll('input[type="checkbox"]')].map(el => el.dataset.teamGroup)).toEqual(['A', 'B', 'C']);
   expect(root.querySelector('legend')?.textContent).toBe('小组筛选');
   expect(root.querySelector('[data-team-group-action="all"]')?.textContent).toBe('显示全部');
-  expect(root.querySelector('[data-team-group-summary]')?.textContent).toBe('显示全部球队');
+  expect(root.querySelector('[data-team-group-summary]')?.textContent).toBe('当前显示 4 / 4 支球队');
   expect(visibleCodes(root)).toEqual(['AAA', 'AAB', 'BBB', 'CCC']);
   expect(root.textContent).toContain('甲队'); expect(root.textContent).toContain('UEFA · #1');
 });
@@ -22,7 +22,7 @@ it('reads the latest selection when re-rendering, retains all options and resets
   mounted.dispose(); mounted = await mountTeams();
   expect(visibleCodes(mounted.root)).toEqual(['AAA', 'AAB', 'BBB', 'CCC']);
 });
-it.each([{}, new Error('offline')])('uses a neutral unavailable message for empty or failed data', async data => {
+it.each([{}, new Error('offline')])('uses a neutral unavailable message for empty or failed data [%#]', async data => {
   mounted = await mountTeams(data);
   expect(mounted.root.textContent).toContain('暂无可显示的球队，可刷新重试');
   expect(mounted.root.querySelectorAll('input[type="checkbox"]').length).toBe(0);
@@ -44,7 +44,7 @@ it('switches real dictionaries zh → en → zh while retaining selected groups 
   await i18n.setLang('en'); root.innerHTML = await view();
   expect(document.documentElement.lang).toBe('en');
   expect(root.querySelector('legend').textContent).toBe('Filter by group');
-  expect(root.querySelector('[data-team-group-summary]').textContent).toBe('Showing selected groups');
+  expect(root.querySelector('[data-team-group-summary]').textContent).toBe('Showing 3 / 4 teams');
   expect(root.textContent).toContain('Alpha');
   expect(visibleCodes(root)).toEqual(['AAA', 'AAB', 'CCC']);
   expect([...root.querySelectorAll('input:checked')].map(el => el.dataset.teamGroup)).toEqual(['A', 'C']);
@@ -55,7 +55,7 @@ it('switches real dictionaries zh → en → zh while retaining selected groups 
 it('translates all-mode and unknown-group labels using the English dictionary', async () => {
   mounted = await mountTeams({ ...teams, XXX: { code: 'XXX', name: { en: 'Unknown' } } }, 'en');
   expect(mounted.root.textContent).toContain('Unknown group');
-  expect(mounted.root.querySelector('[data-team-group-summary]').textContent).toBe('Showing all teams');
+  expect(mounted.root.querySelector('[data-team-group-summary]').textContent).toBe('Showing 5 / 5 teams');
   expect(mounted.root.querySelector('[data-team-group-action="all"]').textContent).toBe('Show all');
 });
 it('translates unavailable-data guidance using the English dictionary', async () => {

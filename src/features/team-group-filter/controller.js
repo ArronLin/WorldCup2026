@@ -1,5 +1,6 @@
 import { t } from '../../i18n.js';
 import { groupFilterState, isGroupVisible } from './state.js';
+import { getCounts } from './count.js';
 
 const roots = new WeakMap();
 export function initTeamGroupFilter({ root = document.getElementById('app'), state = groupFilterState } = {}) {
@@ -9,7 +10,7 @@ export function initTeamGroupFilter({ root = document.getElementById('app'), sta
     const { selectedGroups } = state.getSnapshot();
     for (const input of page.querySelectorAll('input[data-team-group]')) input.checked = selectedGroups.includes(input.dataset.teamGroup);
     for (const section of page.querySelectorAll('.group-card[data-team-group]')) section.hidden = !isGroupVisible(section.dataset.teamGroup, selectedGroups);
-    page.querySelector('[data-team-group-summary]').textContent = t(selectedGroups.length ? 'teams.filter.showingSelected' : 'teams.filter.showingAll');
+    page.querySelector('[data-team-group-summary]').textContent = t('teams.filter.count', getCounts(selectedGroups));
   };
   const change = event => {
     const input = event.target;

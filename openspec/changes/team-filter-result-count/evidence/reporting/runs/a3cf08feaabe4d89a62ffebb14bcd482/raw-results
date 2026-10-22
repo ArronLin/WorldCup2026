@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="7" failures="3" errors="0" time="0.1427717">
+    <testsuite name="tests/team-filter-count-controller.test.js" timestamp="2026-10-22T06:54:16.375Z" hostname="DESKTOP-2OQ3CDQ" tests="2" failures="2" errors="0" skipped="0" time="0.0699225">
+        <testcase classname="tests/team-filter-count-controller.test.js" name="count-change" time="0.0556213">
+            <failure message="expected &apos;显示所选小组&apos; to be &apos;当前显示 2 / 6 支球队&apos; // Object.is equality" type="AssertionError">
+AssertionError: expected &apos;显示所选小组&apos; to be &apos;当前显示 2 / 6 支球队&apos; // Object.is equality
+
+Expected: &quot;当前显示 2 / 6 支球队&quot;
+Received: &quot;显示所选小组&quot;
+
+ ❯ tests/team-filter-count-controller.test.js:22:38
+            </failure>
+        </testcase>
+        <testcase classname="tests/team-filter-count-controller.test.js" name="count-clear-rapid-focus" time="0.0120234">
+            <failure message="expected &apos;显示全部球队&apos; to be &apos;当前显示 6 / 6 支球队&apos; // Object.is equality" type="AssertionError">
+AssertionError: expected &apos;显示全部球队&apos; to be &apos;当前显示 6 / 6 支球队&apos; // Object.is equality
+
+Expected: &quot;当前显示 6 / 6 支球队&quot;
+Received: &quot;显示全部球队&quot;
+
+ ❯ tests/team-filter-count-controller.test.js:27:65
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/team-filter-count-render.test.js" timestamp="2026-10-22T06:54:16.389Z" hostname="DESKTOP-2OQ3CDQ" tests="1" failures="1" errors="0" skipped="0" time="0.0631462">
+        <testcase classname="tests/team-filter-count-render.test.js" name="count-render" time="0.0609731">
+            <failure message="expected &apos;显示全部球队&apos; to be &apos;当前显示 2 / 2 支球队&apos; // Object.is equality" type="AssertionError">
+AssertionError: expected &apos;显示全部球队&apos; to be &apos;当前显示 2 / 2 支球队&apos; // Object.is equality
+
+Expected: &quot;当前显示 2 / 2 支球队&quot;
+Received: &quot;显示全部球队&quot;
+
+ ❯ tests/team-filter-count-render.test.js:14:112
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/team-filter-count.test.js" timestamp="2026-10-22T06:54:16.391Z" hostname="DESKTOP-2OQ3CDQ" tests="4" failures="0" errors="0" skipped="0" time="0.009703">
+        <testcase classname="tests/team-filter-count.test.js" name="count-all" time="0.0051243">
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-unequal-union" time="0.0011641">
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-unknown" time="0.0003649">
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-data-replacement" time="0.0004826">
+        </testcase>
+    </testsuite>
+</testsuites>

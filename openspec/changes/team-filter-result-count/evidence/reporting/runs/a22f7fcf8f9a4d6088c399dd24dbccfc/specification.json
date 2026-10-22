@@ -1,0 +1,128 @@
+{
+  "files": {
+    ".openspec.yaml": "7298a8d84b64912e18e677fa41d87e4da4e74e3a88d4bbd16f34211bb9a0249d",
+    "specs/team-filter-result-count/spec.md": "d8a4d5be4df9ab88e7940dc336fc86fc6f8b86986a153541a75c7f4a02b2fdf8"
+  },
+  "framework": "openspec",
+  "requirements": [
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSR-07350e23b9fdc9d9f614",
+      "line": 9,
+      "name": "按实际列表显示数量",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:9"
+    },
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSR-209388b3a03fd496814a",
+      "line": 23,
+      "name": "筛选操作同步更新计数",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:23"
+    },
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSR-d28a9694a478c800d5ed",
+      "line": 37,
+      "name": "语言与页面状态一致",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:37"
+    },
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSR-1a556b49a291bda01e44",
+      "line": 51,
+      "name": "数据边界不误导",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:51"
+    }
+  ],
+  "scenarios": [
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSS-55615deabbc9f9210ac3",
+      "line": 13,
+      "name": "首次显示全部",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:13",
+      "requirement_id": "OSR-07350e23b9fdc9d9f614"
+    },
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSS-b75e36ee15a29c7f4fd7",
+      "line": 18,
+      "name": "不等大小的小组",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:18",
+      "requirement_id": "OSR-07350e23b9fdc9d9f614"
+    },
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSS-afa678975df12f640dae",
+      "line": 27,
+      "name": "选择追加和取消",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:27",
+      "requirement_id": "OSR-209388b3a03fd496814a"
+    },
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSS-c739ce48ac60fb8d2e3a",
+      "line": 32,
+      "name": "恢复全部和快速操作",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:32",
+      "requirement_id": "OSR-209388b3a03fd496814a"
+    },
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSS-2abf47e7fdae800e5dbf",
+      "line": 41,
+      "name": "中英文来回切换",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:41",
+      "requirement_id": "OSR-d28a9694a478c800d5ed"
+    },
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSS-4b1d1b5a608d25edf018",
+      "line": 46,
+      "name": "详情往返和刷新",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:46",
+      "requirement_id": "OSR-d28a9694a478c800d5ed"
+    },
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSS-1f2c92f41ece54ddb5ab",
+      "line": 55,
+      "name": "未知分组球队",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:55",
+      "requirement_id": "OSR-1a556b49a291bda01e44"
+    },
+    {
+      "capability": "team-filter-result-count",
+      "id": "OSS-2ebeb93007156747db6a",
+      "line": 60,
+      "name": "空数据或加载失败",
+      "operation": "added",
+      "path": "specs/team-filter-result-count/spec.md",
+      "position": "specs/team-filter-result-count/spec.md:60",
+      "requirement_id": "OSR-1a556b49a291bda01e44"
+    }
+  ],
+  "skip_specs": false
+}

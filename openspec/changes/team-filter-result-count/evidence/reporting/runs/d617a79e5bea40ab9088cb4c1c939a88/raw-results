@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="7" failures="0" errors="0" time="0.1875289">
+    <testsuite name="tests/team-filter-count-controller.test.js" timestamp="2026-10-22T07:00:20.204Z" hostname="DESKTOP-2OQ3CDQ" tests="2" failures="0" errors="0" skipped="0" time="0.1002131">
+        <testcase classname="tests/team-filter-count-controller.test.js" name="count-change" time="0.0605942">
+        </testcase>
+        <testcase classname="tests/team-filter-count-controller.test.js" name="count-clear-rapid-focus" time="0.0367717">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/team-filter-count-render.test.js" timestamp="2026-10-22T07:00:20.211Z" hostname="DESKTOP-2OQ3CDQ" tests="1" failures="0" errors="0" skipped="0" time="0.0786739">
+        <testcase classname="tests/team-filter-count-render.test.js" name="count-render" time="0.0762208">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/team-filter-count.test.js" timestamp="2026-10-22T07:00:20.213Z" hostname="DESKTOP-2OQ3CDQ" tests="4" failures="0" errors="0" skipped="0" time="0.0086419">
+        <testcase classname="tests/team-filter-count.test.js" name="count-all" time="0.004506">
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-unequal-union" time="0.0007585">
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-unknown" time="0.0003393">
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-data-replacement" time="0.000483">
+        </testcase>
+    </testsuite>
+</testsuites>

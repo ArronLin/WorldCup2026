@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="4" failures="4" errors="0" time="0.0179511">
+    <testsuite name="tests/team-filter-count.test.js" timestamp="2026-10-22T06:52:31.252Z" hostname="DESKTOP-2OQ3CDQ" tests="4" failures="4" errors="0" skipped="0" time="0.0179511">
+        <testcase classname="tests/team-filter-count.test.js" name="count-all" time="0.0131487">
+            <failure message="expected { visible: +0, total: +0 } to deeply equal { visible: 6, total: 6 }" type="AssertionError">
+AssertionError: expected { visible: +0, total: +0 } to deeply equal { visible: 6, total: 6 }
+
+- Expected
++ Received
+
+  {
+-   &quot;total&quot;: 6,
+-   &quot;visible&quot;: 6,
++   &quot;total&quot;: 0,
++   &quot;visible&quot;: 0,
+  }
+
+ ❯ tests/team-filter-count.test.js:4:61
+            </failure>
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-unequal-union" time="0.0014482">
+            <failure message="expected { visible: +0, total: +0 } to deeply equal { visible: 5, total: 6 }" type="AssertionError">
+AssertionError: expected { visible: +0, total: +0 } to deeply equal { visible: 5, total: 6 }
+
+- Expected
++ Received
+
+  {
+-   &quot;total&quot;: 6,
+-   &quot;visible&quot;: 5,
++   &quot;total&quot;: 0,
++   &quot;visible&quot;: 0,
+  }
+
+ ❯ tests/team-filter-count.test.js:7:52
+            </failure>
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-unknown" time="0.0008466">
+            <failure message="expected { visible: +0, total: +0 } to deeply equal { visible: 7, total: 7 }" type="AssertionError">
+AssertionError: expected { visible: +0, total: +0 } to deeply equal { visible: 7, total: 7 }
+
+- Expected
++ Received
+
+  {
+-   &quot;total&quot;: 7,
+-   &quot;visible&quot;: 7,
++   &quot;total&quot;: 0,
++   &quot;visible&quot;: 0,
+  }
+
+ ❯ tests/team-filter-count.test.js:13:37
+            </failure>
+        </testcase>
+        <testcase classname="tests/team-filter-count.test.js" name="count-data-replacement" time="0.0007681">
+            <failure message="expected { visible: +0, total: +0 } to deeply equal { visible: 3, total: 6 }" type="AssertionError">
+AssertionError: expected { visible: +0, total: +0 } to deeply equal { visible: 3, total: 6 }
+
+- Expected
++ Received
+
+  {
+-   &quot;total&quot;: 6,
+-   &quot;visible&quot;: 3,
++   &quot;total&quot;: 0,
++   &quot;visible&quot;: 0,
+  }
+
+ ❯ tests/team-filter-count.test.js:17:47
+            </failure>
+        </testcase>
+    </testsuite>
+</testsuites>

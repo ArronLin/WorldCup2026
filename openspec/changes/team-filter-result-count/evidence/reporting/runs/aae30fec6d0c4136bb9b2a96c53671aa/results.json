@@ -1,0 +1,79 @@
+{
+  "global_errors": [],
+  "provider": {
+    "id": "vitest",
+    "version": "4.1.10"
+  },
+  "run_id": "aae30fec6d0c4136bb9b2a96c53671aa",
+  "schema_version": 1,
+  "tests": [
+    {
+      "attempts": 1,
+      "container": "tests/team-filter-count.test.js",
+      "duration_ms": 3.1272,
+      "evidence": "runs/aae30fec6d0c4136bb9b2a96c53671aa/results.json",
+      "failure": "",
+      "failure_kind": "none",
+      "file": null,
+      "level": "unit",
+      "locator": "tests/team-filter-count.test.js::count-all",
+      "original_status": "passed",
+      "parameters": "",
+      "provider": "vitest",
+      "run_id": "aae30fec6d0c4136bb9b2a96c53671aa",
+      "status": "passed",
+      "test_id": "27284dd310e498aa42e83b2702349d28b3819bf501fa33ef2c03cbe11258abaf"
+    },
+    {
+      "attempts": 1,
+      "container": "tests/team-filter-count.test.js",
+      "duration_ms": 0.49169999999999997,
+      "evidence": "runs/aae30fec6d0c4136bb9b2a96c53671aa/results.json",
+      "failure": "",
+      "failure_kind": "none",
+      "file": null,
+      "level": "unit",
+      "locator": "tests/team-filter-count.test.js::count-unequal-union",
+      "original_status": "passed",
+      "parameters": "",
+      "provider": "vitest",
+      "run_id": "aae30fec6d0c4136bb9b2a96c53671aa",
+      "status": "passed",
+      "test_id": "1af43d50d0875fb4acc9d20f2a76a49f9f05cb34bbcb6acb529e3e7cfda09922"
+    },
+    {
+      "attempts": 1,
+      "container": "tests/team-filter-count.test.js",
+      "duration_ms": 0.2584,
+      "evidence": "runs/aae30fec6d0c4136bb9b2a96c53671aa/results.json",
+      "failure": "",
+      "failure_kind": "none",
+      "file": null,
+      "level": "unit",
+      "locator": "tests/team-filter-count.test.js::count-unknown",
+      "original_status": "passed",
+      "parameters": "",
+      "provider": "vitest",
+      "run_id": "aae30fec6d0c4136bb9b2a96c53671aa",
+      "status": "passed",
+      "test_id": "cc11db223b7368a35cf73c6a5afd0e5402b97f3e9a6e97579fc7df7307302d07"
+    },
+    {
+      "attempts": 1,
+      "container": "tests/team-filter-count.test.js",
+      "duration_ms": 0.3462,
+      "evidence": "runs/aae30fec6d0c4136bb9b2a96c53671aa/results.json",
+      "failure": "",
+      "failure_kind": "none",
+      "file": null,
+      "level": "unit",
+      "locator": "tests/team-filter-count.test.js::count-data-replacement",
+      "original_status": "passed",
+      "parameters": "",
+      "provider": "vitest",
+      "run_id": "aae30fec6d0c4136bb9b2a96c53671aa",
+      "status": "passed",
+      "test_id": "8b4dc2669b9e0a77e721e88334569f431160a3801cadf489f455f11828724e3b"
+    }
+  ]
+}

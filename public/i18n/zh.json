@@ -212,6 +212,7 @@
   "follow.noTeams": "还没有关注球队，先选择你支持的球队吧。",
   "follow.noMatches": "当前筛选条件下没有比赛。",
   "follow.chooseTeams": "去关注球队",
+  "teams.filter.count": "当前显示 {visible} / {total} 支球队",
   "teams.filter.legend": "小组筛选",
   "teams.filter.all": "显示全部",
   "teams.filter.showingAll": "显示全部球队",

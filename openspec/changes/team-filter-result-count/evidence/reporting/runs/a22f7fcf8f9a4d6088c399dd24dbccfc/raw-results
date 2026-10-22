@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="124" failures="0" errors="0" time="12.8371519">
+    <testsuite name="tests/added-coverage-html.test.js" timestamp="2026-10-22T07:00:54.962Z" hostname="DESKTOP-2OQ3CDQ" tests="5" failures="0" errors="0" skipped="0" time="0.8680333">
+        <testcase classname="tests/added-coverage-html.test.js" name="renders aggregate and per-file coverage; labels covered/uncovered source and escapes source HTML" time="0.3374713">
+        </testcase>
+        <testcase classname="tests/added-coverage-html.test.js" name="filters files, exposes D=0 as not applicable, and switches actual source line visibility" time="0.1425737">
+        </testcase>
+        <testcase classname="tests/added-coverage-html.test.js" name="refuses stale sources, inconsistent counts, duplicate paths and out-of-range lines" time="0.0525407">
+        </testcase>
+        <testcase classname="tests/added-coverage-html.test.js" name="represents D=0 as not applicable rather than 100 percent" time="0.0469133">
+        </testcase>
+        <testcase classname="tests/added-coverage-html.test.js" name="writes a portable HTML via the CLI, leaves JSON intact and rejects overwriting source or JSON" time="0.2842289">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/added-coverage.test.js" timestamp="2026-10-22T07:00:54.977Z" hostname="DESKTOP-2OQ3CDQ" tests="10" failures="0" errors="0" skipped="0" time="2.8665383">
+        <testcase classname="tests/added-coverage.test.js" name="added executable line coverage &gt; requires exact unrounded aggregate 80 percent, including new unimported code" time="0.1837293">
+        </testcase>
+        <testcase classname="tests/added-coverage.test.js" name="added executable line coverage &gt; maps changed old lines and excludes unchanged source, comments and blanks" time="0.1489029">
+        </testcase>
+        <testcase classname="tests/added-coverage.test.js" name="added executable line coverage &gt; maps a changed multiline continuation to its enclosing executable line" time="0.1502451">
+        </testcase>
+        <testcase classname="tests/added-coverage.test.js" name="added executable line coverage &gt; treats pure rename and no executable changes as not applicable" time="0.0769254">
+        </testcase>
+        <testcase classname="tests/added-coverage.test.js" name="added executable line coverage &gt; fails closed for missing reports, stale source, invalid mapping and missing baseline source" time="0.1751029">
+        </testcase>
+        <testcase classname="tests/added-coverage.test.js" name="fixed manifest reconstruction &gt; rebuilds the complete snapshot read-only and normalizes LF" time="0.0633091">
+        </testcase>
+        <testcase classname="tests/added-coverage.test.js" name="fixed manifest reconstruction &gt; rejects corrupt hashes, missing snapshot, omitted files and escaping paths" time="0.258502">
+        </testcase>
+        <testcase classname="tests/added-coverage.test.js" name="fixed manifest reconstruction &gt; reads only the specified Git commit, rejects missing commit and incomplete manifest" time="1.6259535">
+        </testcase>
+        <testcase classname="tests/added-coverage.test.js" name="accepts provider null end columns as end-of-line, and rejects empty or out-of-range executable maps" time="0.0671946">
+        </testcase>
+        <testcase classname="tests/added-coverage.test.js" name="counts changed multiline template contents and fails missing-file coverage even with a freshly bound report" time="0.1041901">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/browser-storage.test.js" timestamp="2026-10-22T07:00:54.986Z" hostname="DESKTOP-2OQ3CDQ" tests="3" failures="0" errors="0" skipped="0" time="0.0112859">
+        <testcase classname="tests/browser-storage.test.js" name="safe browser storage &gt; reads missing and present values, and writes only the requested key" time="0.0051457">
+        </testcase>
+        <testcase classname="tests/browser-storage.test.js" name="safe browser storage &gt; contains access, read and write exceptions" time="0.0010125">
+        </testcase>
+        <testcase classname="tests/browser-storage.test.js" name="safe browser storage &gt; does not acquire storage until an operation occurs" time="0.0022533">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/data-contract.test.js" timestamp="2026-10-22T07:00:54.991Z" hostname="DESKTOP-2OQ3CDQ" tests="2" failures="0" errors="0" skipped="0" time="0.0248354">
+        <testcase classname="tests/data-contract.test.js" name="published tournament data &gt; contains 104 uniquely identified matches with known teams" time="0.0180329">
+        </testcase>
+        <testcase classname="tests/data-contract.test.js" name="published tournament data &gt; keeps Chinese and English translation keys aligned" time="0.00362">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/environment-dom.test.js" timestamp="2026-10-22T07:00:54.993Z" hostname="DESKTOP-2OQ3CDQ" tests="1" failures="0" errors="0" skipped="0" time="0.0212652">
+        <testcase classname="tests/environment-dom.test.js" name="executes a real DOM assertion in the per-file environment" time="0.0185382">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/environment-node.test.js" timestamp="2026-10-22T07:00:54.995Z" hostname="DESKTOP-2OQ3CDQ" tests="1" failures="0" errors="0" skipped="0" time="0.0078965">
+        <testcase classname="tests/environment-node.test.js" name="keeps Node as the default test environment" time="0.004551">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/follow-controller.test.js" timestamp="2026-10-22T07:00:54.997Z" hostname="DESKTOP-2OQ3CDQ" tests="3" failures="0" errors="0" skipped="0" time="0.1423378">
+        <testcase classname="tests/follow-controller.test.js" name="delegates once, updates real state synchronously and supports disposal" time="0.1124664">
+        </testcase>
+        <testcase classname="tests/follow-controller.test.js" name="consumes retry once, disables duplicate retries and recovers after completion" time="0.0175826">
+        </testcase>
+        <testcase classname="tests/follow-controller.test.js" name="handles absent roots without creating listeners" time="0.0089333">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/follow-filters.test.js" timestamp="2026-10-22T07:00:55.000Z" hostname="DESKTOP-2OQ3CDQ" tests="1" failures="0" errors="0" skipped="0" time="0.0095452">
+        <testcase classname="tests/follow-filters.test.js" name="patches independent filters, rejects invalid values, preserves follows/issues and never persists filters" time="0.0070644">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/follow-language.test.js" timestamp="2026-10-22T07:00:55.002Z" hostname="DESKTOP-2OQ3CDQ" tests="3" failures="0" errors="0" skipped="0" time="0.0661352">
+        <testcase classname="tests/follow-language.test.js" name="commits only the latest language and dictionary when responses arrive in reverse order" time="0.0354328">
+        </testcase>
+        <testcase classname="tests/follow-language.test.js" name="toggles from the pending intent, while no partial language commit occurs" time="0.0098927">
+        </testcase>
+        <testcase classname="tests/follow-language.test.js" name="supports switching with storage denied and handles failed dictionary loading" time="0.0169649">
+            <system-err>
+Failed to load i18n dict: Error: offline
+    at D:/GitHub/WorldCup2026/tests/follow-language.test.js:22:26
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20
+
+            </system-err>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/follow-localization.test.js" timestamp="2026-10-22T07:00:55.005Z" hostname="DESKTOP-2OQ3CDQ" tests="1" failures="0" errors="0" skipped="0" time="0.4346072">
+        <testcase classname="tests/follow-localization.test.js" name="actual app keeps state, results, warnings, scroll and focused follow control across both languages" time="0.4313643">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/follow-matches.test.js" timestamp="2026-10-22T07:00:55.008Z" hostname="DESKTOP-2OQ3CDQ" tests="2" failures="0" errors="0" skipped="0" time="0.0139519">
+        <testcase classname="tests/follow-matches.test.js" name="match selection &gt; selects home OR away with multiple-team union and stable ID deduplication" time="0.0074298">
+        </testcase>
+        <testcase classname="tests/follow-matches.test.js" name="match selection &gt; intersects stage with follows and keeps full results with follow disabled" time="0.0016881">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/follow-mutation-runner.test.js" timestamp="2026-10-22T07:00:55.010Z" hostname="DESKTOP-2OQ3CDQ" tests="6" failures="0" errors="0" skipped="0" time="4.6388492">
+        <testcase classname="tests/follow-mutation-runner.test.js" name="detects a real assertion failure, restores exact bytes and verifies the healthy test afterwards" time="1.3547586">
+        </testcase>
+        <testcase classname="tests/follow-mutation-runner.test.js" name="rejects a surviving mutant and restores" time="0.9174623">
+        </testcase>
+        <testcase classname="tests/follow-mutation-runner.test.js" name="rejects syntax/collection errors rather than counting them as killed mutants" time="0.5219562">
+        </testcase>
+        <testcase classname="tests/follow-mutation-runner.test.js" name="restores after a timeout and reruns the healthy command" time="0.931737">
+        </testcase>
+        <testcase classname="tests/follow-mutation-runner.test.js" name="refuses mutations if the original test already fails or the anchor is absent" time="0.2186384">
+        </testcase>
+        <testcase classname="tests/follow-mutation-runner.test.js" name="CLI exits nonzero on a survivor without leaving its fixture modified" time="0.6829711">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/follow-schedule.test.js" timestamp="2026-10-22T07:00:55.016Z" hostname="DESKTOP-2OQ3CDQ" tests="3" failures="0" errors="0" skipped="0" time="0.6615905">
+        <testcase classname="tests/follow-schedule.test.js" name="renders native controls, unique count, stable groups and real detail links" time="0.4289398">
+        </testcase>
+        <testcase classname="tests/follow-schedule.test.js" name="distinguishes no follows, no matches and data errors without clearing state" time="0.0477455">
+        </testcase>
+        <testcase classname="tests/follow-schedule.test.js" name="delegates checkbox and stages synchronously; rerender reads the latest intent" time="0.1775867">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/follow-stage.test.js" timestamp="2026-10-22T07:00:55.020Z" hostname="DESKTOP-2OQ3CDQ" tests="2" failures="0" errors="0" skipped="0" time="0.0117281">
+        <testcase classname="tests/follow-stage.test.js" name="defines the existing ordered stages once and classifies every supported match" time="0.0079225">
+        </testcase>
+        <testcase classname="tests/follow-stage.test.js" name="rejects unsupported or missing stages and filter values" time="0.0009813">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/follow-state.test.js" timestamp="2026-10-22T07:00:55.022Z" hostname="DESKTOP-2OQ3CDQ" tests="12" failures="0" errors="0" skipped="0" time="0.0281674">
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; returns the exact flat initial snapshot without touching storage" time="0.0075368">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; restores once, validates codes and exposes independent sorted copies" time="0.0035218">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; adds and removes multiple teams without duplicates and restores the saved list after refresh" time="0.0010815">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; reports corrupt records without overwriting them: {broken" time="0.0029536">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; reports corrupt records without overwriting them: null" time="0.0012219">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; reports corrupt records without overwriting them: []" time="0.0008846">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; reports corrupt records without overwriting them: {&quot;version&quot;:2,&quot;teamCodes&quot;:[]}" time="0.0007952">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; reports corrupt records without overwriting them: {&quot;version&quot;:1,&quot;teamCodes&quot;:{}}" time="0.0009052">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; treats missing and all-invalid records as ordinary empty lists" time="0.0009874">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; reports an unreadable record, but keeps a usable temporary state" time="0.0009504">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; keeps the latest in-memory choice after write failure, never rereads old storage, and later saves the whole list" time="0.0016626">
+        </testcase>
+        <testcase classname="tests/follow-state.test.js" name="follow state and versioned persistence &gt; rejects invalid initialization and invalid operations without persisting" time="0.0009897">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/follow-team-detail.test.js" timestamp="2026-10-22T07:00:55.040Z" hostname="DESKTOP-2OQ3CDQ" tests="9" failures="0" errors="0" skipped="0" time="0.471472">
+        <testcase classname="tests/follow-team-detail.test.js" name="renders a real accessible follow control and preserves all original team matches" time="0.2524439">
+        </testcase>
+        <testcase classname="tests/follow-team-detail.test.js" name="rejects missing, invalid and unknown team codes: undefined" time="0.0103771">
+        </testcase>
+        <testcase classname="tests/follow-team-detail.test.js" name="rejects missing, invalid and unknown team codes: " time="0.0079454">
+        </testcase>
+        <testcase classname="tests/follow-team-detail.test.js" name="rejects missing, invalid and unknown team codes: arg" time="0.0078923">
+        </testcase>
+        <testcase classname="tests/follow-team-detail.test.js" name="rejects missing, invalid and unknown team codes: XXX" time="0.0119864">
+        </testcase>
+        <testcase classname="tests/follow-team-detail.test.js" name="rejects missing, invalid and unknown team codes: ARG&lt;script&gt;" time="0.0064673">
+        </testcase>
+        <testcase classname="tests/follow-team-detail.test.js" name="separates data failure from unknown team and never initializes or clears a saved list" time="0.0070656">
+        </testcase>
+        <testcase classname="tests/follow-team-detail.test.js" name="shows corrupted/read/write failures as warnings without suppressing valid browsing" time="0.0265525">
+        </testcase>
+        <testcase classname="tests/follow-team-detail.test.js" name="boots the actual app and permits temporary follow when all localStorage access is denied" time="0.1135813">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/requirements-tdd-report.test.js" timestamp="2026-10-22T07:00:55.048Z" hostname="DESKTOP-2OQ3CDQ" tests="7" failures="0" errors="0" skipped="0" time="0.7091076">
+        <testcase classname="tests/requirements-tdd-report.test.js" name="normalizes real Vitest and nested Playwright results and preserves retries and skipped tests" time="0.0109207">
+        </testcase>
+        <testcase classname="tests/requirements-tdd-report.test.js" name="resolves Playwright testDir-relative paths using the recorded rootDir" time="0.0019839">
+        </testcase>
+        <testcase classname="tests/requirements-tdd-report.test.js" name="never counts missing, skipped, failed, flaky or partial mappings as fully verified" time="0.0069706">
+        </testcase>
+        <testcase classname="tests/requirements-tdd-report.test.js" name="requires ordered valid semantic Red and passing Green/Refactor; does not infer per-case TDD" time="0.0024452">
+        </testcase>
+        <testcase classname="tests/requirements-tdd-report.test.js" name="rejects duplicate requirements and ambiguous selectors rather than inventing coverage" time="0.0012326">
+        </testcase>
+        <testcase classname="tests/requirements-tdd-report.test.js" name="renders offline traceability with escaped input, independent metrics and real working filters" time="0.5013025">
+        </testcase>
+        <testcase classname="tests/requirements-tdd-report.test.js" name="opens every collapsed ancestor when following a test source link" time="0.1772068">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/router-follow.test.js" timestamp="2026-10-22T07:00:55.059Z" hostname="DESKTOP-2OQ3CDQ" tests="4" failures="0" errors="0" skipped="0" time="0.1068859">
+        <testcase classname="tests/router-follow.test.js" name="preserves controls while rendering, then restores focus and scroll only for control updates" time="0.0723417">
+        </testcase>
+        <testcase classname="tests/router-follow.test.js" name="does not let an older response commit or steal focus" time="0.013841">
+        </testcase>
+        <testcase classname="tests/router-follow.test.js" name="keeps ordinary Event calls compatible and ignores unsafe focus selectors" time="0.0144199">
+        </testcase>
+        <testcase classname="tests/router-follow.test.js" name="reports a missing app without crashing" time="0.0036025">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/store-results.test.js" timestamp="2026-10-22T07:00:55.072Z" hostname="DESKTOP-2OQ3CDQ" tests="15" failures="0" errors="0" skipped="0" time="0.0294622">
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; returns the real ready snapshot and deduplicates concurrent fetches" time="0.0098309">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; keeps an actually empty match list ready" time="0.0018893">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; distinguishes network failures from empty data, including a legacy first caller" time="0.002827">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; distinguishes http failures from empty data, including a legacy first caller" time="0.0008188">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; distinguishes parse failures from empty data, including a legacy first caller" time="0.0009338">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; rejects malformed team dictionaries: null" time="0.0007375">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; rejects malformed team dictionaries: []" time="0.0005346">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; rejects malformed team dictionaries: {&quot;ARG&quot;:null}" time="0.0008684">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; rejects malformed team dictionaries: {&quot;ARG&quot;:{&quot;code&quot;:&quot;BRA&quot;,&quot;name&quot;:{&quot;zh&quot;:&quot;ARG&quot;,&quot;en&quot;:&quot;ARG&quot;},&quot;group&quot;:&quot;A&quot;,&quot;stats&quot;:{}}}" time="0.000905">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; rejects malformed match inputs: {}" time="0.0014395">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; rejects malformed match inputs: [{&quot;id&quot;:&quot;1&quot;,&quot;stage&quot;:&quot;group&quot;,&quot;group&quot;:&quot;A&quot;,&quot;date&quot;:&quot;2026-06-11&quot;,&quot;home&quot;:{&quot;code&quot;:&quot;ARG&quot;},&quot;away&quot;:{&quot;code&quot;:&quot;BRA&quot;},&quot;homeScore&quot;:1,&quot;awayScore&quot;:0}]" time="0.0004524">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; rejects malformed match inputs: [{&quot;id&quot;:1,&quot;stage&quot;:&quot;group&quot;,&quot;group&quot;:&quot;A&quot;,&quot;date&quot;:&quot;2026-06-11&quot;,&quot;home&quot;:{&quot;code&quot;:&quot;XXX&quot;},&quot;away&quot;:{&quot;code&quot;:&quot;BRA&quot;},&quot;homeScore&quot;:1,&quot;awayScore&quot;:0}]" time="0.000437">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; rejects malformed match inputs: [{&quot;id&quot;:1,&quot;stage&quot;:&quot;unknown&quot;,&quot;group&quot;:&quot;A&quot;,&quot;date&quot;:&quot;2026-06-11&quot;,&quot;home&quot;:{&quot;code&quot;:&quot;ARG&quot;},&quot;away&quot;:{&quot;code&quot;:&quot;BRA&quot;},&quot;homeScore&quot;:1,&quot;awayScore&quot;:0}]" time="0.000288">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; retries just teams/matches and preserves unrelated cached resources" time="0.0027243">
+        </testcase>
+        <testcase classname="tests/store-results.test.js" name="observable tournament results and legacy cache &gt; does not let an old in-flight request replace a retried cache" time="0.0007841">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/team-filter-count-view.test.js" timestamp="2026-10-22T07:00:55.082Z" hostname="DESKTOP-2OQ3CDQ" tests="4" failures="0" errors="0" skipped="0" time="0.3421645">
+        <testcase classname="tests/team-filter-count-view.test.js" name="count-language" time="0.2104573">
+        </testcase>
+        <testcase classname="tests/team-filter-count-view.test.js" name="count-return-reset" time="0.0563985">
+        </testcase>
+        <testcase classname="tests/team-filter-count-view.test.js" name="count-no-data" time="0.035051">
+        </testcase>
+        <testcase classname="tests/team-filter-count-view.test.js" name="count-unknown-view" time="0.0367961">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/team-group-filter-controller.test.js" timestamp="2026-10-22T07:00:55.086Z" hostname="DESKTOP-2OQ3CDQ" tests="4" failures="0" errors="0" skipped="0" time="0.7908708">
+        <testcase classname="tests/team-group-filter-controller.test.js" name="updates union synchronously without replacing controls or losing focus; clears the last group" time="0.5007233">
+        </testcase>
+        <testcase classname="tests/team-group-filter-controller.test.js" name="selects all, handles rapid changes and repeated show-all actions" time="0.1264">
+        </testcase>
+        <testcase classname="tests/team-group-filter-controller.test.js" name="delegates once, ignores unrelated actions and supports disposal and reinitialization" time="0.0743355">
+        </testcase>
+        <testcase classname="tests/team-group-filter-controller.test.js" name="uses the active English dictionary for updates after language re-render" time="0.0842435">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/team-group-filter-state.test.js" timestamp="2026-10-22T07:00:55.091Z" hostname="DESKTOP-2OQ3CDQ" tests="6" failures="0" errors="0" skipped="0" time="0.0111515">
+        <testcase classname="tests/team-group-filter-state.test.js" name="groups in letter order while keeping team order, including all missing-group forms" time="0.0050728">
+        </testcase>
+        <testcase classname="tests/team-group-filter-state.test.js" name="empty selection shows all; selection is a union and excludes unknown groups" time="0.0007282">
+        </testcase>
+        <testcase classname="tests/team-group-filter-state.test.js" name="selects, adds, cancels and clears without duplicate selections" time="0.0008023">
+        </testcase>
+        <testcase classname="tests/team-group-filter-state.test.js" name="rejects unavailable groups and keeps only valid selections on synchronization" time="0.0006135">
+        </testcase>
+        <testcase classname="tests/team-group-filter-state.test.js" name="snapshots are copies and new document instances start empty" time="0.0005075">
+        </testcase>
+        <testcase classname="tests/team-group-filter-state.test.js" name="handles all selections and rapid changes according to the last checked value" time="0.0004615">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/team-group-filter-view.test.js" timestamp="2026-10-22T07:00:55.095Z" hostname="DESKTOP-2OQ3CDQ" tests="8" failures="0" errors="0" skipped="0" time="0.3798889">
+        <testcase classname="tests/team-group-filter-view.test.js" name="renders all group options, clear action, names and original team order" time="0.1776096">
+        </testcase>
+        <testcase classname="tests/team-group-filter-view.test.js" name="reads the latest selection when re-rendering, retains all options and resets with a new document instance" time="0.0649564">
+        </testcase>
+        <testcase classname="tests/team-group-filter-view.test.js" name="uses a neutral unavailable message for empty or failed data [0]" time="0.0077183">
+        </testcase>
+        <testcase classname="tests/team-group-filter-view.test.js" name="uses a neutral unavailable message for empty or failed data [1]" time="0.0091767">
+        </testcase>
+        <testcase classname="tests/team-group-filter-view.test.js" name="keeps unknown-group teams only in all mode and excludes them from options" time="0.0358348">
+        </testcase>
+        <testcase classname="tests/team-group-filter-view.test.js" name="switches real dictionaries zh → en → zh while retaining selected groups and team identities" time="0.0527321">
+        </testcase>
+        <testcase classname="tests/team-group-filter-view.test.js" name="translates all-mode and unknown-group labels using the English dictionary" time="0.0219021">
+        </testcase>
+        <testcase classname="tests/team-group-filter-view.test.js" name="translates unavailable-data guidance using the English dictionary" time="0.0062566">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/wc-history.test.js" timestamp="2026-10-22T07:00:55.101Z" hostname="DESKTOP-2OQ3CDQ" tests="12" failures="0" errors="0" skipped="0" time="0.1893814">
+        <testcase classname="tests/wc-history.test.js" name="wc-history 快照：数据契约 &gt; meta.teams 与 bracket.json 半决赛参赛队一致（取 home/away，不是 winner）" time="0.0163262">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 快照：数据契约 &gt; meta.editions 为锁定的 7 届且严格升序" time="0.0057501">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 快照：数据契约 &gt; coverage 键集合恰好等于 meta.teams，每队届次键集合恰好等于 meta.editions" time="0.0126379">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 快照：数据契约 &gt; coverage 与 matches 双向一致：零记录 ⟺ missing/not_qualified" time="0.0129306">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 快照：数据契约 &gt; 每条记录：id 唯一且合法、edition 合法、date 年份等于 edition" time="0.0596053">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 快照：数据契约 &gt; 引用完整性边界：四强代码必须在 teams.json 中，历史对手不做该校验" time="0.029802">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 快照：数据契约 &gt; shootout 只以 { home, away } 形态出现，且仅淘汰赛" time="0.0073209">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 纯函数层 &gt; COVERAGE 常量含全部 4 个取值" time="0.030624">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 纯函数层 &gt; normalizeHistoryRound 特判 group，其余委托 normalizeRound" time="0.0011432">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 纯函数层 &gt; resolveSelection 逐条覆盖契约规则表，且永不抛异常" time="0.0036881">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 纯函数层 &gt; groupByEdition 只保留有记录的届次并按届次倒序" time="0.0018227">
+        </testcase>
+        <testcase classname="tests/wc-history.test.js" name="wc-history 纯函数层 &gt; listCoverage 返回全部 7 届，按届次倒序，取值合法" time="0.0018349">
+        </testcase>
+    </testsuite>
+</testsuites>

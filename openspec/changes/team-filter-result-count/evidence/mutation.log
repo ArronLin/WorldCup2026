@@ -1,0 +1,82 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/team-filter-count.test.js (4 tests | 3 failed) 16ms
+   × count-unequal-union 9ms
+   × count-unknown 1ms
+   × count-data-replacement 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/team-filter-count.test.js > count-unequal-union
+AssertionError: expected { visible: 6, total: 6 } to deeply equal { visible: 5, total: 6 }
+
+- Expected
++ Received
+
+  {
+    "total": 6,
+-   "visible": 5,
++   "visible": 6,
+  }
+
+ ❯ tests/team-filter-count.test.js:7:52
+      5| it('count-unequal-union', () => {
+      6|   const before = JSON.stringify(groups);
+      7|   expect(countTeamGroups(groups, ['A', 'C', 'A'])).toEqual({ visible: …
+       |                                                    ^
+      8|   expect(countTeamGroups(groups, ['B'])).toEqual({ visible: 1, total: …
+      9|   expect(JSON.stringify(groups)).toBe(before);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/team-filter-count.test.js > count-unknown
+AssertionError: expected { visible: 7, total: 7 } to deeply equal { visible: 2, total: 7 }
+
+- Expected
++ Received
+
+  {
+    "total": 7,
+-   "visible": 2,
++   "visible": 7,
+  }
+
+ ❯ tests/team-filter-count.test.js:14:40
+     12|   const data = [...groups, { key: '', teams: [{}] }];
+     13|   expect(countTeamGroups(data, [])).toEqual({ visible: 7, total: 7 });
+     14|   expect(countTeamGroups(data, ['A'])).toEqual({ visible: 2, total: 7 …
+       |                                        ^
+     15| });
+     16| it('count-data-replacement', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/team-filter-count.test.js > count-data-replacement
+AssertionError: expected { visible: 6, total: 6 } to deeply equal { visible: 3, total: 6 }
+
+- Expected
++ Received
+
+  {
+    "total": 6,
+-   "visible": 3,
++   "visible": 6,
+  }
+
+ ❯ tests/team-filter-count.test.js:17:47
+     15| });
+     16| it('count-data-replacement', () => {
+     17|   setGroups(groups); expect(getCounts(['C'])).toEqual({ visible: 3, to…
+       |                                               ^
+     18|   setGroups([{ key: 'C', teams: [{}] }]); expect(getCounts(['C'])).toE…
+     19|   setGroups([]); expect(getCounts([])).toEqual({ visible: 0, total: 0 …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 1 passed (4)
+   Start at  14:58:06
+   Duration  368ms (transform 95ms, setup 0ms, import 119ms, tests 16ms, environment 0ms)
+

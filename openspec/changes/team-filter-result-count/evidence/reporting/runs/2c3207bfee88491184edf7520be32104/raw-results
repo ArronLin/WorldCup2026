@@ -1,0 +1,100 @@
+<testsuites id="" name="" tests="38" failures="0" skipped="0" errors="0" time="56.060538">
+<testsuite name="added-coverage-report.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="3" failures="0" skipped="0" time="2" errors="0">
+<testcase name="offline report shows true aggregates, both source statuses and optional D=0 files" classname="added-coverage-report.spec.js" time="1.137">
+</testcase>
+<testcase name="keyboard, file search, line filters and copied line links work" classname="added-coverage-report.spec.js" time="0.527">
+</testcase>
+<testcase name="375px layout keeps page within the viewport and scrolls long code inside its panel" classname="added-coverage-report.spec.js" time="0.336">
+</testcase>
+</testsuite>
+<testsuite name="follow-teams.empty-retry.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="2" failures="0" skipped="0" time="8.077" errors="0">
+<testcase name="no follows and no matches are separate, and removing the last follow updates returning schedule" classname="follow-teams.empty-retry.spec.js" time="5.659">
+</testcase>
+<testcase name="schedule 503 retries without losing saved follows" classname="follow-teams.empty-retry.spec.js" time="2.418">
+</testcase>
+</testsuite>
+<testsuite name="follow-teams.keyboard-race.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="2" failures="0" skipped="0" time="7.975" errors="0">
+<testcase name="keyboard can follow, filter, select a stage and open a match with visible focus" classname="follow-teams.keyboard-race.spec.js" time="2.837">
+</testcase>
+<testcase name="rapid filter changes and reversed language responses leave the latest intent visible" classname="follow-teams.keyboard-race.spec.js" time="5.138">
+</testcase>
+</testsuite>
+<testsuite name="follow-teams.language.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="3" failures="0" skipped="0" time="15.823" errors="0">
+<testcase name="Chinese-English-Chinese preserves details, filters, results and static notice" classname="follow-teams.language.spec.js" time="5.455">
+</testcase>
+<testcase name="both empty states and unsaved warning translate in both directions" classname="follow-teams.language.spec.js" time="5.993">
+</testcase>
+<testcase name="English full journey works without AI; controls fit a narrow screen in both themes" classname="follow-teams.language.spec.js" time="4.375">
+</testcase>
+</testsuite>
+<testsuite name="follow-teams.persistence.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="2" failures="0" skipped="0" time="3.827" errors="0">
+<testcase name="real UI follows two teams, removes one, refreshes and restores in a new page" classname="follow-teams.persistence.spec.js" time="2.752">
+</testcase>
+<testcase name="invalid team entries have no follow action" classname="follow-teams.persistence.spec.js" time="1.075">
+</testcase>
+</testsuite>
+<testsuite name="follow-teams.schedule.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="2" failures="0" skipped="0" time="7.106" errors="0">
+<testcase name="follows combine with stages and survive same-tab return, refresh resets only filters" classname="follow-teams.schedule.spec.js" time="5.325">
+</testcase>
+<testcase name="fixture has exact union, stable grouped order and deduplicated IDs" classname="follow-teams.schedule.spec.js" time="1.781">
+</testcase>
+</testsuite>
+<testsuite name="follow-teams.storage.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="5" failures="0" skipped="0" time="6.841" errors="0">
+<testcase name="corrupt and denied read records are reported without blocking browsing" classname="follow-teams.storage.spec.js" time="0.922">
+</testcase>
+<testcase name="follow-key read denial allows a temporary follow; later save recovers" classname="follow-teams.storage.spec.js" time="1.418">
+</testcase>
+<testcase name="write failure preserves state across routes; a later save persists the full set" classname="follow-teams.storage.spec.js" time="1.558">
+</testcase>
+<testcase name="all storage denied still starts and allows temporary follows" classname="follow-teams.storage.spec.js" time="1.358">
+</testcase>
+<testcase name="503 is an error and a user retry really fetches the data again" classname="follow-teams.storage.spec.js" time="1.585">
+</testcase>
+</testsuite>
+<testsuite name="history.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="3" failures="0" skipped="0" time="3.953" errors="0">
+<testcase name="场景 A：单队 7 届倒序，每条含届次/轮次/对手/比分且无空白项" classname="history.spec.js" time="1.817">
+</testcase>
+<testcase name="场景 E（前半）：未选择态、非法参数回落、参数大小写不敏感" classname="history.spec.js" time="0.862">
+</testcase>
+<testcase name="场景 D：语言切换后已选状态不丢失 › 切换为英文后选择原样保留" classname="history.spec.js" time="1.274">
+</testcase>
+</testsuite>
+<testsuite name="smoke.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="2" failures="0" skipped="0" time="5.49" errors="0">
+<testcase name="routes, language switch and schedule filters are available" classname="smoke.spec.js" time="2.071">
+</testcase>
+<testcase name="mock chat loads lazily and accepts a question" classname="smoke.spec.js" time="3.419">
+</testcase>
+</testsuite>
+<testsuite name="team-filter-count.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="5" failures="0" skipped="0" time="10.405" errors="0">
+<testcase name="count-journey" classname="team-filter-count.spec.js" time="3.412">
+</testcase>
+<testcase name="count-language-navigation" classname="team-filter-count.spec.js" time="3.507">
+</testcase>
+<testcase name="count-data-boundaries" classname="team-filter-count.spec.js" time="1.44">
+</testcase>
+<testcase name="count-no-data-empty" classname="team-filter-count.spec.js" time="1.045">
+</testcase>
+<testcase name="count-no-data-offline" classname="team-filter-count.spec.js" time="1.001">
+</testcase>
+</testsuite>
+<testsuite name="team-group-filter.spec.js" timestamp="2026-10-22T06:59:07.385Z" hostname="" tests="9" failures="0" skipped="0" time="15.107" errors="0">
+<testcase name="single and multiple groups, last cancellation and visible response within one second" classname="team-group-filter.spec.js" time="2.642">
+</testcase>
+<testcase name="all groups, rapid changes and repeated show-all keep exact order without duplicates" classname="team-group-filter.spec.js" time="2.129">
+</testcase>
+<testcase name="correct detail, return retains groups, refresh and a new page reset them" classname="team-group-filter.spec.js" time="2.497">
+</testcase>
+<testcase name="real Chinese-English-Chinese changes preserve selected identities and all mode" classname="team-group-filter.spec.js" time="2.525">
+</testcase>
+<testcase name="keyboard selection retains focus and hidden team cards leave the tab sequence" classname="team-group-filter.spec.js" time="0.866">
+</testcase>
+<testcase name="empty data has a neutral bilingual message and no fabricated groups" classname="team-group-filter.spec.js" time="0.885">
+</testcase>
+<testcase name="unavailable data is not described as an empty filter result" classname="team-group-filter.spec.js" time="0.721">
+</testcase>
+<testcase name="unknown groups remain in all mode but never become options or selected results" classname="team-group-filter.spec.js" time="1.28">
+</testcase>
+<testcase name="narrow and desktop controls wrap without overflow and have visible focus in both themes" classname="team-group-filter.spec.js" time="1.562">
+</testcase>
+</testsuite>
+</testsuites>

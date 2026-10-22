@@ -1,0 +1,15 @@
+{
+  "junit_statuses": [
+    "passed",
+    "failed",
+    "error",
+    "skipped",
+    "flaky"
+  ],
+  "unique_parameter_ids": 5,
+  "unimported_file": "netlify/functions/chat.mjs",
+  "zero_hit_executable_lines": 159,
+  "source_mismatch_rejected": true,
+  "native_runs_imported": 4,
+  "custom_adapter_required": false
+}

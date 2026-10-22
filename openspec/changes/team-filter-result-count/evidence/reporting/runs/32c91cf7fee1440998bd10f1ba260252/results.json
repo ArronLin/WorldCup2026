@@ -1,0 +1,79 @@
+{
+  "global_errors": [],
+  "provider": {
+    "id": "vitest",
+    "version": "4.1.10"
+  },
+  "run_id": "32c91cf7fee1440998bd10f1ba260252",
+  "schema_version": 1,
+  "tests": [
+    {
+      "attempts": 1,
+      "container": "tests/team-filter-count.test.js",
+      "duration_ms": 13.1487,
+      "evidence": "runs/32c91cf7fee1440998bd10f1ba260252/results.json",
+      "failure": "expected { visible: +0, total: +0 } to deeply equal { visible: 6, total: 6 } \nAssertionError: expected { visible: +0, total: +0 } to deeply equal { visible: 6, total: 6 }\n\n- Expected\n+ Received\n\n  {\n-   \"total\": 6,\n-   \"visible\": 6,\n+   \"total\": 0,\n+   \"visible\": 0,\n  }\n\n ❯ tests/team-filter-count.test.js:4:61",
+      "failure_kind": "assertion",
+      "file": null,
+      "level": "unit",
+      "locator": "tests/team-filter-count.test.js::count-all",
+      "original_status": "failed",
+      "parameters": "",
+      "provider": "vitest",
+      "run_id": "32c91cf7fee1440998bd10f1ba260252",
+      "status": "failed",
+      "test_id": "27284dd310e498aa42e83b2702349d28b3819bf501fa33ef2c03cbe11258abaf"
+    },
+    {
+      "attempts": 1,
+      "container": "tests/team-filter-count.test.js",
+      "duration_ms": 1.4482,
+      "evidence": "runs/32c91cf7fee1440998bd10f1ba260252/results.json",
+      "failure": "expected { visible: +0, total: +0 } to deeply equal { visible: 5, total: 6 } \nAssertionError: expected { visible: +0, total: +0 } to deeply equal { visible: 5, total: 6 }\n\n- Expected\n+ Received\n\n  {\n-   \"total\": 6,\n-   \"visible\": 5,\n+   \"total\": 0,\n+   \"visible\": 0,\n  }\n\n ❯ tests/team-filter-count.test.js:7:52",
+      "failure_kind": "assertion",
+      "file": null,
+      "level": "unit",
+      "locator": "tests/team-filter-count.test.js::count-unequal-union",
+      "original_status": "failed",
+      "parameters": "",
+      "provider": "vitest",
+      "run_id": "32c91cf7fee1440998bd10f1ba260252",
+      "status": "failed",
+      "test_id": "1af43d50d0875fb4acc9d20f2a76a49f9f05cb34bbcb6acb529e3e7cfda09922"
+    },
+    {
+      "attempts": 1,
+      "container": "tests/team-filter-count.test.js",
+      "duration_ms": 0.8466,
+      "evidence": "runs/32c91cf7fee1440998bd10f1ba260252/results.json",
+      "failure": "expected { visible: +0, total: +0 } to deeply equal { visible: 7, total: 7 } \nAssertionError: expected { visible: +0, total: +0 } to deeply equal { visible: 7, total: 7 }\n\n- Expected\n+ Received\n\n  {\n-   \"total\": 7,\n-   \"visible\": 7,\n+   \"total\": 0,\n+   \"visible\": 0,\n  }\n\n ❯ tests/team-filter-count.test.js:13:37",
+      "failure_kind": "assertion",
+      "file": null,
+      "level": "unit",
+      "locator": "tests/team-filter-count.test.js::count-unknown",
+      "original_status": "failed",
+      "parameters": "",
+      "provider": "vitest",
+      "run_id": "32c91cf7fee1440998bd10f1ba260252",
+      "status": "failed",
+      "test_id": "cc11db223b7368a35cf73c6a5afd0e5402b97f3e9a6e97579fc7df7307302d07"
+    },
+    {
+      "attempts": 1,
+      "container": "tests/team-filter-count.test.js",
+      "duration_ms": 0.7681,
+      "evidence": "runs/32c91cf7fee1440998bd10f1ba260252/results.json",
+      "failure": "expected { visible: +0, total: +0 } to deeply equal { visible: 3, total: 6 } \nAssertionError: expected { visible: +0, total: +0 } to deeply equal { visible: 3, total: 6 }\n\n- Expected\n+ Received\n\n  {\n-   \"total\": 6,\n-   \"visible\": 3,\n+   \"total\": 0,\n+   \"visible\": 0,\n  }\n\n ❯ tests/team-filter-count.test.js:17:47",
+      "failure_kind": "assertion",
+      "file": null,
+      "level": "unit",
+      "locator": "tests/team-filter-count.test.js::count-data-replacement",
+      "original_status": "failed",
+      "parameters": "",
+      "provider": "vitest",
+      "run_id": "32c91cf7fee1440998bd10f1ba260252",
+      "status": "failed",
+      "test_id": "8b4dc2669b9e0a77e721e88334569f431160a3801cadf489f455f11828724e3b"
+    }
+  ]
+}
