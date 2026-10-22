@@ -1,0 +1,105 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/team-group-filter-controller.test.js (4 tests | 1 failed) 357ms
+   × uses the active English dictionary for updates after language re-render 64ms
+ ❯ tests/team-group-filter-view.test.js (8 tests | 3 failed) 374ms
+   × switches real dictionaries zh → en → zh while retaining selected groups and team identities 55ms
+   × translates all-mode and unknown-group labels using the English dictionary 36ms
+   × translates unavailable-data guidance using the English dictionary 11ms
+
+ Test Files  2 failed (2)
+      Tests  4 failed | 8 passed (12)
+   Start at  15:59:07
+   Duration  1.93s (transform 242ms, setup 0ms, import 191ms, tests 731ms, environment 2.14s)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/team-group-filter-controller.test.js > uses the active English dictionary for updates after language re-render
+AssertionError: expected 'teams.filter.showingSelected' to be 'Showing selected groups' // Object.is equality
+
+Expected: "Showing selected groups"
+Received: "teams.filter.showingSelected"
+
+ ❯ tests/team-group-filter-controller.test.js:47:71
+     45|   checkbox(root, 'A').click(); await i18n.setLang('en'); root.innerHTM…
+     46|   checkbox(root, 'C').click();
+     47|   expect(root.querySelector('[data-team-group-summary]').textContent).…
+       |                                                                       ^
+     48|   expect(visibleCodes(root)).toEqual(['AAA', 'AAB', 'CCC']);
+     49|   root.querySelector('[data-team-group-action="all"]').click();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/team-group-filter-view.test.js > switches real dictionaries zh → en → zh while retaining selected groups and team identities
+AssertionError: expected 'teams.filter.legend' to be 'Filter by group' // Object.is equality
+
+Expected: "Filter by group"
+Received: "teams.filter.legend"
+
+ ❯ tests/team-group-filter-view.test.js:46:52
+     44|   await i18n.setLang('en'); root.innerHTML = await view();
+     45|   expect(document.documentElement.lang).toBe('en');
+     46|   expect(root.querySelector('legend').textContent).toBe('Filter by gro…
+       |                                                    ^
+     47|   expect(root.querySelector('[data-team-group-summary]').textContent).…
+     48|   expect(root.textContent).toContain('Alpha');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/team-group-filter-view.test.js > translates all-mode and unknown-group labels using the English dictionary
+AssertionError: expected 'Teams48 participating teamsteams.filt…' to contain 'Unknown group'
+
+- Expected
++ Received
+
+- Unknown group
++ Teams48 participating teamsteams.filter.legend Group A Group B Group Cteams.filter.allteams.filter.showingAllGroup A
++         AAA
++         Alpha
++         UEFA · #1
++       
++         AAB
++         Beta
++         
++       Group B
++         BBB
++         Gamma
++         
++       Group C
++         CCC
++         Delta
++         
++       teams.filter.unknownGroup
++         XXX
++         Unknown
++         
++       
+
+ ❯ tests/team-group-filter-view.test.js:57:36
+     55| it('translates all-mode and unknown-group labels using the English dic…
+     56|   mounted = await mountTeams({ ...teams, XXX: { code: 'XXX', name: { e…
+     57|   expect(mounted.root.textContent).toContain('Unknown group');
+       |                                    ^
+     58|   expect(mounted.root.querySelector('[data-team-group-summary]').textC…
+     59|   expect(mounted.root.querySelector('[data-team-group-action="all"]').…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/team-group-filter-view.test.js > translates unavailable-data guidance using the English dictionary
+AssertionError: expected 'Teams48 participating teamsteams.filt…' to contain 'No teams available. Refresh to try ag…'
+
+Expected: "No teams available. Refresh to try again."
+Received: "Teams48 participating teamsteams.filter.unavailable"
+
+ ❯ tests/team-group-filter-view.test.js:63:36
+     61| it('translates unavailable-data guidance using the English dictionary'…
+     62|   mounted = await mountTeams({}, 'en');
+     63|   expect(mounted.root.textContent).toContain('No teams available. Refr…
+       |                                    ^
+     64| });
+     65|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+

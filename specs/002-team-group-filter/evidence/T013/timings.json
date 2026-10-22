@@ -1,0 +1,86 @@
+[
+  {
+    "ms": 9.899999976158142,
+    "codes": [
+      "MEX",
+      "RSA",
+      "KOR",
+      "CZE"
+    ]
+  },
+  {
+    "ms": 17.199999928474426,
+    "codes": [
+      "MEX",
+      "RSA",
+      "KOR",
+      "CZE",
+      "BRA",
+      "MAR",
+      "HAI",
+      "SCO"
+    ]
+  },
+  {
+    "ms": 15.800000071525574,
+    "codes": [
+      "BRA",
+      "MAR",
+      "HAI",
+      "SCO"
+    ]
+  },
+  {
+    "ms": 36.60000002384186,
+    "codes": [
+      "MEX",
+      "RSA",
+      "KOR",
+      "CZE",
+      "CAN",
+      "BIH",
+      "QAT",
+      "SUI",
+      "BRA",
+      "MAR",
+      "HAI",
+      "SCO",
+      "USA",
+      "PAR",
+      "AUS",
+      "TUR",
+      "GER",
+      "CIV",
+      "ECU",
+      "CUW",
+      "NED",
+      "JPN",
+      "SWE",
+      "TUN",
+      "BEL",
+      "EGY",
+      "IRN",
+      "NZL",
+      "ESP",
+      "CPV",
+      "KSA",
+      "URU",
+      "FRA",
+      "SEN",
+      "IRQ",
+      "NOR",
+      "ARG",
+      "ALG",
+      "AUT",
+      "JOR",
+      "POR",
+      "COD",
+      "UZB",
+      "COL",
+      "ENG",
+      "CRO",
+      "GHA",
+      "PAN"
+    ]
+  }
+]

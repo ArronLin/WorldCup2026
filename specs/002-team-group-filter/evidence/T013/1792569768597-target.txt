@@ -1,0 +1,67 @@
+
+
+Running 9 tests using 1 worker
+
+
+
+[1/9] e2e\team-group-filter.spec.js:14:1 › single and multiple groups, last cancellation and visible response within one second
+[2/9] e2e\team-group-filter.spec.js:37:1 › all groups, rapid changes and repeated show-all keep exact order without duplicates
+[3/9] e2e\team-group-filter.spec.js:47:1 › correct detail, return retains groups, refresh and a new page reset them
+[4/9] e2e\team-group-filter.spec.js:58:1 › real Chinese-English-Chinese changes preserve selected identities and all mode
+[5/9] e2e\team-group-filter.spec.js:71:1 › keyboard selection retains focus and hidden team cards leave the tab sequence
+[6/9] e2e\team-group-filter.spec.js:81:38 › empty data has a neutral bilingual message and no fabricated groups
+[7/9] e2e\team-group-filter.spec.js:81:38 › unavailable data is not described as an empty filter result
+[8/9] e2e\team-group-filter.spec.js:87:1 › unknown groups remain in all mode but never become options or selected results
+[9/9] e2e\team-group-filter.spec.js:96:1 › narrow and desktop controls wrap without overflow and have visible focus in both themes
+  1) e2e\team-group-filter.spec.js:96:1 › narrow and desktop controls wrap without overflow and have visible focus in both themes 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#themeToggle')
+        - locator resolved to <button title="Theme" id="themeToggle" class="theme-toggle" aria-label="Toggle theme">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <input type="text" id="searchInput" autocomplete="off" aria-label="Search" class="search-input" placeholder="搜索球队、球员、比赛…"/> from <div id="searchContainer" class="search-container">…</div> subtree intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <input type="text" id="searchInput" autocomplete="off" aria-label="Search" class="search-input" placeholder="搜索球队、球员、比赛…"/> from <div id="searchContainer" class="search-container">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        49 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <input type="text" id="searchInput" autocomplete="off" aria-label="Search" class="search-input" placeholder="搜索球队、球员、比赛…"/> from <div id="searchContainer" class="search-container">…</div> subtree intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+       98 |   mkdirSync('specs/002-team-group-filter/evidence/T014', { recursive: true });
+       99 |   for (const [width, height, theme] of [[1280, 800, 'dark'], [375, 812, 'dark'], [375, 812, 'light']]) {
+    > 100 |     if (theme === 'light') await page.locator('#themeToggle').click();
+          |                                                               ^
+      101 |     await page.setViewportSize({ width, height }); await choice(page, 'A').focus(); await page.keyboard.press('Tab');
+      102 |     await expect(choice(page, 'B')).toBeFocused();
+      103 |     expect(await page.locator('.team-group-filter').evaluate(el => el.scrollWidth <= el.clientWidth + 1 && el.getBoundingClientRect().right <= innerWidth)).toBe(true);
+        at D:\GitHub\WorldCup2026\e2e\team-group-filter.spec.js:100:63
+
+    Error Context: test-results\team-group-filter-narrow-a-b0b56-isible-focus-in-both-themes\error-context.md
+
+
+  1 failed
+    e2e\team-group-filter.spec.js:96:1 › narrow and desktop controls wrap without overflow and have visible focus in both themes 
+  8 passed (60.0s)
+[WebServer] (node:21144) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+(node:50812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

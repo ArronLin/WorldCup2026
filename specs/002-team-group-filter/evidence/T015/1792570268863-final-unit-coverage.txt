@@ -1,0 +1,107 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+      Coverage enabled with v8
+
+ ✓ tests/added-coverage.test.js (10 tests) 3255ms
+     ✓ reads only the specified Git commit, rejects missing commit and incomplete manifest  2353ms
+ ✓ tests/follow-team-detail.test.js (9 tests) 1607ms
+   ✓ renders a real accessible follow control and preserves all original team matches  874ms
+   ✓ boots the actual app and permits temporary follow when all localStorage access is denied  423ms
+ ✓ tests/added-coverage-html.test.js (5 tests) 2782ms
+   ✓ renders aggregate and per-file coverage; labels covered/uncovered source and escapes source HTML  1388ms
+   ✓ filters files, exposes D=0 as not applicable, and switches actual source line visibility  455ms
+   ✓ writes a portable HTML via the CLI, leaves JSON intact and rejects overwriting source or JSON  620ms
+ ✓ tests/follow-mutation-runner.test.js (6 tests) 6284ms
+   ✓ detects a real assertion failure, restores exact bytes and verifies the healthy test afterwards  1158ms
+   ✓ rejects a surviving mutant and restores  1110ms
+   ✓ rejects syntax/collection errors rather than counting them as killed mutants  1129ms
+   ✓ restores after a timeout and reruns the healthy command  1290ms
+   ✓ refuses mutations if the original test already fails or the anchor is absent  325ms
+   ✓ CLI exits nonzero on a survivor without leaving its fixture modified  1259ms
+ ✓ tests/requirements-tdd-report.test.js (7 tests) 1089ms
+   ✓ renders offline traceability with escaped input, independent metrics and real working filters  745ms
+ ✓ tests/follow-localization.test.js (1 test) 770ms
+   ✓ actual app keeps state, results, warnings, scroll and focused follow control across both languages  762ms
+ ✓ tests/team-group-filter-view.test.js (8 tests) 955ms
+   ✓ renders all group options, clear action, names and original team order  303ms
+ ✓ tests/wc-history.test.js (12 tests) 422ms
+ ✓ tests/team-group-filter-controller.test.js (4 tests) 884ms
+   ✓ updates union synchronously without replacing controls or losing focus; clears the last group  372ms
+ ✓ tests/follow-schedule.test.js (3 tests) 618ms
+   ✓ renders native controls, unique count, stable groups and real detail links  367ms
+ ✓ tests/follow-controller.test.js (3 tests) 200ms
+ ✓ tests/store-results.test.js (15 tests) 83ms
+ ✓ tests/follow-language.test.js (3 tests) 130ms
+ ✓ tests/router-follow.test.js (4 tests) 239ms
+ ✓ tests/browser-storage.test.js (3 tests) 34ms
+ ✓ tests/data-contract.test.js (2 tests) 103ms
+ ✓ tests/follow-state.test.js (12 tests) 57ms
+ ✓ tests/follow-filters.test.js (1 test) 30ms
+ ✓ tests/follow-matches.test.js (2 tests) 33ms
+ ✓ tests/follow-stage.test.js (2 tests) 28ms
+ ✓ tests/team-group-filter-state.test.js (6 tests) 22ms
+ ✓ tests/environment-node.test.js (1 test) 10ms
+ ✓ tests/environment-dom.test.js (1 test) 22ms
+
+ Test Files  23 passed (23)
+      Tests  120 passed (120)
+   Start at  16:11:10
+   Duration  20.42s (transform 2.05s, setup 0ms, import 8.77s, tests 19.66s, environment 22.38s)
+
+JSON report written to D:/GitHub/WorldCup2026/specs/002-team-group-filter/evidence/T015/unit-results.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   16.24 |    13.64 |   19.57 |   17.85 |                   
+ netlify/functions |       0 |        0 |       0 |       0 |                   
+  _data.mjs        |       0 |        0 |       0 |       0 | 15-250            
+  _prompt.mjs      |       0 |        0 |       0 |       0 | 5-6               
+  _tools.mjs       |       0 |        0 |       0 |       0 | 14-553            
+  chat.mjs         |       0 |        0 |       0 |       0 | 10-302            
+  rate-limit.mjs   |       0 |        0 |       0 |       0 | 1-46              
+ src               |   58.22 |    49.56 |   53.39 |    62.8 |                   
+  app.js           |      72 |    41.66 |      50 |   71.83 | ...19,128,133,148 
+  i18n.js          |   95.12 |    83.33 |     100 |     100 | 12-23,43          
+  router.js        |   65.06 |    62.79 |   71.42 |   67.56 | ...19-123,126-130 
+  store.js         |   51.08 |    56.06 |   44.44 |      50 | ...30-137,147-171 
+  utils.js         |   27.65 |    28.57 |   31.57 |   38.46 | ...-72,93,131-165 
+ src/features/chat |       0 |        0 |       0 |       0 |                   
+  index.js         |       0 |        0 |       0 |       0 | 12-675            
+  settings.js      |       0 |        0 |       0 |       0 | 9-447             
+  tools.js         |       0 |        0 |       0 |       0 | 12-787            
+  voice.js         |       0 |        0 |       0 |       0 | 6-122             
+ ...s/follow-teams |     100 |    97.56 |   94.44 |     100 |                   
+  controller.js    |     100 |     90.9 |   83.33 |     100 | 26-41             
+ ...eatures/search |    8.14 |        3 |    6.66 |    8.41 |                   
+  index.js         |    8.14 |        3 |    6.66 |    8.41 | 17-28,34-225      
+ ...m-group-filter |     100 |      100 |   92.85 |     100 |                   
+  controller.js    |     100 |      100 |   83.33 |     100 |                   
+ ...urnament-query |   86.15 |       50 |    92.3 |   95.91 |                   
+  dataset.js       |   68.75 |     18.6 |      50 |      90 | 20                
+  history.js       |   91.83 |    86.48 |     100 |   97.43 | 36                
+ src/views         |   23.57 |    21.62 |   29.72 |   23.12 |                   
+  awards.js        |       0 |        0 |       0 |       0 | 7-142             
+  bracket.js       |       0 |        0 |       0 |       0 | 9-145             
+  ...-standings.js |       0 |        0 |       0 |       0 | 7-63              
+  history.js       |       0 |        0 |       0 |       0 | 13-121            
+  home.js          |       0 |        0 |       0 |       0 | 7-135             
+  match-detail.js  |       0 |        0 |       0 |       0 | 7-158             
+  not-found.js     |       0 |        0 |       0 |       0 | 4-5               
+  schedule.js      |      96 |    76.19 |     100 |     100 | 36-39,52-60,71-79 
+  team-detail.js   |   89.79 |    80.23 |      75 |   89.13 | 72-80             
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 16.24% ( 588/3620 )
+Branches     : 13.64% ( 386/2829 )
+Functions    : 19.57% ( 110/562 )
+Lines        : 17.85% ( 505/2829 )
+================================================================================
+warning: in the working copy of 'src/a.js', LF will be replaced by CRLF the next time Git touches it
+stderr | tests/follow-language.test.js > supports switching with storage denied and handles failed dictionary loading
+Failed to load i18n dict: Error: offline
+    at D:/GitHub/WorldCup2026/tests/follow-language.test.js:22:26
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20
+

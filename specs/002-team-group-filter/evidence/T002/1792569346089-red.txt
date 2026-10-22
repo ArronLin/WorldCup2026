@@ -1,0 +1,165 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/team-group-filter-state.test.js (6 tests | 6 failed) 45ms
+   × groups in letter order while keeping team order, including all missing-group forms 23ms
+   × empty selection shows all; selection is a union and excludes unknown groups 4ms
+   × selects, adds, cancels and clears without duplicate selections 3ms
+   × rejects unavailable groups and keeps only valid selections on synchronization 4ms
+   × snapshots are copies and new document instances start empty 5ms
+   × handles all selections and rapid changes according to the last checked value 3ms
+
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+   Start at  15:55:47
+   Duration  519ms (transform 60ms, setup 0ms, import 89ms, tests 45ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/team-group-filter-state.test.js > groups in letter order while keeping team order, including all missing-group forms
+AssertionError: expected [] to deeply equal [ 'A', 'C', '' ]
+
+- Expected
++ Received
+
+- [
+-   "A",
+-   "C",
+-   "",
+- ]
++ []
+
+ ❯ tests/team-group-filter-state.test.js:8:34
+      6|     XXX: { code: 'XXX' }, XXY: { code: 'XXY', group: null }, XXZ: { co…
+      7|   const groups = buildTeamGroups(teams);
+      8|   expect(groups.map(g => g.key)).toEqual(['A', 'C', '']);
+       |                                  ^
+      9|   expect(groups[0].teams.map(t => t.code)).toEqual(['AAB', 'AAA']);
+     10|   expect(groups[2].teams.map(t => t.code)).toEqual(['XXX', 'XXY', 'XXZ…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/team-group-filter-state.test.js > empty selection shows all; selection is a union and excludes unknown groups
+AssertionError: expected [ 'A', 'B', 'C', '' ] to deeply equal [ 'A', 'C' ]
+
+- Expected
++ Received
+
+  [
+    "A",
++   "B",
+    "C",
++   "",
+  ]
+
+ ❯ tests/team-group-filter-state.test.js:15:74
+     13| it('empty selection shows all; selection is a union and excludes unkno…
+     14|   expect(['A', 'B', 'C', ''].filter(g => isGroupVisible(g, []))).toEqu…
+     15|   expect(['A', 'B', 'C', ''].filter(g => isGroupVisible(g, ['A', 'C'])…
+       |                                                                          ^
+     16| });
+     17| it('selects, adds, cancels and clears without duplicate selections', (…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/team-group-filter-state.test.js > selects, adds, cancels and clears without duplicate selections
+AssertionError: expected [] to deeply equal [ 'A', 'C' ]
+
+- Expected
++ Received
+
+- [
+-   "A",
+-   "C",
+- ]
++ []
+
+ ❯ tests/team-group-filter-state.test.js:20:46
+     18|   const state = createGroupFilterState(); state.syncGroups(['A', 'B', …
+     19|   state.setSelected('A', true); state.setSelected('A', true); state.se…
+     20|   expect(state.getSnapshot().selectedGroups).toEqual(['A', 'C']);
+       |                                              ^
+     21|   state.setSelected('A', false); expect(state.getSnapshot().selectedGr…
+     22|   state.setSelected('C', false); expect(state.getSnapshot().selectedGr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/team-group-filter-state.test.js > rejects unavailable groups and keeps only valid selections on synchronization
+AssertionError: expected { availableGroups: [], …(1) } to deeply equal { availableGroups: [ 'A', 'C' ], …(1) }
+
+- Expected
++ Received
+
+  {
+-   "availableGroups": [
+-     "A",
+-     "C",
+-   ],
+-   "selectedGroups": [
+-     "A",
+-     "C",
+-   ],
++   "availableGroups": [],
++   "selectedGroups": [],
+  }
+
+ ❯ tests/team-group-filter-state.test.js:28:31
+     26|   const state = createGroupFilterState(); state.syncGroups(['C', '', '…
+     27|   state.setSelected('Z', true); state.setSelected('', true); state.set…
+     28|   expect(state.getSnapshot()).toEqual({ availableGroups: ['A', 'C'], s…
+       |                               ^
+     29|   state.syncGroups(['C', 'B']); expect(state.getSnapshot().selectedGro…
+     30|   state.syncGroups([]); expect(state.getSnapshot().selectedGroups).toE…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/team-group-filter-state.test.js > snapshots are copies and new document instances start empty
+AssertionError: expected { availableGroups: [], …(1) } to deeply equal { availableGroups: [ 'A' ], …(1) }
+
+- Expected
++ Received
+
+  {
+-   "availableGroups": [
+-     "A",
+-   ],
+-   "selectedGroups": [
+-     "A",
+-   ],
++   "availableGroups": [],
++   "selectedGroups": [],
+  }
+
+ ❯ tests/team-group-filter-state.test.js:35:31
+     33|   const state = createGroupFilterState(); state.syncGroups(['A']); sta…
+     34|   const snapshot = state.getSnapshot(); snapshot.availableGroups.push(…
+     35|   expect(state.getSnapshot()).toEqual({ availableGroups: ['A'], select…
+       |                               ^
+     36|   expect(createGroupFilterState().getSnapshot().selectedGroups).toEqua…
+     37| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  tests/team-group-filter-state.test.js > handles all selections and rapid changes according to the last checked value
+AssertionError: expected [] to deeply equal [ 'B', 'C' ]
+
+- Expected
++ Received
+
+- [
+-   "B",
+-   "C",
+- ]
++ []
+
+ ❯ tests/team-group-filter-state.test.js:43:46
+     41|   expect(['A', 'B', 'C'].filter(g => isGroupVisible(g, state.getSnapsh…
+     42|   for (let i = 0; i < 10; i++) state.setSelected('A', i % 2 === 0);
+     43|   expect(state.getSnapshot().selectedGroups).toEqual(['B', 'C']);
+       |                                              ^
+     44| });
+     45|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+

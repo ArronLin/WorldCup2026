@@ -1,0 +1,37 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/team-group-filter-state.test.js (6 tests | 1 failed) 35ms
+   × empty selection shows all; selection is a union and excludes unknown groups 20ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  16:00:15
+   Duration  486ms (transform 54ms, setup 0ms, import 82ms, tests 35ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/team-group-filter-state.test.js > empty selection shows all; selection is a union and excludes unknown groups
+AssertionError: expected [ 'A', 'B', 'C', '' ] to deeply equal [ 'A', 'C' ]
+
+- Expected
++ Received
+
+  [
+    "A",
++   "B",
+    "C",
++   "",
+  ]
+
+ ❯ tests/team-group-filter-state.test.js:15:74
+     13| it('empty selection shows all; selection is a union and excludes unkno…
+     14|   expect(['A', 'B', 'C', ''].filter(g => isGroupVisible(g, []))).toEqu…
+     15|   expect(['A', 'B', 'C', ''].filter(g => isGroupVisible(g, ['A', 'C'])…
+       |                                                                          ^
+     16| });
+     17| it('selects, adds, cancels and clears without duplicate selections', (…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

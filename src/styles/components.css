@@ -871,3 +871,13 @@ img.flag { display: inline-block; }
 .follow-notice { padding:1rem; border:1px solid var(--accent); border-radius:8px; }
 .follow-demo { color:var(--text-secondary); font-size:0.875rem; }
 .follow-empty { padding:2rem 1rem; text-align:center; }
+
+/* Teams group selection keeps its native controls mounted during filtering. */
+.team-group-filter { margin: 0 0 8px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 12px; min-width: 0; }
+.team-group-filter legend { padding: 0 6px; font-weight: 600; }
+.team-group-options { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.team-group-option { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; padding: 4px 0; }
+.team-group-option input { width: 16px; height: 16px; accent-color: var(--accent); }
+.team-group-filter :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.team-group-summary { color: var(--text-secondary); margin: 8px 0 16px; font-size: 0.88rem; }
+.teams-page .group-card[hidden] { display: none; }

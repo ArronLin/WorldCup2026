@@ -1,0 +1,10 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+
+ Test Files  23 passed (23)
+      Tests  120 passed (120)
+   Start at  15:59:33
+   Duration  12.01s (transform 1.24s, setup 0ms, import 5.02s, tests 11.24s, environment 14.61s)
+
+warning: in the working copy of 'src/a.js', LF will be replaced by CRLF the next time Git touches it

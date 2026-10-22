@@ -1,0 +1,16 @@
+ M .github/workflows/verify.yml
+ M public/i18n/en.json
+ M public/i18n/zh.json
+ M specs/002-team-group-filter/tasks.md
+ M src/app.js
+ M src/styles/components.css
+ M src/views/teams.js
+?? e2e/team-group-filter.spec.js
+?? requirements/task-2.md
+?? specs/002-team-group-filter/coverage-baseline.json
+?? specs/002-team-group-filter/evidence/
+?? src/features/team-group-filter/
+?? tests/fixtures/team-group-filter.js
+?? tests/team-group-filter-controller.test.js
+?? tests/team-group-filter-state.test.js
+?? tests/team-group-filter-view.test.js

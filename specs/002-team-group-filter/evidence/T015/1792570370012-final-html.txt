@@ -1,0 +1,1 @@
+{"output":"D:\\GitHub\\WorldCup2026\\specs\\002-team-group-filter\\evidence\\coverage-added.html","C":61,"D":61}

@@ -1,0 +1,2 @@
+{"yaml": "valid", "002_gate": "present", "001_gate": "preserved", "remote_ci": "not_run"}
+

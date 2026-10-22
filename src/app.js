@@ -6,6 +6,7 @@ import { initSearch, refreshSearch } from './features/search/index.js';
 
 import { browserStorage } from './browser-storage.js';
 import { initFollowTeams } from './features/follow-teams/controller.js';
+import { initTeamGroupFilter } from './features/team-group-filter/controller.js';
 
 // Theme management
 function detectTheme() {
@@ -134,6 +135,7 @@ async function init() {
 
   // Start router
   initFollowTeams();
+  initTeamGroupFilter();
   initRouter();
 
   // These features must not delay first contentful render.

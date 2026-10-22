@@ -20,11 +20,20 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: npm run coverage:baseline -- --manifest specs/001-follow-teams/coverage-baseline.json --output .tmp/follow-teams-baseline
-      - run: npm run test:coverage
+      - id: unit-coverage
+        run: npm run test:coverage
       - id: added-coverage
         run: npm run coverage:added -- --baseline .tmp/follow-teams-baseline/baseline.json --output coverage/coverage-added.json
       - if: ${{ !cancelled() && (steps.added-coverage.outcome == 'success' || steps.added-coverage.outcome == 'failure') }}
         run: npm run coverage:html -- --input coverage/coverage-added.json --output coverage/added/index.html
+      - id: group-baseline
+        if: ${{ !cancelled() && steps.unit-coverage.outcome == 'success' }}
+        run: npm run coverage:baseline -- --manifest specs/002-team-group-filter/coverage-baseline.json --output .tmp/002-coverage-baseline
+      - id: group-added-coverage
+        if: ${{ !cancelled() && steps.group-baseline.outcome == 'success' }}
+        run: npm run coverage:added -- --baseline .tmp/002-coverage-baseline/baseline.json --output coverage/002/coverage-added.json
+      - if: ${{ !cancelled() && (steps.group-added-coverage.outcome == 'success' || steps.group-added-coverage.outcome == 'failure') }}
+        run: npm run coverage:html -- --input coverage/002/coverage-added.json --output coverage/002/index.html --title "球队分组筛选：新增行覆盖率"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -1,0 +1,299 @@
+
+ RUN  v4.1.10 D:/GitHub/WorldCup2026
+
+ ❯ tests/team-group-filter-controller.test.js (3 tests | 3 failed) 326ms
+   × updates union synchronously without replacing controls or losing focus; clears the last group 248ms
+   × selects all, handles rapid changes and repeated show-all actions 33ms
+   × delegates once, ignores unrelated actions and supports disposal and reinitialization 41ms
+ ❯ tests/team-group-filter-view.test.js (5 tests | 5 failed) 387ms
+   × renders all group options, clear action, names and original team order 257ms
+   × reads the latest selection when re-rendering, retains all options and resets with a new document instance 63ms
+   × uses a neutral unavailable message for empty or failed data 16ms
+   × uses a neutral unavailable message for empty or failed data 11ms
+   × keeps unknown-group teams only in all mode and excludes them from options 36ms
+
+ Test Files  2 failed (2)
+      Tests  8 failed (8)
+   Start at  15:57:12
+   Duration  4.70s (transform 505ms, setup 0ms, import 446ms, tests 714ms, environment 4.90s)
+
+stderr | tests/team-group-filter-controller.test.js > updates union synchronously without replacing controls or losing focus; clears the last group
+Failed to load i18n dict: Error: ENOENT: no such file or directory, open 'D:\public\i18n\zh.json'
+    at readFileSync (node:fs:483:20)
+    at Object.json (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:13:88)
+    at loadDict (D:/GitHub/WorldCup2026/src/i18n.js:24:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at requestLanguage (D:/GitHub/WorldCup2026/src/i18n.js:46:20)
+    at Module.initI18n (D:/GitHub/WorldCup2026/src/i18n.js:17:3)
+    at mountTeams (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:17:46)
+    at D:/GitHub/WorldCup2026/tests/team-group-filter-controller.test.js:7:13
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\public\\i18n\\zh.json'
+}
+
+stderr | tests/team-group-filter-controller.test.js > selects all, handles rapid changes and repeated show-all actions
+Failed to load i18n dict: Error: ENOENT: no such file or directory, open 'D:\public\i18n\zh.json'
+    at readFileSync (node:fs:483:20)
+    at Object.json (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:13:88)
+    at loadDict (D:/GitHub/WorldCup2026/src/i18n.js:24:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at requestLanguage (D:/GitHub/WorldCup2026/src/i18n.js:46:20)
+    at Module.initI18n (D:/GitHub/WorldCup2026/src/i18n.js:17:3)
+    at mountTeams (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:17:46)
+    at D:/GitHub/WorldCup2026/tests/team-group-filter-controller.test.js:19:13
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\public\\i18n\\zh.json'
+}
+
+stderr | tests/team-group-filter-controller.test.js > delegates once, ignores unrelated actions and supports disposal and reinitialization
+Failed to load i18n dict: Error: ENOENT: no such file or directory, open 'D:\public\i18n\zh.json'
+    at readFileSync (node:fs:483:20)
+    at Object.json (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:13:88)
+    at loadDict (D:/GitHub/WorldCup2026/src/i18n.js:24:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at requestLanguage (D:/GitHub/WorldCup2026/src/i18n.js:46:20)
+    at Module.initI18n (D:/GitHub/WorldCup2026/src/i18n.js:17:3)
+    at mountTeams (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:17:46)
+    at D:/GitHub/WorldCup2026/tests/team-group-filter-controller.test.js:30:13
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\public\\i18n\\zh.json'
+}
+
+stderr | tests/team-group-filter-view.test.js > renders all group options, clear action, names and original team order
+Failed to load i18n dict: Error: ENOENT: no such file or directory, open 'D:\public\i18n\zh.json'
+    at readFileSync (node:fs:483:20)
+    at Object.json (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:13:88)
+    at loadDict (D:/GitHub/WorldCup2026/src/i18n.js:24:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at requestLanguage (D:/GitHub/WorldCup2026/src/i18n.js:46:20)
+    at Module.initI18n (D:/GitHub/WorldCup2026/src/i18n.js:17:3)
+    at mountTeams (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:17:46)
+    at D:/GitHub/WorldCup2026/tests/team-group-filter-view.test.js:7:13
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\public\\i18n\\zh.json'
+}
+
+stderr | tests/team-group-filter-view.test.js > reads the latest selection when re-rendering, retains all options and resets with a new document instance
+Failed to load i18n dict: Error: ENOENT: no such file or directory, open 'D:\public\i18n\zh.json'
+    at readFileSync (node:fs:483:20)
+    at Object.json (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:13:88)
+    at loadDict (D:/GitHub/WorldCup2026/src/i18n.js:24:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at requestLanguage (D:/GitHub/WorldCup2026/src/i18n.js:46:20)
+    at Module.initI18n (D:/GitHub/WorldCup2026/src/i18n.js:17:3)
+    at mountTeams (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:17:46)
+    at D:/GitHub/WorldCup2026/tests/team-group-filter-view.test.js:16:13
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\public\\i18n\\zh.json'
+}
+
+stderr | tests/team-group-filter-view.test.js > uses a neutral unavailable message for empty or failed data
+Failed to load i18n dict: Error: ENOENT: no such file or directory, open 'D:\public\i18n\zh.json'
+    at readFileSync (node:fs:483:20)
+    at Object.json (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:13:88)
+    at loadDict (D:/GitHub/WorldCup2026/src/i18n.js:24:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at requestLanguage (D:/GitHub/WorldCup2026/src/i18n.js:46:20)
+    at Module.initI18n (D:/GitHub/WorldCup2026/src/i18n.js:17:3)
+    at mountTeams (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:17:46)
+    at D:/GitHub/WorldCup2026/tests/team-group-filter-view.test.js:26:13
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\public\\i18n\\zh.json'
+}
+
+stderr | tests/team-group-filter-view.test.js > uses a neutral unavailable message for empty or failed data
+Failed to load i18n dict: Error: ENOENT: no such file or directory, open 'D:\public\i18n\zh.json'
+    at readFileSync (node:fs:483:20)
+    at Object.json (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:13:88)
+    at loadDict (D:/GitHub/WorldCup2026/src/i18n.js:24:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at requestLanguage (D:/GitHub/WorldCup2026/src/i18n.js:46:20)
+    at Module.initI18n (D:/GitHub/WorldCup2026/src/i18n.js:17:3)
+    at mountTeams (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:17:46)
+    at D:/GitHub/WorldCup2026/tests/team-group-filter-view.test.js:26:13
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\public\\i18n\\zh.json'
+}
+
+stderr | tests/team-group-filter-view.test.js > keeps unknown-group teams only in all mode and excludes them from options
+Failed to load i18n dict: Error: ENOENT: no such file or directory, open 'D:\public\i18n\zh.json'
+    at readFileSync (node:fs:483:20)
+    at Object.json (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:13:88)
+    at loadDict (D:/GitHub/WorldCup2026/src/i18n.js:24:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at requestLanguage (D:/GitHub/WorldCup2026/src/i18n.js:46:20)
+    at Module.initI18n (D:/GitHub/WorldCup2026/src/i18n.js:17:3)
+    at mountTeams (D:/GitHub/WorldCup2026/tests/fixtures/team-group-filter.js:17:46)
+    at D:/GitHub/WorldCup2026/tests/team-group-filter-view.test.js:32:13
+    at file:///D:/GitHub/WorldCup2026/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\public\\i18n\\zh.json'
+}
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/team-group-filter-controller.test.js > updates union synchronously without replacing controls or losing focus; clears the last group
+AssertionError: expected null not to be null
+ ❯ tests/team-group-filter-controller.test.js:8:48
+      6| it('updates union synchronously without replacing controls or losing f…
+      7|   mounted = await mountTeams(); const { root } = mounted;
+      8|   const a = checkbox(root, 'A'); expect(a).not.toBeNull();
+       |                                                ^
+      9|   a.focus(); a.click();
+     10|   expect(visibleCodes(root)).toEqual(['AAA', 'AAB']);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  tests/team-group-filter-controller.test.js > selects all, handles rapid changes and repeated show-all actions
+AssertionError: expected null not to be null
+ ❯ tests/team-group-filter-controller.test.js:20:35
+     18| it('selects all, handles rapid changes and repeated show-all actions',…
+     19|   mounted = await mountTeams(); const { root, state } = mounted;
+     20|   expect(checkbox(root, 'A')).not.toBeNull();
+       |                                   ^
+     21|   for (const g of ['A', 'B', 'C']) checkbox(root, g).click();
+     22|   expect(state.getSnapshot().selectedGroups).toEqual(['A', 'B', 'C']);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  tests/team-group-filter-controller.test.js > delegates once, ignores unrelated actions and supports disposal and reinitialization
+AssertionError: expected [Function] to be [Function] // Object.is equality
+
+Compared values have no visual difference.
+
+ ❯ tests/team-group-filter-controller.test.js:31:48
+     29| it('delegates once, ignores unrelated actions and supports disposal an…
+     30|   mounted = await mountTeams(); const { root, state, dispose, initTeam…
+     31|   expect(initTeamGroupFilter({ root, state })).toBe(dispose);
+       |                                                ^
+     32|   const set = vi.spyOn(state, 'setSelected');
+     33|   const a = checkbox(root, 'A'); expect(a).not.toBeNull(); a.click(); …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  tests/team-group-filter-view.test.js > renders all group options, clear action, names and original team order
+AssertionError: expected [] to deeply equal [ 'A', 'B', 'C' ]
+
+- Expected
++ Received
+
+- [
+-   "A",
+-   "B",
+-   "C",
+- ]
++ []
+
+ ❯ tests/team-group-filter-view.test.js:8:96
+      6| it('renders all group options, clear action, names and original team o…
+      7|   mounted = await mountTeams(); const { root } = mounted;
+      8|   expect([...root.querySelectorAll('input[type="checkbox"]')].map(el =…
+       |                                                                                                ^
+      9|   expect(root.querySelector('legend')?.textContent).toBe('小组筛选');
+     10|   expect(root.querySelector('[data-team-group-action="all"]')?.textCon…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  tests/team-group-filter-view.test.js > reads the latest selection when re-rendering, retains all options and resets with a new document instance
+AssertionError: expected [ 'AAA', 'AAB', 'BBB', 'CCC' ] to deeply equal [ 'AAA', 'AAB', 'CCC' ]
+
+- Expected
++ Received
+
+  [
+    "AAA",
+    "AAB",
++   "BBB",
+    "CCC",
+  ]
+
+ ❯ tests/team-group-filter-view.test.js:19:30
+     17|   state.setSelected('A', true); state.setSelected('C', true);
+     18|   root.innerHTML = await view();
+     19|   expect(visibleCodes(root)).toEqual(['AAA', 'AAB', 'CCC']);
+       |                              ^
+     20|   expect(root.querySelectorAll('input[type="checkbox"]').length).toBe(…
+     21|   expect(root.querySelectorAll('input:checked').length).toBe(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  tests/team-group-filter-view.test.js > uses a neutral unavailable message for empty or failed data
+ FAIL  tests/team-group-filter-view.test.js > uses a neutral unavailable message for empty or failed data
+AssertionError: expected 'nav.teamsteams.subtitle' to contain '暂无可显示的球队，可刷新重试'
+
+Expected: "暂无可显示的球队，可刷新重试"
+Received: "nav.teamsteams.subtitle"
+
+ ❯ tests/team-group-filter-view.test.js:27:36
+     25| it.each([{}, new Error('offline')])('uses a neutral unavailable messag…
+     26|   mounted = await mountTeams(data);
+     27|   expect(mounted.root.textContent).toContain('暂无可显示的球队，可刷新重试');
+       |                                    ^
+     28|   expect(mounted.root.querySelectorAll('input[type="checkbox"]').lengt…
+     29|   expect(visibleCodes(mounted.root)).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  tests/team-group-filter-view.test.js > keeps unknown-group teams only in all mode and excludes them from options
+AssertionError: expected 'nav.teamsteams.subtitlecommon.group ?…' to contain '分组未知'
+
+- Expected
++ Received
+
+- 分组未知
++ nav.teamsteams.subtitlecommon.group ?
++         XXX
++         未知队
++         
++       common.group A
++         AAA
++         甲队
++         UEFA · #1
++       
++         AAB
++         乙队
++         
++       common.group B
++         BBB
++         丙队
++         
++       common.group C
++         CCC
++         丁队
++         
++       
+
+ ❯ tests/team-group-filter-view.test.js:34:28
+     32|   mounted = await mountTeams({ ...teams, XXX: { code: 'XXX', name: { z…
+     33|   const { root, state, view } = mounted;
+     34|   expect(root.textContent).toContain('分组未知');
+       |                            ^
+     35|   expect(visibleCodes(root)).toContain('XXX');
+     36|   expect(root.querySelectorAll('input').length).toBe(3);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+

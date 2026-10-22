@@ -211,5 +211,11 @@
   "follow.count": "{count} matches",
   "follow.noTeams": "No followed teams yet. Choose the teams you support.",
   "follow.noMatches": "No matches for the current filters.",
-  "follow.chooseTeams": "Choose teams to follow"
+  "follow.chooseTeams": "Choose teams to follow",
+  "teams.filter.legend": "Filter by group",
+  "teams.filter.all": "Show all",
+  "teams.filter.showingAll": "Showing all teams",
+  "teams.filter.showingSelected": "Showing selected groups",
+  "teams.filter.unknownGroup": "Unknown group",
+  "teams.filter.unavailable": "No teams available. Refresh to try again."
 }

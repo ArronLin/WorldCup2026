@@ -1,0 +1,7 @@
+{
+  "node": "v24.21.0",
+  "platform": "win32",
+  "chromium": "151.0.7922.34",
+  "playwright": "1.62.1",
+  "vitest": "4.1.10"
+}

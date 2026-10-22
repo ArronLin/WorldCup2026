@@ -211,5 +211,11 @@
   "follow.count": "共 {count} 场比赛",
   "follow.noTeams": "还没有关注球队，先选择你支持的球队吧。",
   "follow.noMatches": "当前筛选条件下没有比赛。",
-  "follow.chooseTeams": "去关注球队"
+  "follow.chooseTeams": "去关注球队",
+  "teams.filter.legend": "小组筛选",
+  "teams.filter.all": "显示全部",
+  "teams.filter.showingAll": "显示全部球队",
+  "teams.filter.showingSelected": "显示所选小组",
+  "teams.filter.unknownGroup": "分组未知",
+  "teams.filter.unavailable": "暂无可显示的球队，可刷新重试"
 }
