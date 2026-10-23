@@ -32,6 +32,10 @@
     "tdd_required": true,
     "new_unit_line_coverage_minimum": 0.8,
     "valid_tests_required": true,
-    "evidence_required": true
+    "evidence_required": true,
+    "reports": {
+      "added_coverage_html": false,
+      "requirements_tdd_html": false
+    }
   }
 }

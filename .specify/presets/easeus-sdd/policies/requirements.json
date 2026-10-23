@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "revision": "factory-1.8.0",
-  "updated_at": "2026-10-19",
+  "revision": "af16e5e1c13b47e6ae3350cad52cd654",
+  "updated_at": "2026-10-23T07:37:40.650013+00:00",
   "rules": [
     {
       "id": "language",
@@ -47,5 +47,6 @@
       "kind": "evidence",
       "parameters": {}
     }
-  ]
+  ],
+  "content_fingerprint": "643744c3c9752eb505c74dd48b842c8d61f88aeeae9a2f2f304cfe7ed741663f"
 }

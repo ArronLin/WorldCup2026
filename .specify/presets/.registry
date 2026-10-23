@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "presets": {
     "easeus-sdd": {
-      "version": "1.8.0",
+      "version": "1.9.0",
       "source": "local",
-      "manifest_hash": "sha256:71661b150aabba3c0ed393d0df671181ca78f7cb06092219baf8e631e3f786ae",
+      "manifest_hash": "sha256:84f9e614e404eb03a1f6285aeee615fa78167e2c7fdbc1ab314dea7adb6ae910",
       "enabled": true,
       "priority": 10,
       "registered_commands": {
@@ -33,7 +33,7 @@
           "speckit-converge"
         ]
       },
-      "installed_at": "2026-10-20T07:53:59.600115+00:00"
+      "installed_at": "2026-10-23T09:14:36.596326+00:00"
     },
     "easeus-project": {
       "version": "1.0.0",
@@ -43,7 +43,7 @@
       "priority": 1,
       "registered_commands": {},
       "registered_skills": {},
-      "installed_at": "2026-10-20T07:54:02.234178+00:00"
+      "installed_at": "2026-10-23T09:14:40.648841+00:00"
     }
   }
 }
