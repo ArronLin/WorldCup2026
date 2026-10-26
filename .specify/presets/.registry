@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "presets": {
     "easeus-sdd": {
-      "version": "1.9.0",
+      "version": "2.1.0",
       "source": "local",
-      "manifest_hash": "sha256:9fbd58c2892c82cd02ca250b83eefcb0dffa484410dfe19d5e5ebde1539f9436",
+      "manifest_hash": "sha256:f9a20bf92fa5e5bd5933daecda9a6bab52b6f010c69e2f54ede5e843782dacf8",
       "enabled": true,
       "priority": 10,
       "registered_commands": {
@@ -17,7 +17,10 @@
           "speckit.tasks",
           "speckit.analyze",
           "speckit.implement",
-          "speckit.converge"
+          "speckit.converge",
+          "speckit.bug.assess",
+          "speckit.bug.fix",
+          "speckit.bug.test"
         ]
       },
       "registered_skills": {
@@ -30,10 +33,13 @@
           "speckit-tasks",
           "speckit-analyze",
           "speckit-implement",
-          "speckit-converge"
+          "speckit-converge",
+          "speckit-bug-assess",
+          "speckit-bug-fix",
+          "speckit-bug-test"
         ]
       },
-      "installed_at": "2026-10-26T07:53:42.706158+00:00"
+      "installed_at": "2026-10-27T03:08:53.905450+00:00"
     },
     "easeus-project": {
       "version": "1.0.0",
@@ -43,7 +49,7 @@
       "priority": 1,
       "registered_commands": {},
       "registered_skills": {},
-      "installed_at": "2026-10-26T07:53:45.053403+00:00"
+      "installed_at": "2026-10-27T03:08:57.422659+00:00"
     }
   }
 }

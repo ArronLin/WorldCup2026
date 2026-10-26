@@ -5,9 +5,11 @@ description: Inspect and continue one explicitly identified existing task; never
 
 本次明确选择 speckit；先说明目标仓库、当前任务和本入口职责，不得加载另一框架的规则。
 读取 `.specify/easeus/requirements.json`、本框架项目规范及知识库绑定；工程政策只来自启用规则，不恢复停用政策。
-仓库运行入口：`powershell -NoProfile -ExecutionPolicy Bypass -File .specify/easeus/workflow/run.ps1`，后接动作和参数；每次传 --project 当前仓库，已有任务传 --work-item 明确清单路径。需要 Python 3.10+，不依赖 Studio 或用户目录绑定。
+仓库运行入口：`powershell -NoProfile -ExecutionPolicy Bypass -File .specify/easeus/workflow/run.ps1`，后接动作和参数；每次传 --project 当前仓库。使用 Studio 工作项协议的任务传 --work-item 明确清单路径；`specs/tiny/` 单文件任务直接读取 Markdown，不使用此参数。需要 Python 3.10+，不依赖 Studio 或用户目录绑定。
 只请求查询、诊断或分析时只读，不创建文档、不登记或推进任务、不运行测试或安装依赖。只读调用附加 `--intent analyze`，该模式只允许 doctor/status；不得去掉参数、换用直接 Python API 或报告命令绕过只读边界。缺少环境时报告缺口，不自行修复。
 任务归属或授权不明确时才询问；明确授权只适用于相应任务和范围，不自动扩展。
+
+明确任务若是 `specs/tiny/*.md`，直接从该文件的状态（Status）、验收要求（Requirements）、任务（Tasks）和完成条件（Done When）恢复；只查询时报告状态后停止，明确续做时继续未勾选项。不得为它创建 `work-item.json` 或替代任务。以下工作项规则只适用于非 TinySpec 任务。
 
 ## 职责：继续明确的已有任务
 先用 status --intent analyze 核对任务 ID、框架、输入修订、原生产物、源码、规则与历史证据；不得创建替代任务，不得按最近修改时间猜测。多任务且未指定归属时先询问。
@@ -18,6 +20,6 @@ description: Inspect and continue one explicitly identified existing task; never
 ## 授权范围内的验证与完成
 推进已有任务使用 transition；不得伪报尚未执行的阶段。工程政策以当前启用规则为准。
 只有当前启用 TDD 时，先编写测试并实际运行，确认预期行为尚未实现导致断言失败，再编写最小实现使测试通过，按需重构并回归。依赖、环境或语法错误不是有效 Red；不把事后补测宣称为 TDD。停用时不得重新强制。
-使用仓库自己的测试命令，按修改影响范围验证。覆盖率要求读取规则快照，沿用仓库已有工具和 CI；无新增可执行生产代码时说明不适用，不记为 100%。
+使用仓库自己的测试命令，按修改影响范围验证。覆盖率要求读取规则快照，沿用仓库已有工具和 CI；百分比只适用于现有工具可可靠计量的新增或修改可执行业务逻辑，优先采用语句或分支覆盖率，仅有行覆盖率时可使用行覆盖率。纯声明式 UI（包括 QML）、生成代码、资源和配置不纳入百分比分母，但相关行为必须用适用的自动化测试验证；无可靠采集能力时说明不适用或能力缺口，不记为 0% 或 100%，不得用 qmlprofiler 等性能分析事件冒充覆盖率。
 在对话中简述实际命令、结果和未验证事项；不默认另建 evidence、收据、追踪映射、源码副本、截图、验收说明或 HTML。测试工具临时输出沿用项目已有忽略目录。
 获准实施且真实运行测试后，核对原生产物和任务，再执行 finish --work-item <明确任务清单>。成功只表示实施流程已完成，质量状态仍为未核验，不代表测试、覆盖率或 CI 已通过。实际测试失败或未执行时如实披露，不能宣称通过或勾选未完成任务。Skill 约束不是权限沙箱，也不声称程序已审计 TDD 顺序。
