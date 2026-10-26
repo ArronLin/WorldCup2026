@@ -1,4 +1,6 @@
 {
+  "teams.filter": "筛选小组",
+  "teams.all": "全部小组",
   "nav.home": "首页",
   "nav.schedule": "赛程",
   "nav.groups": "积分榜",

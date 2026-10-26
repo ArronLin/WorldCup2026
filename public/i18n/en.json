@@ -1,4 +1,6 @@
 {
+  "teams.filter": "Filter groups",
+  "teams.all": "All groups",
   "nav.home": "Home",
   "nav.schedule": "Schedule",
   "nav.groups": "Standings",

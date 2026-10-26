@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "id": "teams-dropdown",
+  "framework": "speckit",
+  "kind": "quick",
+  "title": "球队下拉筛选",
+  "native_path": ".specify/studio-tasks/teams-dropdown/task.md",
+  "acceptance": [
+    {
+      "id": "AC1",
+      "description": "带可见标签的下拉框包含“全部球队”和所有球队名称，默认显示全部。",
+      "source": ".specify/studio-tasks/teams-dropdown/task.md",
+      "line": 6
+    },
+    {
+      "id": "AC2",
+      "description": "选择球队仅显示该球队及所属小组；选择全部恢复列表。",
+      "source": ".specify/studio-tasks/teams-dropdown/task.md",
+      "line": 7
+    },
+    {
+      "id": "AC3",
+      "description": "中文与英文选项一致，支持键盘与窄屏；重复初始化、释放和重渲染不重复处理事件。",
+      "source": ".specify/studio-tasks/teams-dropdown/task.md",
+      "line": 8
+    }
+  ],
+  "risks": [],
+  "rules": {
+    "schema_version": 1,
+    "revision": "lean-15e0d7a4176bb023",
+    "updated_at": "2026-10-23T07:37:40.650013+00:00",
+    "rules": [
+      {
+        "id": "language",
+        "text": "使用{{language}}交互和编写自然语言产物；命令、标识符与固定标记保持兼容。",
+        "title": "交互与产物语言",
+        "enabled": true,
+        "kind": "language",
+        "parameters": {
+          "language": "简体中文"
+        }
+      },
+      {
+        "id": "tdd",
+        "text": "新增或修改可单测行为及修复缺陷时，先编写测试并实际运行，确认测试因预期行为尚未实现而失败，再编写最小实现使测试通过，随后按需重构并回归验证。依赖、环境或语法错误不能作为有效的 Red；不得将事后补写测试宣称为 TDD。",
+        "title": "真实 TDD",
+        "enabled": true,
+        "kind": "tdd",
+        "parameters": {}
+      },
+      {
+        "id": "coverage",
+        "text": "仅新增自有生产代码的单元测试行覆盖率不低于 {{minimum_percent}}%；以本功能明确基线计算新增可执行行的未舍入汇总比值，不要求存量代码或全项目达到 {{minimum_percent}}%。集成或端到端覆盖率不能替代该指标，无新增可执行行记为不适用。",
+        "title": "新增生产代码单测行覆盖率",
+        "enabled": true,
+        "kind": "coverage",
+        "parameters": {
+          "minimum_percent": 80
+        }
+      },
+      {
+        "id": "tests",
+        "text": "测试必须调用真实被测生产逻辑，包含能识别错误行为的断言并实际发现和执行。禁止占位成功、恒真断言、mock 掉被测核心与静默跳过；未实际执行测试不得宣称通过。关键控制逻辑采用可恢复的反向验证或适用变异测试。",
+        "title": "有效测试与验证",
+        "enabled": true,
+        "kind": "tests",
+        "parameters": {}
+      },
+      {
+        "id": "evidence",
+        "text": "知识库与源码说明现状，已确认需求定义期望；关键结论记录来源与适用版本，未知必须明确，现状缺陷不得自动固化为规范。",
+        "title": "来源与事实核实",
+        "enabled": true,
+        "kind": "evidence",
+        "parameters": {}
+      }
+    ],
+    "content_fingerprint": "15e0d7a4176bb0230aaf9392a60642934e77520504e9d915da3108cda23ffa34"
+  },
+  "revision": 1,
+  "stage": "finished",
+  "verification": "unverified",
+  "completion_scope": "implementation",
+  "events": [
+    {
+      "stage": "assessed",
+      "revision": 1,
+      "implementation_already_verified": false
+    },
+    {
+      "stage": "implementing",
+      "revision": 1,
+      "implementation_already_verified": false
+    },
+    {
+      "stage": "verifying",
+      "revision": 1,
+      "implementation_already_verified": false,
+      "input_fingerprint": "627f3a443603d8143c0c18fd0456fffd087aef2132f18fd7ef47412fc367c954"
+    },
+    {
+      "completion_scope": "implementation",
+      "revision": 1,
+      "result": {
+        "implementation_complete": true,
+        "verification": "unverified",
+        "input_fingerprint": "627f3a443603d8143c0c18fd0456fffd087aef2132f18fd7ef47412fc367c954",
+        "completion_scope": "implementation",
+        "business_tests_verified": false,
+        "ci_verified": false,
+        "summary": "实施流程已完成；测试、覆盖率和 CI 结果未由此命令核验。"
+      }
+    }
+  ]
+}

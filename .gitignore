@@ -43,3 +43,7 @@ npm-debug.log*
 
 # WorkBuddy local workspace data (memory, plans, tasks)
 .workbuddy/
+
+# Python runtime cache
+__pycache__/
+*.py[cod]
