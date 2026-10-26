@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "owner": "repo-sdd-studio-knowledge",
+  "version": "1.0.0",
+  "files": {
+    "knowledge-runtime.json": "5958d23e30c6de374876463941b6ca2f78cc5b9a89974e7950f8cfefa040f546",
+    "mcp-launch.ps1": "12e1e747182d6a847331461d3686b8b9062f0265417abfc21225f72c69d061e9",
+    "knowledge-runtime/v1/run.py": "16d1381bf85a9a5d7778fc1791c7baac09ca888af0e61c33eb9a2cade8f042d0",
+    "knowledge-runtime/v1/requirements-http.txt": "9d25b578e8e7489ee686d0eabaf1b2b2444b3b0761ac3d55548f9e00c99fb2de",
+    "knowledge-runtime/v1/sdd_knowledge/__init__.py": "90e2ecc8803202d0d3f21f2d0359d70e6ed028049040fbe9e360a5a8b78d827a",
+    "knowledge-runtime/v1/sdd_knowledge/client.py": "ddcf51dccb6369ee21d07fc6626138c2cc0dd018784a6a1cd853c1f26e31883e",
+    "knowledge-runtime/v1/sdd_knowledge/core.py": "0f8f3b8afa94d49a8ddb88a6f3a0f0b98f0a4d64165dc80d61453f3a0bf19d5e"
+  }
+}

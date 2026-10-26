@@ -1,13 +1,24 @@
-﻿param([Parameter(ValueFromRemainingArguments=$true)][string[]]$ReportArguments)
+﻿param([Parameter(ValueFromRemainingArguments=$true)][string[]]$WorkflowArguments)
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 $repoRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..\..'))
-$stateDir = if ($env:SPECKIT_WIZARD_STATE) { $env:SPECKIT_WIZARD_STATE } else { Join-Path $env:LOCALAPPDATA 'SpecKitWizard' }
-$runtimeFile = Join-Path $stateDir 'runtime.json'
-if (-not (Test-Path -LiteralPath $runtimeFile -PathType Leaf)) { throw '本机运行时未绑定。打开 Repo SDD Studio 修复，或使用 Python CLI。' }
-$runtime = Get-Content -LiteralPath $runtimeFile -Raw -Encoding UTF8 | ConvertFrom-Json
-$program = [string]$runtime.command
-if (-not (Test-Path -LiteralPath $program -PathType Leaf)) { throw '本机运行时已移动，请重新打开 Studio 修复绑定。' }
-$launchArgs = @($runtime.args) + @('--task-workflow') + @($ReportArguments) + @('--project', $repoRoot, '--config', (Join-Path $PSScriptRoot '../reporting/config.json'))
-& $program @launchArgs
+$entry = Join-Path $PSScriptRoot 'runtime.py'
+if (-not (Test-Path -LiteralPath $entry -PathType Leaf)) { throw '仓库任务组件缺失，请重新部署受管组件。' }
+$candidates = @()
+if ($env:REPO_SDD_PYTHON) { $candidates += ,@($env:REPO_SDD_PYTHON) }
+$candidates += ,@('py', '-3')
+$candidates += ,@('python')
+$candidates += ,@('python3')
+$selected = $null
+foreach ($candidate in $candidates) {
+    $program = $candidate[0]
+    if (-not (Get-Command $program -ErrorAction SilentlyContinue)) { continue }
+    $prefix = @($candidate | Select-Object -Skip 1)
+    & $program @prefix -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 10) else 1)' 2>$null
+    if ($LASTEXITCODE -eq 0) { $selected = $candidate; break }
+}
+if (-not $selected) { throw '需要 Python 3.10 或更新版本。安装 Python 后确认 py -3 或 python 可用，也可设置 REPO_SDD_PYTHON 指向解释器。' }
+$prefix = @($selected | Select-Object -Skip 1)
+$program = $selected[0]
+& $program @prefix -B $entry @WorkflowArguments --project $repoRoot --rules (Join-Path $PSScriptRoot '..\requirements.json')
 exit $LASTEXITCODE

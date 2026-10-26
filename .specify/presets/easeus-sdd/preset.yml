@@ -4,7 +4,7 @@
     "id": "easeus-sdd",
     "name": "EaseUS 可配置 SDD 工作流",
     "version": "1.9.0",
-    "description": "Claude Code / Codex：可编辑工程规则、双知识库与可选通用测试报告",
+    "description": "Claude Code / Codex：可编辑工程规则、真实 TDD 与双知识库",
     "author": "Project maintainers",
     "license": "MIT"
   },

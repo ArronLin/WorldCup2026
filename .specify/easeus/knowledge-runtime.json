@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "runtime_version": "1.0.0",
+  "framework": "speckit",
+  "repository_id": "WorldCup2026",
+  "sources": {
+    "opendeepwiki": {
+      "connection": {
+        "transport": "http",
+        "timeout": 60,
+        "url": "http://localhost:8090/api/mcp",
+        "env": {}
+      },
+      "allowed_tools": [
+        "list_repositories",
+        "read_doc",
+        "search_docs"
+      ],
+      "bindings": {
+        "read_doc": {
+          "owner": "easeus",
+          "repo": "WorldCup2026"
+        },
+        "search_docs": {
+          "owner": "easeus",
+          "repo": "WorldCup2026"
+        },
+        "list_repositories": {}
+      },
+      "repository_id": "easeus/WorldCup2026",
+      "snapshot": "unknown",
+      "setup_issues": []
+    },
+    "codegraph": {
+      "connection": {
+        "transport": "stdio",
+        "timeout": 60,
+        "command": "node.exe",
+        "args": [
+          "--liftoff-only",
+          "--disable-warning=ExperimentalWarning",
+          ""
+        ],
+        "env": {},
+        "cwd": "{{project_path}}"
+      },
+      "allowed_tools": [
+        "codegraph_explore"
+      ],
+      "bindings": {
+        "codegraph_explore": {
+          "projectPath": "{{project_path}}"
+        }
+      },
+      "repository_id": "",
+      "snapshot": "unknown",
+      "setup_issues": [
+        "stdio 参数 3 包含旧机器路径，请填写当前机器的连接参数"
+      ]
+    }
+  }
+}

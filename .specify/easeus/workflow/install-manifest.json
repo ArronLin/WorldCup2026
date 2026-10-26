@@ -3,18 +3,19 @@
   "owner": "repo-sdd-studio",
   "framework": "speckit",
   "files": {
-    ".specify/easeus/workflow/runtime.py": "2bee0dce32feea97d9fae6ac75c7524294c64621347093debfe58503de8ba3e7",
-    ".specify/easeus/workflow/work-item.schema.json": "b4bb0ff2fbc50b2a1fa871b221c662ef69921f22d9cc289dbf657927a39c4d0f",
-    ".specify/easeus/workflow/run.ps1": "d0de6559dd673e5fa463ee9055383b011b6de341a3de9e57e2e06a32e3f0992f",
-    ".agents/skills/sdd-speckit-start/SKILL.md": "ace211306ff3c20977b8088308d2fa68af0122dbbbb5b0c2d7e9dae8a870da00",
+    ".specify/easeus/workflow/runtime.py": "a468d4d55ab30a398e1aa4bc1e51968cb2da6bc8782b4598704a0d31a430eb35",
+    ".specify/easeus/workflow/work-item.schema.json": "9e5418b88b87317ebc7ec0a6cf4943c4b7a885879a6512423d271b437b9d2ce4",
+    ".specify/easeus/workflow/rule-migrations.json": "6320649f185fed94dee2c982aca9c8bc672c3a085f6b713dfa94d4cd6c325b01",
+    ".specify/easeus/workflow/run.ps1": "db59fac47efed008801bda18fc22d809e7b6a053f8e3213a5ed24639ca76581d",
+    ".agents/skills/sdd-speckit-start/SKILL.md": "b2259842305bf0e89c4406710058f826d7640f5d31acfed2625c9ceb63549701",
     ".agents/skills/sdd-speckit-start/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    ".agents/skills/sdd-speckit-bug/SKILL.md": "6e3b4e1b41aebb7280057a4590e3b7b61a60749cee3bc15484bf1d60960b77bf",
+    ".agents/skills/sdd-speckit-bug/SKILL.md": "a57c6757c88f5cf59dcd3e613250c3819cc4d06a98e6ee5aec283d1c5cba47be",
     ".agents/skills/sdd-speckit-bug/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    ".agents/skills/sdd-speckit-quick/SKILL.md": "c0e18b418f8864fa3035e784e5229bbf793dc97372f352cb6d3c5bfa0bfb13b7",
+    ".agents/skills/sdd-speckit-quick/SKILL.md": "30bd1f499f8f1372bb35603b81aec92277f7c07fedfcefd6b241c1007e118dc4",
     ".agents/skills/sdd-speckit-quick/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    ".agents/skills/sdd-speckit-change/SKILL.md": "85412d4afcb8b269d06253308079ac8857f5caa97a5228a8baa0fbaa8981fcb1",
+    ".agents/skills/sdd-speckit-change/SKILL.md": "03a4e4ee91629075fb450f33f7612add323bf6d782bbf8426bac6e4b5e67eb5d",
     ".agents/skills/sdd-speckit-change/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    ".agents/skills/sdd-speckit-resume/SKILL.md": "115a60cb01afabb7646e391b72d861055399d2c11d0d7267e095e65281d495ed",
+    ".agents/skills/sdd-speckit-resume/SKILL.md": "8c21c203bf7fdff7f52f30d1fd513aa725a6c6c55f2959c1a2054477cc8d4de1",
     ".agents/skills/sdd-speckit-resume/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
   }
 }

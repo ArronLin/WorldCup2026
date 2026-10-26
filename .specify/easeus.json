@@ -9,14 +9,14 @@
   },
   "sources": {
     "opendeepwiki": {
-      "access": "MCP speckit_wizard：opendeepwiki__<工具名>；本机绑定由仓库适配向导管理",
+      "access": "仓库随附 MCP speckit_wizard：opendeepwiki__<工具名>；连接配置见 knowledge-runtime.json",
       "snapshot": "unknown",
       "server_name": "speckit_wizard",
       "location": "easeus/WorldCup2026",
       "mcp": null
     },
     "codegraph": {
-      "access": "MCP speckit_wizard：codegraph__<工具名>；本机绑定由仓库适配向导管理",
+      "access": "仓库随附 MCP speckit_wizard：codegraph__<工具名>；连接配置见 knowledge-runtime.json",
       "snapshot": "unknown",
       "server_name": "speckit_wizard",
       "index_path": "",
@@ -24,7 +24,7 @@
     }
   },
   "verification": {
-    "new_code_baseline": "每个功能开始时明确基线提交或可复现源码快照",
+    "new_code_baseline": "按本功能既定基线比较新增行，沿用仓库已有工具和 CI，不生成源码副本",
     "known_commands": []
   },
   "policy": {
