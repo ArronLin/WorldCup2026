@@ -75,23 +75,21 @@ $speckit-implement <功能目录>
 使用统一入口创建或登记的任务，在结束前核对原生产物和任务：
 
 ```text
-$sdd-speckit-resume 继续任务 <任务ID或 work-item.json 路径>，核对当前产物、执行 finish 完成检查并说明剩余缺口
+$sdd-speckit-resume 继续 specs/tiny/<名称>.md，直接核对任务复选框和完成条件，不创建 work-item.json
+```
+
+```text
+$sdd-speckit-resume 继续任务 <任务ID或 work-item.json 路径>，核对当前产物、执行适用的完成检查并说明剩余缺口
 ```
 
 ## Bug、小改动与需求变更
 
-bug 和 quick 在明确要求修复或实施时执行；仅诊断或分析时保持只读。change 先分析已有任务的影响，具体更新方案获准后才更新文档，不自动继续实施。resume 继续指定的已有任务；只询问进度时不推进，也不创建替代任务。
-
-### 修复 Bug
-
-```text
-$sdd-speckit-bug 修复 <问题>；预期行为 <描述>，复现步骤 <步骤>
-```
+明确要求修复或实施后才执行；仅诊断或分析时保持只读。Spec Kit quick 只创建 `specs/tiny/` 下的一份 Markdown，直接从任务复选框续做，不生成 `work-item.json`。 change 先分析已有任务的影响，具体更新方案获准后才更新文档，不自动继续实施。resume 继续指定的已有任务；只询问进度时不推进，也不创建替代任务。
 
 ### 处理小改动
 
 ```text
-$sdd-speckit-quick 处理 <边界清楚的小改动>；验收条件 <条件>
+$sdd-speckit-quick 处理 <边界清楚的小改动>；验收条件 <条件>；使用单文件 TinySpec
 ```
 
 ### 修改实施中的需求
@@ -103,14 +101,31 @@ $sdd-speckit-change 为任务 <任务ID> 分析需求变更 <内容>，先展示
 ### 继续已有任务
 
 ```text
-$sdd-speckit-resume 继续任务 <任务ID或 work-item.json 路径>，核对状态和已有产物
+$sdd-speckit-resume 继续任务 <specs/tiny 文件、任务ID或 work-item.json 路径>，核对状态和已有产物
 ```
 
-官方 Bug 流程分为诊断、修复、测试三阶段；建议用统一 Bug 入口衔接任务与实际测试：
+### 修复 Bug（官方流程）
 
-- `$speckit-bug-assess`：指定同一 Bug 的诊断目录。
-- `$speckit-bug-fix`：指定同一 Bug 的诊断目录。
-- `$speckit-bug-test`：指定同一 Bug 的诊断目录。
+不使用 Studio 包装入口。三个官方技能使用同一个 slug，并且每一步完成后审阅产物，再由用户明确调用下一步；不会自动从诊断推进到修改代码。
+
+诊断问题并写入 assessment.md：
+
+```text
+$speckit-bug-assess <问题、预期行为和复现步骤> slug=<bug-name>
+```
+
+按已审阅的诊断实施修复并写入 fix.md：
+
+```text
+$speckit-bug-fix slug=<bug-name>
+```
+
+复现并验证修复，写入 test.md：
+
+```text
+$speckit-bug-test slug=<bug-name>
+```
+
 
 ## 实际测试与有效规则
 

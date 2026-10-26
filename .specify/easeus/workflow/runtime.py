@@ -147,6 +147,8 @@ def validate_record(value):
 def create(root, framework, ident, kind, title, acceptance, risks, rules,native_path=''):
     if kind not in ('feature','bug','quick','change'):raise ValueError('任务类型无效')
     if kind=='change':raise ValueError('需求变更必须明确关联已有任务，请对其清单使用 impact，不创建无关联变更')
+    if framework=='speckit' and kind=='quick':
+        raise ValueError('Spec Kit 轻量任务使用 specs/tiny/ 下的单一 Markdown，不创建 Studio work-item')
     if kind=='quick' and (risks or not acceptance):raise ValueError('轻量任务需要明确验收条件且无未处理风险')
     path=task_path(root,framework,ident)
     if path.exists():raise ValueError('任务已存在，请显式恢复，不覆盖历史')

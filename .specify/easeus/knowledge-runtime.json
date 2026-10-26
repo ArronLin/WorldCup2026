@@ -17,11 +17,11 @@
         "search_docs"
       ],
       "bindings": {
-        "read_doc": {
+        "search_docs": {
           "owner": "easeus",
           "repo": "WorldCup2026"
         },
-        "search_docs": {
+        "read_doc": {
           "owner": "easeus",
           "repo": "WorldCup2026"
         },

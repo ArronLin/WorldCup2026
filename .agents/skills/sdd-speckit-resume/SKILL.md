@@ -5,9 +5,11 @@ description: Inspect and continue one explicitly identified existing task; never
 
 本次明确选择 speckit；先说明目标仓库、当前任务和本入口职责，不得加载另一框架的规则。
 读取 `.specify/easeus/requirements.json`、本框架项目规范及知识库绑定；工程政策只来自启用规则，不恢复停用政策。
-仓库运行入口：`powershell -NoProfile -ExecutionPolicy Bypass -File .specify/easeus/workflow/run.ps1`，后接动作和参数；每次传 --project 当前仓库，已有任务传 --work-item 明确清单路径。需要 Python 3.10+，不依赖 Studio 或用户目录绑定。
+仓库运行入口：`powershell -NoProfile -ExecutionPolicy Bypass -File .specify/easeus/workflow/run.ps1`，后接动作和参数；每次传 --project 当前仓库。使用 Studio 工作项协议的任务传 --work-item 明确清单路径；`specs/tiny/` 单文件任务直接读取 Markdown，不使用此参数。需要 Python 3.10+，不依赖 Studio 或用户目录绑定。
 只请求查询、诊断或分析时只读，不创建文档、不登记或推进任务、不运行测试或安装依赖。只读调用附加 `--intent analyze`，该模式只允许 doctor/status；不得去掉参数、换用直接 Python API 或报告命令绕过只读边界。缺少环境时报告缺口，不自行修复。
 任务归属或授权不明确时才询问；明确授权只适用于相应任务和范围，不自动扩展。
+
+明确任务若是 `specs/tiny/*.md`，直接从该文件的 Status、Requirements、Tasks 和 Done When 恢复；只查询时报告状态后停止，明确续做时继续未勾选项。不得为它创建 `work-item.json` 或替代任务。以下工作项规则只适用于非 TinySpec 任务。
 
 ## 职责：继续明确的已有任务
 先用 status --intent analyze 核对任务 ID、框架、输入修订、原生产物、源码、规则与历史证据；不得创建替代任务，不得按最近修改时间猜测。多任务且未指定归属时先询问。

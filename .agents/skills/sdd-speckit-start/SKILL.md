@@ -5,7 +5,7 @@ description: Analyze the task and recommend a workflow without creating files. C
 
 本次明确选择 speckit；先说明目标仓库、当前任务和本入口职责，不得加载另一框架的规则。
 读取 `.specify/easeus/requirements.json`、本框架项目规范及知识库绑定；工程政策只来自启用规则，不恢复停用政策。
-仓库运行入口：`powershell -NoProfile -ExecutionPolicy Bypass -File .specify/easeus/workflow/run.ps1`，后接动作和参数；每次传 --project 当前仓库，已有任务传 --work-item 明确清单路径。需要 Python 3.10+，不依赖 Studio 或用户目录绑定。
+仓库运行入口：`powershell -NoProfile -ExecutionPolicy Bypass -File .specify/easeus/workflow/run.ps1`，后接动作和参数；每次传 --project 当前仓库。使用 Studio 工作项协议的任务传 --work-item 明确清单路径；`specs/tiny/` 单文件任务直接读取 Markdown，不使用此参数。需要 Python 3.10+，不依赖 Studio 或用户目录绑定。
 只请求查询、诊断或分析时只读，不创建文档、不登记或推进任务、不运行测试或安装依赖。只读调用附加 `--intent analyze`，该模式只允许 doctor/status；不得去掉参数、换用直接 Python API 或报告命令绕过只读边界。缺少环境时报告缺口，不自行修复。
 任务归属或授权不明确时才询问；明确授权只适用于相应任务和范围，不自动扩展。
 
@@ -19,7 +19,7 @@ description: Analyze the task and recommend a workflow without creating files. C
 3. 分类理由与风险：公共行为、接口、权限、数据迁移、兼容性、影响范围和验证能力；不得主要按修改行数分类。
 4. 当前前置缺口及建议，不自动补建采集配置。
 5. 推荐的下一入口及可复制调用示例；只展示，不自动调用。
-新功能：核对已安装的原生需求入口；Bug 用 $sdd-speckit-bug；轻量用 $sdd-speckit-quick；已有任务需求变更用 $sdd-speckit-change；续做用 $sdd-speckit-resume。
+新功能：核对已安装的原生需求入口；Bug：先调用官方 `$speckit-bug-assess`，审阅诊断后再分别调用 `$speckit-bug-fix` 和 `$speckit-bug-test`；不得自动串行推进。 轻量用 $sdd-speckit-quick；已有任务需求变更用 $sdd-speckit-change；续做用 $sdd-speckit-resume。
 6. 停止，等待用户明确要求继续。推荐结果只保留在对话，不保存到仓库。
 
 ## 明确继续后的交接

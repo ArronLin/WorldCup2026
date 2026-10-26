@@ -33,7 +33,7 @@
           "speckit-converge"
         ]
       },
-      "installed_at": "2026-10-26T07:53:42.706158+00:00"
+      "installed_at": "2026-10-26T09:49:25.147089+00:00"
     },
     "easeus-project": {
       "version": "1.0.0",
@@ -43,7 +43,7 @@
       "priority": 1,
       "registered_commands": {},
       "registered_skills": {},
-      "installed_at": "2026-10-26T07:53:45.053403+00:00"
+      "installed_at": "2026-10-26T09:49:28.399553+00:00"
     }
   }
 }
