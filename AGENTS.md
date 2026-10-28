@@ -30,9 +30,10 @@ Wiki 建立业务背景，CodeGraph 定位代码，再核实当前源码。
 知识库与源码说明现状，已确认需求定义期望；关键结论记录来源与适用版本，未知必须明确，现状缺陷不得自动固化为规范。
 
 ### 项目通用 Agent 约定
-- 新增或修改产品界面文案时，通过 src/i18n.js 的 t() 使用词条，同步维护 public/i18n/ 下的中英文词典；验证两种语言的显示及切换后的当前页面刷新，并运行 npm run validate:data。
-- 新增或修改 Hash 路由时，核对 src/app.js 的注册模式与 src/router.js 的路径匹配方式；涉及查询参数的路由，应覆盖带参数深链接、无参数入口和无效参数场景，避免查询串导致路由落入未找到页面。
-- Vitest 单元测试放入 tests/**/*.test.js；依赖 document、window 或 DOM 事件的测试显式声明 jsdom 环境，纯计算与服务端逻辑沿用默认 node 环境。浏览器集成场景放入 e2e/，运行前先构建供 Vite preview 使用的产物。
+- 新增或修改 Hash 路由时，核对 src/app.js 的注册模式与 src/router.js 的完整 hash 匹配方式；含查询参数的路由须显式解析参数，并验证直接打开深链接、参数缺省和未知路径场景。
+- 新增或修改浏览器持久化偏好时，优先复用 src/browser-storage.js 的存储适配器，分别处理读取失败、键不存在和写入失败；通过注入存储实现验证异常路径，避免在模块导入阶段访问 localStorage。
+- 安排验证时，将纯逻辑测试放入 tests/**/*.test.js；依赖 DOM 的测试显式指定 jsdom。运行 Playwright 前先构建当前改动，并核对 4173 端口上的预览服务确实提供本次 dist/ 产物。
+- 涉及 AI 问答的调试与交付说明，应标明验证的是 ?mock 界面演示、本地 BYOK 浏览器直连，还是 Netlify Function 路径；验证 Function 时使用包含该服务的运行环境，分别记录前端交互与服务端请求的结果。
 
 Codex 执行前另读取 .specify/easeus/agents/codex.md 中的专属约定（若存在）。
 <!-- WIZARD:AGENT:END -->
