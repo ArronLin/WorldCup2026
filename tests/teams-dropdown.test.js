@@ -89,3 +89,24 @@ it('AC3 translates the label, all option and team names into English', async () 
   expect(document.querySelector('input[value=""]').labels[0].textContent).toContain('All groups');
   expect(document.querySelector('input[value="A"]').labels[0].textContent).toContain('Group A');
 });
+
+it.each([['A'], ['AB']])('clears selected groups %s and returns focus', keys => {
+  dispose = init(document.querySelector('#app'));
+  const clear = document.querySelector('[data-clear-team-groups]');
+  expect(clear?.hidden).toBe(true);
+  for (const key of keys) toggle(key);
+  expect(clear.hidden).toBe(false);
+  clear.focus();
+  clear.click();
+  expect(visible('.team-search-result')).toHaveLength(48);
+  expect([...document.querySelectorAll('[data-group-choice]:checked')].map(el => el.value)).toEqual(['']);
+  expect(clear.hidden).toBe(true);
+  expect(document.activeElement).toBe(document.querySelector('.teams-filter summary'));
+  toggle('B');
+  expect(visible('.group-card').map(el => el.dataset.teamGroup)).toEqual(['B']);
+  toggle('B');
+  expect(clear.hidden).toBe(true);
+  toggle('A');
+  toggle('');
+  expect(clear.hidden).toBe(true);
+});

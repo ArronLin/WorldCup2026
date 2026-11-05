@@ -11,7 +11,7 @@
     ".agents/skills/sdd-speckit-resume/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
     ".agents/skills/sdd-speckit-start/SKILL.md": "68a6e1cc1be9e7c4acfad150d16a2816cfdd10fe1e077e715a57eec95545fbbe",
     ".agents/skills/sdd-speckit-start/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    ".specify/easeus/workflow/hybrid.py": "01e81ff150c4a8f7916ce7e269eebb403cb00b6ccadfe3edb5ab7bded866a221",
+    ".specify/easeus/workflow/hybrid.py": "3e3d9caddcf309d0cda886813f6132597db84ae0baff5a186b7e5ae0cdcf69c0",
     ".specify/easeus/workflow/rule-migrations.json": "b39e6cf373984fe1967265516b4e0200531aa2580fda0ddc10768c0305ef206c",
     ".specify/easeus/workflow/run.ps1": "db59fac47efed008801bda18fc22d809e7b6a053f8e3213a5ed24639ca76581d",
     ".specify/easeus/workflow/runtime.py": "9200c55a71545e652af13e15769a5a2edf3e2e30e28445c8989c8e2b20b1b1f6",

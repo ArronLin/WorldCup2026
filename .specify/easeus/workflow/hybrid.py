@@ -14,6 +14,21 @@ IDENT = re.compile(r'^(T\d+|\d+(?:\.\d+)+|[A-Z]+-\d+)\s+')
 FIELD = re.compile(r'^\s*(?:[-*+]\s+)?([^:：]+)[:：]\s*(.*?)\s*$')
 FENCE = re.compile(r'^\s*(`{3,}|~{3,})(.*)$')
 TYPES = {'DEVELOPMENT', 'AUTOMATED_TEST', 'MANUAL_TEST', 'REVIEW', 'ACCEPTANCE', 'OTHER'}
+FIELD_ALIASES = {
+    '类型': 'type', '依赖': 'dependencies', '负责人': 'owner', '环境': 'environment',
+    '原因': 'reason', '步骤': 'steps', '预期': 'expected', '证据': 'evidence',
+    '发布必需': 'required for release', '最终验收': 'final acceptance',
+    '阻塞原因': 'blocked reason', '关联任务': 'related to', '执行人': 'tester',
+    '执行日期': 'execution date', '结果': 'result', '复核修订': 'reviewed revision',
+    '实施复核': 'implementation review', '问题编号': 'issue', '结果证据': 'result evidence',
+    '实际环境': 'actual environment', '复现步骤': 'reproduction',
+    '延期批准人': 'deferred by', '延期截止日期': 'deferred until', '延期原因': 'deferral reason',
+}
+TYPE_ALIASES = {
+    '开发': 'DEVELOPMENT', '自动化测试': 'AUTOMATED_TEST', '人工测试': 'MANUAL_TEST',
+    '评审': 'REVIEW', '验收': 'ACCEPTANCE', '其他': 'OTHER',
+}
+BOOLEAN_ALIASES = {'是': 'true', '否': 'false'}
 RECORD = {'tester', 'execution date', 'result', 'reviewed revision', 'implementation review',
           'issue', 'result evidence', 'actual environment', 'reproduction', 'deferred by',
           'deferred until', 'deferral reason'}
@@ -60,7 +75,8 @@ def _parse(text):
             title = title[ident.end():] if ident else title
             labels = []
             while label := re.match(r'^\[([^\]]+)\]\s*', title):
-                labels.append(label[1].upper())
+                raw_label = label[1].upper()
+                labels.append({'人工': 'MANUAL', '测试': 'TEST'}.get(raw_label, raw_label))
                 title = title[label.end():]
             current = dict(id=task_id, checked=checkbox.lower() == 'x', labels=labels, title=title,
                            phase=phase, fields={}, line=index + 1, indent=len(indent))
@@ -75,6 +91,7 @@ def _parse(text):
             field = FIELD.fullmatch(line.rstrip('\r\n'))
             if field:
                 key, value = field[1].strip().casefold(), field[2]
+                key = FIELD_ALIASES.get(key, key)
                 if key in current['fields']:
                     issues.append(f"{current['id']}: duplicate field {key}")
                 current['fields'][key] = value
@@ -118,6 +135,7 @@ def analyze(text, *, task_ids=(), story=None, phase=None, revision=None):
         human = 'MANUAL' in labels
         kinds = labels & TYPES
         declared = fields.get('type', '').upper()
+        declared = TYPE_ALIASES.get(declared, declared)
         kind = declared or next(iter(sorted(kinds)), 'MANUAL_TEST' if human and 'TEST' in labels else 'OTHER')
         if {'MANUAL', 'AI'} <= labels or len(kinds) > 1 or kind not in TYPES or (kinds and kind not in kinds):
             issues.append(f'{ident}: conflicting executor or type')
@@ -126,6 +144,8 @@ def analyze(text, *, task_ids=(), story=None, phase=None, revision=None):
         dependencies = re.split(r'[,，\s]+', fields['dependencies'].strip()) if fields.get('dependencies') else []
         release = fields.get('required for release', 'true').lower()
         final = fields.get('final acceptance', 'false').lower()
+        release = BOOLEAN_ALIASES.get(release, release)
+        final = BOOLEAN_ALIASES.get(final, final)
         if release not in {'true', 'false'} or final not in {'true', 'false'}:
             issues.append(f'{ident}: release and final acceptance fields require true or false')
         if final == 'true' and (not human or kind not in {'REVIEW', 'ACCEPTANCE'} or release != 'true'):
@@ -191,7 +211,7 @@ def analyze(text, *, task_ids=(), story=None, phase=None, revision=None):
 
     implemented = bool(tasks) and not remaining and not issues
     final_checks = [task for task in manual if task['final_acceptance']]
-    reviewed = any(task['id'] in complete and task['fields'].get('implementation review', '').lower() == 'passed'
+    reviewed = any(task['id'] in complete and task['fields'].get('implementation review', '').lower() in {'passed', '通过'}
                    and revision and task['fields'].get('reviewed revision') == revision for task in tasks)
     finalized = bool(implemented and not pending and reviewed)
     if any(task['failed'] for task in manual):

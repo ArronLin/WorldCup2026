@@ -47,3 +47,47 @@ test('team dropdown filters, restores all, supports keyboard and translated mobi
   await page.locator('.team-search-result:visible').first().click();
   await expect(page).toHaveURL(/#\/team\/[A-Z]{3}$/);
 });
+
+test('clear filters works by keyboard in both languages on a narrow screen', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('wc2026-lang', 'zh'));
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/#/teams');
+  const summary = page.locator('.teams-filter summary');
+  const teams = page.locator('.team-search-result:visible');
+  for (const [label, entry, group] of [['清除筛选', '筛选小组', '小组'], ['Clear filters', 'Filter groups', 'Group']]) {
+    await expect(summary).toHaveText(entry);
+    for (const key of ['Enter', 'Space']) {
+      const clear = page.getByRole('button', { name: label, exact: true });
+      await expect(clear).toHaveCount(0);
+      await summary.click();
+      for (const letter of ['A', 'B']) {
+        await page.getByRole('checkbox', { name: group + ' ' + letter, exact: true }).check();
+      }
+      await expect(teams).toHaveCount(8);
+      await summary.click();
+      await expect(clear).toBeVisible();
+      const box = await clear.boundingBox();
+      const entryBox = await summary.boundingBox();
+      expect(box.x).toBeGreaterThanOrEqual(0);
+      expect(box.x + box.width).toBeLessThanOrEqual(375);
+      expect(box.height).toBeGreaterThanOrEqual(44);
+      expect(box.x >= entryBox.x + entryBox.width || box.y >= entryBox.y + entryBox.height).toBe(true);
+      await summary.focus();
+      await page.keyboard.press('Tab');
+      await expect(clear).toBeFocused();
+      await page.keyboard.press(key);
+      await expect(clear).toHaveCount(0);
+      await expect(summary).toBeFocused();
+      await expect(summary).toHaveCSS('outline-style', 'solid');
+      await expect(teams).toHaveCount(48);
+      await summary.click();
+      await expect(page.locator('[data-group-choice]:checked')).toHaveCount(1);
+      await expect(page.locator('[data-group-choice][value=""]')).toBeChecked();
+      await summary.click();
+    }
+    if (group === '小组') {
+      await page.locator('#langToggle').click();
+      await page.locator('html').evaluate(el => el.setAttribute('data-theme', 'light'));
+    }
+  }
+});
