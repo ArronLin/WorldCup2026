@@ -1,0 +1,78 @@
+# 实现任务：球队页一键清除小组筛选
+
+<!-- repo-sdd:hybrid-tasks:v1 -->
+
+共 9 项，单一故事 US1 即最小可交付范围。先确认基线，再并行准备两层测试。实现完成后，覆盖率和浏览器验证可并行。QA 验收等待同一候选版本通过这两项检查，真机通过后才能发布。无阻塞拆分的待确认项。
+
+## 准备与前置条件
+
+- [X] T001 [准备] 核对本功能 spec.md、plan.md 的布局、现有筛选契约和测试入口。在本文件记录实施前 Git 基线及受影响生产文件，确认现有测试可执行。
+    Type: OTHER
+
+## US1 一次清除已选小组
+
+独立验收：选中两个小组，收起面板后清除，确认完整列表恢复、勾选清空、焦点回到入口，再选一组核对结果。
+
+### 测试任务（先行）
+
+- [X] T002 [P] [US1] [测试] 在 tests/teams-dropdown.test.js 添加真实视图与控制器的 DOM 单测。断言默认及无组时按钮隐藏，单选及多选时显示，手动取消最后一项或选全部时隐藏。清除后验证列表、勾选、焦点及重选，保留去重、释放和重渲染回归。运行 npm test -- tests/teams-dropdown.test.js，记录由新行为缺失引发的断言失败。
+    Type: AUTOMATED_TEST
+    Dependencies: T001
+- [X] T003 [P] [US1] [测试] 在 e2e/teams-dropdown.spec.js 增加面板收起后清除及双语键盘场景。中英文分别以 Tab 到达按钮，再用 Enter 和空格激活，断言按钮隐藏、入口获得可见焦点、列表及选择恢复。补窄屏、深浅主题和语言切换后重新筛选的验证。
+    Type: AUTOMATED_TEST
+    Dependencies: T001
+
+### 实施任务
+
+- [X] T004 [P] [US1] [实现] 在 src/views/teams.js 渲染筛选入口旁默认隐藏的原生按钮，放在折叠面板外。同步 public/i18n/zh.json 和 public/i18n/en.json 的“清除筛选”与“Clear filters”。
+    Type: DEVELOPMENT
+    Dependencies: T002, T003
+- [X] T005 [P] [US1] [实现] 在 src/teams-filter.js 共用选择与列表同步路径。具体小组勾选集合为空时，全部小组已选、卡片全部可见、清除按钮隐藏。集合非空时，全部小组未选、仅匹配卡片可见、清除按钮可用。清除令集合变为空并将焦点移至筛选入口。手动取消最后一项也回到空集合，保持当前操作的焦点。沿用委托、去重与解绑。
+    Type: DEVELOPMENT
+    Dependencies: T002, T003
+- [X] T006 [P] [US1] [实现] 在 src/styles/pages.css 使用现有主题变量和焦点样式，保证窄屏下控件完整可见、互不遮挡并有足够触控空间。
+    Type: DEVELOPMENT
+    Dependencies: T002, T003
+
+### 验证任务
+
+- [X] T007 [P] [US1] [验证] 重跑 tests/teams-dropdown.test.js，记录由红转绿的实际结果。按需重构并回归。运行 npm run test:coverage，用 Git 基线及现有 addedLines 算法对照 coverage/coverage-final.json，统计变更的自有 JavaScript 可执行语句起始行。记录基线、命令、C、D 和未舍入 C/D，门槛为 80%。纯样式、词典、测试文件与浏览器结果排除。采集能力缺失时记为未核验。
+    Type: AUTOMATED_TEST
+    Dependencies: T004, T005, T006
+- [X] T008 [P] [US1] [验证] 按 quickstart.md 构建并核对 4173 预览服务对应当前 dist，再设置 CI=1 运行 npm run test:e2e -- e2e/teams-dropdown.spec.js。记录候选版本、环境、双语键盘结果、深浅主题与窄屏实际观察，处理重要 UI 偏差后复验。
+    Type: AUTOMATED_TEST
+    Dependencies: T004, T005, T006
+    Implementation review: passed
+    Reviewed revision: d94b72a702591a24559f2b9aa0d1aa5a833971356e5d6e0468721c22ed00265c
+- [X] T009 [US1] [验证] [MANUAL] [TEST] 按 quickstart.md 执行 SC-003 实体手机发布验收。
+    Type: MANUAL_TEST
+    Dependencies: T007, T008
+    Owner: QA
+    Environment: 至少一台实体手机，使用 T008 对应的待发布版本与手机浏览器。
+    Reason: 实机触控易点按和误触体验需在物理设备上核对。
+    Steps: 记录筛选前列表，选两个小组并收起面板，正常缩放下点按一次清除，再重开面板核对勾选。
+    Expected: 按钮完整可见且一次点中，无相邻控件误触，完整球队列表恢复，具体小组均未勾选，全部小组已选。
+    Evidence: 本文件 T009 的实际验收记录。
+    Required for release: true
+    Result: passed
+    Result evidence: 用户确认实体手机测试三项通过：按钮一次点中、列表恢复、具体小组勾选清空。
+    Actual environment: iPhone 17 Pro，Chrome（iOS 官方稳定版参考：157.0.8103.37，实测安装版本未核实）。
+    候选版本：dfae1af 加当前工作区未提交的球队筛选改动。
+    Tester: 用户本人
+    Execution date: 2026-11-05
+
+## 执行与交接
+
+T002 和 T003 分属不同文件。T004 至 T006 按既定交互契约分工，汇合后执行 T007 和 T008。使用 inspect-tasks 核对依赖与当前可执行批次。任何环境缺口在相应自动化项记录 Blocked reason。
+
+QA 在 T009 填写 Tester、Execution date、Actual environment（设备型号和浏览器版本）、候选版本、Result 和 Result evidence。QA 填写 Execution date（YYYY-MM-DD）、Result: passed 和实际证据后勾选。失败时保持未勾选，填写 Result: failed、Issue、Reproduction 和实际证据，关联修复后复验。真机未执行或未通过时阻塞发布。开发完成时可交接候选版本，独立自动化任务可继续。实现复核完成后在对应已完成验证任务记录 Implementation review 和 Reviewed revision。
+
+来源为 spec.md、plan.md、research.md、data-model.md、contracts/teams-filter-ui.md 和 quickstart.md。沿用规划阶段已读取的 OpenDeepWiki 概览与 CodeGraph 当前源码核对，Wiki 索引提交未知。
+
+## 实施验证记录
+
+- T001：基线 dfae1af335535db991a87edf55daeb613c720d22。规格检查 9/9，原球队页单测 7/7。
+- T002、T007：同一组新增单选和多选测试在生产修改前因缺少清除按钮断言失败（2 失败、7 通过），实现后 9/9。共用现有重置路径，无额外重构。
+- T007：npm run test:coverage 全量单测 111/111。按 Git 基线、addedLines、Babel 变更 token 及 Istanbul 语句映射核算，src/teams-filter.js 14/14、src/views/teams.js 1/1，合计 15/15（100%）。覆盖报告与源码哈希已核对。
+- T008：npm run build 通过，4173 由本轮 Playwright 预览服务提供。CI=1 下球队页 Chromium 2/2 通过，包含 375px 窄屏、中英文、深浅主题、键盘激活、可见焦点及列表恢复。候选为上述 Git 基线加当前未提交的球队页实现、样式及双语改动。验收依据为实际浏览器断言。实体手机结果见 T009。
+- 最终复核：当前候选重新运行 npm test（111/111）、npm run build 及球队页 Chromium（2/2），均通过。覆盖率报告与当前生产源码哈希一致，沿用 15/15。真机三项通过由用户确认，Chrome 安装版本未核实。

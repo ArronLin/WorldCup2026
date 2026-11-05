@@ -19,11 +19,12 @@ export default async function teamsView() {
   let html = `<div class="teams-page">`;
   html += `<h1 class="page-title">${t('nav.teams')}</h1>`;
   html += `<p class="page-subtitle">${t('teams.subtitle')}</p>`;
-  html += `<details class="teams-filter"><summary>${t('teams.filter')}</summary>
+  html += `<div class="teams-filter-row"><details class="teams-filter"><summary>${t('teams.filter')}</summary>
     <div class="teams-filter-options" role="group" aria-label="${t('teams.filter')}">
     <label><input type="checkbox" data-group-choice value="" checked> ${t('teams.all')}</label>
     ${groupKeys.map(g => `<label><input type="checkbox" data-group-choice value="${g}"> ${t('common.group')} ${g}</label>`).join('')}
-    </div></details>`;
+    </div></details>
+    <button type="button" data-clear-team-groups hidden>${t('teams.clearFilters')}</button></div>`;
 
   html += `<div class="group-grid">`;
   for (const g of groupKeys) {

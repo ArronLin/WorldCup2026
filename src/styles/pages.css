@@ -434,3 +434,26 @@
   outline-offset: 3px;
 }
 .teams-page [hidden] { display: none !important; }
+
+.teams-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.teams-filter-row .teams-filter { margin-bottom: 0; }
+.teams-filter-row [data-clear-team-groups] {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font: inherit;
+  cursor: pointer;
+}
+.teams-filter-row [data-clear-team-groups]:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 3px;
+}
