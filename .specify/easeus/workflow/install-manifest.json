@@ -3,17 +3,18 @@
   "owner": "repo-sdd-studio",
   "framework": "speckit",
   "files": {
-    ".agents/skills/sdd-speckit-change/SKILL.md": "45eabf6b22127a669c2a07b6c1d79fdc4f377dd5d1e039ea7101464bf7fc8cee",
+    ".agents/skills/sdd-speckit-change/SKILL.md": "3d0b7c4eac4d5ef092498bdbe0830c68d30cef3498510fe84f37a52ccb91929a",
     ".agents/skills/sdd-speckit-change/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    ".agents/skills/sdd-speckit-quick/SKILL.md": "1861d002782eb95ac96f8988cac2b595c9fc16379a8242f8b122dc7d73db1db2",
+    ".agents/skills/sdd-speckit-quick/SKILL.md": "cafd3efdaf35fb3dec92e596ead3a454a3abe2e5f94287ed6514fe80e3a2e360",
     ".agents/skills/sdd-speckit-quick/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    ".agents/skills/sdd-speckit-resume/SKILL.md": "e14ca3b5e36874e6ae5e1187bfe0c03925a4f88ecedd6458e93a1186b37aa416",
+    ".agents/skills/sdd-speckit-resume/SKILL.md": "2c11f0fe133e2cfe5d31a9f66871aaa47900b343f77d3297e2ae52ae4bb83073",
     ".agents/skills/sdd-speckit-resume/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
     ".agents/skills/sdd-speckit-start/SKILL.md": "68a6e1cc1be9e7c4acfad150d16a2816cfdd10fe1e077e715a57eec95545fbbe",
     ".agents/skills/sdd-speckit-start/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    ".specify/easeus/workflow/rule-migrations.json": "352ff8f6b4a1bcec4bd4d4b0b7ecde20c55b3f4d1b1bd4b3ab95241ebfab4ff5",
+    ".specify/easeus/workflow/hybrid.py": "01e81ff150c4a8f7916ce7e269eebb403cb00b6ccadfe3edb5ab7bded866a221",
+    ".specify/easeus/workflow/rule-migrations.json": "b39e6cf373984fe1967265516b4e0200531aa2580fda0ddc10768c0305ef206c",
     ".specify/easeus/workflow/run.ps1": "db59fac47efed008801bda18fc22d809e7b6a053f8e3213a5ed24639ca76581d",
-    ".specify/easeus/workflow/runtime.py": "2cb9f8a3e56abb82624af572421ba493bffef13aff1c11f087c54d1e645371f2",
+    ".specify/easeus/workflow/runtime.py": "9200c55a71545e652af13e15769a5a2edf3e2e30e28445c8989c8e2b20b1b1f6",
     ".specify/easeus/workflow/work-item.schema.json": "9e5418b88b87317ebc7ec0a6cf4943c4b7a885879a6512423d271b437b9d2ce4"
   }
 }

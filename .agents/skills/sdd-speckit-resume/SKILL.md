@@ -20,7 +20,7 @@ description: Inspect and continue one explicitly identified existing task; never
 ## 授权范围内的验证与完成
 推进已有任务使用 transition；不得伪报尚未执行的阶段。工程政策以当前启用规则为准。
 只有当前启用 TDD 时，先编写测试并实际运行，确认预期行为尚未实现导致断言失败，再编写最小实现使测试通过，按需重构并回归。依赖、环境或语法错误不是有效 Red；不把事后补测宣称为 TDD。停用时不得重新强制。
-使用仓库自己的测试命令，按修改影响范围验证。覆盖率要求读取规则快照，沿用仓库已有工具和 CI；百分比只适用于现有工具可可靠计量的新增或修改可执行业务逻辑，优先采用语句或分支覆盖率，仅有行覆盖率时可使用行覆盖率。纯声明式 UI（包括 QML）、生成代码、资源和配置不纳入百分比分母，但相关行为必须用适用的自动化测试验证；无可靠采集能力时说明不适用或能力缺口，不记为 0% 或 100%，不得用 qmlprofiler 等性能分析事件冒充覆盖率。
+使用仓库自己的测试命令，按修改影响范围验证。覆盖率要求读取规则快照，沿用仓库已有工具和 CI；覆盖率的启用、阈值、指标、范围和例外均读取当前规则快照，不混用指标。缺少采集能力为未核验／能力缺口，不当作不适用；不得以性能分析事件冒充覆盖率。TDD 的适用边界与替代验证也按当前规则执行，不强迫纯重构制造失败。
 在对话中简述实际命令、结果和未验证事项；不默认另建 evidence、收据、追踪映射、源码副本、截图、验收说明或 HTML。测试工具临时输出沿用项目已有忽略目录。
 获准实施且真实运行测试后，核对原生产物和任务，再执行 finish --work-item <明确任务清单>。成功只表示实施流程已完成，质量状态仍为未核验，不代表测试、覆盖率或 CI 已通过。实际测试失败或未执行时如实披露，不能宣称通过或勾选未完成任务。Skill 约束不是权限沙箱，也不声称程序已审计 TDD 顺序。
 
@@ -97,3 +97,20 @@ UI 输入可来自 Figma、本地截图、现有产品页面、项目设计规�
 没有相关图片时不生成空的 UI 参考章节；仍可按文字需求和组件规范处理 UI 任务。轻量任务与 Bug 直接在既有单文件或官方产物内引用，不增加独立评审说明、图片清单、工作项状态、evidence 或 HTML 报告。不默认生成截图；涉及 UI 时按本任务验证方案获取必要的实际界面证据。引用用户提供的需求图片属于需求输入，不能冒充实际运行证据。已有图片不因更新规格被删除；涉及删除资源须另有明确授权。
 
 Spec Kit：在 spec.md 相关需求旁展示图片及验收；clarify、plan、tasks、checklist、analyze、implement 与官方 Bug 阶段沿用原来源，不重复复制资源。TinySpec 在原单文件内引用。修改文档位置后重新核对相对路径。
+
+<!-- repo-sdd:manual-testing:v1 -->
+以下是生成和执行指令，只在原有产物记录必要信息，不新增平行任务文件、工作项或证据包。
+
+### 混合任务与人工交接
+
+先读项目已有验收、审批和发布约定（包括宪法及其引用），再核对当前规格的验收场景。默认不新增最终人工验收任务。仅为项目约定或已明确的功能需求生成必要人工测试、评审或验收；现有人工任务已覆盖要求时不重复增加。负责人或发布影响不清楚时走原有澄清流程。当前机器缺少设备、数据或权限但其他环境能自动运行的任务仍归 AI/AUTOMATED_TEST，用 `Blocked reason` 说明当前限制。不要把失败或缺失实现转成人工任务。不降低启用规则和既有门槛；停用规则保持停用。
+
+在现有任务文档中，需要混合任务或显式依赖时写入 `<!-- repo-sdd:hybrid-tasks:v1 -->`，保留原生 Markdown checkbox、任务 ID、[P]、[USn] 等。`[AI]` 或无执行者标记沿用 Agent 执行，人工用 `[MANUAL]`，人工测试用 `[MANUAL] [TEST]`。`Type` 可为 DEVELOPMENT、AUTOMATED_TEST、MANUAL_TEST、REVIEW、ACCEPTANCE 或 OTHER。用缩进的说明行写字段，字段名保持固定，字段值遵循项目语言。用 `Dependencies: T010, T011` 表示真正的前置任务。人工项写 `Owner`（执行人或角色）、`Environment`（环境）、`Reason`（原因）、`Steps`（步骤）、`Expected`（预期）、`Evidence`（既有记录位置）和 `Required for release: true` 或 `false`。默认阻塞发布。只有确需正式人工签收时才用 `Final acceptance: true`，可加依赖要求先完成其他任务。没有人工任务时不输出空分组。已启用文档若明确选择停用，保留 `<!-- repo-sdd:hybrid-tasks:v1 {"enabled":false} -->` 并执行原生规则；旧文件未经确认不自动转换。
+
+执行前读取整份清单。对启用混合任务的文件，运行当前框架 `workflow/run.ps1 inspect-tasks --tasks <仓库相对路径>`，或使用同目录 `python -B runtime.py inspect-tasks --project . --rules <当前规则快照> --tasks <仓库相对路径>`。运行组件路径见当前框架的项目指南和规则目录。可用 `--story US1`、`--phase <标题>`、`--task-id <ID>`（可重复）限制批次；前置任务仍跨批次检查。执行 `ready_ai`，完成后按原生格式更新 AI 复选框并重算。保持人工项未勾选，阻塞依赖未完成人工项的任务，继续独立任务。发现非法依赖或循环时报告并修正清单，不假装完成。对旧清单先读其已有交接约定；不得仅凭自由文本跳过原生任务。
+
+交接时列出已完成和剩余 AI 任务数、待人工验收项、被阻塞任务及原因、实际自动化测试结果、可交给 QA 的范围。`execution_batch_complete` 仅指当前批次暂无可执行任务，`implementation_complete` 核对整份清单的 AI 任务。人工通过后由授权人员填写 `Tester`、`Execution date`（YYYY-MM-DD）、实际环境（不同则补 `Actual environment`）、`Result: passed` 和实际测试记录（`Result evidence` 或已填写的 `Evidence` 链接），然后勾选。失败保持未勾选，记录 `Result: failed`、`Issue`、`Reproduction` 和证据，增加 `Related to: <人工任务 ID>` 的修复任务，修复后重新验证。Agent 不写入人工结果或勾选，也不删除未通过项。延期需现有流程批准并记录 `Required for release: false`、`Deferred by`、`Deferred until`、`Deferral reason`；待验收状态继续保留。
+
+最终核对时先按原生流程检查实现差距和真实测试，再在适当的已完成任务记录 `Implementation review: passed`、`Reviewed revision: <inspect-tasks 返回的 revision>`。只有完成了实际核对才记录，正式人工验收项的结果和复核修订由授权人员填写。没有人工验收要求时，可以在现有 AI 验证任务内记录复核，无需增设人工任务。`FINALIZED` 表示当前修订的任务和验收记录齐备，测试、CI 与审批真实性由项目原有机制核验。只读询问不得改文件；续做先核对剩余任务。需求变更使结果失效时，保留历史并重新打开受影响项。
+
+Spec Kit：已启用混合任务的文档在 implement 中按当前可执行 AI 项推进；原生全量完成条件仍用于最终交付。plan/tasks 分开本地验证和人工交接；analyze 不把已明确交接的测试当作任务遗漏。checklist 仍用于需求质量，不把人工执行用例搬进需求质量检查清单；原有检查清单门禁保持。converge 继续核对实现差距，人工任务未完成时报告 Pending Manual QA；仍有被阻塞的实现则列明，不能给出全量 Converged 结论。TinySpec 在原单文件内使用同一交接方式，done 只表示开发实施已完成，另明确待人工验收。官方 Bug 沿用 assessment.md、fix.md、test.md；未执行用例不得写为 Result: Passed，不自动推进下一阶段。

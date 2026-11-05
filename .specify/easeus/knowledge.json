@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "mode": "agent-native",
+  "agent": "codex",
+  "sources": {
+    "opendeepwiki": {
+      "server_name": "opendeepwiki",
+      "allowed_tools": [
+        "list_repositories",
+        "read_doc",
+        "search_docs"
+      ],
+      "repository_id": "easeus/WorldCup2026",
+      "snapshot": "unknown",
+      "probe": {
+        "tool": "read_doc",
+        "arguments": {
+          "owner": "easeus",
+          "repo": "WorldCup2026",
+          "path": "overview",
+          "branch": "main"
+        }
+      },
+      "bindings": {
+        "search_docs": {
+          "owner": "easeus",
+          "repo": "WorldCup2026"
+        },
+        "list_repositories": {},
+        "read_doc": {
+          "owner": "easeus",
+          "repo": "WorldCup2026"
+        }
+      }
+    },
+    "codegraph": {
+      "server_name": "codegraph",
+      "allowed_tools": [
+        "codegraph_explore"
+      ],
+      "repository_id": "",
+      "snapshot": "unknown",
+      "probe": {
+        "tool": "codegraph_explore",
+        "arguments": {
+          "query": "src/app.js"
+        }
+      },
+      "bindings": {
+        "codegraph_explore": {
+          "projectPath": "{{project_path}}"
+        }
+      }
+    }
+  }
+}

@@ -9,16 +9,16 @@
   },
   "sources": {
     "opendeepwiki": {
-      "access": "仓库随附 MCP speckit_wizard：opendeepwiki__<工具名>；连接配置见 knowledge-runtime.json",
+      "access": "Agent 原生 MCP；仓库映射见 knowledge.json",
       "snapshot": "unknown",
-      "server_name": "speckit_wizard",
+      "server_name": "opendeepwiki",
       "location": "easeus/WorldCup2026",
       "mcp": null
     },
     "codegraph": {
-      "access": "仓库随附 MCP speckit_wizard：codegraph__<工具名>；连接配置见 knowledge-runtime.json",
+      "access": "Agent 原生 MCP；仓库映射见 knowledge.json",
       "snapshot": "unknown",
-      "server_name": "speckit_wizard",
+      "server_name": "codegraph",
       "index_path": "",
       "mcp": null
     }

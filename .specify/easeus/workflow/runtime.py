@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import re
+import runpy
 import tempfile
 import uuid
 
@@ -193,6 +194,8 @@ def transition(root,path,stage,precheck=None,verifier=None):
         if not implementation or not implementation.get('implementation_complete'):raise ValueError('请先核对实施产物和未完成任务')
     event={'stage':stage,'revision':value['revision'],'implementation_already_verified':already_verified}
     if implementation and implementation.get('input_fingerprint'):event['input_fingerprint']=implementation['input_fingerprint']
+    if implementation and implementation.get('implementation_fingerprint'):
+        event['implementation_fingerprint']=implementation['implementation_fingerprint']
     value['stage']=stage;value['events'].append(event);write(path,value)
     return value
 
@@ -268,26 +271,54 @@ def finish(root,path,verify):
     if value['stage']=='finished' and value['schema_version']==VERSION:
         result=verify()
         if not result.get('implementation_complete'):raise ValueError('当前实施产物未完成')
-        previous=next((event.get('result',{}).get('input_fingerprint') for event in reversed(value['events'])
-                       if event.get('completion_scope')=='implementation' and event.get('revision')==value['revision']),None)
-        if previous and result.get('input_fingerprint')!=previous:
+        previous=_completion_checkpoint(value)
+        if not _same_inputs(previous,result):
             raise ValueError('实施产物在完成后发生变化，请重新评审当前任务')
-        return value
+        return {**value,'current_completion':result}
     if value['stage']!='verifying':raise ValueError('尚未进入验证阶段')
     before=read(path)
     revision=value['revision']
     result=verify()
     if checked(root,path)!=before:raise ValueError('验证期间输入发生变化')
-    checkpoint=next((event.get('input_fingerprint') for event in reversed(value['events'])
-                     if event.get('stage')=='verifying' and event.get('revision')==revision),None)
-    if checkpoint and result.get('input_fingerprint')!=checkpoint:
+    checkpoint=next((event for event in reversed(value['events'])
+                     if event.get('stage')=='verifying' and event.get('revision')==revision),{})
+    if not _same_inputs(checkpoint,result):
         raise ValueError('实施产物在核对后发生变化，请重新评审并核对当前任务')
     value=upgrade_task(value)
     value['verification']='unverified'
     value['events'].append({'completion_scope':'implementation','revision':revision,'result':result})
     if result.get('implementation_complete'):value['stage']='finished'
     write(path,value)
-    return value
+    return {**value,'current_completion':result}
+
+
+def _completion_checkpoint(value):
+    return next((event.get('result',{}) for event in reversed(value['events'])
+                 if event.get('completion_scope')=='implementation' and event.get('revision')==value['revision']),{})
+
+
+def _same_inputs(previous,current):
+    # Legacy raw fingerprints remain strict. New snapshots additionally allow
+    # only the checkbox of a fully described manual case to change afterward.
+    key='implementation_fingerprint' if previous.get('implementation_fingerprint') else 'input_fingerprint'
+    return not previous.get(key) or previous[key]==current.get(key)
+
+
+def status(root,path,verify=None):
+    """Read current completion without rewriting historical events or QA checks."""
+    value=checked(root,path)
+    if value['schema_version']==1:
+        return {**value,'legacy_record':True,'current_verification':'unverified'}
+    if value['stage'] not in ('verifying','finished'):return value
+    try:
+        if verify is None:raise ValueError('请通过当前仓库工作流启动器核对规则和实施产物')
+        current=verify()
+        if value['stage']=='finished' and not _same_inputs(_completion_checkpoint(value),current):
+            raise ValueError('实施产物在完成后发生变化，请重新评审当前任务')
+    except (ValueError,KeyError,OSError,TypeError) as exc:
+        current={'implementation_complete':False,'verification':'unverified',
+                 'summary':str(exc),'issues':[str(exc)]}
+    return {**value,'current_completion':current}
 
 
 def _framework(args):
@@ -322,7 +353,77 @@ def _check_task_rules(args,task):
         raise ValueError('任务规则快照与当前仓库不一致，请重新评审并更新任务；不得用空规则绕过已启用要求')
 
 
+def inspect_tasks(text,source):
+    """Inspect task checkboxes, excluding fenced examples; never change the file.
+
+    MANUAL is an explicit task label, not a keyword in a task description. Each
+    case owns its indented handoff fields; fields cannot leak from later tasks.
+    """
+    lines=text.splitlines(keepends=True)
+    visible=[];fence=None
+    for index,line in enumerate(lines):
+        marker=re.match(r'^\s*(`{3,}|~{3,})',line)
+        if fence:
+            if marker and marker[1][0]==fence[0] and len(marker[1])>=len(fence):fence=None
+            continue
+        if marker:
+            fence=marker[1];continue
+        visible.append((index,line))
+    task_pattern=re.compile(r'^(\ufeff?[ \t]*[-*+]\s+\[)([ xX])(\]\s*)(.*)')
+    label_pattern=re.compile(r'^(T\d+|\d+(?:\.\d+)+|[A-Z]+-\d+)\s+((?:\[[^\]\r\n]+\]\s*)+)')
+    fields={'owner':('执行人','Owner'),'environment':('环境','Environment'),
+            'reason':('原因','Reason'),'steps':('步骤','Steps'),'expected':('预期','Expected')}
+    aliases={alias.lower():key for key,names in fields.items() for alias in names}
+    field_pattern=re.compile(r'(?:^|[;；]|\n[ \t]*(?:[-*+]\s*)?)\s*('+
+        '|'.join(re.escape(alias) for alias in aliases)+r')\s*[:：]\s*',re.I)
+    pending=[];manual=[];normalized=list(lines)
+    for pos,(index,line) in enumerate(visible):
+        match=task_pattern.match(line)
+        if not match:continue
+        labels=label_pattern.match(match[4])
+        task_labels=re.findall(r'\[([^\]]+)\]',labels[2]) if labels else []
+        is_manual=labels and 'MANUAL' in task_labels
+        if not is_manual:
+            if match[2]==' ':raise ValueError('实施任务仍有未完成项：'+source+':'+str(index+1))
+            continue
+        forbidden={'实现','准备','文档','implementation','implement','setup','documentation','document'}
+        invalid=[label for label in task_labels if label.lower() in forbidden]
+        if invalid:
+            raise ValueError('人工测试不能标记为非测试任务：'+source+':'+str(index+1)+' '+invalid[0])
+        indent=len(line)-len(line.lstrip(' \t'))
+        block=[match[4]]
+        for _,following in visible[pos+1:]:
+            if task_pattern.match(following):break
+            if following.strip() and len(following)-len(following.lstrip(' \t'))<=indent:break
+            block.append(following.rstrip('\r\n'))
+        description='\n'.join(block)
+        matches=list(field_pattern.finditer(description));data={}
+        for number,field in enumerate(matches):
+            key=aliases[field[1].lower()]
+            if key in data:raise ValueError('人工测试交接字段重复：'+source+':'+str(index+1)+' '+fields[key][0])
+            end=matches[number+1].start() if number+1<len(matches) else len(description)
+            data[key]=description[field.end():end].strip(' \t\r\n;；')
+        missing=[names[0] for key,names in fields.items()
+                 if not data.get(key) or data[key].lower() in ('tbd','todo','待定','未注明','待补充')]
+        if missing:raise ValueError('人工测试交接信息不完整：'+source+':'+str(index+1)+' 缺少 '+ '、'.join(missing))
+        result_pattern=re.compile(r'(?:^|[;；]|\n[ \t]*(?:[-*+]\s*)?)\s*(?:结果|Result)\s*[:：]\s*([^;；\r\n]+)',re.I)
+        result_match=result_pattern.search(description)
+        result=result_match[1].strip() if result_match else ''
+        if result.lower() in ('失败','failed','fail'):
+            raise ValueError('人工测试结果为失败，不能完成开发收尾：'+source+':'+str(index+1))
+        item={'id':labels[1],'source':source,'line':index+1,'description':description,**data}
+        if result:item['result']=result
+        manual.append(item)
+        if match[2]==' ':pending.append(item)
+        normalized[index]=line[:match.start(2)]+' '+line[match.end(2):]
+    return {'pending_manual_tests':pending,'manual_tests':manual,'normalized_text':''.join(normalized)}
+
+
 def verify_native(root,task,namespace):
+    return _native_inputs(root,task,namespace)[0]
+
+
+def _native_inputs(root,task,namespace):
     root=Path(root).resolve();native=task.get('native_path')
     if not native:raise ValueError('任务未关联原生产物，请补充 native_path 后复核')
     path=inside(root,native)
@@ -344,9 +445,26 @@ def verify_native(root,task,namespace):
         if not file.is_file() or not file.read_text(encoding='utf-8-sig').strip():
             raise ValueError('缺少原生流程产物：'+file.relative_to(root).as_posix())
     task_file=path if path.is_file() else path/('fix.md' if task['framework']=='speckit' and task['kind']=='bug' else 'tasks.md')
-    text=task_file.read_text(encoding='utf-8-sig')
-    if re.search(r'(?m)^\s*[-*]\s+\[ \]',text):
-        raise ValueError('实施任务仍有未完成项：'+task_file.relative_to(root).as_posix())
+    text=task_file.read_bytes().decode('utf-8')
+    hybrid=None
+    if 'repo-sdd:hybrid-tasks:v1' in text:
+        core=runpy.run_path(str(Path(__file__).with_name('hybrid.py')))
+    else:
+        core=None
+    if core and core['configured'](text):
+        hybrid=core['inspect_file'](root,task_file)
+        if hybrid['issues'] or not hybrid['implementation_complete']:
+            details=hybrid['issues'] or hybrid['remaining_ai'] or ['没有任务']
+            raise ValueError('实施尚未完成：'+', '.join(details))
+        pending=[{'id':task['id'],'source':task_file.relative_to(root).as_posix(),
+                  'line':task['line'],'owner':task['fields']['owner']}
+                 for task in hybrid['tasks'] if task['id'] in hybrid['pending_manual']]
+        inspection={'pending_manual_tests':pending,
+                    'manual_tests':[task['id'] for task in hybrid['tasks'] if task.get('executor')=='MANUAL'],
+                    'normalized_text':core['definition_text'](text),
+                    'hybrid_tasks':{key:hybrid[key] for key in ('feature_state','finalized','release_tasks_satisfied','final_qa_completed') if key in hybrid}}
+    else:
+        inspection=inspect_tasks(text,task_file.relative_to(root).as_posix())
     if task['framework']=='speckit' and task['kind']=='bug':
         for name,key,expected in (('fix.md','Status','applied'),('test.md','Result','verified')):
             raw=(path/name).read_text(encoding='utf-8-sig')
@@ -357,7 +475,14 @@ def verify_native(root,task,namespace):
     if task['framework']=='openspec':
         inputs.update(file for file in (path/'proposal.md',path/'design.md',path/'.openspec.yaml') if file.is_file())
         inputs.update((path/'specs').rglob('*.md'))
-    return {file.relative_to(root).as_posix():digest(file.read_bytes()) for file in inputs}
+    files={file.relative_to(root).as_posix():digest(file.read_bytes()) for file in inputs}
+    # Preserve raw file hashes for compatibility and historical integrity. Only
+    # the new implementation fingerprint ignores execution records, while still
+    # checking current task completion and changes to task definitions.
+    normalized=dict(files)
+    if inspection['manual_tests'] or hybrid:
+        normalized[task_file.relative_to(root).as_posix()]=digest(inspection['normalized_text'].encode('utf-8'))
+    return files,normalized,inspection
 
 
 def portable_doctor(args):
@@ -372,12 +497,17 @@ def portable_verifier(args):
     task=checked(args.project,args.work_item)
     if task['framework']!=framework:raise ValueError('任务与当前框架不匹配')
     _check_task_rules(args,task)
-    files=verify_native(args.project,task,namespace)
+    files,normalized,inspection=_native_inputs(args.project,task,namespace)
+    common={'rules':_repository_rules(args),'acceptance':task['acceptance'],'revision':task['revision']}
+    pending=inspection['pending_manual_tests']
     return {'implementation_complete':True,'verification':'unverified',
-            'input_fingerprint':digest(json.dumps({'files':files,'rules':_repository_rules(args),
-                'acceptance':task['acceptance'],'revision':task['revision']},sort_keys=True,ensure_ascii=False).encode('utf-8')),
+            'input_fingerprint':digest(json.dumps({'files':files,**common},sort_keys=True,ensure_ascii=False).encode('utf-8')),
+            'implementation_fingerprint':digest(json.dumps({'files':normalized,**common},sort_keys=True,ensure_ascii=False).encode('utf-8')),
+            'pending_manual_tests':pending,'manual_test_count':len(inspection['manual_tests']),
+            **({'hybrid_tasks':inspection['hybrid_tasks']} if 'hybrid_tasks' in inspection else {}),
             'completion_scope':'implementation','business_tests_verified':False,'ci_verified':False,
-            'summary':'实施流程已完成；测试、覆盖率和 CI 结果未由此命令核验。'}
+            'summary':('开发实施完成；待人工验收 '+str(len(pending))+' 项；' if pending else '实施流程已完成；')+
+                '测试、覆盖率和 CI 结果未由此命令核验。'}
 
 
 def portable_precheck(args):
@@ -398,20 +528,34 @@ def main(argv=None,verifier=None,precheck=None,doctor=None):
     for stream in (sys.stdout,sys.stderr):
         if stream is not None and hasattr(stream,'reconfigure'):stream.reconfigure(encoding='utf-8',errors='replace')
     parser=argparse.ArgumentParser(description='Repo SDD Studio 任务核心')
-    parser.add_argument('action',choices=['doctor','create','status','transition','impact','apply-impact','recover-impact','finish'])
+    parser.add_argument('action',choices=['doctor','create','status','transition','impact','apply-impact','recover-impact','finish','inspect-tasks'])
     parser.add_argument('--project',type=Path,default=Path.cwd());parser.add_argument('--work-item',type=Path)
     parser.add_argument('--input',type=Path);parser.add_argument('--stage');parser.add_argument('--approve',action='store_true')
     parser.add_argument('--config',type=Path,help='兼容旧入口：仅定位框架目录，不读取报告配置')
     parser.add_argument('--rules',type=Path,help='当前框架的 requirements.json')
+    parser.add_argument('--tasks',help='仓库内原生任务 Markdown 的相对路径')
+    parser.add_argument('--task-id',action='append',default=[])
+    parser.add_argument('--story');parser.add_argument('--phase')
     parser.add_argument('--intent',choices=['analyze','execute'],default='execute',
                         help='analyze 只读检查；execute 保留现有已授权任务接口')
     args=parser.parse_args(argv)
     try:
-        if args.intent=='analyze' and args.action not in ('doctor','status'):
+        if args.intent=='analyze' and args.action not in ('doctor','status','inspect-tasks'):
             raise ValueError('只读分析不允许创建任务、推进阶段、更新文档或保存完成结果；请先取得明确继续授权')
         verifier=verifier or portable_verifier
         precheck=precheck or portable_precheck
         doctor=doctor or portable_doctor
+        if args.action=='inspect-tasks':
+            if not args.tasks:raise ValueError('inspect-tasks 需要 --tasks <相对路径>')
+            framework,_=_framework(args)
+            path=inside(args.project,args.tasks)
+            relative=path.relative_to(Path(args.project).resolve()).as_posix()
+            prefixes=('specs/','.specify/bugs/','.specify/studio-tasks/') if framework=='speckit' else ('openspec/changes/',)
+            if path.suffix.lower()!='.md' or not relative.startswith(prefixes):
+                raise ValueError('任务 Markdown 不属于当前框架')
+            inspect=runpy.run_path(str(Path(__file__).with_name('hybrid.py')))['inspect_file']
+            result=inspect(args.project,path,task_ids=args.task_id,story=args.story,phase=args.phase)
+            print(json.dumps(result,ensure_ascii=False));return 1 if result['issues'] else 0
         if args.action=='doctor':result=doctor(args)
         elif args.action=='create':
             framework,_=_framework(args)
@@ -420,9 +564,7 @@ def main(argv=None,verifier=None,precheck=None,doctor=None):
             _check_task_rules(args,request)
             result={'work_item':str(create(args.project,**request))}
         elif args.action=='status':
-            result=checked(args.project,args.work_item)
-            if result['schema_version']==1:
-                result={**result,'legacy_record':True,'current_verification':'unverified'}
+            result=status(args.project,args.work_item,lambda:verifier(args))
         elif args.action=='transition':
             callback=(lambda:precheck(args)) if precheck is not None else None
             check=(lambda:verifier(args)) if verifier is not None else None
