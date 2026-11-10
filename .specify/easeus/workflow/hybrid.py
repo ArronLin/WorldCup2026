@@ -1,4 +1,4 @@
-"""Read-only evaluation of the optional task convention in native Markdown."""
+"""Read-only native task selection and optional hybrid task evaluation."""
 from datetime import date
 from graphlib import CycleError, TopologicalSorter
 import hashlib
@@ -8,7 +8,9 @@ import re
 import subprocess
 
 
+RESULT_VERSION = 2
 HEADER = re.compile(r'<!-- repo-sdd:hybrid-tasks:v1(?: (.*?))? -->')
+HEADING = re.compile(r'^ {0,3}(#{1,6})[ \t]+(.+?)\s*$')
 TASK = re.compile(r'^([ \t]*)[-*+]\s+\[([ xX])\]\s+(.*)$')
 IDENT = re.compile(r'^(T\d+|\d+(?:\.\d+)+|[A-Z]+-\d+)\s+')
 FIELD = re.compile(r'^\s*(?:[-*+]\s+)?([^:：]+)[:：]\s*(.*?)\s*$')
@@ -39,7 +41,7 @@ def _parse(text):
     lines = text.splitlines(keepends=True)
     normalized = lines.copy()
     fence = current = None
-    phase = ''
+    headings, ancestors = [], []
     enabled = False
     header_seen = False
     for index, line in enumerate(lines):
@@ -64,8 +66,16 @@ def _parse(text):
                 issues.append('Invalid hybrid task header')
             header_seen = True
             continue
-        if re.match(r'^#{1,6}\s', line):
-            phase = line.strip().lstrip('#').strip()
+        heading = HEADING.match(line)
+        if heading:
+            level = len(heading[1])
+            title = re.sub(r'\s+#+\s*$', '', heading[2]).strip()
+            while ancestors and ancestors[-1]['level'] >= level:
+                ancestors.pop()
+            current_heading = dict(title=title, line=index + 1, level=level,
+                                   path=[item['title'] for item in ancestors] + [title])
+            headings.append(current_heading)
+            ancestors.append(current_heading)
             current = None
         match = TASK.match(line)
         if match:
@@ -79,7 +89,9 @@ def _parse(text):
                 labels.append({'人工': 'MANUAL', '测试': 'TEST'}.get(raw_label, raw_label))
                 title = title[label.end():]
             current = dict(id=task_id, checked=checkbox.lower() == 'x', labels=labels, title=title,
-                           phase=phase, fields={}, line=index + 1, indent=len(indent))
+                           phase=ancestors[-1]['title'] if ancestors else '',
+                           phases=[dict(item) for item in ancestors], fields={}, line=index + 1,
+                           indent=len(indent))
             tasks.append(current)
             if current['checked'] and 'MANUAL' in labels:
                 normalized[index] = re.sub(r'(?<=\[)[xX](?=\])', ' ', lines[index], count=1)
@@ -97,7 +109,7 @@ def _parse(text):
                 current['fields'][key] = value
                 if key in RECORD:
                     normalized[index] = ''
-    return enabled, tasks, issues, ''.join(normalized), header_seen
+    return enabled, tasks, issues, ''.join(normalized), header_seen, headings
 
 
 def definition_text(text):
@@ -120,18 +132,21 @@ def _present(fields, *keys):
 
 
 def analyze(text, *, task_ids=(), story=None, phase=None, revision=None):
-    enabled, tasks, issues, _, _ = _parse(text)
-    if not enabled and not issues:
-        remaining = [task['id'] for task in tasks if not task['checked']]
-        return dict(enabled=False, tasks=tasks, issues=[], remaining_ai=remaining, ready_ai=remaining,
-                    blocked=[], pending_manual=[], execution_batch_complete=bool(tasks) and not remaining,
-                    implementation_complete=bool(tasks) and not remaining, finalized=False)
+    enabled, tasks, issues, _, _, headings = _parse(text)
     by_id = {}
     for task in tasks:
         ident, labels, fields = task['id'], set(task['labels']), task['fields']
         if ident in by_id:
             issues.append(f'{ident}: duplicate task ID')
         by_id[ident] = task
+        dependencies = re.split(r'[,，\s]+', fields['dependencies'].strip()) if fields.get('dependencies') else []
+        if not enabled:
+            # Native files use checkbox completion. Labels or free text alone
+            # must not silently enable handoff, approval or deferral semantics.
+            task.update(executor='AI', type='OTHER', dependencies=dependencies,
+                        failed=False, stale=False, deferred=False, final_acceptance=False,
+                        recorded_pass=False)
+            continue
         human = 'MANUAL' in labels
         kinds = labels & TYPES
         declared = fields.get('type', '').upper()
@@ -141,7 +156,6 @@ def analyze(text, *, task_ids=(), story=None, phase=None, revision=None):
             issues.append(f'{ident}: conflicting executor or type')
         if (human and kind in {'DEVELOPMENT', 'AUTOMATED_TEST'}) or (not human and kind == 'MANUAL_TEST'):
             issues.append(f'{ident}: executor does not match type')
-        dependencies = re.split(r'[,，\s]+', fields['dependencies'].strip()) if fields.get('dependencies') else []
         release = fields.get('required for release', 'true').lower()
         final = fields.get('final acceptance', 'false').lower()
         release = BOOLEAN_ALIASES.get(release, release)
@@ -170,9 +184,6 @@ def analyze(text, *, task_ids=(), story=None, phase=None, revision=None):
         for dep in task['dependencies']:
             if dep == ident or dep not in by_id:
                 issues.append(f'{ident}: invalid dependency {dep}')
-    unknown_selection = set(task_ids) - by_id.keys()
-    if unknown_selection:
-        issues.append('Unknown selected tasks: ' + ', '.join(sorted(unknown_selection)))
     graph = {ident: task['dependencies'] for ident, task in by_id.items()}
     try:
         order = list(TopologicalSorter(graph).static_order())
@@ -194,24 +205,46 @@ def analyze(text, *, task_ids=(), story=None, phase=None, revision=None):
     manual = [task for task in tasks if task['executor'] == 'MANUAL']
     remaining = [task for task in ai if task['id'] not in complete]
     pending = [task for task in manual if task['id'] not in complete]
-    selected = [task for task in remaining if (not task_ids or task['id'] in task_ids)
-                and (not story or story.upper() in task['labels'])
-                and (not phase or phase.casefold() == task['phase'].casefold())]
-    if (story or phase) and not any((not story or story.upper() in task['labels'])
-                                    and (not phase or phase.casefold() == task['phase'].casefold()) for task in tasks):
-        issues.append('No tasks match the requested story or phase')
+    # Scope is determined from all tasks, not only the unfinished AI tasks.
+    # Thus an already completed or exclusively manual batch remains selectable.
+    ids = set(task_ids)
+    unknown_selection = ids - by_id.keys()
+    scope_issues = []
+    if unknown_selection:
+        scope_issues.append('Unknown selected tasks: ' + ', '.join(sorted(unknown_selection)))
+    phase_candidates = [item for item in headings if phase is not None and item['title'].casefold() == phase.casefold()]
+    phase_line = phase_candidates[0]['line'] if len(phase_candidates) == 1 else None
+    if phase is not None:
+        if len(phase_candidates) > 1:
+            locations = ', '.join(f"{' / '.join(item['path'])} (line {item['line']})" for item in phase_candidates)
+            scope_issues.append('Ambiguous phase; select explicit --task-id values: ' + locations)
+        elif not phase_candidates:
+            scope_issues.append('Unknown selected phase: ' + phase)
+    if story is not None and not story.strip():
+        scope_issues.append('Selected story must not be empty')
+    selected = [task for task in tasks if (not ids or task['id'] in ids)
+                and (story is None or story.upper() in task['labels'])
+                and (phase is None or any(item['line'] == phase_line for item in task['phases']))]
+    if scope_issues:
+        selected = []
+    if not selected and not scope_issues:
+        scope_issues.append('No tasks match the requested scope')
+    batch_remaining = [task for task in selected if task['executor'] == 'AI' and task['id'] not in complete]
+    batch_pending = [task for task in selected if task['executor'] == 'MANUAL' and task['id'] not in complete]
     ready, blocked = [], []
     for task in selected:
+        if task['id'] in complete:
+            continue
         unmet = [dep for dep in task['dependencies'] if dep not in complete]
         reason = task['fields'].get('blocked reason', '')
         if unmet or reason:
             blocked.append(dict(id=task['id'], dependencies=unmet, reason=reason))
-        elif not issues:
+        elif task['executor'] == 'AI' and not issues and not scope_issues:
             ready.append(task['id'])
 
     implemented = bool(tasks) and not remaining and not issues
     final_checks = [task for task in manual if task['final_acceptance']]
-    reviewed = any(task['id'] in complete and task['fields'].get('implementation review', '').lower() in {'passed', '通过'}
+    reviewed = enabled and any(task['id'] in complete and task['fields'].get('implementation review', '').lower() in {'passed', '通过'}
                    and revision and task['fields'].get('reviewed revision') == revision for task in tasks)
     finalized = bool(implemented and not pending and reviewed)
     if any(task['failed'] for task in manual):
@@ -226,10 +259,31 @@ def analyze(text, *, task_ids=(), story=None, phase=None, revision=None):
         state = 'FINALIZED' if finalized else 'PENDING_FINAL_VERIFICATION'
     else:
         state = 'IMPLEMENTING'
-    return dict(enabled=enabled, tasks=tasks, issues=issues, ready_ai=ready, blocked=blocked,
+    # Selection errors affect this batch, not a feature's previously evaluated
+    # global lifecycle. Structural/dependency issues invalidate both.
+    all_issues = issues + scope_issues
+    batch_ai_complete = bool(selected) and not batch_remaining and not all_issues
+    batch_complete = batch_ai_complete and not batch_pending
+    if all_issues:
+        batch_status = 'invalid'
+    elif ready:
+        batch_status = 'ready'
+    elif batch_remaining:
+        batch_status = 'blocked'
+    elif batch_pending:
+        batch_status = 'pending_manual'
+    else:
+        batch_status = 'complete'
+    return dict(result_version=RESULT_VERSION, enabled=enabled, tasks=tasks, issues=all_issues,
+                selected_tasks=[task['id'] for task in selected], phase_candidates=phase_candidates,
+                ready_ai=ready, blocked=blocked,
+                batch_completed_ai=[task['id'] for task in selected if task['executor'] == 'AI' and task['id'] in complete],
+                batch_remaining_ai=[task['id'] for task in batch_remaining],
+                batch_pending_manual=[task['id'] for task in batch_pending],
+                batch_ai_complete=batch_ai_complete, batch_status=batch_status,
                 completed_ai=[task['id'] for task in ai if task['id'] in complete],
                 remaining_ai=[task['id'] for task in remaining], pending_manual=[task['id'] for task in pending],
-                execution_batch_complete=bool(tasks) and not ready and not issues,
+                execution_batch_complete=batch_complete,
                 implementation_complete=implemented, implementation_review_recorded=bool(reviewed),
                 final_acceptance_tasks=[task['id'] for task in final_checks],
                 final_qa_completed=not pending and not issues,

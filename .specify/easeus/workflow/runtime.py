@@ -447,11 +447,8 @@ def _native_inputs(root,task,namespace):
     task_file=path if path.is_file() else path/('fix.md' if task['framework']=='speckit' and task['kind']=='bug' else 'tasks.md')
     text=task_file.read_bytes().decode('utf-8')
     hybrid=None
-    if 'repo-sdd:hybrid-tasks:v1' in text:
-        core=runpy.run_path(str(Path(__file__).with_name('hybrid.py')))
-    else:
-        core=None
-    if core and core['configured'](text):
+    core=runpy.run_path(str(Path(__file__).with_name('hybrid.py')))
+    if core['configured'](text):
         hybrid=core['inspect_file'](root,task_file)
         if hybrid['issues'] or not hybrid['implementation_complete']:
             details=hybrid['issues'] or hybrid['remaining_ai'] or ['没有任务']
@@ -464,6 +461,11 @@ def _native_inputs(root,task,namespace):
                     'normalized_text':core['definition_text'](text),
                     'hybrid_tasks':{key:hybrid[key] for key in ('feature_state','finalized','release_tasks_satisfied','final_qa_completed') if key in hybrid}}
     else:
+        # Keep legacy handoff semantics, but do not let native lists bypass
+        # duplicate/dependency checks merely by omitting the hybrid marker.
+        structure=core['analyze'](text)
+        if structure['issues'] and (structure['tasks'] or task_file.name=='tasks.md'):
+            raise ValueError('任务结构不完整：'+', '.join(structure['issues']))
         inspection=inspect_tasks(text,task_file.relative_to(root).as_posix())
     if task['framework']=='speckit' and task['kind']=='bug':
         for name,key,expected in (('fix.md','Status','applied'),('test.md','Result','verified')):

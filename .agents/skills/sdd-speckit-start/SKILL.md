@@ -6,7 +6,7 @@ description: Analyze the task and recommend a workflow without creating files. C
 本次明确选择 speckit；先说明目标仓库、当前任务和本入口职责，不得加载另一框架的规则。
 读取 `.specify/easeus/requirements.json`、本框架项目规范及知识库绑定；工程政策只来自启用规则，不恢复停用政策。
 仓库运行入口：`powershell -NoProfile -ExecutionPolicy Bypass -File .specify/easeus/workflow/run.ps1`，后接动作和参数；每次传 --project 当前仓库。使用 Studio 工作项协议的任务传 --work-item 明确清单路径；`specs/tiny/` 单文件任务直接读取 Markdown，不使用此参数。需要 Python 3.10+，不依赖 Studio 或用户目录绑定。
-只请求查询、诊断或分析时只读，不创建文档、不登记或推进任务、不运行测试或安装依赖。只读调用附加 `--intent analyze`，该模式只允许 doctor/status；不得去掉参数、换用直接 Python API 或报告命令绕过只读边界。缺少环境时报告缺口，不自行修复。
+只请求查询、诊断或分析时只读，不创建文档、不登记或推进任务、不运行测试或安装依赖。只读调用附加 `--intent analyze`，该模式只允许 doctor/status/inspect-tasks；不得去掉参数、换用直接 Python API 或报告命令绕过只读边界。缺少环境时报告缺口，不自行修复。
 任务归属或授权不明确时才询问；明确授权只适用于相应任务和范围，不自动扩展。
 
 ## 默认只分析和推荐
