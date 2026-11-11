@@ -240,5 +240,21 @@
   "schedule.date.month.09": "9",
   "schedule.date.month.10": "10",
   "schedule.date.month.11": "11",
-  "schedule.date.month.12": "12"
+  "schedule.date.month.12": "12",
+  "schedule.calendar.start": "选择开始日期",
+  "schedule.calendar.end": "选择结束日期",
+  "schedule.calendar.previous": "上个月",
+  "schedule.calendar.next": "下个月",
+  "schedule.calendar.year": "年份",
+  "schedule.calendar.month": "月份",
+  "schedule.calendar.heading": "{year}年 {month}月",
+  "schedule.calendar.clear": "清空此日期",
+  "schedule.calendar.close": "取消",
+  "schedule.calendar.week.0": "一",
+  "schedule.calendar.week.1": "二",
+  "schedule.calendar.week.2": "三",
+  "schedule.calendar.week.3": "四",
+  "schedule.calendar.week.4": "五",
+  "schedule.calendar.week.5": "六",
+  "schedule.calendar.week.6": "日"
 }

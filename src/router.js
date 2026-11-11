@@ -17,7 +17,7 @@ function notifyLifecycle(event) {
 const followFocusKeys = new Set(['follow-team', 'follow-only', 'follow-retry', 'follow-stage-all', 'follow-stage-group',
   'follow-stage-round_of_32', 'follow-stage-round_of_16', 'follow-stage-quarterfinal',
   'follow-stage-semifinal', 'follow-stage-third_place', 'follow-stage-final']);
-const dateFocusKeys = new Set(['schedule-date-start', 'schedule-date-end', 'schedule-date-apply', 'schedule-date-clear']);
+const dateFocusKeys = new Set(['schedule-date-start', 'schedule-date-end', 'schedule-date-apply', 'schedule-date-clear', 'schedule-calendar-start', 'schedule-calendar-end']);
 const shellFocusKeys = new Set(['/', '/schedule', '/groups', '/bracket', '/teams', '/history', '/awards'].map(path => 'shell-nav:' + path));
 
 function resolveFocusElement(description, app) {

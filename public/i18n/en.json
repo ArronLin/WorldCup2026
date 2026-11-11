@@ -240,5 +240,21 @@
   "schedule.date.month.09": "September",
   "schedule.date.month.10": "October",
   "schedule.date.month.11": "November",
-  "schedule.date.month.12": "December"
+  "schedule.date.month.12": "December",
+  "schedule.calendar.start": "Choose start date",
+  "schedule.calendar.end": "Choose end date",
+  "schedule.calendar.previous": "Previous month",
+  "schedule.calendar.next": "Next month",
+  "schedule.calendar.year": "Year",
+  "schedule.calendar.month": "Month",
+  "schedule.calendar.heading": "{month} {year}",
+  "schedule.calendar.clear": "Clear this date",
+  "schedule.calendar.close": "Cancel",
+  "schedule.calendar.week.0": "Mo",
+  "schedule.calendar.week.1": "Tu",
+  "schedule.calendar.week.2": "We",
+  "schedule.calendar.week.3": "Th",
+  "schedule.calendar.week.4": "Fr",
+  "schedule.calendar.week.5": "Sa",
+  "schedule.calendar.week.6": "Su"
 }

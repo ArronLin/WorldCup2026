@@ -31,7 +31,7 @@ export default async function scheduleView() {
     html += '<button type="button" class="filter-tab ' + (active ? 'active' : '') + '" aria-pressed="' + active + '" data-follow-action="stage" data-filter="' + cat + '" data-follow-focus="follow-stage-' + cat + '">' + (cat === 'all' ? t('schedule.all') : stageLabel(cat)) + '</button>';
   }
   html += '</div>';
-  html += renderDateControls(dateSnapshot);
+  html += renderDateControls(dateSnapshot, result.matches.map(match => match.date).sort()[0]);
   if (!matches.length) {
     html += '<div class="follow-empty"><p>' + t(snapshot.followOnly && !snapshot.teamCodes.length ? 'follow.noTeams' : 'follow.noMatches') + '</p><a href="#/teams" class="back-link" data-route-focus="schedule-choose-teams">' + t('follow.chooseTeams') + '</a></div>';
   }

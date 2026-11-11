@@ -1,3 +1,4 @@
+import { createCalendar } from './calendar.js';
 import { handleRoute, subscribeRouteLifecycle } from '../../router.js';
 import { scheduleDateState } from './state.js';
 import { syncDateControls } from './view.js';
@@ -7,6 +8,8 @@ const isSchedule = path => /^\/schedule\/?$/.test(path);
 
 function identity(element, root) {
   if (!element || element === document.body || element === document.documentElement) return null;
+  const calendarField = element.closest?.('[data-calendar-field]')?.dataset.calendarField;
+  if (calendarField) return { kind: 'key', key: `schedule-calendar-${calendarField}` };
   const key = element.dataset?.dateFocus || element.dataset?.followFocus || element.dataset?.routeFocus;
   if (key) return { kind: 'key', key };
   return root.contains(element) ? null : { kind: 'element', element };
@@ -37,6 +40,7 @@ export function initScheduleDateRange({ root = document.getElementById('app'), s
     if (!restoring && isSchedule(location.hash.slice(1))) record(identity(event.target, root));
   };
   const sync = () => syncDateControls(root, state.getSnapshot());
+  const calendar = createCalendar(root, state, sync);
   const input = event => {
     const field = event.target.dataset.dateField;
     if (field !== 'start' && field !== 'end') return;
@@ -47,6 +51,7 @@ export function initScheduleDateRange({ root = document.getElementById('app'), s
   const submit = event => {
     if (!event.target.matches('[data-date-form]')) return;
     event.preventDefault();
+    calendar.close();
     for (const field of ['start', 'end']) state.setDraft(field, event.target.querySelector(`[data-date-field="${field}"]`).value);
     const result = state.apply();
     sync();
@@ -56,6 +61,7 @@ export function initScheduleDateRange({ root = document.getElementById('app'), s
   };
   const unsubscribe = subscribe(event => {
     const status = document.getElementById('scheduleDateStatus');
+    if (event.type === 'rendered' || (event.type === 'navigation' && !isSchedule(event.to))) calendar.close();
     if (event.type === 'navigation' && isSchedule(event.from) && !isSchedule(event.to)) {
       state.discardDraft(); epoch++; latest = null;
       if (status) status.textContent = '';
@@ -68,6 +74,7 @@ export function initScheduleDateRange({ root = document.getElementById('app'), s
   });
   const click = event => {
     if (!event.target.closest('[data-date-action="clear"]')) return;
+    calendar.close();
     state.clear();
     sync();
     const target = { kind: 'key', key: 'schedule-date-clear' };
@@ -81,6 +88,7 @@ export function initScheduleDateRange({ root = document.getElementById('app'), s
   const dispose = () => {
     if (disposed) return;
     disposed = true;
+    calendar.dispose();
     root.removeEventListener('input', input);
     root.removeEventListener('submit', submit);
     root.removeEventListener('click', click);

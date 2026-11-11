@@ -86,7 +86,7 @@ for (const lang of ['zh','en']) for (const theme of ['dark','light']) {
 
 test('US3 keyboard applies, repairs and clears while reporting one count',async({page})=>{
   await language(page);await installDateData(page);await page.goto('/#/schedule');await ready(page);
-  await start(page).focus();await page.keyboard.type('2026-06-12');await page.keyboard.press('Tab');await expect(end(page)).toBeFocused();await page.keyboard.type('2026-06-12');await page.keyboard.press('Tab');await expect(apply(page)).toBeFocused();await page.keyboard.press('Enter');await expect(apply(page)).toBeFocused();await expect(cards(page)).toHaveCount(1);
+  await start(page).focus();await page.keyboard.type('2026-06-12');await page.keyboard.press('Tab');await expect(page.locator('[data-calendar-open="start"]')).toBeFocused();await page.keyboard.press('Tab');await expect(end(page)).toBeFocused();await page.keyboard.type('2026-06-12');await page.keyboard.press('Tab');await expect(page.locator('[data-calendar-open="end"]')).toBeFocused();await page.keyboard.press('Tab');await expect(apply(page)).toBeFocused();await page.keyboard.press('Enter');await expect(apply(page)).toBeFocused();await expect(cards(page)).toHaveCount(1);
   await expect(page.locator('#scheduleDateStatus')).toHaveText('共 1 场比赛');await expect(page.locator('.schedule-page [role="status"]')).toHaveCount(0);
   await start(page).focus();await page.keyboard.press('ControlOrMeta+A');await page.keyboard.type('bad');await page.keyboard.press('Enter');await expect(start(page)).toBeFocused();await expect(cards(page)).toHaveCount(1);
   await page.keyboard.press('ControlOrMeta+A');await page.keyboard.type('2026-06-11');await page.keyboard.press('Enter');await expect(apply(page)).toBeFocused();await expect(cards(page)).toHaveCount(2);await page.keyboard.press('Tab');await expect(clear(page)).toBeFocused();await page.keyboard.press('Space');await expect(clear(page)).toBeFocused();await expect(cards(page)).toHaveCount(3);
@@ -195,13 +195,13 @@ for(const width of [1440,390])for(const lang of ['zh','en'])for(const theme of [
       if(state==='draft')await start(page).fill('2026-06-');
       if(state==='error'){await start(page).fill('2026-02-30');await end(page).fill('bad');await apply(page).click();await expect(start(page)).toHaveAttribute('aria-invalid','true');}
       if(state==='empty')await setDates(page,'9999-12-31','9999-12-31');
-      await start(page).focus();await page.keyboard.press('Tab');await expect(end(page)).toBeFocused();
+      await start(page).focus();await page.keyboard.press('Tab');await expect(page.locator('[data-calendar-open="start"]')).toBeFocused();await page.keyboard.press('Tab');await expect(end(page)).toBeFocused();
       const check=await page.locator('[data-date-form]').evaluate(form=>{
         const elements=[...form.querySelectorAll('label,input,button,p')].filter(e=>!e.hidden),rects=elements.map(e=>e.getBoundingClientRect());
         const overlap=rects.some((a,i)=>rects.slice(i+1).some(b=>Math.min(a.right,b.right)-Math.max(a.left,b.left)>1&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>1));
-        return{overflow:document.documentElement.scrollWidth>innerWidth,inside:rects.every(r=>r.left>=0&&r.right<=innerWidth+1),overlap,controls:[...form.querySelectorAll('input,button')].map(e=>e.dataset.dateField||e.dataset.dateAction),focus:getComputedStyle(document.activeElement).outlineStyle};
+        return{overflow:document.documentElement.scrollWidth>innerWidth,inside:rects.every(r=>r.left>=0&&r.right<=innerWidth+1),overlap,controls:[...form.querySelectorAll('input,button')].map(e=>e.dataset.dateField||e.dataset.dateAction||('calendar-'+e.dataset.calendarOpen)),focus:getComputedStyle(document.activeElement).outlineStyle};
       });
-      expect(check).toEqual({overflow:false,inside:true,overlap:false,controls:['start','end','apply','clear'],focus:'solid'});
+      expect(check).toEqual({overflow:false,inside:true,overlap:false,controls:['start','calendar-start','end','calendar-end','apply','clear'],focus:'solid'});
       for(const control of [start(page),end(page),apply(page),clear(page)])await expect(control).toBeEnabled();
       await page.screenshot({animations:'disabled',fullPage:true,path:testInfo.outputPath(`${state}.png`)});
     }

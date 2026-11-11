@@ -79,9 +79,15 @@
 
 `input` 只写草稿并更新局部提示。提交先从当前输入同步原文，再校验，确保自动填充等场景不漏值；所有提交和清除均先同步更新状态及当前控件的值／错误／提示，再刷新，无效提交仍按上次生效条件呈现结果。焦点恢复本身不修改日期状态。刷新后的 `syncDateControls` 只读最新快照，不再次执行提交、清除或重置；后续草稿原文、派生 `dirty` 及仍有效的错误均保留。离页清空播报文本，数据失败不播报“零场”。
 
+### 日历选择接口（AC-14）
+
+`renderDateControls(snapshot, firstDate)` 接收完整快照最早比赛日；表单保存经过 ISO 校验的 `data-first-date`。`[data-calendar-open="start|end"]` 按钮以 `aria-haspopup="dialog"` 和 `aria-expanded` 描述弹层；稳定焦点键为 `schedule-calendar-start`／`schedule-calendar-end`，由路由白名单识别。
+
+`createCalendar(root, state, sync)` 管理单一非模态弹层，返回 `close`／`dispose`；根节点委托与文档外部点击监听均有清理入口。`data-calendar-day` 只携带有效 ISO 日期；选择和单端清空仅调用 `setDraft` 与局部同步。年月、星期和日期运算不使用时间戳；行为边界统一见规格 AC-14。弹层后代焦点映射到入口，语言／路由重绘关闭旧 DOM。`data-calendar-year` 非法时设置 `aria-invalid`，不导航、不提交；修改为有效值后定位该年月一日。
+
 ## 双语词典
 
-新增平铺键使用 `schedule.date.*` 命名空间；成对维护 `public/i18n/zh.json`、`en.json`，保留原 `follow.*` 键含义。
+新增平铺键使用 `schedule.date.*` 与 `schedule.calendar.*` 命名空间；成对维护 `public/i18n/zh.json`、`en.json`，保留原 `follow.*` 键含义。
 
 | 后缀 | 中文 | 英文 |
 | --- | --- | --- |
