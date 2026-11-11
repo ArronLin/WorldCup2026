@@ -6,18 +6,22 @@ import { followState } from '../features/follow-teams/state.js';
 import { matchCategory, stageOrder, selectMatches } from '../features/follow-teams/matches.js';
 import { consumeRetry } from '../features/follow-teams/controller.js';
 import { renderFollowNotice, renderDataError } from '../features/follow-teams/view.js';
+import { scheduleDateState } from '../features/schedule-date-range/state.js';
+import { filterMatchesByDate } from '../features/schedule-date-range/date-range.js';
+import { renderDateControls } from '../features/schedule-date-range/view.js';
 
 export default async function scheduleView() {
   const result = await getTournamentSnapshot({ retry: consumeRetry() });
   if (result.status !== 'ready') return renderDataError(followState.getSnapshot());
   followState.initialize(result.teams);
   const snapshot = followState.getSnapshot();
-  const matches = selectMatches(result.matches, snapshot);
+  const dateSnapshot = scheduleDateState.getSnapshot();
+  const matches = filterMatchesByDate(selectMatches(result.matches, snapshot), dateSnapshot.applied);
   const teams = result.teams;
   const present = new Set(result.matches.map(matchCategory));
   const tabs = stageOrder.filter(c => present.has(c));
   let html = '<div class="schedule-page"><h1 class="page-title">' + t('nav.schedule') + '</h1>';
-  html += '<p class="page-subtitle" data-follow-count role="status">' + t('follow.count', { count: matches.length }) + '</p>';
+  html += '<p class="page-subtitle" data-follow-count>' + t('follow.count', { count: matches.length }) + '</p>';
   html += '<div class="follow-controls"><label class="follow-switch"><input type="checkbox" data-follow-action="filter" data-follow-focus="follow-only" ' + (snapshot.followOnly ? 'checked' : '') + '> ' + t('follow.only') + '</label></div>';
   html += renderFollowNotice(snapshot);
   html += '<p class="follow-demo">' + t('follow.demo') + '</p>';
@@ -27,8 +31,9 @@ export default async function scheduleView() {
     html += '<button type="button" class="filter-tab ' + (active ? 'active' : '') + '" aria-pressed="' + active + '" data-follow-action="stage" data-filter="' + cat + '" data-follow-focus="follow-stage-' + cat + '">' + (cat === 'all' ? t('schedule.all') : stageLabel(cat)) + '</button>';
   }
   html += '</div>';
+  html += renderDateControls(dateSnapshot);
   if (!matches.length) {
-    html += '<div class="follow-empty"><p>' + t(snapshot.followOnly && !snapshot.teamCodes.length ? 'follow.noTeams' : 'follow.noMatches') + '</p><a href="#/teams" class="back-link">' + t('follow.chooseTeams') + '</a></div>';
+    html += '<div class="follow-empty"><p>' + t(snapshot.followOnly && !snapshot.teamCodes.length ? 'follow.noTeams' : 'follow.noMatches') + '</p><a href="#/teams" class="back-link" data-route-focus="schedule-choose-teams">' + t('follow.chooseTeams') + '</a></div>';
   }
   for (const cat of tabs) {
     const catMatches = matches.filter(m => matchCategory(m) === cat);
@@ -60,7 +65,7 @@ function renderMatchCard(m, teams) {
   if (m.penaltyShootout) badges.push(`<span class="badge badge-pen">${t('match.penalties')}</span>`);
 
   return `
-    <div class="match-card" data-route="/match/${m.id}" role="link" tabindex="0">
+    <div class="match-card" data-route="/match/${m.id}" data-route-focus="schedule-match:${m.id}" role="link" tabindex="0">
       <div class="match-card-header">
         <span class="match-card-date">${formatDate(m.date)} ${m.time || ''}</span>
         <span class="match-card-stage">${stageLabel(m)}</span>

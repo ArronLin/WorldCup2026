@@ -7,6 +7,7 @@ import { initSearch, refreshSearch } from './features/search/index.js';
 import { browserStorage } from './browser-storage.js';
 import { initFollowTeams } from './features/follow-teams/controller.js';
 import { initTeamsFilter } from './teams-filter.js';
+import { initScheduleDateRange, withScheduleDateFocus } from './features/schedule-date-range/controller.js';
 
 // Theme management
 function detectTheme() {
@@ -77,7 +78,7 @@ function buildNav() {
     { href: '#/awards', label: t('nav.awards') },
   ];
   const nav = document.getElementById('navLinks');
-  nav.innerHTML = items.map(i => `<a href="${i.href}" class="nav-link">${i.label}</a>`).join('');
+  nav.innerHTML = items.map(i => `<a href="${i.href}" class="nav-link" data-route-focus="shell-nav:${i.href.slice(1)}">${i.label}</a>`).join('');
 }
 
 // Update language toggle button
@@ -94,15 +95,19 @@ function updateFooter() {
 }
 
 // Handle language change — re-render everything
+let pendingLanguageOperation = null;
 document.addEventListener('langchange', () => {
   const focusKey = document.activeElement?.dataset.followFocus;
+  const operation = pendingLanguageOperation;
+  const options = operation?.options || withScheduleDateFocus({ preserveScroll: true, focusKey });
+  if (pendingLanguageOperation === operation) pendingLanguageOperation = null;
   buildNav();
   updateLangToggle();
   updateFooter();
   refreshSearch();
   window.__refreshChat?.();
   // Re-render current view directly
-  handleRoute({ preserveScroll: true, focusKey });
+  handleRoute(options);
 });
 
 // Initialize
@@ -125,7 +130,11 @@ async function init() {
 
   // Language toggle
   document.getElementById('langToggle').addEventListener('click', () => {
-    toggleLang();
+    const operation = { options: withScheduleDateFocus({ preserveScroll: true }, { kind: 'element', element: document.getElementById('langToggle') }) };
+    pendingLanguageOperation = operation;
+    void toggleLang().finally(() => {
+      if (pendingLanguageOperation === operation) pendingLanguageOperation = null;
+    });
   });
 
   // Theme toggle
@@ -134,7 +143,8 @@ async function init() {
   });
 
   // Start router
-  initFollowTeams();
+  initScheduleDateRange();
+  initFollowTeams({ refresh: options => handleRoute(withScheduleDateFocus(options)) });
   initTeamsFilter(document.getElementById('app'));
   initRouter();
 

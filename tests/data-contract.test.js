@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFile } from 'node:fs/promises';
+import { isValidISODate } from '../src/features/schedule-date-range/date-range.js';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../public/data/${name}.json`, import.meta.url)));
 
@@ -11,6 +12,7 @@ describe('published tournament data', () => {
     for (const match of matches) {
       expect(teams[match.home.code]).toBeTruthy();
       expect(teams[match.away.code]).toBeTruthy();
+      expect(isValidISODate(match.date), `match ${match.id} date`).toBe(true);
     }
   });
 

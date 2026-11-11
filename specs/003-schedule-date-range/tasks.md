@@ -1,0 +1,281 @@
+# 任务清单：赛程日期区间筛选
+
+**依据**：[规格](spec.md)、[计划](plan.md)、[数据模型](data-model.md)、[接口契约](contracts/schedule-date-range.md)、[研究](research.md)、[快速验证](quickstart.md)。包含 `Session 2026-11-10` 的焦点与草稿澄清。
+
+**状态**：已收尾；41 项任务及本地验证全部完成，当前实施复核见 T041；本轮修复与回归见 T037—T041，原实施记录保留。路径均相对仓库根目录；当前 Git 分支为 `main`。
+
+<!-- repo-sdd:hybrid-tasks:v1 -->
+
+## 评审摘要
+
+- **交付变化**：三个故事已实现日期应用、组合筛选、清除及会话状态保持。本轮修复窄屏摘要遮挡、旧解绑影响新实例、覆盖率漏行未拒绝三项缺陷，并补齐语言／主题转换、跨页关注变更、数据重试和 AI 隔离验证；保留全部任务编号与依赖。
+- **任务规模**：共 41 项，包含测试 16 项、实现 14 项、验证 9 项、准备 2 项。US1 为 13 项，US2 为 5 项，US3 为 12 项，共享准备、基础与最终验证为 11 项。
+- **依赖与阻塞**：准备 → 共用路由／覆盖率能力 → US1 → US2 → US3 → 全量核验。按依赖逐项实施；覆盖率参数适配及验证见 T004—T007。各任务的显式依赖是实际执行依据。
+- **需确认项**：暂无待确认或阻塞项。轻量 UI 按 T001 核对后的文字基线实施，并完成 T033 运行对照；本需求没有新增正式人工签收项。
+- **主要风险**：旧刷新重置新草稿、遗漏卡片／外壳焦点、词典等待期间丢失意图，以及旧覆盖率结果或历史截图被误用于本功能。
+
+## 执行与记录约定
+
+测试任务完成表示测试已被发现并实际运行：新行为须出现预期业务断言失败，再执行对应实现；已有行为用真实通过的特征／回归测试保护，不人为制造失败。新增模块可先建立可导入的最小接口，缺文件、导入、语法或环境错误不算有效失败。旧脚本需要导出入口时先作保持行为的整理并验证现状，再增加新行为断言。实现任务完成时重跑本任务负责行为的测试及已有回归，失败不得勾选实现任务。一个测试任务覆盖多个后续实现时，按明确的文件／用例子集验收；其余预期失败保留并归属后续实现，不静默跳过或记录整组通过。T011 的两组分别归 T016、T017，T012 的端到端通过由 T019 核验；T018／T019 的完整回归门槛不变。
+
+DOM 测试显式使用 jsdom，调用真实状态、视图、控制器和路由；只隔离网络、存储、时钟、进程等边界。测试原文、条件、比赛 ID 集合、数量、摘要、错误和活动元素，不以“函数返回成功”替代行为断言。每项的实际命令、失败／通过及必要限制写在该任务的缩进说明或对话中，不另建测试汇总表或证据包。
+
+浏览器任务每次先执行 `npm run build`，核对 4173 服务来自当前仓库及本次 `dist/`；按 [快速验证](quickstart.md) 的 PowerShell 步骤检查端口、临时设置 `CI=1` 并恢复原值。不得复用来源不明的服务或终止未知进程。截图使用 `testInfo.outputPath(...)` 下的 `test-results/`；环境缺口保持自动化任务未完成。
+
+## 阶段一：准备
+
+**目标**：确定实施基线、可执行设计和复用的受控数据，不重新初始化现有项目。
+
+- [X] T001 [P] [准备] 对照 `specs/003-schedule-date-range/spec.md` 的界面基线、`plan.md` 的组件映射及 `src/utils.js`、`src/styles/tokens.css`、`src/styles/components.css` 核对轻量 UI 的布局、控件、确认范围与验证方式；核实 `package.json`、锁文件和 Node.js 24+ 环境，在本条记录源码基线 `5b16a460547e764caabf059b7e2dadaf29c59105`、工作区差异及影响实施的实际缺口。
+  执行记录：2026-11-10；已核对文字基线、组件映射、主题变量及原生 UI 复用入口；本轮用户显式调用 implement，按既有文字方案实施，不扩展为视觉稿批准。源码基线为 5b16a460547e764caabf059b7e2dadaf29c59105，开始时仅本功能需求／规格目录未跟踪，无产品修改；Node.js 24.21.0、npm 11.19.0，忽略规则满足当前私有前端项目；原路由与覆盖率审计 14 项测试通过。无影响实施的设计缺口，界面运行验证留待 T033。
+- [X] T002 [P] [准备] 在 `tests/fixtures/schedule-date.js` 与 `e2e/fixtures/schedule-date.js` 准备受控比赛及可控异步完成辅助：覆盖 AC-04 的三个比赛日、AC-06 的四类组合、双方关注、合法零场和非法快照日期；保留有效球队引用，明确为测试样例，不修改 `public/data/` 正式快照。
+  执行记录：2026-11-10；已在单测与浏览器夹具入口准备三日期、四类组合、双方关注、合法空范围、非法快照及可控 Promise；样例使用有效球队引用，浏览器仅拦截真实数据边界。public/data 正式快照未改动。
+
+## 阶段二：共享基础
+
+**目标**：提供各故事共用的路由提交边界及本功能覆盖率能力；完成 T007 后开始故事实施。
+
+### 测试任务（先行）
+
+- [X] T003 [测试] 在 `tests/router-follow.test.js` 扩展真实 `handleRoute` 的 DOM 测试，以可控 Promise 断言 `navigation`／`rendered` 时机、最新请求才能提交、替换前解析目标且回填后聚焦、失效候选回退、精确允许键匹配，以及原 `focusKey`／`hashchange`／滚动行为兼容；执行 `npm test -- tests/router-follow.test.js`。
+  执行记录：2026-11-10；先运行原路由 4 项测试通过；新增生命周期、提交顺序、失效回退、受限键、外壳及选区测试后，npm test -- tests/router-follow.test.js 实际发现 17 项，13 项按预期行为断言失败、4 项原有用例通过；subscribeRouteLifecycle 仅建立可导入的空边界，未将导入／环境错误充当 Red。
+  依赖：T001, T002
+- [X] T004 [测试] 在 `tests/added-coverage.test.js` 和新增 `tests/run-unit-coverage.test.js` 调用实际审计及采集包装核心，断言 `--base-commit` 与 `--baseline` 互斥、Git 基线不落盘源码、未跟踪新文件纳入、`--audit-sources` 剥离与范围一致、缺覆盖／哈希／JSON 与 LCOV 不符失败，以及业务／工程脚本分别按未舍入的 `5*C >= 4*D` 判定；执行 `npm test -- tests/added-coverage.test.js tests/run-unit-coverage.test.js`，CLI 另核对退出码。
+  执行记录：2026-11-10；采集包装器先以 3 项真实 CLI 特征测试确认现状，提取可导入核心后原审计／包装 13 项回归通过。新增参数、Git 基线、范围与双指标测试实际运行：原 30 项中 16 项失败、14 项通过；另用旧模式独立复现“产品已覆盖掩盖脚本未覆盖”的断言失败（预期 false、实际 true），确认指标业务 Red；未将尚不支持 Git 参数产生的路径类型异常当作指标行为的失败证明。
+  依赖：T001
+
+### 实施任务
+
+- [X] T005 [实现] 在 `src/router.js` 实现 `subscribeRouteLifecycle` 和可选 `resolveFocusTarget`，按契约支持受限键／外壳元素、候选及默认目标；将最新请求检查、捕获、DOM 替换、同步通知、再次核对及焦点恢复放入受保护的同步提交段，失效请求无恢复或播报副作用，原调用与返回值保持兼容。
+  执行记录：2026-11-10；实现路由生命周期、受限焦点键及外壳引用、提交前解析与回填后恢复、可用性回退和同值选区恢复；npm test -- tests/router-follow.test.js 的 17 项全部通过，包含此前 13 项预期失败。路由未导入日期特性，保留原返回值、hashchange 与滚动行为。
+  依赖：T003
+- [X] T006 [实现] 在 `scripts/check-added-coverage.mjs`、`scripts/run-unit-coverage.mjs` 完成 Git 内存基线、显式工程脚本范围及可导入真实核心；新增 `vitest.schedule-date-coverage.config.js` 复用现有配置，纳入计划规定的三个工程脚本。保留旧模式，核验未跟踪文件、源码哈希及覆盖数据完整性，不生成源码副本或新 HTML 报告。
+  执行记录：2026-11-10；完成 Git 内存基线、互斥参数、显式工程脚本范围、采集参数剥离及产品／脚本独立 80% 判定，新增配置复用原配置。npm test -- tests/added-coverage.test.js tests/run-unit-coverage.test.js 共 31 项通过，涵盖真实核心与 CLI；修正了参数化测试传参方式，未用测试夹具错误充当行为失败。未生成源码副本或 HTML 报告，实际功能覆盖率仍待 T035。
+  依赖：T004
+
+### 验证任务
+
+- [X] T007 [验证] 执行 `npm test -- tests/router-follow.test.js tests/added-coverage.test.js tests/run-unit-coverage.test.js`，确认新断言及旧兼容断言全部执行并通过；核对 `src/router.js` 未引入日期特性依赖、`scripts/run-unit-coverage.mjs` 的被测核心在 Vitest 进程内执行。这里只验证工具行为，本功能覆盖率留到 T035 实际采集。
+  执行记录：2026-11-10；npm test -- tests/router-follow.test.js tests/added-coverage.test.js tests/run-unit-coverage.test.js 共 48 项通过；新路由不依赖日期特性，审计及包装核心通过实际导出函数在 Vitest 内执行，CLI 兼容另有验证。当前仅证明基础工具行为，本功能覆盖率尚未采集。
+  依赖：T005, T006
+
+## 阶段三：US1 查看指定日期范围的比赛（P1，最小可用范围）
+
+**目标**：完成 FR-001—FR-003，并接入三个故事共用的 FR-009 数据与独立浏览边界。
+
+**独立验证**：阶段为全部、关闭关注筛选，以三个受控比赛日核对单双端、同日、区间外、无效输入和修正；输入草稿不改变已生效结果，延迟刷新不覆盖后来编辑。
+
+### 测试任务（先行）
+
+- [X] T008 [US1] [测试] 新增 `tests/schedule-date-range.test.js`，调用真实 `isValidISODate`、`validateDateRange`、`filterMatchesByDate`，断言 AC-04 的六类集合、包含两端、保序及不改输入；覆盖 `0001`／`9999`、闰年／非闰年、`2026-02-30`、空白、不完整、倒置、双字段错误及先校验日期后校验顺序；执行 `npm test -- tests/schedule-date-range.test.js`。
+  执行记录：2026-11-10；npm test -- tests/schedule-date-range.test.js 实际发现 41 项；可导入最小边界下 19 项因合法日期、区间集合、保序或错误优先级断言失败，22 项拒绝非法输入断言通过。覆盖 0001／0099／9999、闰年、两端包含、空端点、倒置及原文不修正；无缺模块或环境失败。
+  依赖：T007
+- [X] T009 [US1] [测试] 新增 `tests/schedule-date-state.test.js`，调用真实 `createScheduleDateState` 的快照、编辑和应用接口，断言初值、嵌套快照隔离、非法原文保留、有效条件原子更新、无效应用保留结果、错误代码优先级、改回生效值后 `dirty` 消失，以及成功应用后继续编辑仍为新草稿；执行 `npm test -- tests/schedule-date-state.test.js`。
+  执行记录：2026-11-10；npm test -- tests/schedule-date-state.test.js 实际运行 6 项：5 项因草稿、原子应用、有效结果保持或错误生命周期断言失败，初始嵌套快照隔离用例通过。测试调用真实可导入状态边界，保留非法长原文、双端、结果对象隔离与派生 dirty 的断言。
+  依赖：T007
+- [X] T010 [US1] [测试] 扩展 `tests/store-results.test.js`、`tests/data-contract.test.js` 并新增 `tests/schedule-date-data-validation.test.js`，调用真实 `getTournamentSnapshot` 与 `validateData`，断言非法日期返回 `matches/invalid-data`、重试恢复、原引用及双语契约保留；在隔离数据根核验发布 CLI 对合法／非法样例的退出码，不改正式数据。执行 `npm test -- tests/store-results.test.js tests/data-contract.test.js tests/schedule-date-data-validation.test.js`。
+  执行记录：2026-11-10；先以 npm run validate:data 确认旧发布入口通过；提取可导入校验核心后同一命令仍通过。新增运行时／发布日期契约测试共 40 项实际执行，13 项因非法日期被接受或 CLI 未处理数据根／参数而断言失败，27 项旧契约与合法边界通过；使用临时隔离数据目录，正式快照未改动。
+  依赖：T007
+- [X] T011 [US1] [测试] 新增 `tests/schedule-date-view.test.js`、`tests/schedule-date-controller.test.js` 的两组 jsdom 用例。视图组调用真实视图与状态快照，独立验证标签／格式／错误关联、`.value` 原文回填和 [日期摘要契约](contracts/schedule-date-range.md#日期摘要) 的四种形式、双语、被跳过民用日期及年份边界，不导入控制器、应用启动或路由。控制器组调用真实状态、视图、控制器及赛程／路由接入，断言输入不重绘、不自动应用、提交前读取实际输入、无效提交仍刷新但保留生效结果；延迟刷新后核对新原文、错误和未应用提示，不能被旧完成清空。两组分别实际运行并确认新行为的有效失败。
+  执行记录：2026-11-10；视图／控制器两组已分文件实际运行，13 项均因缺少表单语义、摘要、原文回填或事件／集成行为而断言失败；另在 UTC、Asia/Shanghai、Pacific/Apia 三个独立进程运行视图 7 项，均得到预期失败并恢复 TZ。视图组不导入控制器／路由；控制器组使用真实状态、视图及路由，另覆盖真实赛程集成。通过边界分别归 T016、T017。
+  依赖：T002, T009
+  视图组入口：`npm test -- tests/schedule-date-view.test.js`；分别在启动测试进程前把 `TZ` 设置为 `UTC`、`Asia/Shanghai`、`Pacific/Apia`，每种环境启动独立进程，结束后恢复原环境值。不在已启动的测试工作线程内切换时区；每次均断言中英文摘要与生效年月日一致。
+  控制器组入口：`npm test -- tests/schedule-date-controller.test.js`；只隔离网络、存储等外部边界，不替换被测核心。该组通过归 T017，不能成为 T016 的完成条件。
+- [X] T012 [US1] [测试] 在新增 `e2e/schedule-date-range.spec.js` 中以 `US1` 标识用例，覆盖 AC-01—AC-05、AC-12—AC-13：断言输入与结果、默认错误焦点；用 `timezoneId` 分别建立 UTC、Asia/Shanghai、Pacific/Apia 浏览器上下文，核对匹配 ID 集合，以及日期摘要契约中的四种形式、双语、被跳过民用日期和年份边界，实际应用后输入、摘要与生效年月日一致。核对首次加载／失败不误报零场、重试保留有效日期、AI 未配置或故障时筛选及详情可用，日期操作无新增赛事／AI 请求。按浏览器前提执行 `npm run test:e2e -- e2e/schedule-date-range.spec.js --grep US1`，先确认有效失败，通过条件归 T019。
+  执行记录：2026-11-10；当前构建的 Playwright US1 首轮发现并执行 10 项，.last-run.json 记录 10 项失败；各用例错误上下文均为日期表单数量预期 1、实际 0，页面数据已就绪，属于尚未接入表单的业务断言失败。启动前完成构建、确认 4173 空闲，并以 CI=1 由当前仓库配置启动预览；通过验证归 T019。
+  依赖：T002, T007
+
+### 实施任务
+
+- [X] T013 [US1] [实现] 新增 `src/features/schedule-date-range/date-range.js`，实现公历验证、区间错误和保序筛选；落实模型原文约束：“有效日期严格采用四位年份 `0001`—`9999`、两位月份和两位日期；空字符串只在区间端点中表示无限制，不是有效的比赛日期。”两端合法后再比较字符串，不引入时间戳、设备时区或日期修正。
+  执行记录：2026-11-10；实现无 Date／时间戳依赖的四位公历日期验证、先字段后区间的错误判定及保序包含两端筛选；npm test -- tests/schedule-date-range.test.js 的 41 项全部通过。
+  依赖：T008
+- [X] T014 [US1] [实现] 新增 `src/features/schedule-date-range/state.js`，实现内存快照、`setDraft` 与 `apply`；`draft`／`applied` 两端初值均为 `''`，错误初值为 `null`，嵌套快照须复制。落实模型原文约束：草稿“保存单行输入原文，允许暂时不完整或非法，不裁剪空格或截断”；生效值“只能是空值或通过校验的 `YYYY-MM-DD`；双端非空时开始不晚于结束”；错误“取值为 `null`、`invalid-date`；结束字段还可为 `reversed-range`”；`dirty` 为“任一草稿原文与对应生效值不同时为真，不另存独立状态”。清除和离页转换分别由 US2／US3 补齐。
+  执行记录：2026-11-10；实现会话内草稿／生效值／错误及派生 dirty；应用同步更新两个有效端点，非法提交保留有效条件，嵌套快照及返回对象不能改写内部状态。npm test -- tests/schedule-date-range.test.js tests/schedule-date-state.test.js 共 47 项通过；清除与离页转换仍按 US2／US3 后续任务实施。
+  依赖：T009, T013
+- [X] T015 [US1] [实现] 在 `src/store.js` 与 `scripts/validate-data.mjs` 接入同一真实日期验证器，保留运行时既有错误结构、重试和发布校验职责；提供可导入的 `validateData({ dataDirectory, i18nDirectory })` 与可选 `--data-root`，默认目录和 CLI 行为兼容，导入不退出进程；非法日期不自动补值或解释成零场。
+  执行记录：2026-11-10；运行时 getTournamentSnapshot 与发布 validateData 共用真实日期验证器；保留 matches/invalid-data、重试、ID／引用／词典规则及默认 CLI，支持隔离 --data-root，导入不退出进程。40 项相关测试全部通过；npm run validate:data 对正式 104 场、48 队及 132 条历史记录通过。契约已注明实际返回对象，未改正式数据。
+  依赖：T010, T013
+- [X] T016 [US1] [实现] 新增 `src/features/schedule-date-range/view.js` 的应用区与 `syncDateControls`，在 `public/i18n/zh.json`、`public/i18n/en.json` 成对加入所需 `schedule.date.*` 词条及契约规定的日期模板／月份词条，在 `src/styles/pages.css` 加入日期布局。使用文本输入、显式格式说明及错误关联；摘要只读生效值，按 [日期摘要契约](contracts/schedule-date-range.md#日期摘要) 的年月日分量生成双语文本，不构造 `Date`、时间戳或调用现有 `formatDateFull()`。原文只经 DOM 属性回填；复用现有按钮及主题变量，预留清除位置并保持阅读顺序，当前不宣称 US2 已完成。
+  执行记录：2026-11-10；完成文本表单、标签／错误关联、DOM 原文回填、主题布局及成对词条；在 UTC、Asia/Shanghai、Pacific/Apia 三个独立进程执行视图测试，每组 7 项全部通过。摘要直接拆分年月日，保留 0001／0099／9999 及 2011-12-30 的日历含义；控制器和浏览器仍留待后续任务。
+  依赖：T001, T011, T012, T014
+  完成条件：按 T011 的三个独立时区进程运行 `npm test -- tests/schedule-date-view.test.js`，视图组所有断言通过。控制器组与端到端用例保留待后续实现／验证状态，不能因它们仍预期失败而阻止本任务完成，也不能把其结果记为通过。
+- [X] T017 [US1] [实现] 新增 `src/features/schedule-date-range/controller.js` 并接入 `src/app.js`、`src/views/schedule.js`：稳定根节点委托与可解绑初始化；先同步状态／当前控件再刷新，含无效提交；`rendered` 只回填最新草稿、错误及派生提示。数据就绪后组合既有 `selectMatches` 与日期过滤，列表／数量／摘要同轮计算，不新增请求；保留加载、错误、重试及静态说明，接入应用／错误默认焦点。
+  执行记录：2026-11-10；真实控制器、赛程视图与应用启动已接入：输入仅更新草稿，提交先同步状态和控件，再调用路由；rendered 回填最新草稿，筛选只使用 applied。控制器／视图／路由 30 项全部通过，包含默认错误焦点、延迟回填及真实数据集成。
+  依赖：T005, T011, T014, T015, T016
+  完成条件：执行 `npm test -- tests/schedule-date-controller.test.js tests/schedule-date-view.test.js tests/router-follow.test.js`，T011 控制器集成、视图回归和既有路由兼容断言全部通过；确认接入调用真实状态、视图与控制器，不以替换核心逻辑的测试替身制造通过。US1 整组单测及浏览器通过仍由 T018／T019 核验。
+
+### 验证任务
+
+- [X] T018 [US1] [验证] 执行 `npm test -- tests/schedule-date-range.test.js tests/schedule-date-state.test.js tests/schedule-date-controller.test.js tests/schedule-date-view.test.js tests/schedule-date-data-validation.test.js tests/store-results.test.js tests/data-contract.test.js` 及 `npm run validate:data`，并按 T011 的三个时区进程复核视图组；核对 AC-01—AC-05、AC-12 的真实结果和错误断言通过，生效摘要不改变日历日期，旧刷新不能重置当前草稿，正式快照仍合法。
+  执行记录：2026-11-10；US1 七个测试文件共 100 项通过；npm run validate:data 验证正式 104 场、48 队、132 条历史记录及双语词典通过。视图组再次在三个独立时区进程各 7 项通过，确认当前集成仍保持日历日期与最新草稿。
+  依赖：T017
+- [X] T019 [US1] [验证] 依照浏览器前提重新构建并执行 `npm run test:e2e -- e2e/schedule-date-range.spec.js --grep US1`；核对 `e2e/schedule-date-range.spec.js` 的日期集合、错误恢复、三个时区下的双语生效摘要／输入、网络及 AI 隔离断言，所有 US1 用例实际执行并通过后记录环境与结果。此检查点只完成 US1 的独立验证。
+  执行记录：2026-11-10；重新构建并使用当前仓库 CI=1 预览后，US1 浏览器 10 项全部通过（35.2 秒）。首轮发现同页淡入使焦点目标暂不可用；新增路由回归先失败再修复，同页刷新不重播动画，路由／控制器 24 项通过。修正测试的既有详情页选择器，未改详情行为；三个时区双语、错误恢复、加载重试及 AI 隔离均通过。
+  依赖：T012, T018
+
+## 阶段四：US2 组合筛选并快速恢复结果（P2）
+
+**目标**：落实 FR-004—FR-005，保留其他条件并单独移除日期影响。
+
+**独立验证**：以生效区间及关注记录为前置，只验证 AC-06—AC-08 的交集、双方关注去重、清除与空态，不依赖语言切换或页面往返。
+
+### 测试任务（先行）
+
+- [X] T020 [US2] [测试] 在 `tests/schedule-date-state.test.js`、`tests/schedule-date-controller.test.js` 增加真实清除转换与事件测试：草稿／生效／错误同步清空，重复清除结果相同，其他筛选不变；清除后继续输入的新草稿不能被待完成刷新再次清空。执行 `npm test -- tests/schedule-date-state.test.js tests/schedule-date-controller.test.js`。
+  执行记录：2026-11-10；真实状态／控制器清除测试共 15 项已执行：新增 3 项因 clear 未改变状态或缺少清除按钮而失败，12 项既有行为通过。覆盖重复清除、其他筛选不变及清除待完成期间继续输入。
+  依赖：T019
+- [X] T021 [US2] [测试] 在 `tests/follow-schedule.test.js` 验证真实 `scheduleView` 的日期／阶段／关注交集，断言四类受控比赛只剩匹配项、双方关注计数不重复、分组／顺序保留、阶段变化不提交日期草稿，及无关注／合法零结果／数据错误可区分；执行 `npm test -- tests/follow-schedule.test.js`。US1 已组合出的正确行为作为回归基线，不人为制造失败。
+  执行记录：2026-11-10；真实 scheduleView 的 4 项测试全部通过：受控四类比赛交集只剩 201、双方关注不重复、分组及顺序保留、阶段／关注变化不提交草稿，合法零结果无空分组；既有无关注与数据错误区分回归通过。组合能力属于 US1 已形成的特征回归，未人为制造失败。
+  依赖：T019
+- [X] T022 [US2] [测试] 在 `e2e/schedule-date-range.spec.js` 增加 `US2` 用例，核对 AC-06—AC-08 的交集、一次及重复清除、其他筛选与关注记录保留、空分组消失和清除后仍可零场；按浏览器前提执行 `npm run test:e2e -- e2e/schedule-date-range.spec.js --grep US2`。
+  执行记录：2026-11-10；US2 浏览器两项已构建后实际运行，均在清除入口预期存在、实际缺失的断言失败；组合交集及空态前置断言通过。首轮修正了计数断言遗漏既有“共”字的测试问题，再运行确认有效 Red。
+  依赖：T019
+
+### 实施任务
+
+- [X] T023 [US2] [实现] 在 `src/features/schedule-date-range/state.js`、`controller.js`、`view.js` 和 `src/views/schedule.js` 完成 `clear()`、清除按钮及事件接入，补齐成对词典 `public/i18n/zh.json`、`public/i18n/en.json`；一次清除只移除日期状态，默认焦点为清除按钮，零场时入口仍可用。复用现有交集、去重及空态语义，消除空比赛分组，其他筛选及日期草稿保持规则按 AC-06—AC-08 验证。
+  执行记录：2026-11-10；完成 clear 状态转换、按钮与委托事件，清除只重置日期，默认焦点为清除按钮；重复清除及等待时新草稿均保留正确语义。状态／控制器／组合视图 19 项全部通过；既有分组和空态实现已满足断言，无额外改写。
+  依赖：T020, T021, T022
+
+### 验证任务
+
+- [X] T024 [US2] [验证] 执行 `npm test -- tests/schedule-date-state.test.js tests/schedule-date-controller.test.js tests/follow-schedule.test.js`；按浏览器前提构建后执行 `npm run test:e2e -- e2e/schedule-date-range.spec.js --grep 'US1|US2'`。检查 `e2e/schedule-date-range.spec.js` 中结果集合、数量、清除及相邻 US1 回归均通过，记录实际结果。
+  执行记录：2026-11-10；状态／控制器／组合视图 19 项通过；重新构建、确认 4173 空闲并由 CI=1 当前配置启动预览，US1／US2 共 12 项浏览器测试全部通过（33.2 秒）。交集、双方关注去重、清除保留其他条件、重复清除及零场无分组均完成验证。
+  依赖：T023
+
+## 阶段五：US3 切换语言和页面后继续浏览（P2）
+
+**目标**：完成 FR-006—FR-008，特别是更新后 AC-10／SC-005 的最新焦点与草稿保留规则。
+
+**独立验证**：分别准备生效、未应用、错误状态，核对语言／主题、同页刷新、实际离页及整页刷新；以受控等待核对焦点优先级和乱序，并验证 AC-11 的八种环境与五种状态。
+
+### 测试任务（先行）
+
+- [X] T025 [US3] [测试] 在 `tests/schedule-date-state.test.js`、`tests/schedule-date-controller.test.js` 增加生命周期测试：`discardDraft()` 复制生效值并清错误；同页语言／主题／筛选及 `/schedule` 与 `/schedule/` 切换保留草稿，真正离页才丢弃，返回仍保留生效值；新模块会话日期初始为空、不读写日期存储，重复初始化及解绑不残留监听。执行 `npm test -- tests/schedule-date-state.test.js tests/schedule-date-controller.test.js`。
+  执行记录：2026-11-10；生命周期状态／控制器 17 项已运行：新增 discard 与真实离页两项按预期失败，15 项回归通过。覆盖斜杠赛程同页保持、离页通知同步丢弃、返回恢复生效值及无日期存储调用；重复初始化／解绑沿用已通过回归。
+  依赖：T024
+- [X] T026 [US3] [测试] 扩展 `tests/schedule-date-controller.test.js`、`tests/schedule-date-view.test.js`、`tests/router-follow.test.js` 的真实集成测试，以可控 Promise 覆盖 AC-10：后续输入／移焦优先、移出又移回按最新意图、卡片 ID／空态链接／导航／外壳身份、无后续操作的三个默认目标、消失／隐藏／禁用目标回退；断言活动元素、选区、原文、`dirty`、错误、结果及唯一数量播报，旧请求无副作用。执行 `npm test -- tests/schedule-date-controller.test.js tests/schedule-date-view.test.js tests/router-follow.test.js`。
+  执行记录：2026-11-10；控制器／视图／路由共 46 项执行，8 项失败、38 项通过：包含 T025 待实现离页失败及 7 项新增最新焦点／稳定身份失败。新增可用目标、移出移回与选区、失效回退、乱序有效／无效提交、持久播报断言；已有回退与旧请求保护作为回归通过。
+  依赖：T025
+- [X] T027 [US3] [测试] 在 `tests/follow-language.test.js` 扩展真实语言／应用刷新测试，控制既有词典响应顺序，断言从按钮激活到词典返回期间的新编辑／移焦仍优先、旧语言操作不清新上下文、离页后旧意图失效；语言后全部日期文案重新翻译，草稿／错误／生效值保留，语言按钮无后续操作时保留焦点。执行 `npm test -- tests/follow-language.test.js`。
+  执行记录：2026-11-10；真实 app 启动与 i18n 仲裁测试共 7 项：3 项因词典等待期间编辑焦点丢失、默认语言焦点丢失或旧完成后的新上下文丢失而失败，4 项现有语言／离页边界通过。先修正 jsdom 下文件 URL 夹具错误，并等待真实 rendered 通知，未将环境错误或未提交 DOM 视作有效 Red／通过。
+  依赖：T024
+- [X] T028 [US3] [测试] 在 `e2e/schedule-date-range.spec.js` 增加 `US3` 用例，覆盖 AC-09—AC-11 的真实键盘、快速有效／无效提交、离页／新标签页／刷新、延迟词典、新草稿与焦点、目标可用性；在两视口×中英文×深浅主题×五状态下断言无溢出／重叠及控件可操作，并保存必要当前截图。在 `e2e/follow-teams.language.spec.js` 把历史硬编码截图路径改为 `testInfo.outputPath(...)`；按浏览器前提执行 `npm run test:e2e -- e2e/schedule-date-range.spec.js --grep US3`。
+  执行记录：2026-11-10；构建后的 US3 浏览器首轮 16 项：9 项在草稿离页保留、缺少播报、延迟词典／快速操作焦点或刷新期间键盘焦点断言失败，7 项通过。八种环境各五状态布局测试已建立并实际执行（失败后未到达的后续状态不计通过）；历史语言截图已改为 testInfo.outputPath，未覆盖旧功能截图。
+  依赖：T024
+
+### 实施任务
+
+- [X] T029 [US3] [实现] 在 `src/features/schedule-date-range/state.js`、`controller.js` 完成真实导航的 `discardDraft()` 与生命周期清理，只在离开赛程时丢弃草稿／错误，返回保留已生效值；遵循模型原文“日期状态无存储键、序列化版本或跨标签页同步。”保持 `wc2026-followed-teams` 及失败提示兼容，重复初始化和销毁完整解绑。
+  执行记录：2026-11-10；完成内存 discardDraft 与真正离页通知处理。状态 8 项、控制器生命周期及重复初始化／解绑选定的 2 项全部通过；其余 19 项未在该选定命令执行，焦点行为仍归 T030。未新增存储键，也未改关注持久化。
+  依赖：T025
+- [X] T030 [US3] [实现] 在 `src/features/schedule-date-range/controller.js` 实现 `withScheduleDateFocus` 和交互版本，覆盖输入、提交、清除及文档级移焦，排除自身恢复事件；在 `src/views/schedule.js` 补卡片／空态稳定身份并与 `src/router.js` 允许规则一致。最新可用目标优先，失效才用默认目标；在 `index.html`、`src/styles/components.css` 接入持久且唯一的数量播报区，旧请求或数据失败不播报零场，选区和聚焦不在刷新返回后无条件重做。
+  执行记录：2026-11-10；完成交互版本、受限身份及外壳引用、提交前解析与自身恢复事件抑制；赛程卡片／空态有稳定键，数量由 app 外唯一持久 status 播报，数据错误和离页清空。控制器／视图／路由／状态共 54 项全部通过，涵盖最新输入与选区、可用目标、失效回退及旧请求无副作用。
+  依赖：T026, T029
+- [X] T031 [US3] [实现] 在 `src/app.js` 接入统一赛程刷新包装器，通过现有 `initFollowTeams` 的 `refresh` 参数覆盖阶段／关注／重试；语言按钮调用 `toggleLang()` 前捕获意图，`langchange` 在重建外壳前使用对应最新选项，导航补受限稳定键；完善 `src/features/schedule-date-range/view.js` 及双语词典刷新，保留主题行为、所有当前状态与最新焦点，不修改 i18n 的请求仲裁协议。
+  执行记录：2026-11-10；应用启动已向关注／阶段／重试注入统一刷新包装器；语言按钮在异步词典请求前捕获上下文，langchange 在导航重建前使用，旧请求仅清理自己的上下文；导航有稳定键。真实语言／应用、控制器及路由 46 项全部通过，含等待期间编辑、默认语言焦点、导航重建、逆序语言完成和离页失效。
+  依赖：T027, T030
+
+### 验证任务
+
+- [X] T032 [US3] [验证] 执行 `npm test -- tests/schedule-date-state.test.js tests/schedule-date-controller.test.js tests/schedule-date-view.test.js tests/follow-schedule.test.js tests/router-follow.test.js tests/follow-language.test.js`；按浏览器前提构建后执行 `npm run test:e2e -- e2e/schedule-date-range.spec.js e2e/follow-teams.keyboard-race.spec.js e2e/follow-teams.empty-retry.spec.js e2e/follow-teams.language.spec.js`。核对 AC-09—AC-10、SC-005 及所有受影响回归，特别是等待中的原文／提示、最新可用焦点、失效回退与最终有效结果。
+  执行记录：2026-11-10；相关六文件 65 项通过；新增真实数据失败后委托重试及真实 app 阶段／非按钮语言／主题回归后，两文件 30 项通过（相关范围现为 67 项）。构建后四个浏览器文件共 35 项全部通过（37.9 秒），包含三个故事、原关注键盘竞态／空态重试／语言、八种环境的 40 个布局状态及当前截图。
+  依赖：T028, T031
+- [X] T033 [US3] [验证] 对照 `specs/003-schedule-date-range/spec.md` 的 AC-11 和 `src/styles/pages.css`、`src/styles/components.css`，结合 T032 的 40 个布局状态断言、真实操作及 `test-results/` 当前截图检查文字、顺序、焦点指示、错误关联、主题和窄屏；在本条记录环境、候选修订、未提交范围、截图引用及必要差异。阻断／重要偏差修正后重跑受影响检查，未实际核对不得写通过。
+  执行记录：2026-11-10；已核对 40 个布局状态断言及其生成的 40 张当前截图文件，实际看图复核八种环境错误态及默认／生效／草稿／空态的代表图共 12 张；新增控件顺序、文字换行、主题、焦点轮廓和错误关联符合 AC-11，未发现阻断或重要偏差。环境：Windows、Chromium 151.0.7922.34、1440×900／390×844、100% 缩放、设备比例 1；字体沿用 Inter／系统字体栈，验证者为 Codex。候选为基线 5b16a460547e764caabf059b7e2dadaf29c59105 加当前未提交日期特性、路由／应用／赛程、词典、样式及数据校验改动。截图位于 test-results/schedule-date-range-US3-layout-{1440,390}-{zh,en}-{dark,light}-five-states/，文件为 default/applied/draft/error/empty.png。
+  界面对照（Agent 运行复核）：
+
+  | 验收编号 | 预期 | 实际 | 证据引用 | 类别 | 严重程度 | 修复建议 |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | AC-11 | 两视口、双语和深浅主题下顺序清楚、无新增溢出或重叠，错误与焦点可辨 | 40 状态断言通过，12 张代表图目视核对通过 | [窄屏英文错误态](../../test-results/schedule-date-range-US3-layout-390-en-dark-five-states/error.png)、[桌面中文默认态](../../test-results/schedule-date-range-US3-layout-1440-zh-dark-five-states/default.png) | 无偏差 | 不适用 | 无 |
+
+  依赖：T032
+
+## 阶段六：全量核验与交接
+
+**目标**：核对三个故事形成的整体行为、真实覆盖率及可交接状态，不增加最终人工签收。
+
+### 验证任务
+
+- [X] T034 [验证] 按 `specs/003-schedule-date-range/quickstart.md` 执行一次集成后的 `npm run validate:data` 与 `npm test`，确认完整单测、数据契约及工程脚本测试实际通过；与 T032／T033 的当前候选浏览器结果核对版本。后续有源码改动或失败才重跑相关范围，未执行项保持未核验。
+  执行记录：2026-11-10；集成后的 npm run validate:data 通过；npm test 全量 27 个文件、253 项测试全部通过（8.11 秒）。当前产品源码与 T032／T033 浏览器候选一致，随后仅补充两项已通过的单测回归，无产品变动；未声称运行远端 CI 或真实 AI 联调。
+  依赖：T032, T033
+- [X] T035 [验证] 完成 T006 能力后执行 `npm run test:coverage -- --config vitest.schedule-date-coverage.config.js --audit-sources scripts/check-added-coverage.mjs,scripts/run-unit-coverage.mjs,scripts/validate-data.mjs`，再执行 `npm run coverage:added -- --base-commit 5b16a460547e764caabf059b7e2dadaf29c59105 --audit-sources scripts/check-added-coverage.mjs,scripts/run-unit-coverage.mjs,scripts/validate-data.mjs --output coverage/schedule-date-range-added.json`；核对业务与工程脚本各自变更可执行行的 C／D、基线、范围和哈希，两组均满足 `5*C >= 4*D`，JS 模板生成逻辑仍在分母。缺采集保持未核验，不使用历史报告或全仓比例替代。
+  执行记录：2026-11-10；按计划实际采集 V8 覆盖率，253 项测试再次全部通过；随后 Git 内存基线审计通过。基线 5b16a460547e764caabf059b7e2dadaf29c59105，显式三个工程脚本范围与采集印章一致，源码／覆盖 JSON／LCOV 哈希验证通过，未跟踪日期模块纳入。业务变更可执行行 C/D=191/191（100%），工程脚本 128/151（84.77%），两组均满足未舍入的 5*C≥4*D。报告为 coverage/schedule-date-range-added.json，不采用全仓比例代替。
+  依赖：T034
+- [X] T036 [验证] 对照 `specs/003-schedule-date-range/spec.md`、`plan.md` 与实际生产代码核对 FR-001—FR-009、AC-01—AC-13 和 SC-001—SC-007 的实现及真实结果；核实 `quickstart.md` 命令可复现，必要时只修正文档中的实际命令差异。在本条记录剩余问题或可交接范围；确实完成实施复核后，按当前 `inspect-tasks` 返回值填写“实施复核”和“复核修订”，不以任务勾选代替测试通过。
+  执行记录：2026-11-10；已逐项对照规格 FR-001—FR-009、AC-01—AC-13、SC-001—SC-007 与最终代码、真实测试及当前截图；完成应用／校验、交集／清除、会话边界、语言／最新焦点／竞态、布局、数据重试与 AI 独立浏览核验。quickstart 命令已实际执行，文档状态和计划哈希已同步，本次更新的 Markdown 链接及 36 个唯一任务编号核对通过，git diff --check 无错误。完整本地功能可交接；剩余 AI、人工和阻塞项为 0；未运行远端 CI 或真实模型联调。
+  实施复核：通过
+  复核修订：0b74568d391e92c9be62bce0fed596f96c805416f616838cf0eeb1b21d02307c
+  依赖：T035
+
+## 依赖与并行机会
+
+故事完成顺序为：`T001、T002 → T003—T007 → US1（T008—T019）→ US2（T020—T024）→ US3（T025—T033）→ T034—T036`。基础阶段内部有两条独立分支：路由 T003 → T005，覆盖率 T004 → T006，在 T007 汇合。编号用于稳定引用；同一分组按依赖执行，正文按测试／实现／验证排版。
+
+仅 T001、T002 没有前置依赖，标记 `[P]`。以下是前置完成后的并行机会，不能提前跳过依赖或同时修改同一文件：
+
+- **US1**：T007 完成后，T008 的日期规则测试、T009 的状态测试、T010 的数据边界测试和 T012 的浏览器用例可分开准备；可导入最小接口各归其对应生产模块，不争用文件。T011 等待 T009。
+- **US2**：T019 完成后，T020 的状态／控制器测试、T021 的组合视图测试和 T022 的浏览器用例文件独立，可并行；T023 等三者完成后实施。
+- **US3**：T024 完成后，T025 的生命周期、T027 的语言和 T028 的浏览器测试可并行；T026 与 T025 共用控制器测试文件，因此显式串行。T029—T031 共享控制器／接入范围，按依赖串行。
+
+## 实施策略与状态检查
+
+建议先完成准备、基础和 US1，取得日期筛选的最小可用验证结果；再增加 US2 和 US3。US1 检查点用于内部验证，不代表清除、完整焦点／生命周期和全部布局已经交付。完整功能需完成三个故事及阶段六。
+
+在仓库根目录检查整份清单或已授权范围：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File ".specify/easeus/workflow/run.ps1" inspect-tasks --tasks "specs/003-schedule-date-range/tasks.md"
+```
+
+按需附加 `--story US1`、`--phase "阶段标题"` 或明确 `--task-id`。只推进获准范围中的 `ready_ai`；范围外前置未完成时保持阻塞，不自动扩大范围。结果应为 `result_version: 2`，核对 `selected_tasks`、`batch_remaining_ai`、`batch_pending_manual`、`ready_ai`、`blocked` 与 `batch_status`。本文件是唯一任务清单；检查成功不代表实现、测试、覆盖率或审批通过。
+
+## 来源与核实范围
+
+- 规格 SHA-256：`0d64275ed2ed1a552b8bbdd566e1986df1a7d6487cfaaa13147b9048e6a6bf8f`；计划 SHA-256：`2f44a46aec53122e2637665f091ef9939c6ab7d05199d54cf0ce4797ce82a82b`。任务遵循规则修订 `lean-24d9b3f73b0251ad`；字段约束引用 [数据模型](data-model.md)，日期摘要与焦点接口引用 [契约](contracts/schedule-date-range.md)。
+- 原生 OpenDeepWiki 查询范围为 `easeus/WorldCup2026/main`，返回测试与关注球队章节，索引提交未知，仅作背景。CodeGraph 核实当前路由测试、赛程集成测试及覆盖率包装源码；命令和预览规则来自 `package.json`、`playwright.config.js`，不把工具调用或配置存在认定为测试通过。
+- 2026-11-10 首轮根据用户显式调用 speckit-implement 执行原 36 项任务；2026-11-11 续做完成追加的 T037—T041，保留全部稳定编号、依赖及历史结果。正式赛事数据、既有关注存储协议和聊天接口未改动；没有创建提交、发布、人工签收或远端 CI 记录。
+
+
+## 阶段七：收敛复核
+
+**复核日期**：2026-11-11。全量核对 FR-001—FR-009、AC-01—AC-13、SC-001—SC-007、12 项设计决定、3 项核心宪法原则及 5 项工程规则，并重新检查 T001—T036；发现 5 项部分完成问题，其中高严重程度 1 项、中严重程度 4 项。以下任务只追加，不替换原编号或历史记录。
+
+**当前状态**：T037—T041 已全部实施并通过对应回归，三项缺陷已修复、两项验收缺口已补齐。T036 的复核修订保留为 2026-11-10 的历史结论；当前验证记录见本节各项。没有新增人工验收项。下面的初次复核证据描述修复前行为，不代表当前缺陷仍存在。
+
+**初次复核验证（修复前）**：完整单元测试 27 个文件、253 项通过；正式数据校验及构建通过；从空闲 4173 端口由当前仓库启动预览，受影响浏览器测试 35 项通过，包含 40 个布局状态。另在当时构建的 Chromium 151.0.7922.34 中复现 F1，并直接调用真实控制器及审计核心复现 F2／F3，均未修改生产逻辑。当时既有覆盖率采集的 40 个源码哈希及报告哈希与内容一致，业务 191/191、工程脚本 128/151，LCOV 行记录完整；该次复核未重新采集，既有用例通过不代表新发现已修复。后续修复验证以 T037—T041 为准。远端 CI、真实 AI 联调及历史审批未重新核验，也不作为本轮已通过事项。
+
+### 补充任务与执行记录
+
+- [X] T037 [US3] [实现] 修复 F1（高）：按 FR-008、AC-11、SC-006 及 T028／T033，消除窄屏日期摘要被聊天悬浮入口遮挡的问题；范围为 `src/styles/pages.css` 的日期布局及必要的 `src/styles/chat.css` 入口布局，复用现有主题变量，保持聊天入口和日期控件可操作。在 `e2e/schedule-date-range.spec.js` 先加入真实文字遮挡断言，覆盖较长生效摘要叠加字段错误、视口内不同滚动位置及悬浮入口；不能只比较表单内部矩形。完成后构建并重跑八种环境×五状态及新增场景，查看当前截图，确认摘要、错误和操作文字可读，记录实际范围。（partial）
+  复现证据：390×844、100% 缩放、英文、深色；先应用 `9999-12-31` 至同日，再输入 `2026-02-30`／`bad` 并应用，回到页顶。摘要第二个 December 的尾部及 `31,` 被 `.chat-fab` 遮挡；逐字命中检查返回悬浮按钮。初次复核截图 `test-results/schedule-date-range-converge-occlusion.png` 已被后续测试清理，失败断言与当前截图范围见下方执行记录，不以通过截图替代旧失败证据。原布局断言位于修复前 `e2e/schedule-date-range.spec.js:89`，只检查表单内部元素，未检查外部覆盖层。纯样式修正以浏览器验证为准；若引入可单测交互逻辑，仍须真实测试先行。
+  执行记录：2026-11-11；先加入逐字命中与真实控件检查，构建后运行 `npm run test:e2e -- e2e/schedule-date-range.spec.js --grep unobscured`：2 个英文主题用例因字符被 chat-fab 覆盖而失败、2 个中文用例通过。随后仅在 pages.css 的 ≤860px 日期表单内预留右侧空间；重建后运行 `--grep 'unobscured|layout'`，12 项全部通过，涵盖原 40 个布局状态及四种语言／主题下四个滚动位置，聊天开关与清除均可操作。实际查看窄屏英文深色长摘要、中文浅色长摘要、英文浅色错误态 3 张当前截图，文字与焦点可读、无悬浮遮挡；截图在 test-results 对应用例目录的 long-summary-error.png 和 error.png。环境为 Windows、Chromium 151.0.7922.34、390×844／1440×900、100% 缩放、设备比例 1、既有字体栈。纯 CSS 修正按浏览器验证，不宣称单元 TDD；未改聊天逻辑、主题变量或公共卡片。
+  依赖：T028, T033
+
+- [X] T038 [US3] [实现] 修复 F2（中）：按计划“事件、导航与异步刷新”、[初始化契约](contracts/schedule-date-range.md) 及 T025／T029，在 `tests/schedule-date-controller.test.js` 先添加并实际运行“重复初始化共用解绑函数→解绑→重新初始化→旧解绑再次调用→重复初始化→提交”的回归，确认因重复刷新而失败；再修正 `src/features/schedule-date-range/controller.js`，使解绑幂等且只删除所属实例的注册记录。断言一次提交仅刷新一次、同一根节点最多一组活动监听和订阅、旧解绑不影响新实例及其焦点包装器、新实例最终解绑完整；回归现有生命周期及焦点测试。（partial）
+  复现证据：`controller.js:81` 的解绑函数每次都执行 `unsubscribe()` 与 `roots.delete(root)`，没有已解绑或实例身份保护；上述真实模块复现中预期刷新 1 次、实际 2 次。现有初始化测试只覆盖直接重复初始化后解绑，未覆盖旧解绑与新实例交错。
+  执行记录：2026-11-11；新增两项真实控制器回归，先运行 `npm test -- tests/schedule-date-controller.test.js -t 'stale disposal|disposal unsubscribes'`，两项分别因刷新 2 次而非 1 次、订阅解绑 2 次而非 1 次失败；其余 22 项按明确过滤未执行。随后加入 disposed 幂等保护及所属实例检查，旧解绑不能删除新注册记录，过期焦点包装器仍失效。执行 `npm test -- tests/schedule-date-controller.test.js tests/schedule-date-state.test.js tests/router-follow.test.js tests/follow-language.test.js`，4 文件 58 项全部通过，无跳过；根 Agent 已审查实现和断言。
+  依赖：T025, T029
+
+- [X] T039 [实现] 修复 F3（中）：按计划“80% 变更范围单元行覆盖率／完整性”及 T004／T006，在 `tests/added-coverage.test.js` 先用真实 `auditCoverage` 增加 LCOV 缺少已映射未命中行的失败断言，再修改 `scripts/check-added-coverage.mjs`，显式区分“没有该行记录”和“该行命中数为零”；缺行必须拒绝，完整零命中记录仍按原阈值计算。补齐真实 CLI 非零退出码验证，保留两种基线模式、两组独立阈值及现有正反例；执行工程脚本回归，修复后的当前源码重新采集并核验两组变更行覆盖率。（partial）
+  复现证据：`scripts/check-added-coverage.mjs:119` 只比较 `lines.get(line) > 0`，因此缺失值与零命中同为假。隔离样例中 JSON 有 5 行、命中 4 行，删除 LCOV 的 `DA:5,0` 后仍返回 `passed: true, C: 4, D: 5`。这是报告完整性校验缺口；本轮没有发现当前实际覆盖率文件缺行。
+  执行记录：2026-11-11；先添加两种基线×业务／工程脚本缺零命中行的 4 项回归及 1 项真实 CLI 回归，执行 `npm test -- tests/added-coverage.test.js -t 'zero-hit LCOV|uncovered LCOV'`，5 项分别因未抛错或退出码为 0 而失败，其余 20 项按过滤未执行。最小实现先检查 LCOV 行是否存在，再保留原命中比较；两文件工程回归 36 项全部通过。按 T035 的原命令重新采集并审计，27 文件 260 项全部通过；当前业务变更行 193/193（100%）、工程脚本 135/158（85.44%），两组均满足 5*C≥4*D，源码／报告／LCOV 与显式范围校验通过。报告仍为 coverage/schedule-date-range-added.json，没有新增源码副本或 HTML 报告。
+  依赖：T004, T006
+
+- [X] T040 [US3] [测试] 补齐 F4（中）：按 FR-004、FR-006、AC-06／AC-09、SC-004 及 T028／T032，在 `e2e/schedule-date-range.spec.js` 对有效筛选、未应用编辑、输入错误三种状态分别实际切换中英文及深浅主题，断言原文、错误、未应用提示、生效摘要、比赛 ID 和计数保持对应关系，新增文案随语言更新。另以生效日期与关注筛选为前置，通过应用内导航离页，在球队页实际改变关注列表后返回，断言草稿／旧错误丢弃、生效日期保留、结果按新关注列表重算且持久化记录正确。沿用真实构建和既有数据边界；现有正确行为作为特征回归，不人为制造失败。（partial）
+  复核证据：`e2e/schedule-date-range.spec.js:39` 的球队页往返没有改变关注列表；布局用例在页面加载前固定语言／主题，延迟词典用例中的主题目标只聚焦，没有执行三种日期状态下的主题切换。已有 `tests/follow-language.test.js` 覆盖部分 DOM 行为，不能替代 T028 指定的浏览器转换场景。
+  执行记录：2026-11-11；补充 3 项真实语言／主题转换和 1 项跨页关注变更浏览器回归。三种日期状态分别实际切换中英文、深浅主题，核对原文、错误、未应用提示、生效摘要、比赛 ID／数量及焦点；跨页场景通过球队详情实际取消 ARG 并关注 FRA，返回后结果从 [201] 变为 [204]，日期保留、旧草稿／错误丢弃、关注记录正确。构建后执行 `npm run test:e2e -- e2e/schedule-date-range.spec.js --grep 'actual language|changed follows'`，4 项全部通过；这些是既有正确行为的特征回归，没有人为制造失败，也未修改生产逻辑。
+  依赖：T028, T031
+
+- [X] T041 [US1] [测试] 补齐 F5（中）：按 FR-009、AC-12／AC-13、SC-007 及 T012／T019，完善 `e2e/schedule-date-range.spec.js` 的可用性验收。AI 未配置及不可用两种情形都须实际应用非空有效区间、再清除，逐步核对比赛 ID、数量、摘要、静态说明、赛事／AI 请求增量为零，并进入真实比赛详情。补足“此前已有生效日期及当前阶段／关注条件→数据错误→委托重试成功”的浏览器验证，确认保留条件并恢复交集结果，不把首次加载重试当作该场景；保留 `tests/schedule-date-controller.test.js` 已有真实模块重试回归。只控制已有数据边界与生命周期，不替换筛选核心或新增产品测试专用入口；若浏览器环境无法可靠构造后者，具体记录能力缺口并保持本项未完成，不能宣称该浏览器验收通过。构建后执行 US1 及原关注重试回归。（partial）
+  复核证据：`e2e/schedule-date-range.spec.js:171` 只测试首次加载非法日期后重试；`:184` 起的两种 AI 用例仅调用 `setDates(page, '', '')`，未应用非空区间或激活清除按钮。现有控制器测试已验证生效日期在真实数据错误后恢复，本项补充的是明确承诺但尚缺的浏览器验收，不将其描述为已证实的产品失败。
+  执行记录：2026-11-11；构建后执行日期 US1 与既有错误重试场景，13 项全部通过。通过测试边界保留真实网络解码对象并注入非法日期，生产校验、缓存清理、路由及重试链路保持真实；重试后已应用日期、阶段和关注交集恢复，teams/matches 请求各增加 1。AI 未配置和不可用两种情况下均实际应用非空区间、清除日期并进入详情，摘要、计数及静态数据请求断言通过；未增加生产测试入口。
+  最终回归：2026-11-11；按 T034—T036 入口核对当前候选：`npm test` 的 27 文件、260 项全部通过；`npm run build` 包含正式数据及双语契约校验，通过后确认 4173 空闲，以 `CI=1` 从本仓库本次 `dist/` 启动预览，日期及原关注键盘竞态／空态重试／语言四文件共 44 项全部通过，无跳过。重新核验 T039 当前覆盖率报告与源码一致，业务 193/193、工程脚本 135/158；当前长摘要截图复看通过。`git diff --check` 无错误，仅既有换行提示。本次改动限定于 T037—T041 的三个修复文件、三个测试文件及本清单；未修改规格、计划、正式快照、关注协议或聊天接口，未运行远端 CI／真实模型联调。
+  最终实施核对：已对照 FR-001—FR-009、AC-01—AC-13、SC-001—SC-007、计划及契约检查当前实现与 41 项任务；三项修复和新增浏览器断言另经独立只读复核，未发现剩余实施或必需验证缺口。任务编号唯一、依赖有效，剩余 AI、人工及阻塞项均为 0；可交接完整本地功能。旧失效截图引用已明确标注，现有 Markdown 链接与当前测试产物核对通过。
+  实施复核：通过
+  复核修订：61d7e1e7ec5491cd9bc672b5315fbfe1cb7f95668cb2eb166019d8c977652ff5
+  依赖：T012, T019
+
+本节完成后，按原 T034—T036 的入口核对最终实现、实际自动化结果及当前覆盖率，在适当的新增任务中记录新的实施复核与检查器修订；原历史记录保留。再运行 `speckit-converge` 全量复核。任务检查器的成功或复选框状态不能替代测试、覆盖率、界面对照或 CI 证据。

@@ -1,5 +1,6 @@
 // ===== Data Store =====
 import { matchCategory } from './features/follow-teams/matches.js';
+import { isValidISODate } from './features/schedule-date-range/date-range.js';
 
 const cache = new Map();
 
@@ -36,7 +37,7 @@ export async function getTournamentSnapshot({ retry = false } = {}) {
   }
   if (!Array.isArray(matches) || matches.some(m => !m || !Number.isInteger(m.id)
     || !Object.hasOwn(teams, m.home?.code) || !Object.hasOwn(teams, m.away?.code)
-    || !matchCategory(m))) {
+    || !matchCategory(m) || !isValidISODate(m.date))) {
     return { status: 'error', dataset: 'matches', kind: 'invalid-data' };
   }
   return { status: 'ready', teams, matches };

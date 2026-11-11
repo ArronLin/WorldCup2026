@@ -67,4 +67,15 @@ describe('observable tournament results and legacy cache', () => {
     await old;
     expect((await getTournamentSnapshot()).matches).toEqual(matches);
   });
+  it.each(['2026-02-30','1900-02-29','0000-01-01','2026-6-11','2026-06-', '', null])('rejects invalid snapshot date %j without treating it as empty', async date => {
+    fetch.mockImplementation(async url => response(url.includes('teams') ? teams : [{...matches[0],date}]));
+    expect(await getTournamentSnapshot()).toEqual({status:'error',dataset:'matches',kind:'invalid-data'});
+    fetch.mockImplementation(async url => response(url.includes('teams') ? teams : matches));
+    expect((await getTournamentSnapshot({retry:true})).matches).toEqual(matches);
+  });
+  it.each(['0001-01-01','0099-12-31','2024-02-29','9999-12-31'])('accepts real dates outside the event range %s', async date => {
+    const records=[{...matches[0],date}];
+    fetch.mockImplementation(async url => response(url.includes('teams') ? teams : records));
+    expect(await getTournamentSnapshot()).toEqual({status:'ready',teams,matches:records});
+  });
 });

@@ -2,6 +2,55 @@
 
 const routes = [];
 let navigationId = 0;
+let requestedPath = '';
+const lifecycleListeners = new Set();
+
+export function subscribeRouteLifecycle(listener) {
+  lifecycleListeners.add(listener);
+  return () => lifecycleListeners.delete(listener);
+}
+
+function notifyLifecycle(event) {
+  for (const listener of [...lifecycleListeners]) listener(event);
+}
+
+const followFocusKeys = new Set(['follow-team', 'follow-only', 'follow-retry', 'follow-stage-all', 'follow-stage-group',
+  'follow-stage-round_of_32', 'follow-stage-round_of_16', 'follow-stage-quarterfinal',
+  'follow-stage-semifinal', 'follow-stage-third_place', 'follow-stage-final']);
+const dateFocusKeys = new Set(['schedule-date-start', 'schedule-date-end', 'schedule-date-apply', 'schedule-date-clear']);
+const shellFocusKeys = new Set(['/', '/schedule', '/groups', '/bracket', '/teams', '/history', '/awards'].map(path => 'shell-nav:' + path));
+
+function resolveFocusElement(description, app) {
+  if (description?.kind === 'element') {
+    const element = description.element;
+    return element?.ownerDocument === document && !app.contains(element) ? element : null;
+  }
+  if (description?.kind !== 'key') return null;
+  const key = description.key;
+  let attribute, root = app;
+  if (followFocusKeys.has(key)) attribute = 'data-follow-focus';
+  else if (dateFocusKeys.has(key)) attribute = 'data-date-focus';
+  else if (typeof key === 'string' && (/^schedule-match:\d+$/.test(key) || key === 'schedule-choose-teams')) attribute = 'data-route-focus';
+  else if (shellFocusKeys.has(key)) { attribute = 'data-route-focus'; root = document; }
+  else return null;
+  return [...root.querySelectorAll('[' + attribute + ']')].find(element => element.getAttribute(attribute) === key) || null;
+}
+
+function focusAvailable(element) {
+  if (!element?.isConnected || element.matches(':disabled')) return false;
+  for (let node = element; node; node = node.parentElement) {
+    const style = getComputedStyle(node);
+    if (node.hidden || node.hasAttribute('inert') || style.display === 'none' ||
+        style.visibility === 'hidden' || style.visibility === 'collapse' || style.opacity === '0') return false;
+  }
+  element.focus?.({ preventScroll: true });
+  return document.activeElement === element;
+}
+
+function captureSelection(element) {
+  if (element !== document.activeElement || typeof element?.selectionStart !== 'number') return null;
+  return { value: element.value, start: element.selectionStart, end: element.selectionEnd, direction: element.selectionDirection };
+}
 
 export function addRoute(pattern, handler) {
   routes.push({ pattern, handler });
@@ -28,6 +77,11 @@ export async function handleRoute(options = {}) {
 
   const app = document.getElementById('app');
   if (!app) return { committed: false, path };
+  if (path !== requestedPath) {
+    const from = requestedPath;
+    requestedPath = path;
+    notifyLifecycle({ type: 'navigation', from, to: path, navigationId: requestId });
+  }
   let currentView;
 
   // Show loading
@@ -58,13 +112,23 @@ export async function handleRoute(options = {}) {
   // A slower, older route must never replace the currently requested page.
   if (requestId !== navigationId) return { committed: false, path };
 
+  const focus = typeof options.resolveFocusTarget === 'function'
+    ? options.resolveFocusTarget()
+    : { target: { kind: 'key', key: options.focusKey } };
+  const selection = captureSelection(resolveFocusElement(focus?.target, app));
+  if (requestId !== navigationId) return { committed: false, path };
   app.innerHTML = currentView;
   app.classList.add('app-container');
+  notifyLifecycle({ type: 'rendered', path, navigationId: requestId });
+  if (requestId !== navigationId) return { committed: false, path };
 
-  // Re-trigger animation
+  // Keep control refreshes visible; a new fade starts at opacity zero and
+  // would make otherwise available controls fail synchronous focus recovery.
   app.style.animation = 'none';
-  void app.offsetWidth;
-  app.style.animation = '';
+  if (!options.preserveScroll) {
+    void app.offsetWidth;
+    app.style.animation = '';
+  }
 
   // Update nav active state
   updateNavActive(path);
@@ -82,13 +146,13 @@ export async function handleRoute(options = {}) {
 
   // Scroll to top
   if (!options.preserveScroll) window.scrollTo(0, 0);
-  const focusKeys = ['follow-team', 'follow-only', 'follow-retry', 'follow-stage-all', 'follow-stage-group',
-    'follow-stage-round_of_32', 'follow-stage-round_of_16', 'follow-stage-quarterfinal',
-    'follow-stage-semifinal', 'follow-stage-third_place', 'follow-stage-final'];
-  if (focusKeys.includes(options.focusKey)) {
-    const target = [...app.querySelectorAll('[data-follow-focus]')]
-      .find(el => el.dataset.followFocus === options.focusKey);
-    target?.focus({ preventScroll: true });
+  const target = resolveFocusElement(focus?.target, app);
+  if (focusAvailable(target)) {
+    if (selection && target.value === selection.value) {
+      target.setSelectionRange(selection.start, selection.end, selection.direction);
+    }
+  } else {
+    focusAvailable(resolveFocusElement(focus?.fallback, app));
   }
   return { committed: true, path };
 }

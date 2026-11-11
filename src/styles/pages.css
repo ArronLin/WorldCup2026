@@ -457,3 +457,24 @@
   outline: 2px solid var(--text-primary);
   outline-offset: 3px;
 }
+/* Schedule date controls */
+.schedule-dates { margin: var(--space-lg) 0; padding: var(--space-md); background: var(--bg-elevated); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); }
+.schedule-date-fields { display: flex; align-items: flex-start; gap: var(--space-md); flex-wrap: wrap; }
+.schedule-date-field { flex: 1 1 180px; min-width: 0; }
+.schedule-date-field label { display: block; margin-bottom: var(--space-sm); color: var(--text-primary); }
+.schedule-date-field input { box-sizing: border-box; width: 100%; min-height: 44px; padding: 10px 12px; background: var(--bg-elevated); color: var(--text-primary); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font: inherit; }
+.schedule-date-actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); padding-top: 32px; }
+.schedule-date-actions button { min-height: 44px; }
+.schedule-dates :focus-visible { outline: 2px solid var(--text-primary); outline-offset: 3px; }
+.schedule-date-help { margin: var(--space-sm) 0 0; color: var(--text-secondary); font-size: 0.875rem; }
+.schedule-date-summary, .schedule-date-pending { margin: var(--space-sm) 0 0; overflow-wrap: anywhere; }
+.schedule-date-error { margin: var(--space-sm) 0 0; color: var(--text-primary); font-weight: 600; }
+.schedule-date-field [aria-invalid="true"] { border-style: dashed; border-width: 2px; }
+@media (max-width: 860px) {
+  /* 为 56px 聊天悬浮入口留出水平空间，滚动时也不覆盖表单内容。 */
+  .schedule-dates { padding-inline-end: calc(56px + var(--space-md) + var(--space-sm)); }
+}
+@media (max-width: 600px) {
+  .schedule-date-field { flex-basis: 100%; }
+  .schedule-date-actions { padding-top: 0; }
+}

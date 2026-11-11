@@ -1,10 +1,22 @@
 // @vitest-environment jsdom
 import {it,expect,beforeEach,afterEach,vi} from 'vitest';
 import {prepareDom} from './fixtures/follow-dom.js';
+import {combinationMatches,dateTeams} from './fixtures/schedule-date.js';
 let view,state,init;
 beforeEach(async()=>{vi.resetModules();await prepareDom();view=(await import('../src/views/schedule.js')).default;state=(await import('../src/features/follow-teams/state.js')).followState;init=(await import('../src/features/follow-teams/controller.js')).initFollowTeams;location.hash='#/schedule'});
 afterEach(()=>{vi.restoreAllMocks();vi.unstubAllGlobals()});
 const app=()=>document.querySelector('#app');const ids=()=>[...document.querySelectorAll('[data-route]')].map(e=>e.dataset.route);
+it('intersects applied dates with stage and follows without duplicates or empty groups',async()=>{
+ const original=fetch.getMockImplementation();fetch.mockImplementation(url=>String(url).includes('/matches.json')?Promise.resolve({ok:true,json:async()=>combinationMatches}):String(url).includes('/teams.json')?Promise.resolve({ok:true,json:async()=>dateTeams}):original(url));
+ const dates=(await import('../src/features/schedule-date-range/state.js')).scheduleDateState;
+ await view();state.setFollowed('ARG',true);state.setFollowed('BRA',true);state.setScheduleFilters({followOnly:true,stage:'group'});
+ dates.setDraft('start','2026-06-12');dates.setDraft('end','2026-06-12');dates.apply();dates.setDraft('start','unapplied');
+ app().innerHTML=await view();expect(ids()).toEqual(['/match/201']);expect(app().querySelector('[data-follow-count]').textContent).toContain('1');
+ expect(app().querySelectorAll('.match-section')).toHaveLength(1);expect(app().querySelector('.match-section').dataset.group).toBe('A');
+ state.setScheduleFilters({stage:'all'});app().innerHTML=await view();expect(ids()).toEqual(['/match/201','/match/203']);expect(dates.getSnapshot()).toMatchObject({draft:{start:'unapplied'},applied:{start:'2026-06-12'},dirty:true});
+ state.setScheduleFilters({followOnly:false});app().innerHTML=await view();expect(ids()).toEqual(['/match/201','/match/204','/match/203']);
+ dates.setDraft('start','2026-06-14');dates.setDraft('end','2026-06-15');dates.apply();app().innerHTML=await view();expect(ids()).toEqual([]);expect(app().querySelectorAll('.match-section')).toHaveLength(0);expect(app().textContent).toContain('当前筛选条件下没有比赛');expect(app().querySelector('[data-date-form]')).not.toBeNull();
+});
 it('renders native controls, unique count, stable groups and real detail links',async()=>{
  app().innerHTML=await view();expect(app().querySelector('input[type=checkbox]')).not.toBeNull();
  expect(ids()).toEqual(['/match/1','/match/2','/match/3']);expect(app().querySelector('[data-follow-count]').textContent).toContain('3');
