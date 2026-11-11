@@ -16,7 +16,7 @@ $ErrorActionPreference = 'Stop'
 $proj  = 'D:\GitHub\WorldCup2026'
 $node  = 'C:\Users\admin\.workbuddy-ai\binaries\node\versions\22.22.2-6\node.exe'
 $vite  = Join-Path $proj 'node_modules\vite\bin\vite.js'
-$port  = 5173
+$port  = 51730
 $url   = "http://127.0.0.1:$port/"
 $ready = 90   # seconds
 
