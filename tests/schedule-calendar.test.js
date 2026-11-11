@@ -7,7 +7,7 @@ beforeEach(async () => {
   state = (await import('../src/features/schedule-date-range/state.js')).scheduleDateState;
   const view = await import('../src/features/schedule-date-range/view.js');
   root = document.querySelector('#app');
-  root.innerHTML = view.renderDateControls(state.getSnapshot(), '2026-06-11');
+  root.innerHTML = view.renderDateControls(state.getSnapshot(), {min:'2026-06-11',max:'2026-07-19'});
   refresh = vi.fn();
   dispose = (await import('../src/features/schedule-date-range/controller.js')).initScheduleDateRange({ root, state, refresh });
 });
@@ -29,6 +29,7 @@ it('opens a calendar and selects a date into only the draft until Apply', () => 
 });
 
 it('preserves raw drafts on cancel and prioritizes draft, applied, then snapshot', () => {
+  root.querySelector('[data-date-form]').dataset.firstDate='0001-01-01'; root.querySelector('[data-date-form]').dataset.lastDate='9999-12-31';
   state.setDraft('start', '2024-02-29'); state.apply(); state.setDraft('start', 'bad');
   open(); expect(document.activeElement.dataset.calendarDay).toBe('2024-02-29'); key('Escape');
   expect(state.getSnapshot().draft.start).toBe('bad');
@@ -42,6 +43,7 @@ it('preserves raw drafts on cancel and prioritizes draft, applied, then snapshot
 });
 
 it('navigates leap days, month/year boundaries and quick navigation without applying', () => {
+  root.querySelector('[data-date-form]').dataset.firstDate='0001-01-01'; root.querySelector('[data-date-form]').dataset.lastDate='9999-12-31';
   state.setDraft('start', '2024-02-28'); open(); key('ArrowRight');
   expect(document.activeElement.dataset.calendarDay).toBe('2024-02-29'); key('ArrowRight');
   expect(document.activeElement.dataset.calendarDay).toBe('2024-03-01'); key('ArrowUp');
@@ -73,7 +75,7 @@ it('closes on rerender, restores stable opener and preserves drafts', async () =
   const router = await import('../src/router.js');
   const view = await import('../src/features/schedule-date-range/view.js');
   const { withScheduleDateFocus } = await import('../src/features/schedule-date-range/controller.js');
-  router.addRoute(/^\/schedule$/, () => view.renderDateControls(state.getSnapshot(), '2026-06-11'));
+  router.addRoute(/^\/schedule$/, () => view.renderDateControls(state.getSnapshot(), {min:'2026-06-11',max:'2026-07-19'}));
   state.setDraft('end', 'unfinished'); open('end');
   await router.handleRoute(withScheduleDateFocus({ preserveScroll: true }));
   expect(root.querySelector('[role="dialog"]')).toBeNull();
@@ -83,9 +85,9 @@ it('closes on rerender, restores stable opener and preserves drafts', async () =
   expect(root.querySelector('[role="dialog"]')).toBeNull(); expect(state.getSnapshot().draft.end).toBe('');
 });
 
-it('uses no wall-clock fallback and keeps empty snapshot navigation valid', async () => {
+it('uses no wall-clock fallback for missing bounds and preserves pure calendar arithmetic', async () => {
   root.querySelector('[data-date-form]').dataset.firstDate = ''; open();
-  expect(document.activeElement.dataset.calendarDay).toBe('0001-01-01');
+  expect(root.querySelector('.schedule-calendar')).toBeNull();
   const { monthDays, weekday, shiftDay } = await import('../src/features/schedule-date-range/calendar.js');
   expect(monthDays(2026, 4)).toBe(30); expect(weekday(2026, 6, 11)).toBe(3);
   expect(shiftDay('2026-01-01', -1)).toBe('2025-12-31');

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { installDateData } from './fixtures/schedule-date.js';
+import { installDateData, dateMatches } from './fixtures/schedule-date.js';
 
 for (const lang of ['zh', 'en']) for (const theme of ['dark', 'light']) for (const width of [390, 1440]) {
   test(`calendar interaction and layout ${lang} ${theme} ${width}`, async ({ page }, info) => {
@@ -34,7 +34,7 @@ for (const lang of ['zh', 'en']) for (const theme of ['dark', 'light']) for (con
 for (const timezoneId of ['UTC', 'Asia/Shanghai', 'Pacific/Apia']) {
   test(`calendar preserves ISO dates in ${timezoneId}`, async ({ browser }) => {
     const context = await browser.newContext({ timezoneId }); const page = await context.newPage();
-    await installDateData(page); await page.goto('http://127.0.0.1:4173/#/schedule');
+    await installDateData(page, dateMatches.map((match, i) => ({...match, date: ['2024-02-28','2024-02-29','2024-03-01'][i]}))); await page.goto('http://127.0.0.1:4173/#/schedule');
     await page.locator('[data-date-field="start"]').fill('2024-02-28');
     await page.locator('[data-calendar-open="start"]').click(); await page.keyboard.press('ArrowRight'); await page.keyboard.press('Enter');
     await expect(page.locator('[data-date-field="start"]')).toHaveValue('2024-02-29');

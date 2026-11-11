@@ -12,6 +12,18 @@ node --version
 npm --version
 ```
 
+## 当前日历赛事边界验证（2026-11-11）
+
+以下命令对应本轮边界增量；后文的旧全功能基线保留作历史复现，不能代替本轮覆盖率口径。先遵循第 3 节构建并核实 4173 服务来源，再执行浏览器命令。
+
+```powershell
+npm run test:coverage -- --config vitest.schedule-date-coverage.config.js --maxWorkers=2
+node scripts/check-added-coverage.mjs --base-commit f3144dd628926e3d2623aff77cd8c7a873afaf7f --output coverage/schedule-calendar-bounds-added.json
+npx playwright test e2e/schedule-calendar-bounds.spec.js e2e/schedule-calendar.spec.js e2e/schedule-date-range.spec.js e2e/follow-teams.keyboard-race.spec.js e2e/follow-teams.empty-retry.spec.js e2e/follow-teams.language.spec.js
+```
+
+新增单元入口为 `tests/schedule-calendar-bounds.test.js`，验证空／单日／完整快照、边界与非法值保护；原 `tests/schedule-calendar.test.js` 保留日历运算与生命周期回归。当前正式快照可选范围为 2026-06-11 至 2026-07-19（含两端），由完整数据提取，不随页面筛选改变；手写赛事范围外日期仍按原校验应用。结果见任务清单本轮执行记录，不沿用历史次数或截图。
+
 ## 1. 单元与契约验证
 
 实施时对每项可单测行为先运行对应测试，确认是业务断言不符，再实现；以下测试文件均已创建。集成验证入口：

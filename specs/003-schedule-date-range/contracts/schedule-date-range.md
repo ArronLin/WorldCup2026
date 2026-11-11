@@ -79,11 +79,17 @@
 
 `input` 只写草稿并更新局部提示。提交先从当前输入同步原文，再校验，确保自动填充等场景不漏值；所有提交和清除均先同步更新状态及当前控件的值／错误／提示，再刷新，无效提交仍按上次生效条件呈现结果。焦点恢复本身不修改日期状态。刷新后的 `syncDateControls` 只读最新快照，不再次执行提交、清除或重置；后续草稿原文、派生 `dirty` 及仍有效的错误均保留。离页清空播报文本，数据失败不播报“零场”。
 
-### 日历选择接口（AC-14）
+### 日历选择接口（AC-14，赛事边界已实现）
 
-`renderDateControls(snapshot, firstDate)` 接收完整快照最早比赛日；表单保存经过 ISO 校验的 `data-first-date`。`[data-calendar-open="start|end"]` 按钮以 `aria-haspopup="dialog"` 和 `aria-expanded` 描述弹层；稳定焦点键为 `schedule-calendar-start`／`schedule-calendar-end`，由路由白名单识别。
+`renderDateControls(snapshot, bounds)` 的第二参数由原最早日字符串改为 `{ min: string, max: string } | null`。`scheduleView` 从数据就绪后的完整 `result.matches` 提取最小／最大 ISO 比赛日，先求边界再组合其他筛选；空数组返回 `null`。这是特性内部接口调整，生产调用和 DOM／浏览器夹具需同步，不修改外部赛事数据结构。正式数据仍经过已有公历合法性校验，不静默忽略非法日期。
 
-`createCalendar(root, state, sync)` 管理单一非模态弹层，返回 `close`／`dispose`；根节点委托与文档外部点击监听均有清理入口。`data-calendar-day` 只携带有效 ISO 日期；选择和单端清空仅调用 `setDraft` 与局部同步。年月、星期和日期运算不使用时间戳；行为边界统一见规格 AC-14。弹层后代焦点映射到入口，语言／路由重绘关闭旧 DOM。`data-calendar-year` 非法时设置 `aria-invalid`，不导航、不提交；修改为有效值后定位该年月一日。
+非空边界通过表单 `data-first-date`／`data-last-date` 传递；两端均为合法 ISO 日期且 `min <= max`。边界缺失或非法时日历不可操作，不使用默认年份扩展范围。空快照禁用两个 `[data-calendar-open="start|end"]`，并以关联说明提供“暂无赛事日期可选”／“No tournament dates available”；文字通过成对 `schedule.calendar.*` 词条生成。
+
+入口保留 `aria-haspopup="dialog"`、`aria-expanded` 以及稳定焦点键 `schedule-calendar-start`／`schedule-calendar-end`。`createCalendar(root, state, sync)` 保留单一非模态弹层和 `close`／`dispose` 接口；根节点委托与文档外部点击监听均可清理。每次打开读取当前边界；重绘／离页关闭旧弹层。
+
+显示的界外日期按钮使用原生 `disabled`，不能成为活动日或写入草稿。事件处理再次核对所选 ISO 日期是否在闭区间内，防止事件路径绕过禁用状态。年月控件只允许与边界相交的年月，手动年份越界时显示关联的双语错误、不改变当前日历页、不提交外层表单；恢复合法年月后光标取该月一日与赛事首日中的较晚者。方向键及 Home／End 的候选日裁剪到闭区间，越界时保持边界日可聚焦。
+
+初始化候选、空快照和手写兼容按规格 AC-14；光标裁剪不得调用 `setDraft`。选日和单端清空仍仅更新对应草稿，筛选只通过原“应用日期”生效。`isValidISODate`、`validateDateRange`、日期状态及筛选函数均不新增赛事上下界约束。公历计算不使用时区转换。
 
 ## 双语词典
 

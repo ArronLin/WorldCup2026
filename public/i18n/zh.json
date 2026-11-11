@@ -256,5 +256,8 @@
   "schedule.calendar.week.3": "四",
   "schedule.calendar.week.4": "五",
   "schedule.calendar.week.5": "六",
-  "schedule.calendar.week.6": "日"
+  "schedule.calendar.week.6": "日",
+
+  "schedule.calendar.unavailable": "暂无赛事日期可选",
+  "schedule.calendar.outside": "请选择赛事日期范围内的年份和月份"
 }

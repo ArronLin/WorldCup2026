@@ -1,0 +1,45 @@
+import { test, expect } from '@playwright/test';
+import { installDateData, dateMatches } from './fixtures/schedule-date.js';
+test('calendar bounds include both ends and do not constrain handwritten application', async ({page}) => {
+  await installDateData(page, [dateMatches[2],dateMatches[0]]); await page.goto('/#/schedule');
+  await page.locator('[data-calendar-open="start"]').click();
+  await expect(page.locator('[data-calendar-day="2026-06-10"]')).toBeDisabled();
+  await expect(page.locator('[data-calendar-day="2026-06-14"]')).toBeDisabled();
+  await expect(page.locator('[data-calendar-day="2026-06-12"]')).toBeEnabled();
+  await page.keyboard.press('Home'); await expect(page.locator('[data-calendar-day="2026-06-11"]')).toBeFocused();
+  await page.locator('[data-calendar-day="2026-06-13"]').click();
+  await expect(page.locator('.schedule-page .match-card')).toHaveCount(2);
+  await page.locator('[data-date-action="apply"]').click(); await expect(page.locator('.schedule-page .match-card')).toHaveCount(1);
+  await page.locator('[data-date-field="start"]').fill('9999-12-31');
+  await page.locator('[data-calendar-open="start"]').click(); await expect(page.locator('[data-calendar-day="2026-06-13"]')).toBeFocused();
+  await page.keyboard.press('Escape'); await expect(page.locator('[data-date-field="start"]')).toHaveValue('9999-12-31');
+  await page.locator('[data-date-action="apply"]').click(); await expect(page.locator('.schedule-page .match-card')).toHaveCount(0);
+  await page.locator('[data-calendar-open="start"]').click(); await expect(page.locator('[data-calendar-day="2026-06-11"]')).toBeEnabled();
+  await page.keyboard.press('Escape'); await page.locator('[data-date-action="clear"]').click();
+  await page.locator('[data-follow-action="stage"][data-filter="group"]').click();
+  await page.locator('[data-calendar-open="start"]').click();
+  await expect(page.locator('[data-calendar-day="2026-06-13"]')).toBeEnabled();
+});
+test('month and year controls cannot escape a cross-month tournament', async ({page}) => {
+  await installDateData(page, dateMatches.map((match,i)=>({...match,date:['2026-06-11','2026-06-15','2026-07-19'][i]})));
+  await page.goto('/#/schedule'); await page.locator('[data-calendar-open="start"]').click();
+  await expect(page.locator('[data-calendar-move="-1"]')).toBeDisabled();
+  await page.locator('[data-calendar-move="1"]').click();
+  await expect(page.locator('[data-calendar-move="1"]')).toBeDisabled();
+  await page.locator('[data-calendar-year]').fill('2025'); await page.locator('[data-calendar-year]').press('Enter');
+  await expect(page.locator('[data-calendar-error]')).toBeVisible();
+  await expect(page.locator('[data-date-field="start"]')).toHaveValue('');
+  await page.locator('[data-calendar-year]').fill('2026'); await page.locator('[data-calendar-year]').press('Enter');
+  await expect(page.locator('[data-calendar-error]')).toBeHidden();
+  await expect(page.locator('[data-calendar-day="2026-07-20"]')).toBeDisabled();
+  await page.locator('[data-calendar-day="2026-07-19"]').click();
+  await expect(page.locator('[data-date-field="start"]')).toHaveValue('2026-07-19');
+});
+test('empty snapshot disables calendars but preserves text and Apply', async ({page}) => {
+  await installDateData(page, []); await page.goto('/#/schedule');
+  await expect(page.locator('[data-calendar-open="start"]')).toBeDisabled();
+  await expect(page.locator('[data-calendar-open="end"]')).toBeDisabled();
+  await expect(page.locator('[data-calendar-unavailable]')).toBeVisible();
+  await page.locator('[data-date-field="start"]').fill('2024-02-29'); await page.locator('[data-date-action="apply"]').click();
+  await expect(page.locator('[data-date-field="start"]')).toHaveAttribute('aria-invalid','false');
+});

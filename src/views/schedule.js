@@ -1,3 +1,4 @@
+import { getCalendarBounds } from '../features/schedule-date-range/calendar.js';
 // ===== Schedule View =====
 import { t } from '../i18n.js';
 import { getTournamentSnapshot } from '../store.js';
@@ -31,7 +32,7 @@ export default async function scheduleView() {
     html += '<button type="button" class="filter-tab ' + (active ? 'active' : '') + '" aria-pressed="' + active + '" data-follow-action="stage" data-filter="' + cat + '" data-follow-focus="follow-stage-' + cat + '">' + (cat === 'all' ? t('schedule.all') : stageLabel(cat)) + '</button>';
   }
   html += '</div>';
-  html += renderDateControls(dateSnapshot, result.matches.map(match => match.date).sort()[0]);
+  html += renderDateControls(dateSnapshot, getCalendarBounds(result.matches));
   if (!matches.length) {
     html += '<div class="follow-empty"><p>' + t(snapshot.followOnly && !snapshot.teamCodes.length ? 'follow.noTeams' : 'follow.noMatches') + '</p><a href="#/teams" class="back-link" data-route-focus="schedule-choose-teams">' + t('follow.chooseTeams') + '</a></div>';
   }

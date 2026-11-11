@@ -256,5 +256,8 @@
   "schedule.calendar.week.3": "Th",
   "schedule.calendar.week.4": "Fr",
   "schedule.calendar.week.5": "Sa",
-  "schedule.calendar.week.6": "Su"
+  "schedule.calendar.week.6": "Su",
+
+  "schedule.calendar.unavailable": "No tournament dates available",
+  "schedule.calendar.outside": "Choose a year and month within the tournament dates"
 }

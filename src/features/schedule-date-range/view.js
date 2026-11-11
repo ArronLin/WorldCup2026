@@ -1,4 +1,4 @@
-import { isValidISODate } from './date-range.js';
+import { validCalendarBounds } from './calendar.js';
 import { t } from '../../i18n.js';
 
 function dateText(value) {
@@ -13,13 +13,14 @@ function summary({ start, end }) {
   return t('schedule.date.all');
 }
 
-export function renderDateControls(snapshot, firstDate = '') {
-  return `<form class="schedule-dates" data-date-form data-first-date="${isValidISODate(firstDate) ? firstDate : ''}" novalidate>
+export function renderDateControls(snapshot, bounds = null) {
+  const available = validCalendarBounds(bounds);
+  return `<form class="schedule-dates" data-date-form data-first-date="${available ? bounds.min : ''}" data-last-date="${available ? bounds.max : ''}" novalidate>
     <div class="schedule-date-fields">
       ${['start', 'end'].map(field => `<div class="schedule-date-field">
         <label for="schedule-date-${field}">${t(`schedule.date.${field}`)}</label>
         <input id="schedule-date-${field}" type="text" data-date-field="${field}" data-date-focus="schedule-date-${field}" aria-describedby="schedule-date-format schedule-date-${field}-error" aria-invalid="false" autocomplete="off" spellcheck="false">
-        <button class="filter-btn schedule-calendar-open" type="button" data-calendar-open="${field}" data-date-focus="schedule-calendar-${field}" aria-haspopup="dialog" aria-expanded="false" aria-controls="schedule-calendar">${t(`schedule.calendar.${field}`)}</button>
+        <button class="filter-btn schedule-calendar-open" type="button" data-calendar-open="${field}" data-date-focus="schedule-calendar-${field}" ${available ? '' : 'disabled aria-describedby="schedule-calendar-unavailable"'} aria-haspopup="dialog" aria-expanded="false" aria-controls="schedule-calendar">${t(`schedule.calendar.${field}`)}</button>
         <p class="schedule-date-error" id="schedule-date-${field}-error" hidden></p>
       </div>`).join('')}
       <div class="schedule-date-actions">
@@ -27,6 +28,7 @@ export function renderDateControls(snapshot, firstDate = '') {
         <button class="filter-btn" type="button" data-date-action="clear" data-date-focus="schedule-date-clear">${t('schedule.date.clear')}</button>
       </div>
     </div>
+    <p class="schedule-date-help" id="schedule-calendar-unavailable" data-calendar-unavailable ${available ? 'hidden' : ''}>${t('schedule.calendar.unavailable')}</p>
     <p class="schedule-date-help" id="schedule-date-format">${t('schedule.date.format')}</p>
     <p class="schedule-date-help">${t('schedule.date.basis')}</p>
     <p class="schedule-date-summary" data-date-summary>${summary(snapshot.applied)}</p>
