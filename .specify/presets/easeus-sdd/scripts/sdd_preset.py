@@ -90,9 +90,10 @@ def effective_policy(root):
     path = root / '.specify/easeus/requirements.json'
     value = load_json(path if path.is_file() else PACK / 'policies/requirements.json')
     rules = {r['kind']: r for r in value['rules'] if r['enabled']}
+    required = {kind for kind, rule in rules.items() if rule.get('level', 'MUST') == 'MUST'}
     return {'language': rules.get('language', {}).get('parameters', {}).get('language'),
-            'tdd_required': 'tdd' in rules,
-            'new_unit_line_coverage_minimum': rules['coverage']['parameters']['minimum_percent'] / 100 if 'coverage' in rules else None}
+            'tdd_required': 'tdd' in required,
+            'new_unit_line_coverage_minimum': rules['coverage']['parameters']['minimum_percent'] / 100 if 'coverage' in required else None}
 
 
 def defaults(root):
