@@ -4,8 +4,8 @@ description: Analyze a change to an existing task and apply only a specifically 
 ---
 
 本次明确选择 speckit；先说明目标仓库、当前任务和本入口职责，不得加载另一框架的规则。
-读取 `.specify/easeus/requirements.json`、本框架项目规范及知识库绑定；工程政策只来自启用规则，不恢复停用政策。
-仓库运行入口：`powershell -NoProfile -ExecutionPolicy Bypass -File .specify/easeus/workflow/run.ps1`，后接动作和参数；每次传 --project 当前仓库。使用 Studio 工作项协议的任务传 --work-item 明确清单路径；`specs/tiny/` 单文件任务直接读取 Markdown，不使用此参数。需要 Python 3.10+，不依赖 Studio 或用户目录绑定。
+读取 `.specify/sdd/requirements.json`、本框架项目规范及知识库绑定；工程政策只来自启用规则，不恢复停用政策。
+仓库运行入口：`powershell -NoProfile -ExecutionPolicy Bypass -File .specify/sdd/workflow/run.ps1`，后接动作和参数；每次传 --project 当前仓库。使用 Studio 工作项协议的任务传 --work-item 明确清单路径；`specs/tiny/` 单文件任务直接读取 Markdown，不使用此参数。需要 Python 3.10+，不依赖 Studio 或用户目录绑定。
 只请求查询、诊断或分析时只读，不创建文档、不登记或推进任务、不运行测试或安装依赖。只读调用附加 `--intent analyze`，该模式只允许 doctor/status/inspect-tasks；不得去掉参数、换用直接 Python API 或报告命令绕过只读边界。缺少环境时报告缺口，不自行修复。
 任务归属或授权不明确时才询问；明确授权只适用于相应任务和范围，不自动扩展。
 
@@ -144,6 +144,15 @@ FR 按独立业务行为组织；单位、边界、异常和兼容要求保持�
 检查重复 ID、明确的失效引用和适用结构；语义问题列出位置与建议，不自动合并、删除或重编号。Studio 只校验配置结构，功能文档仍需 Agent 评审，不能声称模板已证明语义正确。
 
 当前功能的实现缺陷关联原任务及已有 Issue，安排复现、修复和回归，不新增管理记录。需求存在歧义或需改变行为时，先确认影响再改规格，不通过改规格、删任务或虚构结果掩盖缺陷；仅在授权范围推进。
+
+
+### 面向读者的正文边界
+输入 JSON 字段只是生成协议，不是文档术语。中文正文、摘要、问题、选项、依据说明和 Agent 约定中，
+用「用户回答」「本次启用的规则」「本次生效的工程要求」「必需保留的工程规则」「宪法问卷」
+解释相应输入，不照抄内部字段名，也不通过反引号把字段名当成正文。问题引用用「第 1—3 项回答」等可读说法。
+来源使用「资料名称／文件路径＋必要位置」作为链接文字，不能只显示 E- 加哈希编号。
+JSON 键、选项 ID、证据引用数组、链接目标、实际命令、代码、路径以及框架必需语法保持原值，
+不得为中文化改变其含义或虚构来源。协议字段留在结构化数据和技术详情，正文只写读者需要的结论。
 
 Spec Kit：保持原生用户故事组织与 [P]、[USn] 等固定标记；正式 Bug 请求使用已部署的 speckit-bug-assess → speckit-bug-fix → speckit-bug-test，保留官方产物与各阶段调用边界，不因这里的缺陷处理指导自动启动或串行推进正式流程。完整功能的 converge 按原生职责做全量差距检查和追加任务，不强制每批调用，也不把下一批尚未获准实施的计划任务重复追加为缺陷。
 ### 计划依赖

@@ -5,7 +5,7 @@ description: Generate an actionable, dependency-ordered tasks.md for the feature
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
-  source: preset:easeus-sdd
+  source: preset:sdd-sdd
 ---
 
 # Speckit Tasks Skill
@@ -20,9 +20,9 @@ metadata:
 有效语言为简体中文时，正文中的规范编号和约束级别用中文形式（如「条款-010 · 必须」）；保留机器标记、代码与框架要求的原生语法。
 <!-- REPO_SDD_SCOPE:speckit:END -->
 
-<!-- easeus-sdd:policy:v1 -->
+<!-- sdd-sdd:policy:v1 -->
 ## EaseUS SDD：本阶段约定
-本次阶段：tasks。保持用户参数；先读取 .specify/easeus.json、.specify/easeus/requirements.json（若存在），以及当前宪法和阶段所需产物。
+本次阶段：tasks。保持用户参数；先读取 .specify/sdd.json、.specify/sdd/requirements.json（若存在），以及当前宪法和阶段所需产物。
 先复用已核实且仍适用的依据；仅针对本阶段会影响决定的未知、冲突或变更补查。按问题选 OpenDeepWiki、CodeGraph 或当前文件，当前行为以适用源码或运行结果核实。
 本阶段工作：按依赖拆解工作，落实已启用规则对应的完成条件。
 人工评审产物必须“摘要先行、需确认项集中、正文分层、细节后置”：开头展示任务规模、依赖、阻塞项和待确认内容；任务正文按用户故事展开，来源与补充说明后置，不粘贴原始日志。
@@ -30,7 +30,7 @@ metadata:
 每条任务在官方 ID、`[P]`、`[USn]` 标记之后增加且仅增加一个醒目的类型标签：`[测试]`、`[实现]`、`[验证]`、`[准备]` 或 `[文档]`。测试人员应能搜索 `[测试]` 和 `[验证]` 直接得到待审内容；测试任务写明测试层级、目标行为、测试文件或入口和明确断言，验证任务写明实际命令或可观察结果。不要另建重复的测试任务汇总表。
 除命令、文件路径、代码标识符、`[P]`、`[USn]` 等框架固定标记外，文档标题、小标题、表头、Goal／Purpose／Dependencies／Checkpoint／Status 等说明必须使用当前规则指定语言；不得把基础模板的英文标题原样留在最终文档中。
 ## 当前启用的工程规则
-<!-- easeus:requirements:8bae3a8445bb51712402500c925c1b174a4c8ac44ef17361dc2909851651c8d1 -->
+<!-- sdd:requirements:8bae3a8445bb51712402500c925c1b174a4c8ac44ef17361dc2909851651c8d1 -->
 **交互与产物语言（必须）**
 
 必须：面向团队评审的自然语言使用简体中文，包括标题、小标题、表头、任务类别和状态说明；命令、路径、代码标识符及框架固定标记保持原样。必要术语首次出现时提供简短解释，后续不重复翻译；遵守项目已有的公共 API、国际化和文档约定，不照抄基础模板英文标题作为最终自然语言标题。
@@ -53,7 +53,7 @@ metadata:
 以上规则来自已评审快照；未启用的规则不得按旧默认值恢复。已有规格或宪法与快照冲突时明确报告，交由用户处理。
 本预设不授予额外写入或外部操作权限，不自动运行后续阶段。
 
-<!-- easeus-sdd:core:start -->
+<!-- sdd-sdd:core:start -->
 
 ## User Input
 
@@ -261,7 +261,7 @@ Every task MUST strictly follow this format:
 - [ ] Extension hooks dispatched or skipped according to the rules in Mandatory Post-Execution Hooks above
 - [ ] Completion reported to user with task count, story breakdown, and MVP scope
 
-<!-- easeus-sdd:core:end -->
+<!-- sdd-sdd:core:end -->
 仅说明影响本次决定的未知、关键依据和已执行的验证。
 
 
@@ -285,6 +285,15 @@ FR 按独立业务行为组织；单位、边界、异常和兼容要求保持�
 检查重复 ID、明确的失效引用和适用结构；语义问题列出位置与建议，不自动合并、删除或重编号。Studio 只校验配置结构，功能文档仍需 Agent 评审，不能声称模板已证明语义正确。
 
 当前功能的实现缺陷关联原任务及已有 Issue，安排复现、修复和回归，不新增管理记录。需求存在歧义或需改变行为时，先确认影响再改规格，不通过改规格、删任务或虚构结果掩盖缺陷；仅在授权范围推进。
+
+
+### 面向读者的正文边界
+输入 JSON 字段只是生成协议，不是文档术语。中文正文、摘要、问题、选项、依据说明和 Agent 约定中，
+用「用户回答」「本次启用的规则」「本次生效的工程要求」「必需保留的工程规则」「宪法问卷」
+解释相应输入，不照抄内部字段名，也不通过反引号把字段名当成正文。问题引用用「第 1—3 项回答」等可读说法。
+来源使用「资料名称／文件路径＋必要位置」作为链接文字，不能只显示 E- 加哈希编号。
+JSON 键、选项 ID、证据引用数组、链接目标、实际命令、代码、路径以及框架必需语法保持原值，
+不得为中文化改变其含义或虚构来源。协议字段留在结构化数据和技术详情，正文只写读者需要的结论。
 
 Spec Kit：保持原生用户故事组织与 [P]、[USn] 等固定标记；正式 Bug 请求使用已部署的 speckit-bug-assess → speckit-bug-fix → speckit-bug-test，保留官方产物与各阶段调用边界，不因这里的缺陷处理指导自动启动或串行推进正式流程。完整功能的 converge 按原生职责做全量差距检查和追加任务，不强制每批调用，也不把下一批尚未获准实施的计划任务重复追加为缺陷。
 ### 任务划分

@@ -11,7 +11,7 @@
 有效语言为简体中文时，正文中的规范编号和约束级别用中文形式（如「条款-010 · 必须」）；保留机器标记、代码与框架要求的原生语法。
 <!-- REPO_SDD_SCOPE:speckit:END -->
 ## 仓库适配约定
-读取 .specify/memory/constitution.md、.specify/easeus.json 和有效阶段技能。
+读取 .specify/memory/constitution.md、.specify/sdd.json 和有效阶段技能。
 Wiki 建立业务背景，CodeGraph 定位代码，再核实当前源码。
 在 Spec Kit 流程中，获准创建提交时，每条提交标题使用 `[功能名] 变更描述`。功能名取自当前功能的规格。该文档尚未创建时使用本次任务已明确的功能名，名称未明确时先向用户确认。同一功能的提交使用一致的前缀。示例：`[批量导出] 添加 CSV 导出入口`。
 <!-- repo-sdd:manual-testing:v1 -->
@@ -65,9 +65,18 @@ FR 按独立业务行为组织；单位、边界、异常和兼容要求保持�
 
 当前功能的实现缺陷关联原任务及已有 Issue，安排复现、修复和回归，不新增管理记录。需求存在歧义或需改变行为时，先确认影响再改规格，不通过改规格、删任务或虚构结果掩盖缺陷；仅在授权范围推进。
 
+
+### 面向读者的正文边界
+输入 JSON 字段只是生成协议，不是文档术语。中文正文、摘要、问题、选项、依据说明和 Agent 约定中，
+用「用户回答」「本次启用的规则」「本次生效的工程要求」「必需保留的工程规则」「宪法问卷」
+解释相应输入，不照抄内部字段名，也不通过反引号把字段名当成正文。问题引用用「第 1—3 项回答」等可读说法。
+来源使用「资料名称／文件路径＋必要位置」作为链接文字，不能只显示 E- 加哈希编号。
+JSON 键、选项 ID、证据引用数组、链接目标、实际命令、代码、路径以及框架必需语法保持原值，
+不得为中文化改变其含义或虚构来源。协议字段留在结构化数据和技术详情，正文只写读者需要的结论。
+
 Spec Kit：保持原生用户故事组织与 [P]、[USn] 等固定标记；正式 Bug 请求使用已部署的 speckit-bug-assess → speckit-bug-fix → speckit-bug-test，保留官方产物与各阶段调用边界，不因这里的缺陷处理指导自动启动或串行推进正式流程。完整功能的 converge 按原生职责做全量差距检查和追加任务，不强制每批调用，也不把下一批尚未获准实施的计划任务重复追加为缺陷。
-知识库直接使用当前 Agent 已注册的原生 MCP；按 .specify/easeus/knowledge.json 中的 server_name、允许工具及仓库映射查询，先核对返回内容属于当前仓库。不依赖 speckit_wizard 或 openspec_wizard 包装服务。连接缺失时说明具体服务及配置缺口；换电脑先在该机器 Agent 中配置原生 MCP，不复制连接或凭据。
-读取 .specify/easeus/requirements.json；快照优先于技能中缓存的旧工程规则，冲突时提示重新适配所用 Agent。以下为本次启用的工程规则。
+知识库直接使用当前 Agent 已注册的原生 MCP；按 .specify/sdd/knowledge.json 中的 server_name、允许工具及仓库映射查询，先核对返回内容属于当前仓库。不依赖 speckit_wizard 或 openspec_wizard 包装服务。连接缺失时说明具体服务及配置缺口；换电脑先在该机器 Agent 中配置原生 MCP，不复制连接或凭据。
+读取 .specify/sdd/requirements.json；快照优先于技能中缓存的旧工程规则，冲突时提示重新适配所用 Agent。以下为本次启用的工程规则。
 **交互与产物语言（必须）**
 
 必须：面向团队评审的自然语言使用简体中文，包括标题、小标题、表头、任务类别和状态说明；命令、路径、代码标识符及框架固定标记保持原样。必要术语首次出现时提供简短解释，后续不重复翻译；遵守项目已有的公共 API、国际化和文档约定，不照抄基础模板英文标题作为最终自然语言标题。
@@ -89,11 +98,12 @@ Spec Kit：保持原生用户故事组织与 [P]、[USn] 等固定标记；正�
 必须：知识库与源码说明现状，已确认需求定义期望；仅对影响需求、设计或兼容性判断的关键结论，在对应原生产物中简短记录必要来源与适用版本，不重复复制源码、知识库内容或工程规则全文。未知明确说明，现状缺陷不得自动固化为规范；知识库与当前源码不一致时指出差异，不仅凭更新时间推断谁正确。
 
 ### 项目通用 Agent 约定
-- 涉及 UI 时，应当先检查 src/styles/components.css 中的国旗、球队标识、阶段徽章和比赛卡片，以及 src/utils.js 的本地化、日期、比分和图标工具。样式优先采用 src/styles/tokens.css 的主题与语义变量，并按职责放入 base.css、components.css、pages.css 或 chat.css。依据当前需求决定复用或新增，在既有计划中简述偏离原因；现有样式不代表未来设计已获批准。
-- 涉及 #app 重渲染或交互控制器时，应当沿用 src/features/follow-teams/controller.js 和 src/features/schedule-date-range/controller.js 的稳定根节点事件委托、重复初始化防护及释放入口，先更新状态再触发渲染。结合 src/router.js 的 handleRoute、subscribeRouteLifecycle、resolveFocusTarget 和 src/app.js 的 langchange 流程，仅对受影响行为核对旧异步结果不提交、事件不重复、订阅可释放，以及焦点、选区和滚动的恢复；涉及赛程页时同时检查 withScheduleDateFocus 的协调。
-- 新增或修改页面导航时，应当沿用 src/app.js 注册、src/router.js 匹配的 Hash 路由机制。Hash 内查询串需由相应路由模式显式捕获并交给页面解析，可参照历史页面路由；区分 # 后的页面参数与 location.search 中的 ?mock。按本次变更核对直接打开链接、刷新及前进后退行为，避免把带查询串的有效页面匹配为 404。
-- 涉及浏览器 UI 验证时，应当使用当前候选构建：先通过 npm run build 生成 dist/，再使用 npm run preview 或 npm run test:e2e。核对 playwright.config.js 使用的 127.0.0.1:4173 服务确实对应当前产物，尤其注意本地允许复用已有服务。行为测试沿用 e2e/；视觉核对按受影响页面选取主题、语言、窗口尺寸和状态，不将这一流程设为无关任务的统一前置。
-- 涉及 src/features/chat/、聊天协议或 netlify/functions/ 时，应当先明确本次影响演示、本地 BYOK 直连、服务端代理中的哪些路径，再选择相应验证入口。/?mock 用于演示界面；npm run dev 仅启动前端；Function 联调按 README.md 使用配置后的 npx netlify-cli dev。演示用例通过只代表其覆盖路径，不能替代受影响直连或代理集成的验证。
+- 涉及赛事界面时，优先复用 src/utils.js 的 flagSVG、stageLabel、STAGES 及 src/styles/components.css 的国旗、球队徽标、阶段徽章和比赛卡片样式。比赛卡片结构先对照 src/views/home.js 与 src/views/schedule.js 的现有实现；确需跨页抽取时再确定共享边界，避免为单页差异复制整套组件或提前建立新组件体系。
+- 涉及视觉样式时，先从 src/styles/tokens.css 选择现有语义变量；新增跨页面或跨主题的视觉值时在该文件集中定义，并核对深浅主题取值。共享组件样式放入 src/styles/components.css，页面布局与聊天样式分别沿用 src/styles/pages.css、src/styles/chat.css；新增样式须考虑 index.html 中现有加载顺序，引用前确认变量实际存在。
+- 涉及路由内交互时，按 src/features/schedule-date-range/state.js 与 controller.js 的既有方式，将需跨重渲染保留的状态放在状态模块，由控制器处理事件、视图负责呈现。控制器须防止重复初始化并提供事件与订阅清理；刷新通过 src/router.js 的 handleRoute 和路由生命周期衔接。需要保持滚动、焦点或输入选区时接入现有恢复机制，并核对焦点键能被路由解析器识别；异步结果提交须保留旧请求失效检查。
+- 涉及用户可见文案时，沿用 src/i18n.js 的 t、setLang 和语言变更事件，在 public/i18n/zh.json 与 public/i18n/en.json 同步维护词条；赛事双语对象沿用 src/utils.js 的 L。新增界面须接入 src/app.js 的现有语言刷新链路，避免另设语言状态；相关验证检查切换后的文案和交互状态，修改语言加载逻辑时保留较旧请求不得覆盖最新选择的处理。
+- 涉及赛事数据归一化、轮次别名或 AI 查询工具时，优先复用 src/shared/tournament-query/dataset.js，并同时核对浏览器侧 src/features/chat/tools.js 与 Function 侧 netlify/functions/_data.mjs、_tools.mjs 的消费方式。新增、删除工具或改变参数与返回语义时，同步处理两侧适用契约；共享模块保持不依赖浏览器或 Node.js 专属对象，验证同一输入在两侧的语义一致性。
+- 涉及 UI 行为时，从现有 e2e/smoke.spec.js 及对应功能测试选择验证入口；赛程日期交互优先对照 e2e/schedule-date-range.spec.js 中的双语、双主题、窄屏、键盘与焦点检查。Playwright 使用构建产物预览服务，运行相关测试前确认 dist 对应本次源码。聊天界面可用 /?mock 验证；涉及真实 Function 或外部请求时，另按 README.md 的 Netlify 本地调试入口验证对应路径，模拟聊天结果不得代替该验证。涉及 public/data/ 或双语词典时沿用 npm run validate:data。
 
-Codex 执行前另读取 .specify/easeus/agents/codex.md 中的专属约定（若存在）。
+Codex 执行前另读取 .specify/sdd/agents/codex.md 中的专属约定（若存在）。
 <!-- WIZARD:AGENT:END -->

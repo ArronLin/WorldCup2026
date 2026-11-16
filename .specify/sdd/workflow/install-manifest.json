@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "owner": "repo-sdd-studio",
+  "framework": "speckit",
+  "files": {
+    ".specify/sdd/workflow/runtime.py": "602f02b49d2fdd694a6b43637bb1b9265f18ade6ffc7a60a1318d02fbd2af9fc",
+    ".specify/sdd/workflow/hybrid.py": "c98bc687a01683e0231c6ab3220b3f01817edab45d9165010ce64502e8a0ffc7",
+    ".specify/sdd/workflow/work-item.schema.json": "9e5418b88b87317ebc7ec0a6cf4943c4b7a885879a6512423d271b437b9d2ce4",
+    ".specify/sdd/workflow/rule-migrations.json": "b39e6cf373984fe1967265516b4e0200531aa2580fda0ddc10768c0305ef206c",
+    ".specify/sdd/workflow/run.ps1": "db59fac47efed008801bda18fc22d809e7b6a053f8e3213a5ed24639ca76581d",
+    ".agents/skills/sdd-speckit-start/SKILL.md": "b75560a8ad6a4446b5f4c745608886cbd97ca1b717a0b60b917f3ea4bc045bd4",
+    ".agents/skills/sdd-speckit-start/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+    ".agents/skills/sdd-speckit-quick/SKILL.md": "dc54aebb7f3f32748a188fd57e0351230db4e82e9f96aa08a5733e4762156131",
+    ".agents/skills/sdd-speckit-quick/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+    ".agents/skills/sdd-speckit-change/SKILL.md": "098e268e48291af20ddd3067c8684b15d77d09b7115f9db04bd0d591ba35eeb1",
+    ".agents/skills/sdd-speckit-change/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+    ".agents/skills/sdd-speckit-resume/SKILL.md": "2399ecf0f37b84a9bd060acd8a8fc0da3f30fc76b795eeee8a0facfd184125c8",
+    ".agents/skills/sdd-speckit-resume/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+  }
+}

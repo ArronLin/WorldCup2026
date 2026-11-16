@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
   "presets": {
-    "easeus-sdd": {
+    "sdd-sdd": {
       "version": "2.1.0",
       "source": "local",
-      "manifest_hash": "sha256:f9a20bf92fa5e5bd5933daecda9a6bab52b6f010c69e2f54ede5e843782dacf8",
+      "manifest_hash": "sha256:2e69e03671520f5c7df05104e3173f2929b25688e459b2a7d4dd73414df377b0",
       "enabled": true,
       "priority": 10,
       "registered_commands": {
@@ -39,17 +39,17 @@
           "speckit-bug-test"
         ]
       },
-      "installed_at": "2026-11-13T02:32:51.483913+00:00"
+      "installed_at": "2026-11-16T02:58:09.649282+00:00"
     },
-    "easeus-project": {
+    "sdd-project": {
       "version": "1.0.0",
       "source": "local",
-      "manifest_hash": "sha256:d944f26616895d955b4a7e3a838d0062fb5f3dd1e081c8ba1a89d0c2df68c0a6",
+      "manifest_hash": "sha256:6c6f9dfded87a9a23e39ab871247c0f452a6e5026cd52d490f9c854b199d449d",
       "enabled": true,
       "priority": 1,
       "registered_commands": {},
       "registered_skills": {},
-      "installed_at": "2026-11-13T02:32:58.326370+00:00"
+      "installed_at": "2026-11-16T02:58:13.842396+00:00"
     }
   }
 }

@@ -5,7 +5,7 @@ description: Assess a bug report (pasted text or URL) against the codebase and p
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
-  source: preset:easeus-sdd
+  source: preset:sdd-sdd
 ---
 
 # Speckit Bug Assess Skill
@@ -20,14 +20,14 @@ metadata:
 有效语言为简体中文时，正文中的规范编号和约束级别用中文形式（如「条款-010 · 必须」）；保留机器标记、代码与框架要求的原生语法。
 <!-- REPO_SDD_SCOPE:speckit:END -->
 
-<!-- easeus-sdd:policy:v1 -->
+<!-- sdd-sdd:policy:v1 -->
 ## EaseUS SDD：Bug 诊断阶段约定
-本次阶段：bug-assess。保持用户参数；先读取 .specify/easeus.json、.specify/easeus/requirements.json（若存在）、当前宪法和本缺陷已有产物。
+本次阶段：bug-assess。保持用户参数；先读取 .specify/sdd.json、.specify/sdd/requirements.json（若存在）、当前宪法和本缺陷已有产物。
 按已知事实和本次复现需要选择知识库及当前源码；不把工具调用成功当作问题已复现。
 本阶段工作：只诊断预期行为、实际行为、影响、复现条件和验收边界，不自动进入修复。
 assessment.md 必须摘要先行、需确认项集中、正文分层、细节后置：开头列问题结论、影响、复现状态、待确认项和风险，再列详细步骤与来源；不复制背景，不粘贴原始日志。面向人的标题和说明使用当前规则语言；官方固定字段保留并在相邻位置说明语义。
 ## 当前启用的工程规则
-<!-- easeus:requirements:8bae3a8445bb51712402500c925c1b174a4c8ac44ef17361dc2909851651c8d1 -->
+<!-- sdd:requirements:8bae3a8445bb51712402500c925c1b174a4c8ac44ef17361dc2909851651c8d1 -->
 **交互与产物语言（必须）**
 
 必须：面向团队评审的自然语言使用简体中文，包括标题、小标题、表头、任务类别和状态说明；命令、路径、代码标识符及框架固定标记保持原样。必要术语首次出现时提供简短解释，后续不重复翻译；遵守项目已有的公共 API、国际化和文档约定，不照抄基础模板英文标题作为最终自然语言标题。
@@ -49,7 +49,7 @@ assessment.md 必须摘要先行、需确认项集中、正文分层、细节后
 必须：知识库与源码说明现状，已确认需求定义期望；仅对影响需求、设计或兼容性判断的关键结论，在对应原生产物中简短记录必要来源与适用版本，不重复复制源码、知识库内容或工程规则全文。未知明确说明，现状缺陷不得自动固化为规范；知识库与当前源码不一致时指出差异，不仅凭更新时间推断谁正确。
 以上规则来自已评审快照；未启用的规则不得按旧默认值恢复。本预设不自动运行下一阶段。
 
-<!-- easeus-sdd:core:start -->
+<!-- sdd-sdd:core:start -->
 
 # Assess Bug
 
@@ -303,7 +303,7 @@ Check if `.specify/extensions.yml` exists in the project root.
 - Never overwrite an existing `assessment.md` without confirmation.
 - If the bug report cannot be understood at all (empty, unrelated, spam), set verdict to `invalid` with a clear reason and stop.
 
-<!-- easeus-sdd:core:end -->
+<!-- sdd-sdd:core:end -->
 交付时说明实际来源、未知及复现结果；未复现或未验证的工作不得宣称通过。
 
 
@@ -327,6 +327,15 @@ FR 按独立业务行为组织；单位、边界、异常和兼容要求保持�
 检查重复 ID、明确的失效引用和适用结构；语义问题列出位置与建议，不自动合并、删除或重编号。Studio 只校验配置结构，功能文档仍需 Agent 评审，不能声称模板已证明语义正确。
 
 当前功能的实现缺陷关联原任务及已有 Issue，安排复现、修复和回归，不新增管理记录。需求存在歧义或需改变行为时，先确认影响再改规格，不通过改规格、删任务或虚构结果掩盖缺陷；仅在授权范围推进。
+
+
+### 面向读者的正文边界
+输入 JSON 字段只是生成协议，不是文档术语。中文正文、摘要、问题、选项、依据说明和 Agent 约定中，
+用「用户回答」「本次启用的规则」「本次生效的工程要求」「必需保留的工程规则」「宪法问卷」
+解释相应输入，不照抄内部字段名，也不通过反引号把字段名当成正文。问题引用用「第 1—3 项回答」等可读说法。
+来源使用「资料名称／文件路径＋必要位置」作为链接文字，不能只显示 E- 加哈希编号。
+JSON 键、选项 ID、证据引用数组、链接目标、实际命令、代码、路径以及框架必需语法保持原值，
+不得为中文化改变其含义或虚构来源。协议字段留在结构化数据和技术详情，正文只写读者需要的结论。
 
 Spec Kit：保持原生用户故事组织与 [P]、[USn] 等固定标记；正式 Bug 请求使用已部署的 speckit-bug-assess → speckit-bug-fix → speckit-bug-test，保留官方产物与各阶段调用边界，不因这里的缺陷处理指导自动启动或串行推进正式流程。完整功能的 converge 按原生职责做全量差距检查和追加任务，不强制每批调用，也不把下一批尚未获准实施的计划任务重复追加为缺陷。
 
