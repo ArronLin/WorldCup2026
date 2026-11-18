@@ -5,6 +5,7 @@
 // 语音设置是跨模式能力（本地/线上都可用），故放在 isLocal() 守卫之外。
 import { t } from '../../i18n.js';
 import { ttsSupported, sttSupported, getVoices, onVoicesChanged } from './voice.js';
+import { renderExportSection } from '../export-logs/export-ui.js';
 
 const STORE_KEY = 'wc2026-chat-config';
 
@@ -121,6 +122,7 @@ export function hasUsableConfig() {
 
 // 构建设置面板 DOM（挂在聊天面板内）。onChange 在保存后回调，onBack 在点击返回时回调。
 export function renderSettings(container, { onChange, onBack } = {}) {
+  container.querySelectorAll('.export-logs-section').forEach(section => section.dispose?.());
   const cfg = loadConfig();
   const current = cfg ? getProvider(cfg.provider) : PROVIDERS[0];
   const model = cfg ? cfg.model : current.defaultModel;
@@ -416,6 +418,9 @@ export function renderSettings(container, { onChange, onBack } = {}) {
     info.textContent = t('chat.settingsServerMode');
     wrap.appendChild(info);
   }
+
+  const exportSection = renderExportSection();
+  wrap.appendChild(exportSection);
 
   container.appendChild(wrap);
   return wrap;

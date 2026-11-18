@@ -149,6 +149,7 @@ function setSendState() {
 // ---------- 设置面板 ----------
 function openSettings() {
   if (els.settings) {
+    els.settings.querySelectorAll('.export-logs-section').forEach(section => section.dispose?.());
     els.settings.innerHTML = '';
     els.settings.hidden = false;
     els.messages.hidden = true;
@@ -161,6 +162,7 @@ function openSettings() {
 function closeSettings() {
   if (els.settings) {
     els.settings.hidden = true;
+    els.settings.querySelectorAll('.export-logs-section').forEach(section => section.dispose?.());
     els.settings.innerHTML = '';
     els.messages.hidden = false;
     els.chips.hidden = false;

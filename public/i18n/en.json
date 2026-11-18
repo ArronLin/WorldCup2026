@@ -259,5 +259,14 @@
   "schedule.calendar.week.6": "Su",
 
   "schedule.calendar.unavailable": "No tournament dates available",
-  "schedule.calendar.outside": "Choose a year and month within the tournament dates"
+  "schedule.calendar.outside": "Choose a year and month within the tournament dates",
+
+  "exportLogs.button": "Export Logs",
+  "exportLogs.exporting": "Packing…",
+  "exportLogs.done": "Download triggered",
+  "exportLogs.timeout": "Export timed out, please retry",
+  "exportLogs.unsupported": "This feature is not supported in your browser",
+  "exportLogs.errorPrefix": "Export failed: ",
+  "exportLogs.maskError": "Export aborted due to a security check failure",
+  "exportLogs.zipError": "Log serialization, compression or download failed. Please retry"
 }

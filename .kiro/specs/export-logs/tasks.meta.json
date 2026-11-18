@@ -1,0 +1,243 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 实现 `maskCredentials`、`serializeEntries`、`buildFilename`": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257296
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898269717
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898387358
+      }
+    ],
+    "2.1 实现 `createLogCollector` 及全局单例": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257323
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898393367
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898870006
+      }
+    ],
+    "3. 检查点——确保已有测试全部通过": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257348
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898888444
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898955818
+      }
+    ],
+    "4.1 添加 `fflate` npm 依赖并实现 `exportLogs`": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257370
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898973892
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794899467423
+      }
+    ],
+    "5.1 实现 `initExportButton` 及 `dispose`": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257396
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794899484881
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794899635057
+      }
+    ],
+    "6.1 实现 `renderExportSection`，含浏览器能力检测": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257421
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794899641122
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794900061233
+      }
+    ],
+    "7. 检查点——确保所有单元与属性测试通过": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257447
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794900068534
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794900216921
+      }
+    ],
+    "8.1 同步更新 `zh.json` 和 `en.json`": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257469
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898979710
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794899473230
+      }
+    ],
+    "9.1 修改 `settings.js` 注入导出区块": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257495
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794900222774
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794900350266
+      }
+    ],
+    "9.2 修改 `app.js` 调用 `logCollector.init()`": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257520
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794900228560
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794900356020
+      }
+    ],
+    "10.1 编写 `e2e/export-logs.spec.js` 端到端测试": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257549
+      },
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794900362142
+      }
+    ],
+    "11. 最终检查点——确保所有测试通过": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898257575
+      }
+    ],
+    "1. 建立目录结构与凭据遮盖基础": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898387402
+      }
+    ],
+    "2. 实现 LogCollector（`src/features/export-logs/collector.js`）": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794898870034
+      }
+    ],
+    "4. 实现 `exportLogs` 函数（`src/features/export-logs/exporter.js`）": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794899467442
+      }
+    ],
+    "8. 新增 i18n 词条": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794899473259
+      }
+    ],
+    "5. 实现 ExportController（`src/features/export-logs/controller.js`）": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794899635074
+      }
+    ],
+    "6. 实现导出 UI 组件（`src/features/export-logs/export-ui.js`）": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794900061255
+      }
+    ],
+    "9. 集成接入：`settings.js` 注入与 `app.js` 初始化": [
+      {
+        "executionId": "dc679b96-c853-4d5c-a3f5-cfdddc106a15",
+        "chatSessionId": "sess_f8bbeb9d-cb3b-4ce4-acd2-6ed69408a20c",
+        "timestamp": 1794900356057
+      }
+    ]
+  }
+}

@@ -8,6 +8,7 @@ import { browserStorage } from './browser-storage.js';
 import { initFollowTeams } from './features/follow-teams/controller.js';
 import { initTeamsFilter } from './teams-filter.js';
 import { initScheduleDateRange, withScheduleDateFocus } from './features/schedule-date-range/controller.js';
+import { logCollector } from './features/export-logs/collector.js';
 
 // Theme management
 function detectTheme() {
@@ -116,6 +117,7 @@ async function init() {
   applyTheme(detectTheme());
 
   await initI18n();
+  logCollector.init();
 
   // Pre-load player name translations for Chinese display
   try {
