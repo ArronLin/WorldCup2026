@@ -39,12 +39,29 @@ export function createFollowState({ storage = browserStorage } = {}) {
     return getSnapshot();
   }
 
+  function setFollowedBatch(codes, desired) {
+    if (!initialized || !Array.isArray(codes) || typeof desired !== 'boolean') return getSnapshot();
+    let changed = false;
+    for (const code of codes) {
+      if (!allowed.has(code)) continue;
+      if (followed.has(code) !== desired) {
+        if (desired) followed.add(code); else followed.delete(code);
+        changed = true;
+      }
+    }
+    if (!changed) return getSnapshot();
+    const result = storage.write(FOLLOW_KEY, JSON.stringify({ version: 1, teamCodes: [...followed].sort() }));
+    if (result.ok) { saveIssue = null; restoreIssue = null; }
+    else saveIssue = 'failed';
+    return getSnapshot();
+  }
+
   function setScheduleFilters(patch = {}) {
     if (typeof patch.followOnly === 'boolean') followOnly = patch.followOnly;
     if (isFilterStage(patch.stage)) stage = patch.stage;
     return getSnapshot();
   }
-  return { getSnapshot, initialize, setFollowed, setScheduleFilters };
+  return { getSnapshot, initialize, setFollowed, setFollowedBatch, setScheduleFilters };
 }
 export const followState = createFollowState();
 

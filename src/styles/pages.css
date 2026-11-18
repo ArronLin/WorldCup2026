@@ -435,6 +435,29 @@
 }
 .teams-page [hidden] { display: none !important; }
 
+/* Batch select mode */
+.teams-batch-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+}
+.teams-batch-info { font-size: 0.88rem; color: var(--text-secondary); margin-right: 4px; }
+.teams-batch-item { position: relative; }
+.teams-batch-item:has(.teams-batch-cb[style*="inline-block"]) { cursor: default !important; }
+.teams-follow-dot {
+  font-size: 0.75rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  line-height: 1;
+  margin-left: auto;
+}
+
 .teams-filter-row {
   display: flex;
   flex-wrap: wrap;
