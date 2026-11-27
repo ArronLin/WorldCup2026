@@ -49,6 +49,7 @@
 
 /* --- Group Standings Page --- */
 .standings-page .group-card {
+  display: block;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -67,6 +68,23 @@
   letter-spacing: 0.06em;
 }
 .standings-page .third-place-section { margin-top: var(--space-2xl); }
+.standings-sort-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.standings-sort-button:hover,
+.standings-table th[aria-sort] .standings-sort-button { color: var(--accent); }
+.standings-sort-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* --- Team Detail Page --- */
 .team-detail-page .team-header {
